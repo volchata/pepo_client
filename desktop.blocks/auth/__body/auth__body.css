@@ -1,0 +1,10 @@
+.auth__body{
+    height: 500px;
+    width: 100%;
+    background-color: #00bfff;
+}
+
+.auth__body .button{
+    width: 120px;
+    height: 25px;
+}
