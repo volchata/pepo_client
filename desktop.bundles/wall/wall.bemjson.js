@@ -10,8 +10,6 @@ module.exports = {
     scripts: [{ elem : 'js', url : 'wall.min.js' }],
     mods : { theme : 'islands' },
     content : [
-        {
-            block: 'main-menu'
-        }
+
     ]
 };
