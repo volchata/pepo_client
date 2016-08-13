@@ -1,0 +1,39 @@
+.social-buttons
+{
+    display:table;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+}
+
+.social-buttons__wrap
+{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+
+.button.social-buttons
+{
+    display: block;
+    border: 0;
+    outline: none;
+    width: 100%;
+    margin: 1em 0;
+    border-radius: 5px;
+    min-height: 25px;
+}
+
+.button_social_vk
+{
+    background-color: #2a5885;
+    color: white;
+}
+
+.button_social_facebook
+{
+    background-color: #3b5998;
+    color: white;
+}
