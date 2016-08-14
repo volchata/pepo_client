@@ -13,8 +13,6 @@
     width: 100%;
 }
 
-
-
 .button.social-buttons
 {
     display: block;
@@ -30,10 +28,13 @@
 {
     background-color: #2a5885;
     color: white;
+    background-image: url("vk.png");
+    background-size: cover;
 }
 
 .button_social_facebook
 {
     background-color: #3b5998;
     color: white;
+
 }
