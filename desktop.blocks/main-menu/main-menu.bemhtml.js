@@ -5,9 +5,6 @@ block('main-menu')(
             return [
                 {
                     elem: 'top'
-                },
-                {
-                    elem: 'bottom'
                 }
             ]
         }
