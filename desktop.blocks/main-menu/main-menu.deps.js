@@ -1,5 +1,6 @@
 ({
     mustDeps:[
-        { elem: 'bottom' }
+        { elem: 'bottom' },
+        { elem: 'icon' }
     ]
 })
