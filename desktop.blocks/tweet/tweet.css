@@ -1,0 +1,16 @@
+.tweet{
+    display: flex;
+    height: auto;
+    max-height: 50%;
+    width: 100%;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.tweet__right{
+    flex: 7 0 200px;
+    padding: 10px 5px;
+}
+
+.tweet__left {
+    flex: 1 0 35px;
+}

@@ -1,0 +1,26 @@
+.tweet__body {
+    width: 100%;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+
+.tweet__body .text_time {
+    float: right;
+}
+
+.tweet__body .text_time,
+.tweet__body .text_id {
+    color: #d6d6d6;
+}
+
+.tweet__body .text_username {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tweet__body .text_main {
+    display: block;
+    word-wrap: break-word;
+    margin: 5px 0;
+}
