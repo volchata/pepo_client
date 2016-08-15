@@ -1,0 +1,17 @@
+.tweet__right {
+    width: 100%;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+
+.tweet__right .text_time {
+    float: right;
+    color: #d6d6d6;
+}
+
+.tweet__right .text_main {
+    display: block;
+    word-wrap: break-word;
+    margin: 5px 0;
+}

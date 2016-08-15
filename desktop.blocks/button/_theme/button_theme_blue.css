@@ -1,0 +1,35 @@
+.button_theme_blue {
+    border-radius: 5px;
+    flex: 1 0 15%;
+    max-width: 25%;
+}
+
+.button_theme_blue .button__text {
+    font-size: 19px;
+}
+
+.button_theme_blue.button_yes {
+    background-color: #00bfff;
+    color: #fff;
+}
+
+.button_theme_blue.button_no {
+    color: #00bfff;
+    background-color: #fff;
+}
+
+.button_theme_blue.button_no.button_focused,
+.button_theme_blue.button_no.button_focused-hard {
+    color: #0b9bff;
+}
+
+.button_theme_blue.button_yes.button_focused,
+.button_theme_blue.button_yes.button_focused-hard {
+    background-color: #0b9bff;
+}
+
+.button_theme_blue.button_disabled {
+    background-color: #f4f4f4;
+    color: #bdbdbd;
+    border: 1px solid #bdbdbd;
+}

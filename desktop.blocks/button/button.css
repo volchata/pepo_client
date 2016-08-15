@@ -1,0 +1,10 @@
+.button {
+    outline: none;
+    -webkit-user-select: none;
+    border: none;
+}
+
+.button .icon {
+    background-size: cover;
+    padding: 0;
+}
