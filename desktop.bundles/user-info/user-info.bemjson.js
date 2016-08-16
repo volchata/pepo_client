@@ -5,20 +5,19 @@ module.exports = {
     head : [
         { elem : 'meta', attrs : { name : 'description', content : '' } },
         { elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } },
-        { elem : 'css', url : 'wall.min.css' },
-        { elem: 'js', url: 'wall.bemhtml.js' }
+        { elem : 'css', url : 'user-info.min.css' },
+        { elem: 'js', url: 'user-info.bemhtml.js' }
     ],
-    scripts: [{ elem : 'js', url : 'wall.min.js' }],
+    scripts: [{ elem : 'js', url : 'user-info.min.js' }],
     mods : { theme : 'islands' },
     content : [
         {
-<<<<<<< HEAD
+            block: 'user-info',
+            mods: { type: 'add' }
+        },
+        {
             block: 'bottom-menu',
             mods: { accept: true }
-=======
-            block: 'tweet',
-            mods: { type: 'default' }
->>>>>>> dev
         }
     ]
 };
