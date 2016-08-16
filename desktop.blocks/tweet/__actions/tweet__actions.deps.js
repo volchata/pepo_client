@@ -1,8 +1,7 @@
 ({
     mustDeps: [
         { block: 'control-group' },
-        { block: 'button', mods: { type: 'image-text' }},
-        { block: 'image' },
+        { block: 'button' },
         { block: 'icon' }
     ]
 })

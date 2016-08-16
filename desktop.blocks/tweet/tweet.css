@@ -14,6 +14,8 @@
 .tweet__left {
     flex: 1 0 35px;
 }
+<<<<<<< HEAD
+=======
 
 .tweet .button{
     opacity: 0.5;
@@ -24,3 +26,4 @@
 .tweet .button_focused-hard {
     opacity: 1;
 }
+>>>>>>> dev

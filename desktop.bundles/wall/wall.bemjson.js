@@ -12,8 +12,13 @@ module.exports = {
     mods : { theme : 'islands' },
     content : [
         {
+<<<<<<< HEAD
+            block: 'bottom-menu',
+            mods: { accept: true }
+=======
             block: 'tweet',
             mods: { type: 'default' }
+>>>>>>> dev
         }
     ]
 };

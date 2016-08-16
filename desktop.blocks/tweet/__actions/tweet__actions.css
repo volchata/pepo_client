@@ -1,0 +1,13 @@
+.tweet__actions .button{
+    outline: none;
+    -webkit-user-select: none;
+    opacity: 0.5;
+    border: none;
+    background-color: #fff;
+}
+
+.tweet__actions .button:active,
+.tweet__actions .button_focused,
+.tweet__actions .button_focused-hard {
+    opacity: 1;
+}
