@@ -7,4 +7,4 @@ block('mini-stat')(
             };
         }
     )
-)
+);

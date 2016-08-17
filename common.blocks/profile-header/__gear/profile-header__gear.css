@@ -3,8 +3,15 @@
     width: 12px;
     height: 12px;
     opacity: 0.5;
-    background-size: cover;
-    background-image: url("gear.png");
     display: inline-block;
     margin-bottom: 10px;
+}
+
+.profile-header__gear .icon
+{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-size: cover;
+
 }

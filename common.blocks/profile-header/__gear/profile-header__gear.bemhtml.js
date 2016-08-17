@@ -6,8 +6,8 @@ block('profile-header').elem('gear')(
                 mods: { pseudo: true },
                 content: [
                     {
-                        block: "gear-image",
-                        attrs: { src: "/common.blocks/profile-header/gear.png" }
+                        block: "icon",
+                        url: "/common.blocks/profile-header/gear.png"
                     }
                 ]
             }

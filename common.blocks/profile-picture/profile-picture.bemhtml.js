@@ -1,9 +1,0 @@
-block('profile-header')(
-    content()(
-        [
-            {
-
-            }
-        ]
-    )
-);
