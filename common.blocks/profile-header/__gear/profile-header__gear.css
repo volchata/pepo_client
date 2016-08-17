@@ -1,0 +1,10 @@
+.profile-header__gear
+{
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+    background-size: cover;
+    background-image: url("gear.png");
+    display: inline-block;
+    margin-bottom: 10px;
+}

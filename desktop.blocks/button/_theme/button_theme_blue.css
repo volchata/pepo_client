@@ -28,8 +28,18 @@
     background-color: #0b9bff;
 }
 
-.button_theme_blue.button_disabled {
+.button_theme_blue.button_disabled, .button_theme_blue.button_inactive {
     background-color: #f4f4f4;
     color: #bdbdbd;
     border: 1px solid #bdbdbd;
 }
+.button_theme_blue.button_inactive
+{
+    background-color: transparent;
+}
+
+.button_theme_blue.button_fullwidth
+{
+    max-width: 100%;
+}
+
