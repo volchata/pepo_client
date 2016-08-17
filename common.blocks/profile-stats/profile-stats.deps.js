@@ -1,0 +1,8 @@
+({
+    mustDeps: [
+        {
+            block: 'mini-stat'
+        }
+
+    ]
+})

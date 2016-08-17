@@ -1,0 +1,14 @@
+.mini-stat
+{
+    display: inline;
+}
+
+.mini-stat + .mini-stat
+{
+    margin-left: 10px;
+}
+
+.mini-stat__inner
+{
+    display: inline;
+}
