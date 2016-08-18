@@ -35,7 +35,6 @@ block('tweet')(
                         content: [
                             {
                                 block: 'button',
-                                mods: { homescreen: true },
                                 icon: {
                                     block: 'icon',
                                     mix: { block: 'tweet', elem: 'icon' },
@@ -44,7 +43,6 @@ block('tweet')(
                             },
                             {
                                 block: 'button',
-                                mods: { homescreen: true },
                                 icon: {
                                     block: 'icon',
                                     mix: { block: 'tweet', elem: 'icon' },
@@ -54,7 +52,6 @@ block('tweet')(
                             },
                             {
                                 block: 'button',
-                                mods: { homescreen: true },
                                 icon: {
                                     block: 'icon',
                                     mix: { block: 'tweet', elem: 'icon' },
