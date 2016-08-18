@@ -11,5 +11,24 @@ module.exports = {
     scripts: [{ elem : 'js', url : 'wall.min.js' }],
     mods : { theme : 'islands' },
     content : [
+        {
+            block: 'tweet'
+        },
+        {
+            block: 'tweet'
+        },
+        {
+            block: 'tweet'
+        },
+        {
+            block: 'tweet'
+        },
+        {
+            block: 'tweet'
+        },
+        {
+            block: 'bottom-menu',
+            mods: { homescreen: true }
+        }
     ]
 };
