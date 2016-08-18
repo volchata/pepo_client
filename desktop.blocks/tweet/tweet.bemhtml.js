@@ -35,26 +35,26 @@ block('tweet')(
                         content: [
                             {
                                 block: 'button',
+                                mix: { block: 'tweet', elem: 'button' },
                                 icon: {
                                     block: 'icon',
-                                    mix: { block: 'tweet', elem: 'icon' },
                                     url: '/desktop.blocks/tweet/img/arrow.svg'
                                 }
                             },
                             {
                                 block: 'button',
+                                mix: { block: 'tweet', elem: 'button' },
                                 icon: {
                                     block: 'icon',
-                                    mix: { block: 'tweet', elem: 'icon' },
                                     url: '/desktop.blocks/tweet/img/repost.svg'
                                 },
                                 text: '0'
                             },
                             {
                                 block: 'button',
+                                mix: { block: 'tweet', elem: 'button' },
                                 icon: {
                                     block: 'icon',
-                                    mix: { block: 'tweet', elem: 'icon' },
                                     url: '/desktop.blocks/tweet/img/like.svg'
                                 },
                                 text: '0'

@@ -1,19 +1,21 @@
 .tweet{
-    display: flex;
     height: auto;
-    max-height: 50%;
-    width: 100%;
+    display: inline-block;
+    max-width: 100%;
     border-bottom: 1px solid #d6d6d6;
 }
 
 .tweet__right{
-    flex: 5 0 150px;
+    float: right;
+    max-width: 82%;
     padding: 10px 5px;
 }
 
 .tweet__left {
-    flex: 1 0 35px;
+    float: left;
+    min-width: 18%;
 }
+
 .tweet .button{
     opacity: 0.5;
     background-color: #fff;

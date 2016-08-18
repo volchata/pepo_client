@@ -1,3 +1,18 @@
 .button_theme_islands.button_air{
     margin: 5px 10px;
 }
+
+.button_theme_islands:before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.button_theme_islands.button_focused,
+.button_theme_islands.button_focused-hard,
+.button_theme_islands.button_checked,
+.button_theme_islands.button_checked:before {
+    background: #00bfff;
+    box-shadow: #00bfff;
+}

@@ -2,44 +2,46 @@ block('bottom-menu')(
     mod('homescreen', 'true'),
     content()(
         {
-            block : 'control-group',
-            content : [
+            block : 'radio-group',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name : 'radio-button',
+            options : [
                 {
-                    block : 'button',
+                    val : 1,
+                    text : 'Home',
                     mods: { homescreen: true },
                     icon: {
                         block: 'icon',
                         url: '/desktop.blocks/bottom-menu/img/home.svg'
-                    },
-                    text: 'Home'
+                    }
                 },
                 {
-                    block : 'button',
-                    mods: { homescreen: true},
+                    val : 2,
+                    text : 'Notifications',
+                    mods: { homescreen: true },
                     icon: {
                         block: 'icon',
                         url: '/desktop.blocks/bottom-menu/img/bell.svg'
-                    },
-                    text: 'Notifications'
+                    }
                 },
                 {
-                    block : 'button',
-                    mods: { homescreen: true},
+                    val : 3,
+                    text : 'message',
+                    mods: { homescreen: true },
                     icon: {
                         block: 'icon',
                         url: '/desktop.blocks/bottom-menu/img/message.svg'
-                    },
-                    text: 'Messages'
+                    }
                 },
                 {
-                    block : 'button',
-                    mods: { homescreen: true},
+                    val : 4,
+                    text : 'account',
+                    mods: { homescreen: true },
                     icon: {
                         block: 'icon',
                         url: '/desktop.blocks/bottom-menu/img/account.svg'
-                    },
-                    text: 'Account'
-                }
+                    }
+                },
             ]
         }
     )

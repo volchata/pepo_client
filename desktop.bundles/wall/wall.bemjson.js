@@ -6,29 +6,45 @@ module.exports = {
         { elem : 'meta', attrs : { name : 'description', content : '' } },
         { elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } },
         { elem : 'css', url : 'wall.min.css' },
-        { elem: 'js', url: 'wall.bemhtml.js' }
+        { elem: 'js', url: 'wall.bemhtml.js' },
+        { block: 'font-awesome' }
     ],
     scripts: [{ elem : 'js', url : 'wall.min.js' }],
     mods : { theme : 'islands' },
     content : [
         {
-            block: 'tweet'
+            elem: 'header',
+            content: {
+                block: 'top-menu',
+                mods: { layout: 'main' }
+            }
         },
         {
-            block: 'tweet'
+            elem: 'body',
+            content: [
+                {
+                    block: 'tweet',
+                },
+                {
+                    block: 'tweet'
+                },
+                {
+                    block: 'tweet'
+                },
+                {
+                    block: 'tweet'
+                },
+                {
+                    block: 'tweet'
+                }
+            ]
         },
         {
-            block: 'tweet'
-        },
-        {
-            block: 'tweet'
-        },
-        {
-            block: 'tweet'
-        },
-        {
-            block: 'bottom-menu',
-            mods: { homescreen: true }
+            elem: 'footer',
+            content: {
+                block: 'bottom-menu',
+                mods: { homescreen: true }
+            }
         }
     ]
 };
