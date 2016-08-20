@@ -55,6 +55,8 @@ module.exports = function(config) {
             // bemtree
             // [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
 
+            //nodejs
+            [require('enb-js/techs/node-js'), { includeYM: true }],
             // bemhtml
             [techs.bemhtml, {
                 sourceSuffixes: ['bemhtml', 'bemhtml.js'],
