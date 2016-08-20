@@ -69,6 +69,22 @@ app.get('/', function(req, res) {
     })
 });
 
+// Новая страница - новый роут
+app.get('/wall/', function(req, res) {
+    render(req, res, {
+        view: 'wall',
+        title: 'Wall Page'
+    })
+});
+
+app.get('/login/', function(req, res) {
+    render(req, res, {
+        view: 'login',
+        title: 'Login  Page'
+    })
+});
+
+
 app.get('*', function(req, res) {
     res.status(404);
     return render(req, res, { view: '404' });
