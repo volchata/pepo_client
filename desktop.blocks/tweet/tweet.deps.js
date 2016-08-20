@@ -20,7 +20,7 @@
             { block: 'control-group' },
             { block: 'button' },
             { block: 'icon' },
-            { elem: 'icon' }
+            { elem: 'button' }
         ]
     }
 ])

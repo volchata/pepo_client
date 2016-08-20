@@ -1,0 +1,225 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('fontawesome-webfont.eot?v=4.6.3');
+    src: url('fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'), url('fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('fontawesome-webfont.woff?v=4.6.3') format('woff'), url('fontawesome-webfont.ttf?v=4.6.3') format('truetype'), url('fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*[class*='fa-icon']:after{
+    margin-left: 5px;
+}
+
+*[class*='fa-icon']:before{
+    margin-right: 5px;
+}
+
+*[class*='fa-icon']:after,
+*[class*='fa-icon']:before{
+    font-family: FontAwesome;
+}
+
+*[class*='wordpress']:before{
+    content: "\f19a";
+}
+
+*[class*='home']:after{
+    content: "\f015";
+}
+
+*[class*='refresh']:before{
+    content: "\f021";
+}
+
+*[class*='commentz']:before{
+    content: "\f086";
+}
+
+*[class*='plus']:before{
+    content: "\f067";
+    margin-right: 10px;
+}
+
+*[class*='userz']:after{
+    content: "\f007";
+}
+
+*[class*='cogs']:before{
+    content: "\f085";
+}
+
+*[class*='tachometer']:before{
+    content: "\f0e4";
+}
+
+*[class*='thumb-tack']:before{
+    content: "\f08d";
+}
+
+*[class*='file']:before{
+    content: "\f15b";
+}
+
+*[class*='paint-brush']:before{
+    content: "\f1fc";
+}
+
+*[class*='plug']:before{
+    content: "\f1e6";
+}
+
+*[class*='uses']:before{
+    content: "\f0c0";
+}
+
+*[class*='wrench']:before{
+    content: "\f0ad";
+}
+
+*[class*='chevron-circle-left']:before{
+    content: "\f137";
+}
+
+*[class*='file-text']:before{
+    content: "\f15c";
+}
+
+*[class*='times-circle']:before{
+    content: "\f057";
+}
+
+*[class*='pencil-square-o']:before{
+    content: "\f044";
+}
+
+*[class*='eye']:before{
+    content: "\f06e";
+}
+
+*[class*='caret-up']:after{
+    content: "\f0d8";
+}
+
+*[class*='caret-down']:after{
+    content: "\f0d7";
+}
+
+*[class*='calendar']:before{
+    content: "\f073";
+}
+
+*[class*='list-alt']:before{
+    content: "\f022";
+}
+
+*[class*='music']:before{
+    content: "\f001";
+}
+
+*[class*='video-camera']:before{
+    content: "\f03d";
+}
+
+*[class*='star']:before{
+    content: "\f005";
+}
+
+*[class*='underline']:before{
+    content: "\f0cd";
+}
+
+*[class*='italic']:before{
+    content: "\f033";
+}
+
+*[class*='boldd']:before{
+    content: "\f032";
+}
+
+*[class*='strikethrough']:before{
+    content: "\f0cc";
+}
+
+*[class*='list-ul']:before{
+    content: "\f0ca";
+}
+
+*[class*='list-ol']:before{
+    content: "\f0cb";
+}
+
+*[class*='outdent']:before{
+    content: "\f03b";
+}
+
+*[class*='indent']:before{
+    content: "\f03c";
+}
+
+*[class*='align-left']:before{
+    content: "\f036";
+}
+
+*[class*='align-justify']:before{
+    content: "\f039";
+}
+
+*[class*='align-right']:before{
+    content: "\f038";
+}
+
+*[class*='align-center']:before{
+    content: "\f037";
+}
+
+*[class*='linkz']:before{
+    content: "\f0c1";
+}
+
+*[class*='chain-broken']:before{
+    content: "\f127";
+}
+
+*[class*='picture-o']:before{
+    content: "\f03e";
+}
+
+*[class*='copy']:before{
+    content: "\f0c5";
+}
+
+*[class*='cut']:before{
+    content: "\f0c4";
+}
+
+*[class*='clipboard']:before{
+    content: "\f0ea";
+}
+
+*[class*='print']:before{
+    content: "\f02f";
+}
+
+*[class*='fontz']:before{
+    content: "\f031";
+}
+
+*[class*='superscript']:before{
+    content: "\f12b";
+}
+
+*[class*='subscript']:before{
+    content: "\f12c";
+}
+
+*[class*='film']:before{
+    content: "\f008";
+}
+
+*[class*='tablez']:before{
+    content: "\f0ce";
+}
+
+*[class*='minus']:before{
+    content: "\f068";
+}

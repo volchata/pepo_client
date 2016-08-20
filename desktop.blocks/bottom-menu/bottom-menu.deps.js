@@ -2,7 +2,7 @@
     {
         block: 'bottom-menu',
         mustDeps: [
-            { block: 'control-group' },
+            { block: 'radio-group', mods: { type: 'button' } },
             { block: 'image' },
             { block: 'icon' }
         ]
