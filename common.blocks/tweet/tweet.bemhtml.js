@@ -38,7 +38,7 @@ block('tweet')(
                                 mix: { block: 'tweet', elem: 'button' },
                                 icon: {
                                     block: 'icon',
-                                    url: '/desktop.blocks/tweet/img/arrow.svg'
+                                    url: '/common.blocks/tweet/img/arrow.svg'
                                 }
                             },
                             {
@@ -46,7 +46,7 @@ block('tweet')(
                                 mix: { block: 'tweet', elem: 'button' },
                                 icon: {
                                     block: 'icon',
-                                    url: '/desktop.blocks/tweet/img/repost.svg'
+                                    url: '/common.blocks/tweet/img/repost.svg'
                                 },
                                 text: '0'
                             },
@@ -55,7 +55,7 @@ block('tweet')(
                                 mix: { block: 'tweet', elem: 'button' },
                                 icon: {
                                     block: 'icon',
-                                    url: '/desktop.blocks/tweet/img/like.svg'
+                                    url: '/common.blocks/tweet/img/like.svg'
                                 },
                                 text: '0'
                             }
