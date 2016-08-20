@@ -1,7 +1,7 @@
 ({
     shouldDeps: [
         {
-            mods: { view: ['404', 'wall', 'index', 'login'] }
+            mods: { view: ['404', 'wall', 'index', 'login', 'auth'] }
         }
     ]
 })
