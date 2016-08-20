@@ -1,23 +1,12 @@
 var techs = {
-        // essential
         fileProvider: require('enb/techs/file-provider'),
         fileMerge: require('enb/techs/file-merge'),
-
-        // optimization
+        fileCopy: require('enb/techs/file-copy'),
         borschik: require('enb-borschik/techs/borschik'),
-
-        // css
         stylus: require('enb-stylus/techs/stylus'),
-
-        // js
         browserJs: require('enb-js/techs/browser-js'),
-
-        // bemtree
-        // bemtree: require('enb-bemxjst/techs/bemtree'),
-
-        // bemhtml
-        bemhtml: require('enb-bemxjst/techs/bemhtml'),
-        bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html')
+        bemtree: require('enb-bemxjst/techs/bemtree'),
+        bemhtml: require('enb-bemxjst/techs/bemhtml')
     },
     enbBemTechs = require('enb-bem-techs'),
     levels = [
@@ -27,19 +16,19 @@ var techs = {
         { path: 'libs/bem-components/desktop.blocks', check: false },
         { path: 'libs/bem-components/design/common.blocks', check: false },
         { path: 'libs/bem-components/design/desktop.blocks', check: false },
-        'common.blocks',
-        'desktop.blocks'
+        { path: 'libs/bem-history/common.blocks', check: false },
+        'common.blocks'
     ];
 
-module.exports = function(config) {
-    var isProd = process.env.YENV === 'production';
+var isProd = process.env.YENV === 'production';
+isProd || levels.push('development.blocks');
 
+module.exports = function(config) {
     config.nodes('*.bundles/*', function(nodeConfig) {
         nodeConfig.addTechs([
             // essential
             [enbBemTechs.levels, { levels: levels }],
-            [techs.fileProvider, { target: '?.bemjson.js' }],
-            [enbBemTechs.bemjsonToBemdecl],
+            [techs.fileProvider, { target: '?.bemdecl.js' }],
             [enbBemTechs.deps],
             [enbBemTechs.files],
 
@@ -53,37 +42,29 @@ module.exports = function(config) {
             }],
 
             // bemtree
-            // [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
+            [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
 
-            //nodejs
-            [require('enb-js/techs/node-js'), { includeYM: true }],
-            // bemhtml
-            [techs.bemhtml, {
-                sourceSuffixes: ['bemhtml', 'bemhtml.js'],
-                forceBaseTemplates: true
-            }],
+            // templates
+            [techs.bemhtml, { sourceSuffixes: ['bemhtml', 'bemhtml.js'] }],
 
-            // html
-            [techs.bemjsonToHtml],
-
-            // client bemhtml
+            // client templates
             [enbBemTechs.depsByTechToBemdecl, {
-                target: '?.bemhtml.bemdecl.js',
+                target: '?.tmpl.bemdecl.js',
                 sourceTech: 'js',
                 destTech: 'bemhtml'
             }],
             [enbBemTechs.deps, {
-                target: '?.bemhtml.deps.js',
-                bemdeclFile: '?.bemhtml.bemdecl.js'
+                target: '?.tmpl.deps.js',
+                bemdeclFile: '?.tmpl.bemdecl.js'
             }],
             [enbBemTechs.files, {
-                depsFile: '?.bemhtml.deps.js',
-                filesTarget: '?.bemhtml.files',
-                dirsTarget: '?.bemhtml.dirs'
+                depsFile: '?.tmpl.deps.js',
+                filesTarget: '?.tmpl.files',
+                dirsTarget: '?.tmpl.dirs'
             }],
             [techs.bemhtml, {
                 target: '?.browser.bemhtml.js',
-                filesTarget: '?.bemhtml.files',
+                filesTarget: '?.tmpl.files',
                 sourceSuffixes: ['bemhtml', 'bemhtml.js']
             }],
 
@@ -96,9 +77,12 @@ module.exports = function(config) {
 
             // borschik
             [techs.borschik, { source: '?.js', target: '?.min.js', minify: isProd }],
-            [techs.borschik, { source: '?.css', target: '?.min.css', minify: isProd }]
+            [techs.borschik, { source: '?.css', target: '?.min.css', minify: isProd }],
+
+            [techs.fileCopy, { source: '?.min.js', target: '../../static/?.min.js' }],
+            [techs.fileCopy, { source: '?.min.css', target: '../../static/?.min.css' }]
         ]);
 
-        nodeConfig.addTargets([/* '?.bemtree.js', */ '?.html', '?.min.css', '?.min.js']);
+        nodeConfig.addTargets(['?.bemtree.js', '?.bemhtml.js', '../../static/?.min.js', '../../static/?.min.css']);
     });
 };

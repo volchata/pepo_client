@@ -1,18 +1,16 @@
-libs/
 node_modules/
 .DS_Store
-.idea/
-*.iml
+.idea
 .project
 .svn
 npm-debug.log
 
+static/index.min.*
+
 # bem
-.bem/cache/
 .enb/tmp/
+libs/
 *bundles*/*/*.*
-!*bundles*/*/*.bemjson.js
+!*bundles*/*/*.bemdecl.js
+*bundles*/*/*.tmpl.bemdecl.js
 !*bundles*/.bem/*
-*pages*/*/*.*
-!*pages*/*/*.bemjson.js
-!*pages*/.bem/*
