@@ -1,5 +1,5 @@
 ({
     mustDeps: [
-        { block: 'text' }
+        { block: 'text', mods: { main: true } }
     ]
 })
