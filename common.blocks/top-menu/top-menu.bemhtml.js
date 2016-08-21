@@ -17,8 +17,8 @@ block('top-menu')(
             ]
         }
     ),
-    content()( function(){
-        return this.ctx.buttons.map(function(button){
+    content()(function () {
+        return this.ctx.buttons.map(function (button) {
             return {
                 block: 'button',
                 mods: { theme: 'islands', size: 'm', view: 'plain', air: true },
@@ -27,8 +27,7 @@ block('top-menu')(
                     block: 'icon',
                     url: '/img/' + button.name + '.svg'
                 }
-            }
-        })
+            };
+        });
     })
-)
-
+);

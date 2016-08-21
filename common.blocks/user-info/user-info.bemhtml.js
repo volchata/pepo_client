@@ -47,4 +47,4 @@ block('user-info')(
             }
         ]
     )
-)
+);

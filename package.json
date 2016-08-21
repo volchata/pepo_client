@@ -51,7 +51,7 @@
   },
   "scripts": {
     "start": "node server",
-    "postinstall": "npm run deps",
+    "postinstall": "npm run deps; grunt",
     "deps": "bower i",
     "make": "enb make",
     "watch": "chokidar '*.blocks/**' -c 'npm run make'"

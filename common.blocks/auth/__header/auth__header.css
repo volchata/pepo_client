@@ -4,9 +4,11 @@
     background-color: #000;
 }
 
+/*csslint universal-selector: false*/
 .auth__header .link > *{
     display: inline-block;
 }
+/*csslint universal-selector: true*/
 
 .auth__header .image{
     width: 25px;

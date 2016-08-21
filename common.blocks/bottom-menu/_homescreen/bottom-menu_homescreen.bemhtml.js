@@ -41,7 +41,7 @@ block('bottom-menu')(
                         block: 'icon',
                         url: '/desktop.blocks/bottom-menu/img/account.svg'
                     }
-                },
+                }
             ]
         }
     )

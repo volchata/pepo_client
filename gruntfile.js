@@ -24,11 +24,21 @@ module.exports = function (grunt) {
                 exclude: [
                     'server/*.js',
                     'static/*.js',
-                    'static/*.min.js'
+                    'static/*.min.js',
+                    '*.blocks/**/*.deps.js'
                 ],
                 directives: {
                     node: true,
-                    todo: true
+                    todo: true,
+                    sloppy: true,
+                    predef: [
+                        'block',
+                        'content',
+                        'mod',
+                        'tag',
+                        'js',
+                        'applyNext'
+                    ]
                 },
                 options: {
                     edition: 'latest',
@@ -36,7 +46,6 @@ module.exports = function (grunt) {
                     log: 'out/server-lint.log',
                     jslintXml: 'out/server-jslint.xml',
                     errorsOnly: true,
-                    failOnError: false,
                     checkstyle: 'out/server-checkstyle.xml'
                 }
             }
@@ -51,15 +60,11 @@ module.exports = function (grunt) {
                 rules: {
                     "import": false,
                     "overqualified-elements": 2,
-                    "empty-rules": false,
                     "adjoining-classes": false,
-                    "universal-selector": false,
                     "outline-none": false,
-                    "box-sizing": false,
-                    "unqualified-attributes": false,
-                    "regex-selectors": false,
-                    "known-properties": false,
-                    "box-model": false
+                    // "known-properties": false,
+                    "box-model": false,
+                    "box-sizing": false
                 }
             }
         }
