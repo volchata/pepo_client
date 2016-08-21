@@ -4,19 +4,6 @@ exports.blocks = [
     },
     {
         "name": "page",
-        "mods": [
-            {
-                "name": "theme",
-                "vals": [
-                    {
-                        "name": "islands"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "page",
         "elems": [
             {
                 "name": "meta"
@@ -43,7 +30,7 @@ exports.blocks = [
         "name": "body"
     },
     {
-        "name": "auth",
+        "name": "profile",
         "elems": [
             {
                 "name": "body"
@@ -51,9 +38,23 @@ exports.blocks = [
         ]
     },
     {
-        "name": "social-buttons"
+        "name": "profile-header"
     },
     {
-        "name": "footer"
+        "name": "account-info"
+    },
+    {
+        "name": "account-info",
+        "elems": [
+            {
+                "name": "multiline"
+            }
+        ]
+    },
+    {
+        "name": "profile-stats"
+    },
+    {
+        "name": "profile-controls"
     }
 ];

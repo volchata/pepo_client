@@ -91,7 +91,19 @@ app.get('/auth/', function(req, res) {
     })
 });
 
+app.get('/server/', function(req, res) {
+    render(req, res, {
+        view: 'login',
+        title: 'Login  Page'
+    })
+});
 
+app.get('/signup/', function(req, res) {
+    render(req, res, {
+        view: 'signup',
+        title: 'Signup  Page'
+    })
+});
 
 app.get('*', function(req, res) {
     res.status(404);

@@ -12,7 +12,7 @@ block('login')(
             {
                 block : 'button',
                 mix: { block: 'login', elem: 'button'},
-                mods : {theme: 'islands', size: 'l', type : 'submit'},
+                mods : {theme: 'islands', size: 'l', type : 'button'},
                 text : 'Вход'
             }
         ]
