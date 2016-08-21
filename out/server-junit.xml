@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite>
+<testcase classname="common.blocks.body.body.bemtree" name="body.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.bottom_menu._accept.bottom_menu_accept.bemhtml" name="bottom-menu_accept.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.account_info.account_info.bemhtml" name="account-info.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.bottom_menu._homescreen.bottom_menu_homescreen.bemhtml" name="bottom-menu_homescreen.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.footer.footer.bemtree" name="footer.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.login.login.bemhtml" name="login.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.header.header.bemtree" name="header.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.mini_stat.mini_stat.bemhtml" name="mini-stat.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.page._view.page_view_404.bemtree" name="page_view_404.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.page._view.page_view_login.bemtree" name="page_view_login.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.page._view.page_view_wall.bemtree" name="page_view_wall.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.page._view.page_view_index.bemtree" name="page_view_index.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.profile_controls.profile_controls.bemhtml" name="profile-controls.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.profile_header.__gear.profile_header__gear.bemhtml" name="profile-header__gear.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.profile_header.__right.profile_header__right.bemhtml" name="profile-header__right.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.profile_header.__left.profile_header__left.bemhtml" name="profile-header__left.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.profile_header.profile_header.bemhtml" name="profile-header.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.profile_stats.profile_stats.bemhtml" name="profile-stats.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.root.root.bemtree" name="root.bemtree:0:0"></testcase>
+<testcase classname="common.blocks.social_buttons.__wrap.social_buttons__wrap.bemhtml" name="social-buttons__wrap.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.social_buttons.social_buttons.bemhtml" name="social-buttons.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.top_menu.top_menu.bemhtml" name="top-menu.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.text.text.bemhtml" name="text.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.tweet.tweet.bemhtml" name="tweet.bemhtml:0:0"></testcase>
+<testcase classname="common.blocks.user_info.user_info.bemhtml" name="user-info.bemhtml:0:0"></testcase>
+  </testsuite>
+</testsuites>
