@@ -1,6 +1,6 @@
 .button {
     outline: none;
-    -webkit-user-select: none;
+    user-select: none;
     border: none;
 }
 
