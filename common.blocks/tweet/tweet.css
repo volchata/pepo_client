@@ -1,7 +1,7 @@
 .tweet{
     height: auto;
     display: inline-block;
-    max-width: 100%;
+    min-width: 100%;
     border-bottom: 1px solid #d6d6d6;
 }
 
@@ -13,8 +13,6 @@
 
 .tweet__left {
     float: left;
-
-
     min-width: 18%;
 }
 

@@ -1,0 +1,27 @@
+.icon.icon_reply {
+    background-image: url('img/arrow.svg');
+}
+
+.icon.icon_like {
+    background-image: url('img/like.svg');
+}
+
+.icon.icon_repost {
+    background-image: url('img/repost.svg');
+}
+
+.icon.icon_home {
+    background-image: url('img/home.svg');
+}
+
+.icon.icon_account {
+    background-image: url('img/account.svg');
+}
+
+.icon.icon_bell {
+    background-image: url('img/bell.svg');
+}
+
+.icon.icon_message {
+    background-image: url('img/message.svg');
+}

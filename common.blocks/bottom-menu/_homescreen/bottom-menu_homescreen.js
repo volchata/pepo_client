@@ -1,19 +1,16 @@
 modules.define('bottom-menu', ['i-bem__dom'], function (provide, BEMDOM) {
-
-    provide(BEMDOM.decl({ block: this.name, modName: 'homescreen', modVal: true }, {
-
+    provide(BEMDOM.decl({ block: this.name, modaName: 'homescreen', modVal: true }, {
         onSetMod: {
-            js : function(){
-                var radio = this.findBlocksInside('radio'),
-                    urls = ['localhost:3000/wall', 'localhost:3000/im', 'localhost:3000/account', 'localhost:3000/notification'];
+            js: function () {
+                var radios = this.findBlocksInside('radio'),
+                    urls = ['localhost:3000/im', 'localhost:3000/news', 'localhost:3000/im', 'localhost:3000/account'];
 
-                urls.map(function(v, i){
-                    radio[i].bindTo('pointerclick', function(){
-                        location.href = v;
-                    })
-                })
+                urls.map(function (v, i) {
+                    radios[i].bindTo('pointerclick', function () {
+                        document.location.href = v;
+                    });
+                });
             }
         }
-        },
-        {}))
+    }, {}));
 });

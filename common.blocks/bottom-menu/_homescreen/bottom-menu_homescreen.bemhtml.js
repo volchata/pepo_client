@@ -12,7 +12,7 @@ block('bottom-menu')(
                     mods: { homescreen: true },
                     icon: {
                         block: 'icon',
-                        url: '/desktop.blocks/bottom-menu/img/home.svg'
+                        mods: { home: true }
                     }
                 },
                 {
@@ -21,25 +21,25 @@ block('bottom-menu')(
                     mods: { homescreen: true },
                     icon: {
                         block: 'icon',
-                        url: '/desktop.blocks/bottom-menu/img/bell.svg'
+                        mods: { bell: true }
                     }
                 },
                 {
                     val : 3,
-                    text : 'message',
+                    text : 'Messages',
                     mods: { homescreen: true },
                     icon: {
                         block: 'icon',
-                        url: '/desktop.blocks/bottom-menu/img/message.svg'
+                        mods: { message: true }
                     }
                 },
                 {
                     val : 4,
-                    text : 'account',
+                    text : 'Account',
                     mods: { homescreen: true },
                     icon: {
                         block: 'icon',
-                        url: '/desktop.blocks/bottom-menu/img/account.svg'
+                        mods: { account: true }
                     }
                 }
             ]
