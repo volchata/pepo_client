@@ -1,4 +1,4 @@
-block('footer').content()(function() {
+block('footer').content()(function () {
     return [
         'footer content'
     ];

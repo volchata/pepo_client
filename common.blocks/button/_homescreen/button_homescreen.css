@@ -1,14 +1,12 @@
 .button_homescreen {
     background-color: #fff;
     padding: 0;
-    flex: 1 0 10px;
     height: 50px;
 }
 
 .button_homescreen .button__text {
     font-size: 12px;
     text-align: center;
-    vertical-align: bottom;
     display: block;
 }
 

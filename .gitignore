@@ -3,9 +3,9 @@ node_modules/
 .idea
 .project
 .svn
+out/
+static/*.min.*
 npm-debug.log
-
-static/index.min.*
 
 # bem
 .enb/tmp/

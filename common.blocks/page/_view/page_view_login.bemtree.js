@@ -1,3 +1,3 @@
-block('page').mod('view', 'login').content()(function() {
+block('page').mod('view', 'login').content()(function () {
     return 'Страница логина';
 });

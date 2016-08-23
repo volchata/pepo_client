@@ -1,10 +1,14 @@
-block('root').replace()(function() {
+block('root').replace()(function () {
     var ctx = this.ctx,
-        data = this.data = ctx.data,
+        data = ctx.data,
         meta = data.meta || {},
         og = meta.og || {};
 
-    if (ctx.context) return ctx.context;
+    this.data = data;
+
+    if (ctx.context) {
+        return ctx.context;
+    }
 
     return {
         block: 'page',

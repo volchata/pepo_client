@@ -1,4 +1,4 @@
-block('header').content()(function() {
+block('header').content()(function () {
     return [
         {
             block: 'logo'

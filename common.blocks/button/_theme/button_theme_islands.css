@@ -14,5 +14,5 @@
 .button_theme_islands.button_checked,
 .button_theme_islands.button_checked:before {
     background: #00bfff;
-    box-shadow: #00bfff;
+    box-shadow: 0 0 0 1px #00bfff;
 }

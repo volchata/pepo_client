@@ -1,4 +1,4 @@
-block('page').mod('view', 'wall').content()(function() {
+block('page').mod('view', 'wall').content()(function () {
     return [
         {
             elem: 'header',

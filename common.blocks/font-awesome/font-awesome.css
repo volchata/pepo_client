@@ -1,3 +1,4 @@
+/*csslint universal-selector: false, regex-selectors: false, unqualified-attributes: false*/
 @font-face {
     font-family: 'FontAwesome';
     src: url('fontawesome-webfont.eot?v=4.6.3');
@@ -223,3 +224,5 @@
 *[class*='minus']:before{
     content: "\f068";
 }
+
+/*csslint universal-selector: true, regex-selectors: true, unqualified-attributes: true*/

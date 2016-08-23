@@ -1,6 +1,6 @@
 block('mini-stat')(
     content()(
-        function() {
+        function () {
             return {
                 elem: 'inner',
                 content: applyNext()
