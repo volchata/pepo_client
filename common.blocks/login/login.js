@@ -7,17 +7,15 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                     'inited': function () {
 
                         var enter_btn = this.findBlockInside("login__button"),
-                            field_login = this.findBlockInside("login__input");
-
-                        var that = this;
+                            field_login = this.findBlockInside("login__input"),
+                            that = this;
 
                         enter_btn.bindTo('pointerclick', function (e) {
                             e.preventDefault();
 
                             var old_error = that.findBlockInside('error-message');
 
-                            if (old_error)
-                            {
+                            if (old_error) {
                                 BEMDOM.destruct(old_error.domElem);
                             }
 
