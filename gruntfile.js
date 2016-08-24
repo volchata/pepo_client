@@ -41,7 +41,8 @@ module.exports = function (grunt) {
                         'applyNext',
                         'modules',
                         'BEMHTML',
-                        'document'
+                        'document',
+                        'alert'
                     ]
                 },
                 options: {
