@@ -3,6 +3,7 @@
         { block: 'input', mods: {'theme': 'islands'} },
         { block: 'button', mods: {'theme': 'islands'} },
         { elem: 'input' },
-        { elem: 'button'}
+        { elem: 'button'},
+        { block: 'error-message' }
     ]
 });
