@@ -7,6 +7,7 @@ out/
 static/*.min.*
 npm-debug.log
 
+
 # bem
 .enb/tmp/
 libs/
@@ -14,3 +15,4 @@ libs/
 !*bundles*/*/*.bemdecl.js
 *bundles*/*/*.tmpl.bemdecl.js
 !*bundles*/.bem/*
+git

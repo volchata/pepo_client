@@ -84,6 +84,14 @@ app.get('/login/', function(req, res) {
     })
 });
 
+app.get('/auth/', function(req, res) {
+    render(req, res, {
+        view: 'auth',
+        title: 'Auth  Page'
+    })
+});
+
+
 
 app.get('*', function(req, res) {
     res.status(404);
