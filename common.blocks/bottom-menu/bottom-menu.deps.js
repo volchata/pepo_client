@@ -4,7 +4,7 @@
         mustDeps: [
             { block: 'radio-group', mods: { type: 'button' } },
             { block: 'image' },
-            { block: 'icon' }
+            { block: 'icon', mods: ['home', 'account', 'bell', 'message'] }
         ]
     },
 

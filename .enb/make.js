@@ -6,7 +6,8 @@ var techs = {
         stylus: require('enb-stylus/techs/stylus'),
         browserJs: require('enb-js/techs/browser-js'),
         bemtree: require('enb-bemxjst/techs/bemtree'),
-        bemhtml: require('enb-bemxjst/techs/bemhtml')
+        bemhtml: require('enb-bemxjst/techs/bemhtml'),
+        bemjsonToHtml: require('enb-bemxjst/techs/bemjson-to-html')
     },
     enbBemTechs = require('enb-bem-techs'),
     levels = [
@@ -23,8 +24,8 @@ var techs = {
 var isProd = process.env.YENV === 'production';
 isProd || levels.push('development.blocks');
 
-module.exports = function(config) {
-    config.nodes('*.bundles/*', function(nodeConfig) {
+module.exports = function (config) {
+    config.nodes('*.bundles/*', function (nodeConfig) {
         nodeConfig.addTechs([
             // essential
             [enbBemTechs.levels, { levels: levels }],
@@ -43,6 +44,13 @@ module.exports = function(config) {
 
             // bemtree
             [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
+
+            // js
+            [techs.browserJs, { includeYM: true }],
+            [techs.fileMerge, {
+                target: '?.js',
+                sources: ['?.browser.js', '?.browser.bemhtml.js']
+            }],
 
             // templates
             [techs.bemhtml, { sourceSuffixes: ['bemhtml', 'bemhtml.js'] }],
@@ -66,13 +74,6 @@ module.exports = function(config) {
                 target: '?.browser.bemhtml.js',
                 filesTarget: '?.tmpl.files',
                 sourceSuffixes: ['bemhtml', 'bemhtml.js']
-            }],
-
-            // js
-            [techs.browserJs, { includeYM: true }],
-            [techs.fileMerge, {
-                target: '?.js',
-                sources: ['?.browser.js', '?.browser.bemhtml.js']
             }],
 
             // borschik

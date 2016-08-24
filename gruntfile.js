@@ -25,7 +25,8 @@ module.exports = function (grunt) {
                     'server/*.js',
                     'static/*.js',
                     'static/*.min.js',
-                    '*.blocks/**/*.deps.js'
+                    '*.blocks/**/*.deps.js',
+                    '*.blocks/**/*.bemtree.js'
                 ],
                 directives: {
                     node: true,
@@ -37,7 +38,10 @@ module.exports = function (grunt) {
                         'mod',
                         'tag',
                         'js',
-                        'applyNext'
+                        'applyNext',
+                        'modules',
+                        'BEMHTML',
+                        'document'
                     ]
                 },
                 options: {

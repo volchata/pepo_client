@@ -15,3 +15,11 @@
     word-wrap: break-word;
     margin: 5px 0;
 }
+
+.tweet__right .icon {
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    opacity: 0.5;
+    margin-right: 5px;
+}

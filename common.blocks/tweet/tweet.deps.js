@@ -18,9 +18,8 @@
         shouldDeps: [
             { block: 'account-info' },
             { block: 'control-group' },
-            { block: 'button' },
-            { block: 'icon' },
-            { elem: 'button' }
+            { block: 'button', mods: ['like', 'repost', 'reply'] },
+            { block: 'icon', mods: ['like', 'repost', 'reply'] }
         ]
     }
 ])
