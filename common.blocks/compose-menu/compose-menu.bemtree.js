@@ -32,7 +32,6 @@ block('compose-menu')(
                     content: {
                         block: 'button',
                         mix: { block: "send-tweet-btn" },
-                        mods: { disabled: true },
                         text: "Твитнуть"
                     }
                 }

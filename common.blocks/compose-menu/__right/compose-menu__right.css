@@ -3,3 +3,8 @@
     float: right;
     padding: 5px;
 }
+
+.compose-menu__right .send-tweet-btn_disabled
+{
+    background-color: #fff;
+}
