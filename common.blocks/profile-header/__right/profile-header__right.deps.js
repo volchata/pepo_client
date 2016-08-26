@@ -2,7 +2,7 @@
     shouldDeps: [
         {
             block: 'button',
-            mods : { theme : 'blue' }
+            mods: {theme: 'islands', size: 'm', view: 'plain'}
         },
     ]
 })

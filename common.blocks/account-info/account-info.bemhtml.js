@@ -1,16 +1,17 @@
 block('account-info')(
-    content()(
-        [
-            {
-                block: 'text',
-                mods: { username: true },
-                content: 'Pavel Smolnikov'
-            },
-            {
-                block: 'text',
-                mods: { id: true },
-                content: '@pave_smolnikov'
-            }
-        ]
-    )
-);
+    content()(function(){
+            var data = this.ctx.data;
+            if(!data) data = '[{"userName":"Pavel Smolnikov","userID":"@pave_smolnikov"}]'
+            return [
+                    {
+                        block: 'text',
+                        mods: { username: true },
+                        content: JSON.parse(data)[0].userName
+                    },
+                    {
+                        block: 'text',
+                        mods: { id: true },
+                        content: 'id:' + JSON.parse(data)[0].userID
+                    }
+            ]
+}));

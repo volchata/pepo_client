@@ -1,8 +1,7 @@
 ({
-    mustDeps: [
+    shouldDeps: [
         {
             block: 'mini-stat'
         }
-
     ]
 })
