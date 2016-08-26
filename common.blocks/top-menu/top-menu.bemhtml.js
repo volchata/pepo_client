@@ -1,4 +1,5 @@
 block('top-menu')(
+    js()(true),
     mod('layout', 'main').replace()(
         {
             block: 'top-menu',
@@ -17,17 +18,24 @@ block('top-menu')(
             ]
         }
     ),
-    content()(function () {
-        return this.ctx.buttons.map(function (button) {
-            return {
-                block: 'button',
-                mods: { theme: 'islands', size: 'm', view: 'plain', air: true },
-                mix: { block: 'top-menu', elem: button.name },
-                icon: {
-                    block: 'icon',
-                    url: '/img/' + button.name + '.svg'
+    content()( function(){
+        return [
+            this.ctx.buttons.map(function(button){
+                return {
+                    block: 'button',
+                    mods: { theme: 'islands', size: 'm', view: 'plain', air: true },
+                    mix: { block: 'top-menu', elem: button.name },
+                    icon: {
+                        block: 'icon'
+                    }
                 }
-            };
-        });
+
+            }),
+            {
+                block: 'input',
+                mods: {theme: 'islands', size: 'l'},
+                placeholder: 'Поиск'
+            }
+        ]
     })
-);
+)
