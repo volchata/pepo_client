@@ -10,6 +10,20 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                             field_login = this.findBlockInside("login__input"),
                             that = this;
 
+                        function formError(text) {
+                            field_login.setMod('has-error', true);
+
+                            BEMDOM.append(that.domElem, BEMHTML.apply({
+                                block: 'error-message',
+                                content: text
+                            }));
+
+
+                            that.dropElemCache('error-message');
+                        }
+
+
+
                         enter_btn.bindTo('pointerclick', function (e) {
                             e.preventDefault();
 
@@ -25,16 +39,21 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                                 {
                                     url: "http://localhost:8080/api/user/",
                                     type: "POST",
-                                    data: {
+                                    data: JSON.stringify({
                                         displayName: field_login.findBlockInside("input__control").domElem.val()
-                                    },
+                                    }),
+                                    contentType: "application/json; charset=utf-8",
                                     dataType: "json",
-                                    contentType: "multipart/form-data",
                                     context: this
                                 }
                             ).done(
-                                function () {
-                                    document.location.href = "/";
+                                function (msg) {
+                                    if (!msg.notRegistered) {
+                                        document.location.href = "/feed/";
+                                    } else {
+                                        // такое можно предположить только если что-то с БД, причем сам сервер ок
+                                        formError("Не удалось зарегистрироваться, попробуйте позднее");
+                                    }
                                 }
                             ).fail(
                                 function (msg) {
@@ -43,15 +62,7 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                                         response = 'Неизвестная ошибка сервера';
                                     }
 
-                                    field_login.setMod('has-error', true);
-
-                                    BEMDOM.append(that.domElem, BEMHTML.apply({
-                                        block: 'error-message',
-                                        content: response
-                                    }));
-
-
-                                    that.dropElemCache('error-message');
+                                    formError(response);
                                 }
                             );
                         });
