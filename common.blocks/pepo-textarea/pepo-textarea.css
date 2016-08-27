@@ -1,0 +1,13 @@
+.pepo-textarea
+{
+    min-height: 70%;
+    height: 70%;
+}
+
+.pepo-textarea .textarea__control
+{
+    min-width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+}
