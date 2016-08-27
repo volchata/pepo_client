@@ -82,7 +82,8 @@ app.get('/feed/', function (req, res) {
             json: true
         }
     }, function (error, response, answer) {
-        // answer = JSON.parse(answer);
+        answer = JSON.parse(answer);
+        console.log(answer)
         if (response.statusCode == 403) {
             res.redirect('/auth/');
         }

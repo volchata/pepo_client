@@ -1,7 +1,9 @@
 block('tweet')(
     content()(
         function () {
-            var data = this.data;
+            var data = this.data.tweet_data;
+
+            console.log('data.users: ', JSON.stringify(data,null,'  '))
 
             return [
                 {
@@ -9,7 +11,7 @@ block('tweet')(
                     content: {
                         block: 'image',
                         mix: { block: 'avatar', mods: { type: 'tweet' } },
-                        url: data.avatar
+                        url: data.users['57c19d3dbb873d7c3b8cfaa1'].avatar
                     }
                 },
                 {
