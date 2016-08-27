@@ -5,7 +5,7 @@
 	display: block;
 }
 
-.login__input_has-error .input.input__control
+.login__input_has-error .input__box
 {
     border: 1px solid #a94442;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;

@@ -1,17 +1,37 @@
-modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, BEMDOM, $, BEMHTML) {
+modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
-    provide(BEMDOM.decl(this.name,
-        {
+    function (provide, BEMDOM, $, BEMHTML) {
+
+        provide(BEMDOM.decl(this.name, {
             onSetMod: {
-                'js': {
-                    'inited': function () {
+                js: {
+                    inited: function () {
+                        function update_btn(btnelem, textelem) {
+                            var val = textelem.domElem.val();
 
-                        var enter_btn = this.findBlockInside("login__button"),
-                            field_login = this.findBlockInside("login__input"),
-                            that = this;
+                            console.log(val);
 
-                        enter_btn.bindTo('pointerclick', function (e) {
-                            e.preventDefault();
+                            if (val) {
+                                btnelem.delMod("disabled");
+                            } else {
+                                btnelem.setMod("disabled", true);
+                            }
+                        }
+
+                        var that = this,
+                            text_input = this.findBlockInside('textarea'),
+                            send_tweet_btn = this.findBlockInside('send-tweet-btn');
+
+                        update_btn(send_tweet_btn, text_input);
+
+                        text_input.bindTo('keyup', function () {
+                            update_btn(send_tweet_btn, text_input);
+                        });
+
+                        send_tweet_btn.bindTo('click', function () {
+                            if (this.hasMod("disabled")) {
+                                return;
+                            }
 
                             var old_error = that.findBlockInside('error-message');
 
@@ -23,10 +43,10 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
 
                             $.ajax(
                                 {
-                                    url: "http://localhost:8080/api/user/",
+                                    url: "http://localhost:8080/api/user/testUser/feed", // TODO решить с ребятами из сервера, нафига мне тут логин постить
                                     type: "POST",
                                     data: {
-                                        login: field_login.findBlockInside("input__control").domElem.val()
+                                        text: text_input.domElem.val()
                                     },
                                     dataType: "json",
                                     contentType: "multipart/form-data",
@@ -43,8 +63,6 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                                         response = 'Неизвестная ошибка сервера';
                                     }
 
-                                    field_login.setMod('has-error', true);
-
                                     BEMDOM.append(that.domElem, BEMHTML.apply({
                                         block: 'error-message',
                                         content: response
@@ -54,15 +72,12 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                                     that.dropElemCache('error-message');
                                 }
                             );
-                        });
 
-                        field_login.findBlockInside("input__control").bindTo("focus", function () {
-                            field_login.setMod('has-error', false);
                         });
                     }
                 }
             }
-        }
-        ));
 
-});
+        }));
+
+    });

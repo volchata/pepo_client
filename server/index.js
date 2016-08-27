@@ -99,6 +99,13 @@ app.get('/profile/', function(req, res) {
     })
 });
 
+app.get('/compose/', function(req, res) {
+    render(req, res, {
+        view: 'compose',
+        title: 'Compose new tweet message'
+    })
+});
+
 app.get('*', function(req, res) {
     res.status(404);
     return render(req, res, { view: '404' });
