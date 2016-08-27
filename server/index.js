@@ -9,10 +9,10 @@ var fs = require('fs'),
     morgan = require('morgan'),
     serveStatic = require('serve-static'),
     cookieParser = require('cookie-parser'),
-    expressSession = require('express-session'),
+//    expressSession = require('express-session'),
     slashes = require('connect-slashes'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
+//    passport = require('passport'),
+//    LocalStrategy = require('passport-local').Strategy,
 
     config = require('./config'),
     staticFolder = config.staticFolder,
@@ -33,23 +33,23 @@ app
     .use(morgan('combined'))
     .use(cookieParser())
     .use(bodyParser.urlencoded({ extended: true }))
-    .use(expressSession({
-        resave: true,
-        saveUninitialized: true,
-        secret: config.sessionSecret
-    }))
-    .use(passport.initialize())
-    .use(passport.session())
+//    .use(expressSession({
+//        resave: true,
+//        saveUninitialized: true,
+//        secret: config.sessionSecret
+//    }))
+//    .use(passport.initialize())
+//    .use(passport.session())
     .use(slashes());
     // TODO: csrf, gzip
 
-passport.serializeUser(function(user, done) {
-    done(null, JSON.stringify(user));
-});
+//passport.serializeUser(function(user, done) {
+//    done(null, JSON.stringify(user));
+//});
 
-passport.deserializeUser(function(user, done) {
-    done(null, JSON.parse(user));
-});
+//passport.deserializeUser(function(user, done) {
+//    done(null, JSON.parse(user));
+//});
 
 app.get('/ping/', function(req, res) {
     res.send('ok');
@@ -91,19 +91,6 @@ app.get('/auth/', function(req, res) {
     })
 });
 
-app.get('/server/', function(req, res) {
-    render(req, res, {
-        view: 'login',
-        title: 'Login  Page'
-    })
-});
-
-app.get('/signup/', function(req, res) {
-    render(req, res, {
-        view: 'signup',
-        title: 'Signup  Page'
-    })
-});
 app.get('/profile/', function(req, res) {
     render(req, res, {
         view: 'profile',
