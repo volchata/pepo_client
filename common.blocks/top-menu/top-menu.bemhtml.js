@@ -18,9 +18,9 @@ block('top-menu')(
             ]
         }
     ),
-    content()( function(){
+    content()(function () {
         return [
-            this.ctx.buttons.map(function(button){
+            this.ctx.buttons.map(function (button) {
                 return {
                     block: 'button',
                     mods: { theme: 'islands', size: 'm', view: 'plain', air: true },
@@ -28,14 +28,13 @@ block('top-menu')(
                     icon: {
                         block: 'icon'
                     }
-                }
-
+                };
             }),
             {
                 block: 'input',
                 mods: {theme: 'islands', size: 'l'},
                 placeholder: 'Поиск'
             }
-        ]
+        ];
     })
-)
+);
