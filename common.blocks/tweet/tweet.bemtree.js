@@ -1,15 +1,16 @@
 block('tweet')(
     content()(
         function () {
-            var tweet_data = this.ctx.data[0];
-
+            if(this.ctx.data) var data = JSON.parse(this.ctx.data);
+            if(data) var tweet_data = data.tweet_data;
+            else var tweet_data = '{}';
             return [
                 {
                     elem: 'left',
                     content: {
                         block: 'image',
                         mix: { block: 'avatar', mods: { type: 'tweet' } },
-                        url: tweet_data.avatar
+                        url: tweet_data.avatar + ''
                     }
                 },
                 {
@@ -33,12 +34,12 @@ block('tweet')(
                         {
                             block: 'text',
                             mods: { time: true },
-                            content: tweet_data.timestamp
+                            content: tweet_data.timestamp + ''
                         },
                         {
                             block: 'text',
                             mods: { main: true },
-                            content: tweet_data.content
+                            content: tweet_data.content + ''
                         },
                         {
                             block: 'control-group',
