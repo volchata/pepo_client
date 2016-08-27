@@ -5,7 +5,8 @@
             mods: { layout: 'main' }
         },
         {
-            block: 'tweet'
+            block: 'tweet',
+            mods: { default: true }
         },
         {
             block: 'bottom-menu',
