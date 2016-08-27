@@ -26,7 +26,7 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                                     url: "http://localhost:8080/api/user/",
                                     type: "POST",
                                     data: {
-                                        login: field_login.findBlockInside("input__control").domElem.val()
+                                        displayName: field_login.findBlockInside("input__control").domElem.val()
                                     },
                                     dataType: "json",
                                     contentType: "multipart/form-data",
