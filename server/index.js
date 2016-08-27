@@ -111,19 +111,43 @@ app.get('/auth/', function(req, res) {
         {
             if (answer.notRegistered)
             {
-                response.writeHead(302, {
-                    'Location': '/signup/'
-                    //add other headers here...
-                });
-                response.end();
+                response.redirect('/auth/');
             }
             else
             {
-                response.writeHead(302, {
-                    'Location': '/feed/'
-                    //add other headers here...
+                response.redirect('/feed/');
+            }
+
+        }
+    });
+
+});
+
+app.get('/signup/', function(req, res) {
+
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = 'http://localhost:8080/api/user/';
+
+    request({url: url, headers: {
+        Cookie: cookie,
+        json: true
+    }}, function (error, response, answer) {
+
+        if (response.statusCode == 403) {
+            response.redirect('/auth/');
+        }
+        else
+        {
+            if (answer.notRegistered)
+            {
+                render(req, res, {
+                    view: 'signup',
+                    title: 'Signup Page'
                 });
-                response.end();
+            }
+            else
+            {
+                response.redirect('/feed/');
             }
 
         }
