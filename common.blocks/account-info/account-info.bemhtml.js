@@ -11,7 +11,7 @@ block('account-info')(
                     {
                         block: 'text',
                         mods: { id: true },
-                        content: 'id:' + JSON.parse(data)[0].userID
+                        content: JSON.parse(data)[0].userID
                     }
             ]
 }));
