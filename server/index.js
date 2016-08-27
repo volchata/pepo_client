@@ -13,6 +13,7 @@ var fs = require('fs'),
     slashes = require('connect-slashes'),
 //    passport = require('passport'),
 //    LocalStrategy = require('passport-local').Strategy,
+    request = require('request'),
 
     config = require('./config'),
     staticFolder = config.staticFolder,
@@ -90,15 +91,49 @@ app.get('/login/', function(req, res) {
 });
 
 app.get('/auth/', function(req, res) {
-    render(req, res, {
-        view: 'auth',
-        title: 'Auth  Page'
-    })
+
+
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = 'http://localhost:8080/api/user/';
+
+    request({url: url, headers: {
+        Cookie: cookie,
+        json: true
+    }}, function (error, response, answer) {
+
+        if (response.statusCode == 403) {
+            render(req, res, {
+                view: 'auth',
+                title: 'Auth  Page'
+            })
+        }
+        else
+        {
+            if (answer.notRegistered)
+            {
+                response.writeHead(302, {
+                    'Location': '/signup/'
+                    //add other headers here...
+                });
+                response.end();
+            }
+            else
+            {
+                response.writeHead(302, {
+                    'Location': '/feed/'
+                    //add other headers here...
+                });
+                response.end();
+            }
+
+        }
+    });
+
 });
 
 app.get('/profile/', function(req, res) {
     render(req, res, {
-        view: 'profile',
+        view: 'profilegit b',
         title: 'Profile  Page',
         myData: '[{"_id":"57b6cbd6431d668671cee0a5","userName":"Bob Alacaaahdgejh Moidusen","userID":"129220154191712","provider":"fb","__v":0}]'
     })

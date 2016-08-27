@@ -32,6 +32,8 @@ module.exports = function (grunt) {
                     node: true,
                     todo: true,
                     sloppy: true,
+                    unparam: true,
+                    nomen: true,
                     predef: [
                         'block',
                         'content',
@@ -42,7 +44,8 @@ module.exports = function (grunt) {
                         'modules',
                         'BEMHTML',
                         'document',
-                        'alert'
+                        'alert',
+                        'error'
                     ]
                 },
                 options: {

@@ -24,14 +24,35 @@
     margin-right: 5px;
 }
 
-.tweet__right .icon_reply {
+.tweet__right .button{
+    padding: 0;
+    margin-right: 10px;
+}
+
+.tweet__right .tweet__like.button_type_error {
+    color: red;
+}
+
+.tweet__right .button_type_good {
+    color: #00bfff;
+}
+
+.tweet__right .button .icon_reply {
     background-image: url('../img/arrow.svg');
 }
 
-.tweet__right .icon_like {
+.tweet__right .button .icon_like {
     background-image: url('../img/like.svg');
 }
 
-.tweet__right .icon_repost {
+.tweet__right .button .icon_repost {
     background-image: url('../img/repost.svg');
+}
+
+.tweet__right .button_type_good .icon_like {
+    background-image: url('../img/like-good.svg');
+}
+
+.tweet__right .button_type_error .icon_like {
+    background-image: url('../img/like-red.svg');
 }

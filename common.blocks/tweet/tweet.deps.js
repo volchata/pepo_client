@@ -1,10 +1,7 @@
 ([
     {
         block: 'tweet',
-        mustDeps: [
-            { elem: 'actions' },
-            { elem: 'right' }
-        ]
+        mustDeps: { elem: ['like', 'repost', 'reply', 'right', 'actions'] }
     },
     {
         elem: 'left',
@@ -18,7 +15,6 @@
         shouldDeps: [
             { block: 'account-info' },
             { block: 'control-group' },
-            { block: 'button', mods: ['like', 'repost', 'reply'] },
             { block: 'icon', mods: ['like', 'repost', 'reply'] }
         ]
     }

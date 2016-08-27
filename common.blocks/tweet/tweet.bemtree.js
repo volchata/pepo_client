@@ -1,7 +1,15 @@
 block('tweet')(
     content()(
         function () {
-            var tweet_data = this.ctx.data[0];
+            var data = {
+                content: 'someText',
+                avatar: 'http://image.flaticon.com/icons/svg/188/188993.svg',
+                login: 'account_name',
+                firstName: 'first name',
+                lastName: 'last name',
+                timeswap: 'current_time',
+                tweet_id: '123'
+            };
 
             return [
                 {
@@ -9,7 +17,7 @@ block('tweet')(
                     content: {
                         block: 'image',
                         mix: { block: 'avatar', mods: { type: 'tweet' } },
-                        url: tweet_data.avatar
+                        url: data.avatar
                     }
                 },
                 {
@@ -21,43 +29,42 @@ block('tweet')(
                                 {
                                     block: 'text',
                                     mods: { username: true },
-                                    content: tweet_data.firstName + ' ' + tweet_data.lastName
+                                    content: data.lastName + ' ' + data.firstName
                                 },
                                 {
                                     block: 'text',
                                     mods: { id: true },
-                                    content: '@' + tweet_data.login
+                                    content: '@' + data.login
                                 }
                             ]
                         },
                         {
                             block: 'text',
                             mods: { time: true },
-                            content: tweet_data.timestamp
+                            content: data.timeswap
                         },
                         {
                             block: 'text',
                             mods: { main: true },
-                            content: tweet_data.content
+                            content: data.content
                         },
                         {
                             block: 'control-group',
                             content: ['reply', 'repost', 'like'].map(function (v, i, content) {
-                                var button = {
+
+                                var twt = {
                                     block: 'button',
-                                    mods: {},
-                                    text: i,
-                                    mix: { block: 'tweet', elem: 'button' },
+                                    mix: { block: 'tweet', elem: v },
+                                    text: '',
                                     icon: {
                                         block: 'icon',
                                         mods: {}
                                     }
                                 };
 
-                                button.icon.mods[content[i]] = true;
-                                button.mods[content[i]] = true;
+                                twt.icon.mods[v] = true;
 
-                                return button;
+                                return twt;
                             })
                         }
                     ]

@@ -10,16 +10,22 @@ block('page').mod('view', 'wall').content()(function () {
         {
             elem: 'body',
             content: [
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' },
-                { block: 'tweet' }
+                {
+                    block: 'tweet',
+                    mods: { default: true }
+                },
+                {
+                    block: 'tweet',
+                    mods: { default: true }
+                },
+                {
+                    block: 'tweet',
+                    mods: { default: true }
+                },
+                {
+                    block: 'tweet',
+                    mods: { default: true }
+                }
             ]
         },
         {

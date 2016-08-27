@@ -22,6 +22,7 @@
 }
 
 .tweet .button_focused,
-.tweet .button_focused-hard {
+.tweet .button_focused-hard,
+.tweet .button_focused .icon{
     opacity: 1;
 }
