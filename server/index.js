@@ -1,6 +1,7 @@
 Object.assign || (Object.assign = require('object-assign'));
 
 var fs = require('fs'),
+    request = require('request'),
     path = require('path'),
     express = require('express'),
     app = express(),
@@ -72,12 +73,19 @@ app.get('/', function(req, res) {
 
 // Новая страница - новый роут
 app.get('/feed/', function(req, res) {
-    request('localhost:8080/api/user/feed/', function (error, response, body) {
+    request('http://localhost:8080/api/user/feed/', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             render(req, res, {
                 view: 'wall',
                 title: 'Wall Page',
-                tweet_data: body
+                tweet_data: body // body
+            })
+        }
+        else {
+            render(req, res, {
+                view: 'wall',
+                title: 'Wall Page',
+                tweet_data: '{}'
             })
         }
     });
