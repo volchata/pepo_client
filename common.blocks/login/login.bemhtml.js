@@ -10,7 +10,7 @@ block('login')(
                 placeholder: 'Придумай логин'
             },
             {
-                block : 'button',
+                block: 'button',
                 mix: { block: 'login', elem: 'button'},
                 mods : {theme: 'islands', size: 'l', type : 'button'},
                 text : 'Вход'
