@@ -70,11 +70,16 @@ app.get('/', function(req, res) {
 });
 
 // Новая страница - новый роут
-app.get('/wall/', function(req, res) {
-    render(req, res, {
-        view: 'wall',
-        title: 'Wall Page'
-    })
+app.get('/feed/', function(req, res) {
+    request('localhost:8080/api/user/feed/', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            render(req, res, {
+                view: 'wall',
+                title: 'Wall Page',
+                tweet_data: body
+            })
+        }
+    });
 });
 
 app.get('/login/', function(req, res) {
