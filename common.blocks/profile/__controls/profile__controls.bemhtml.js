@@ -1,4 +1,4 @@
-block('profile-controls')(
+block('profile').elem('controls')(
     content()(
         [
             {

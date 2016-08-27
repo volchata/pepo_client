@@ -2,14 +2,11 @@ block('profile-header').elem('gear')(
     content()(
         [
             {
-                block: "link",
-                mods: { pseudo: true },
-                content: [
-                    {
-                        block: "icon",
-                        url: "/common.blocks/profile-header/gear.png"
-                    }
-                ]
+                block: 'button',
+                mods: {theme: 'islands', size: 'm', view: 'plain', air: true},
+                icon: {
+                    block: 'icon'
+                }
             }
         ]
     )

@@ -1,6 +1,6 @@
-block('profile-stats')(
-    content()(function () {
-        return this.ctx.stats.map(function (item) {
+block('profile').elem('stats')(
+    content()(function() {
+        return this.ctx.stats.map(function(item){
             return [
                 {
                     block: "mini-stat",
