@@ -1,15 +1,7 @@
 block('tweet')(
     content()(
         function () {
-            var data = {
-                content: 'someText',
-                avatar: 'http://image.flaticon.com/icons/svg/188/188993.svg',
-                login: 'account_name',
-                firstName: 'first name',
-                lastName: 'last name',
-                timeswap: 'current_time',
-                tweet_id: '123'
-            };
+            var data = this.data;
 
             return [
                 {

@@ -23,7 +23,7 @@ block('top-menu')(
             this.ctx.buttons.map(function (button) {
                 return {
                     block: 'button',
-                    mods: { theme: 'islands', size: 'm', view: 'plain', air: true },
+                    mods: { theme: 'islands', size: 'm', view: 'plain', type: 'air' },
                     mix: { block: 'top-menu', elem: button.name },
                     icon: {
                         block: 'icon'

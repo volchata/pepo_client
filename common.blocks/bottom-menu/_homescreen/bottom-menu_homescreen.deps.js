@@ -1,5 +1,5 @@
 ({
     mustDeps: [
-        { block: 'button', mods: { homescreen: true }}
+        { block: 'button', mods: { type: 'homescreen' }}
     ]
 })

@@ -34,15 +34,15 @@ app
     .use(morgan('combined'))
     .use(cookieParser())
     .use(bodyParser.urlencoded({ extended: true }))
-//    .use(expressSession({
-//        resave: true,
-//        saveUninitialized: true,
-//        secret: config.sessionSecret
-//    }))
-//    .use(passport.initialize())
-//    .use(passport.session())
+    //    .use(expressSession({
+    //        resave: true,
+    //        saveUninitialized: true,
+    //        secret: config.sessionSecret
+    //    }))
+    //    .use(passport.initialize())
+    //    .use(passport.session())
     .use(slashes());
-    // TODO: csrf, gzip
+// TODO: csrf, gzip
 
 //passport.serializeUser(function(user, done) {
 //    done(null, JSON.stringify(user));
@@ -52,11 +52,11 @@ app
 //    done(null, JSON.parse(user));
 //});
 
-app.get('/ping/', function(req, res) {
+app.get('/ping/', function (req, res) {
     res.send('ok');
 });
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     render(req, res, {
         view: 'index',
         title: 'Main page',
@@ -71,26 +71,48 @@ app.get('/', function(req, res) {
 });
 
 // Новая страница - новый роут
-app.get('/feed/', function(req, res) {
-    request('localhost:8080/api/user/feed/', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            render(req, res, {
-                view: 'wall',
-                title: 'Wall Page',
-                tweet_data: body
-            })
+app.get('/feed/', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = 'http://localhost:8080/api/user/feed';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        // answer = JSON.parse(answer);
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                render(req, res, {
+                    view: 'wall',
+                    title: 'Wall Page',
+                    tweet_data: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
         }
     });
 });
 
-app.get('/login/', function(req, res) {
+app.get('/login/', function (req, res) {
     render(req, res, {
         view: 'login',
         title: 'Login  Page'
     })
 });
 
-app.get('/auth/', function(req, res) {
+app.get('/auth/', function (req, res) {
 
 
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
@@ -99,9 +121,10 @@ app.get('/auth/', function(req, res) {
     request({
         url: url,
         headers: {
-        Cookie: cookie,
-        json: true
-    }}, function (error, response, answer) {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
         answer = JSON.parse(answer);
         if (response.statusCode == 403) {
             render(req, res, {
@@ -109,14 +132,11 @@ app.get('/auth/', function(req, res) {
                 title: 'Auth  Page'
             })
         }
-        else
-        {
-            if (answer.notRegistered)
-            {
+        else {
+            if (answer.notRegistered) {
                 res.redirect('/signup/');
             }
-            else
-            {
+            else {
                 res.redirect('/feed/');
             }
 
@@ -125,30 +145,29 @@ app.get('/auth/', function(req, res) {
 
 });
 
-app.get('/signup/', function(req, res) {
+app.get('/signup/', function (req, res) {
 
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
     var url = 'http://localhost:8080/api/user/';
 
-    request({url: url, headers: {
-        Cookie: cookie,
-        json: true
-    }}, function (error, response, answer) {
+    request({
+        url: url, headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
         answer = JSON.parse(answer);
         if (response.statusCode == 403) {
             res.redirect('/auth/');
         }
-        else
-        {
-            if (answer.notRegistered)
-            {
+        else {
+            if (answer.notRegistered) {
                 render(req, res, {
                     view: 'signup',
                     title: 'Signup Page'
                 });
             }
-            else
-            {
+            else {
                 res.redirect('/feed/');
             }
 
@@ -157,7 +176,7 @@ app.get('/signup/', function(req, res) {
 
 });
 
-app.get('/profile/', function(req, res) {
+app.get('/profile/', function (req, res) {
     render(req, res, {
         view: 'profilegit b',
         title: 'Profile  Page',
@@ -165,20 +184,20 @@ app.get('/profile/', function(req, res) {
     })
 });
 
-app.get('/compose/', function(req, res) {
+app.get('/compose/', function (req, res) {
     render(req, res, {
         view: 'compose',
         title: 'Compose new tweet message'
     })
 });
 
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
     res.status(404);
     return render(req, res, { view: '404' });
 });
 
 if (isDev) {
-    app.get('/error/', function() {
+    app.get('/error/', function () {
         throw new Error('Uncaught exception from /error');
     });
 
@@ -187,7 +206,7 @@ if (isDev) {
 
 isSocket && fs.existsSync(port) && fs.unlinkSync(port);
 
-app.listen(port, function() {
+app.listen(port, function () {
     isSocket && fs.chmod(port, '0777');
     console.log('server is listening on', this.address().port);
 });
