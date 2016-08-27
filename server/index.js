@@ -96,11 +96,13 @@ app.get('/auth/', function(req, res) {
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
     var url = 'http://localhost:8080/api/user/';
 
-    request({url: url, headers: {
+    request({
+        url: url,
+        headers: {
         Cookie: cookie,
         json: true
     }}, function (error, response, answer) {
-
+        answer = JSON.parse(answer);
         if (response.statusCode == 403) {
             render(req, res, {
                 view: 'auth',
@@ -111,11 +113,11 @@ app.get('/auth/', function(req, res) {
         {
             if (answer.notRegistered)
             {
-                response.redirect('/auth/');
+                res.redirect('/signup/');
             }
             else
             {
-                response.redirect('/feed/');
+                res.redirect('/feed/');
             }
 
         }
@@ -132,9 +134,9 @@ app.get('/signup/', function(req, res) {
         Cookie: cookie,
         json: true
     }}, function (error, response, answer) {
-
+        answer = JSON.parse(answer);
         if (response.statusCode == 403) {
-            response.redirect('/auth/');
+            res.redirect('/auth/');
         }
         else
         {
@@ -147,7 +149,7 @@ app.get('/signup/', function(req, res) {
             }
             else
             {
-                response.redirect('/feed/');
+                res.redirect('/feed/');
             }
 
         }
