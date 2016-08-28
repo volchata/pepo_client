@@ -83,7 +83,7 @@ app.get('/feed/', function (req, res) {
         }
     }, function (error, response, answer) {
         answer = JSON.parse(answer);
-        console.log(answer)
+
         if (response.statusCode == 403) {
             res.redirect('/auth/');
         }

@@ -46,7 +46,6 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery', 'button'], function 
         {
             failHandle: function (msg) {
                 this.setMod('type', 'error');
-                this.setText('1');
                 var response = msg.responseText;
 
                 if (!response) {

@@ -1,5 +1,5 @@
 block('bottom-menu')(
-    mod('homescreen', 'true'),
+    mod('homescreen', true),
     content()(
         {
             block : 'radio-group',

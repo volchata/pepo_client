@@ -12,18 +12,17 @@ modules.define('social-buttons', ['i-bem__dom', 'jquery'],
                         if (button_vk) {
                             button_vk.bindTo('pointerclick', function () {
                                 document.location.href = 'http://localhost:8080/auth/vk';
-                            });
-                        }
+                            })
+                        };
 
                         if (button_fb) {
                             button_fb.bindTo('pointerclick', function () {
                                 document.location.href = 'http://localhost:8080/auth/fb';
-                            });
+                            })
                         }
                     }
                 }
             }
+        }))
 
-        }));
-
-    });
+})

@@ -9,8 +9,6 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         function update_btn(btnelem, textelem) {
                             var val = textelem.domElem.val();
 
-                            console.log(val);
-
                             if (val) {
                                 btnelem.delMod("disabled");
                             } else {

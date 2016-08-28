@@ -34,6 +34,7 @@ module.exports = function (grunt) {
                     sloppy: true,
                     unparam: true,
                     nomen: true,
+                    plusplus: true,
                     predef: [
                         'block',
                         'content',
