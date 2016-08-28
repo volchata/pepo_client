@@ -9,6 +9,7 @@
 }
 
 .top-menu .input{
+    width: 40%;
     opacity: 0;
     transition: opacity 0.5s;
 }

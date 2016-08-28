@@ -45,14 +45,15 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery', 'button'], function 
         },
         {
             failHandle: function (msg) {
-                this.setMod('type', 'error');
                 var response = msg.responseText;
-
                 if (!response) {
                     response = 'Неизвестная ошибка сервера';
                 }
 
-                alert(response);
+                setTimeout(function () {
+                    alert(response);
+                }, 0);
+                this.setMod('type', 'error');
 
                 this.unbindFrom('click');
             }

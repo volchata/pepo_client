@@ -32,7 +32,7 @@ block('top-menu')(
             }),
             {
                 block: 'input',
-                mods: {theme: 'islands', size: 'l'},
+                mods: { theme: 'islands', size: 'l', 'has-clear': true },
                 placeholder: 'Поиск'
             }
         ];
