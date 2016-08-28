@@ -46,7 +46,8 @@ module.exports = function (grunt) {
                         'BEMHTML',
                         'document',
                         'alert',
-                        'error'
+                        'error',
+                        'Dropzone'
                     ]
                 },
                 options: {

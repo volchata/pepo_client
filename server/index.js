@@ -192,7 +192,15 @@ app.get('/compose/', function (req, res) {
     })
 });
 
-app.get('*', function (req, res) {
+
+app.get('/image-upload/', function(req, res) {
+    render(req, res, {
+        view: 'image-upload',
+        title: 'Image upload'
+    })
+});
+
+app.get('*', function(req, res) {
     res.status(404);
     return render(req, res, { view: '404' });
 });
