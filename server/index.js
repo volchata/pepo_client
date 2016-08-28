@@ -192,7 +192,6 @@ app.get('/compose/', function (req, res) {
     })
 });
 
-
 app.get('/image-upload/', function(req, res) {
     render(req, res, {
         view: 'image-upload',
