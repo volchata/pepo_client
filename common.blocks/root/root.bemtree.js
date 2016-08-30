@@ -12,7 +12,7 @@ block('root').replace()(function () {
 
     return {
         block: 'page',
-        mods: { view: data.view },
+        mods: { view: data.view, js: true },
         title: data.title,
         favicon: '/favicon.ico',
         styles: [

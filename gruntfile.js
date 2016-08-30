@@ -41,6 +41,7 @@ module.exports = function (grunt) {
                         'mod',
                         'tag',
                         'js',
+                        'window',
                         'applyNext',
                         'modules',
                         'BEMHTML',
