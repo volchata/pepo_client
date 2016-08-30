@@ -41,7 +41,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                             $.ajax(
                                 {
-                                    url: window.config.api_server + '/api/user/feed', // TODO решить с ребятами из сервера, нафига мне тут логин постить
+                                    url: window.config.api_server + '/api/user/feed',
                                     type: "POST",
                                     data: JSON.stringify({content: text_input.domElem.val()}),
                                     dataType: "json",

@@ -185,7 +185,7 @@ app.get('/comment/', function (req, res) {
 
 app.get('/profile/', function (req, res) {
     render(req, res, {
-        view: 'profilegit b',
+        view: 'profile',
         title: 'Profile  Page',
         myData: '[{"_id":"57b6cbd6431d668671cee0a5","userName":"Bob Alacaaahdgejh Moidusen","userID":"129220154191712","provider":"fb","__v":0}]'
     })
@@ -195,6 +195,13 @@ app.get('/compose/', function (req, res) {
     render(req, res, {
         view: 'compose',
         title: 'Compose new tweet message'
+    })
+});
+
+app.get('/users-search/', function(req, res) {
+    render(req, res, {
+        view: 'users-search',
+        title: 'Users Search'
     })
 });
 
