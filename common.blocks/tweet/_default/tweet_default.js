@@ -8,7 +8,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery', 'button'], function 
 
                     Button.on(this.elem('like'), 'click', function () {
                         $.ajax({
-                            url: 'localhost:3000/api/tweet',
+                            url: window.config.api_server + '/api/tweet',
                             type: 'GET',
                             dataType: 'json',
                             context: this
@@ -24,7 +24,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery', 'button'], function 
 
                     Button.on(this.elem('repost'), 'click', function () {
                         $.ajax({
-                            url: 'localhost:3000/api/tweet',
+                            url: window.config.api_server + "/api/tweet",
                             type: 'GET',
                             dataType: 'json',
                             context: this
@@ -34,11 +34,11 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery', 'button'], function 
                             }
                         ).fail(that.__self.failHandle);
 
-                        document.location.href = 'localhost:3000/compose';
+                        document.location.href = window.config.frontend_server + "/compose";
                     });
 
                     Button.on(this.elem('reply'), 'click', function () {
-                        document.location.href = 'localhost:3000/api/tweet/tweet_id';
+                        document.location.href = window.config.api_server + '/api/tweet/tweet_id';
                     });
                 }
             }

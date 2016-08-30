@@ -7,7 +7,10 @@ modules.define('page', ['i-bem__dom'], function (provide, BEMDOM) {
                     'inited': function () {
                         /* global window */
                         console.log('config up');
-                        window.config = { apiserver: 'http://localhost:8080' };
+                        window.config = {
+                            api_server: 'http://localhost:8080',
+                            frontend_server: 'http://localhost:8080'
+                        };
                     }
                 }
             }
