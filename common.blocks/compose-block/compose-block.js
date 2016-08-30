@@ -41,13 +41,11 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                             $.ajax(
                                 {
-                                    url: "http://localhost:8080/api/user/testUser/feed", // TODO решить с ребятами из сервера, нафига мне тут логин постить
+                                    url: "http://localhost:8080/api/user/feed", // TODO решить с ребятами из сервера, нафига мне тут логин постить
                                     type: "POST",
-                                    data: {
-                                        text: text_input.domElem.val()
-                                    },
+                                    data: JSON.stringify({content: text_input.domElem.val()}),
                                     dataType: "json",
-                                    contentType: "multipart/form-data",
+                                    contentType: "application/json; charset=utf-8",
                                     context: this
                                 }
                             ).done(
