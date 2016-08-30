@@ -1,5 +1,5 @@
 block('bottom-menu')(
-    mod('homescreen', 'true'),
+    mod('homescreen', true),
     content()(
         {
             block : 'radio-group',
@@ -9,7 +9,7 @@ block('bottom-menu')(
                 {
                     val : 1,
                     text : 'Home',
-                    mods: { homescreen: true },
+                    mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
                         mods: { home: true }
@@ -18,7 +18,7 @@ block('bottom-menu')(
                 {
                     val : 2,
                     text : 'Notifications',
-                    mods: { homescreen: true },
+                    mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
                         mods: { bell: true }
@@ -27,7 +27,7 @@ block('bottom-menu')(
                 {
                     val : 3,
                     text : 'Messages',
-                    mods: { homescreen: true },
+                    mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
                         mods: { message: true }
@@ -36,7 +36,7 @@ block('bottom-menu')(
                 {
                     val : 4,
                     text : 'Account',
-                    mods: { homescreen: true },
+                    mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
                         mods: { account: true }

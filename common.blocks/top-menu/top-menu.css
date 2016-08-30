@@ -5,22 +5,28 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 40px;
     box-shadow: 0 8px 7px -7px rgba(204, 204, 204, 1);
 }
+
 .top-menu .input{
+    width: 40%;
     opacity: 0;
     transition: opacity 0.5s;
 }
-.top-menu_oNsearch .input{
+
+.top-menu_onsearch .input{
+    margin: 0 10px;
     opacity: 1;
 }
+
 .top-menu__back-button .icon {
     background-image: url('back-button.svg');
 }
+
 .top-menu__search-button .icon {
     background-image: url('search-button.svg');
 }
+
 .top-menu__tweet-button .icon {
     background-image: url('tweet-button.svg');
 }

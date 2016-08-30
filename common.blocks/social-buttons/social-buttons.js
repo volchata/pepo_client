@@ -23,7 +23,5 @@ modules.define('social-buttons', ['i-bem__dom', 'jquery'],
                     }
                 }
             }
-
         }));
-
     });

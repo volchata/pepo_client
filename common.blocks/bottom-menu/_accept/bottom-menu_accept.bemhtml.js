@@ -1,5 +1,5 @@
 block('bottom-menu')(
-    mod('accept', 'true'),
+    mod('accept', true),
     content()(
         {
             block: 'control-group',

@@ -9,24 +9,8 @@ block('page').mod('view', 'wall').content()(function () {
         },
         {
             elem: 'body',
-            content: [
-                {
-                    block: 'tweet',
-                    mods: { default: true }
-                },
-                {
-                    block: 'tweet',
-                    mods: { default: true }
-                },
-                {
-                    block: 'tweet',
-                    mods: { default: true }
-                },
-                {
-                    block: 'tweet',
-                    mods: { default: true }
-                }
-            ]
+            elemMods: { wall: true },
+            data: this.data.tweet_data
         },
         {
             elem: 'footer',
