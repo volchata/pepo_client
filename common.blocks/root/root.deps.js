@@ -1,3 +1,3 @@
 ({
-    shouldDeps: [{ block: 'page', mods: { js: true }}]
+    shouldDeps: [{ block: 'page' }]
 })
