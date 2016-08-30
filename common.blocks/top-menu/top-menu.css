@@ -8,25 +8,35 @@
     box-shadow: 0 8px 7px -7px rgba(204, 204, 204, 1);
 }
 
-.top-menu .input{
-    width: 40%;
-    opacity: 0;
-    transition: opacity 0.5s;
+.top-menu .input.input_theme_islands{
+    width: 60%;
+    min-width: 100px;
+    margin: 0 10px;
+    display: inline-block;
 }
 
-.top-menu_onsearch .input{
-    margin: 0 10px;
-    opacity: 1;
+.top-menu .input_theme_islands:before {
+    border-radius: 4px;
+}
+
+.top-menu .input_theme_islands.input_disabled {
+    display: none;
+    transition: display 1s;
+}
+
+.top-menu .button {
+    width: 10%;
+    min-width: 50px;
+}
+
+.top-menu__search-button {
+    float: right;
 }
 
 .top-menu__back-button .icon {
-    background-image: url('back-button.svg');
+    background-image: url('img/back-button.svg');
 }
 
 .top-menu__search-button .icon {
-    background-image: url('search-button.svg');
-}
-
-.top-menu__tweet-button .icon {
-    background-image: url('tweet-button.svg');
+    background-image: url('img/search-button.svg');
 }

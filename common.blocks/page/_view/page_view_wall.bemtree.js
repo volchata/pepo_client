@@ -10,7 +10,12 @@ block('page').mod('view', 'wall').content()(function () {
         {
             elem: 'body',
             elemMods: { wall: true },
-            data: this.data.tweet_data
+            data: this.data.tweet_data,
+            content: [
+                {
+                    block: 'tweet'
+                }
+            ]
         },
         {
             elem: 'footer',

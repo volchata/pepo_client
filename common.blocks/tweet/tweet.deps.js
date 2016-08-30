@@ -17,5 +17,9 @@
             { block: 'control-group' },
             { block: 'icon', mods: ['like', 'repost', 'reply'] }
         ]
+    },
+    {
+        mod: 'default',
+        mustDeps: { block: 'comments' }
     }
 ])

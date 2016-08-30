@@ -5,7 +5,6 @@ block('top-menu')(
             block: 'top-menu',
             buttons: [
                 { name: 'back-button' },
-                { name: 'tweet-button' },
                 { name: 'search-button' }
             ]
         }
@@ -32,7 +31,7 @@ block('top-menu')(
             }),
             {
                 block: 'input',
-                mods: { theme: 'islands', size: 'l', 'has-clear': true },
+                mods: { theme: 'islands', size: 'l', 'has-clear': true, disabled: true },
                 placeholder: 'Поиск'
             }
         ];
