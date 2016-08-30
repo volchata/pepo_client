@@ -1,0 +1,3 @@
+block('dropzone')(
+    js()(true)
+);
