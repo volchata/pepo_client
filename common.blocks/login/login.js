@@ -37,7 +37,7 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
 
                             $.ajax(
                                 {
-                                    url: "http://localhost:8080/api/user/",
+                                    url: window.config.api_server + "/api/user/",
                                     type: "POST",
                                     data: JSON.stringify({
                                         displayName: field_login.findBlockInside("input__control").domElem.val()

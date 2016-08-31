@@ -3,7 +3,7 @@ modules.define('bottom-menu', ['i-bem__dom'], function (provide, BEMDOM) {
         onSetMod: {
             js: function () {
                 var radios = this.findBlocksInside('radio'),
-                    urls = ['http://localhost:3000/feed', 'http://localhost:3000/news', 'http://localhost:3000/im', 'http://localhost:3000/account'];
+                    urls = [ window.config.frontend_server + '/feed', window.config.frontend_server + '/news', window.config.frontend_server + '/im', window.config.frontend_server + '/account'];
 
                 urls.map(function (v, i) {
                     radios[i].bindTo('pointerclick', function () {

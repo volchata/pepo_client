@@ -73,7 +73,7 @@ app.get('/', function (req, res) {
 // Новая страница - новый роут
 app.get('/feed/', function (req, res) {
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = 'http://localhost:8080/api/user/feed';
+    var url = config.servers.api_server + '/api/user/feed';
 
     request({
         url: url,
@@ -117,7 +117,7 @@ app.get('/auth/', function (req, res) {
 
 
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = 'http://localhost:8080/api/user/';
+    var url = config.servers.api_server + '/api/user/';
 
     request({
         url: url,
@@ -149,7 +149,7 @@ app.get('/auth/', function (req, res) {
 app.get('/signup/', function (req, res) {
 
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = 'http://localhost:8080/api/user/';
+    var url = config.servers.api_server + '/api/user/';
 
     request({
         url: url, headers: {
