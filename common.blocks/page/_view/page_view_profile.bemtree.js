@@ -13,14 +13,16 @@ block('page').mod('view', 'profile').content()(function() {
         }
     }
 
+    var mode = this.data.profile_data.self ? 'self' : 'other';
+
     return [
         {
             block: 'profile',
             content: [
                 {
                     block: "profile-header",
-                    mods: { mode: 'other' },
-                    data: { avatar: this.data.profile_data.avatar }
+                    mods: { mode: mode },
+                    data: this.data.profile_data
                 },
                 {
                     block: "account-info",

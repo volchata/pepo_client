@@ -218,11 +218,40 @@ app.get('/comment/', function (req, res) {
 });
 
 app.get('/profile/', function (req, res) {
-    render(req, res, {
-        view: 'profile',
-        title: 'Profile  Page',
-        myData: '[{"_id":"57b6cbd6431d668671cee0a5","userName":"Bob Alacaaahdgejh Moidusen","userID":"129220154191712","provider":"fb","__v":0}]'
-    })
+
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                answer.self = true;
+                render(req, res, {
+                    view: 'profile',
+                    title: 'Profile  Page',
+                    profile_data: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
 });
 
 app.get('/compose/', function (req, res) {

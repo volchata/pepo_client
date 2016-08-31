@@ -19,16 +19,24 @@ block('profile-header')(
     ),
     mod('mode', 'other').replace()(
         function () {
-            var avatar;
+            var avatar, displayName;
             if (this.ctx.data) {
                 avatar = this.ctx.data.avatar || null;
             } else {
                 avatar = null;
             }
+
+            if (this.ctx.data) {
+                displayName = this.ctx.data.displayName || null;
+            } else {
+                displayName = null;
+            }
+
             return {
                 block: 'profile-header',
                 elems: [
-                    { name: 'left-other', data: { avatar: avatar } }
+                    { name: 'left-other', data: { avatar: avatar } },
+                    { name: 'right-other', data: { displayName: displayName } }
                 ]
             };
         }
