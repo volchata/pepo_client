@@ -8,19 +8,30 @@ block('page').mod('view', 'profile').content()(function() {
                 },
                 {
                     block: "account-info",
-                    data: this.data.myData,
-                    mix: { elem: 'multiline' }
+                    mix: { elem: 'multiline' },
+                    content: [
+                        {
+                            block: 'text',
+                            mods: {username: true},
+                            content: JSON.stringify(this.data.profile_data)
+                        },
+                        {
+                            block: 'text',
+                            mods: {id: true},
+                            content: '@' + this.data.profile_data.displayName
+                        }
+                    ]
                 },
                 {
                     elem: "stats",
                     stats: [
                         {
                             title: 'Читает',
-                            value: '5'
+                            value: this.data.profile_data.friends
                         },
                         {
                             title: 'Читатели',
-                            value: '2'
+                            value: this.data.profile_data.followers
                         }
                     ]
                 },

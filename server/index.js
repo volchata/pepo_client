@@ -56,6 +56,41 @@ app.get('/ping/', function (req, res) {
     res.send('ok');
 });
 
+app.get('/users/:login', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/users/' + req.params.login;
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                render(req, res, {
+                    view: 'profile',
+                    title: 'Profile  Page',
+                    profile_data: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
 app.get('/', function (req, res) {
     render(req, res, {
         view: 'index',
