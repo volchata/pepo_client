@@ -4,11 +4,10 @@ block('page').elem('body').elemMod('wall', true)(
             var tweet_data = this.ctx.data,
                 users = tweet_data.users,
                 tweets_in = tweet_data.tweets,
-                tweets_out = [],
                 curr_date = new Date(),
                 diff_time;
 
-            function setDiffTime(i) {
+            function setDiffTime (i) {
                 var old_date = new Date(tweets_in[i].timestamp),
                     diff_date = curr_date - old_date,
                     sec = 1000,
@@ -28,23 +27,25 @@ block('page').elem('body').elemMod('wall', true)(
                 }
             }
 
-            tweets_in.map(function (v, i) {
+            tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
-                var add_tweet = {
+                return {
                     block: 'tweet',
                     mods: { default: true },
                     content: {
-                        url: users[tweets_in[i].author].avatar,
-                        login: '@' + users[tweets_in[i].author].displayName,
+                        url: users[v.author].avatar,
+                        login: '@' + users[v.author].displayName,
                         time: diff_time,
-                        tweet_text: tweets_in[i].content
+                        tweet_text: v.content
+                    },
+                    js: {
+                        data: v
                     }
                 };
-
-                tweets_out[i] = add_tweet;
             });
-            return tweets_out;
+
+            return tweets_in;
         }
     )
 );

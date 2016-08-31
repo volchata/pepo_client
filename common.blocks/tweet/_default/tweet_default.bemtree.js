@@ -6,11 +6,16 @@ block('tweet').mod('default', true)(
             function addCtlGrp(value) {
                 var add_btns = {
                     block: 'button',
-                    mix: { block: 'tweet', elem: value },
+                    mix: {
+                        block: 'tweet', elem: 'action'
+                    },
                     text: '',
                     icon: {
                         block: 'icon',
                         mods: {}
+                    },
+                    js: {
+                        action: value
                     }
                 };
 
