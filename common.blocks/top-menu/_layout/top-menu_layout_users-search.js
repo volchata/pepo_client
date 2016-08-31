@@ -9,8 +9,8 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                         var query = this.findBlockInside("input__control"),
                             page = this.findBlockOutside("page_view_users-search"),
                             search_results = page.findBlockInside("search-results"),
-                            menu = this,
                             search = this.findBlockInside("top-menu__search-button"),
+                            input = this.findBlockInside('input'),
                             search_timer;
 
                         function doSearch() {
@@ -37,17 +37,77 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                                         BEMDOM.update(search_results.domElem, '');
 
                                         $.each(msg, function (i, item) {
+                                            var user_passport = '';
+
+                                            if (!item.lastName) {
+                                                if (item.firstName) {
+                                                    user_passport = item.firstName;
+                                                }
+                                            } else {
+                                                if (item.firstName) {
+                                                    user_passport = item.lastName + ' ' + item.firstName;
+                                                } else {
+                                                    user_passport = item.lastName;
+                                                }
+                                            }
+
                                             BEMDOM.append(search_results.domElem, BEMHTML.apply({
-                                                block: 'acc',
-                                                content: item.displayName
+                                                elem: "search-row",
+                                                content: {
+                                                    block: 'link',
+                                                    url: "/users/" + item.displayName,
+                                                    content: [
+                                                        {
+                                                            block: 'profile-picture',
+                                                            mods: { search: "users" },
+                                                            content: [{
+                                                                block: 'image',
+                                                                url: item.avatar
+                                                            }]
+                                                        },
+                                                        {
+                                                            block: 'account-info',
+                                                            content: [
+                                                                {
+                                                                    block: 'text',
+                                                                    mods: { username: true },
+                                                                    content: user_passport
+                                                                },
+                                                                {
+                                                                    block: 'text',
+                                                                    mods: { id: true },
+                                                                    content: '@' + item.displayName
+                                                                }
+                                                            ]
+                                                        }]
+                                                }
                                             }));
                                         });
                                     }
                                 ).fail(
                                     function (msg) {
+                                        BEMDOM.update(search_results.domElem, '');
+
+                                        function isJsonString(str) {
+                                            try {
+                                                JSON.parse(str);
+                                            } catch (e) {
+                                                return false;
+                                            }
+                                            return true;
+                                        }
+
                                         var response = msg.responseText;
                                         if (!response) {
                                             response = 'Неизвестная ошибка сервера';
+                                        }
+
+                                        if (isJsonString(response)) {
+                                            response = JSON.parse(response).status;
+                                        }
+
+                                        if (response === 'Not found') {
+                                            response = 'Ни одного пользователя не найдено';
                                         }
 
                                         BEMDOM.append(search_results.domElem, BEMHTML.apply({
@@ -63,7 +123,7 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                         }
 
                         search.bindTo('click', function () {
-                            menu.toggleMod('onsearch');
+                            input.toggleMod('disabled');
                         });
 
                         query.bindTo('keyup', function () {
