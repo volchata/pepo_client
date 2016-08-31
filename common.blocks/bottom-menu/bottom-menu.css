@@ -9,6 +9,7 @@
 
 .bottom-menu .radio-group_theme_islands .button{
     width: 25%;
+    min-width: 50px;
 }
 
 .bottom-menu .radio-group_theme_islands .button__text{

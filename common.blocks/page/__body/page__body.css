@@ -1,3 +1,4 @@
 .page__body {
     margin: 40px 0;
+    min-width: 200px;
 }

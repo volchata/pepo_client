@@ -114,8 +114,6 @@ app.get('/login/', function (req, res) {
 });
 
 app.get('/auth/', function (req, res) {
-
-
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
     var url = config.servers.api_server + '/api/user/';
 
@@ -152,7 +150,8 @@ app.get('/signup/', function (req, res) {
     var url = config.servers.api_server + '/api/user/';
 
     request({
-        url: url, headers: {
+        url: url,
+        headers: {
             Cookie: cookie,
             json: true
         }
@@ -175,6 +174,13 @@ app.get('/signup/', function (req, res) {
         }
     });
 
+});
+
+app.get('/comment/', function (req, res) {
+    render(req, res, {
+        view: 'comment',
+        title: 'comment'
+    })
 });
 
 app.get('/profile/', function (req, res) {

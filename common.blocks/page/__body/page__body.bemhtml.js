@@ -6,25 +6,7 @@ block('page').elem('body').elemMod('wall', true)(
                 tweets_in = tweet_data.tweets,
                 tweets_out = [],
                 curr_date = new Date(),
-                add_tweet,
-                add_btns,
                 diff_time;
-
-            function addCtlGrp(value) {
-                add_btns = {
-                    block: 'button',
-                    mix: { block: 'tweet', elem: value },
-                    text: '',
-                    icon: {
-                        block: 'icon',
-                        mods: {}
-                    }
-                };
-
-                add_btns.icon.mods[value] = true;
-
-                return add_btns;
-            }
 
             function setDiffTime(i) {
                 var old_date = new Date(tweets_in[i].timestamp),
@@ -49,53 +31,15 @@ block('page').elem('body').elemMod('wall', true)(
             tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
-                add_tweet = {
+                var add_tweet = {
                     block: 'tweet',
                     mods: { default: true },
-                    content: [
-                        {
-                            elem: 'left',
-                            content: {
-                                block: 'image',
-                                mix: { block: 'avatar', mods: { type: 'tweet' } },
-                                url: users[tweets_in[i].author].avatar
-                            }
-                        },
-                        {
-                            elem: 'right',
-                            content: [
-                                {
-                                    block: 'account-info',
-                                    content: [
-                                        {
-                                            block: 'text',
-                                            mods: { username: true }
-                                            // content: data.lastName + ' ' + data.firstName
-                                        },
-                                        {
-                                            block: 'text',
-                                            mods: { id: true },
-                                            content: '@' + users[tweets_in[i].author].displayName
-                                        }
-                                    ]
-                                },
-                                {
-                                    block: 'text',
-                                    mods: { time: true },
-                                    content: diff_time
-                                },
-                                {
-                                    block: 'text',
-                                    mods: { main: true },
-                                    content: tweets_in[i].content
-                                },
-                                {
-                                    block: 'control-group',
-                                    content: ['reply', 'repost', 'like'].map(addCtlGrp)
-                                }
-                            ]
-                        }
-                    ]
+                    content: {
+                        url: users[tweets_in[i].author].avatar,
+                        login: '@' + users[tweets_in[i].author].displayName,
+                        time: diff_time,
+                        tweet_text: tweets_in[i].content
+                    }
                 };
 
                 tweets_out[i] = add_tweet;

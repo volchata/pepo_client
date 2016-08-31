@@ -13,8 +13,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery', 'button'], function 
                             dataType: 'json',
                             context: this
                         }).done(
-                            function (answer) {
-                                this.setText(answer.value);
+                            function () {
                                 this.setMod({ type: 'good' });
 
                                 this.unbindFrom('click');
