@@ -1,10 +1,26 @@
 block('page').mod('view', 'profile').content()(function() {
+    var user_passport = '';
+
+    if (!this.data.profile_data.lastName) {
+        if (this.data.profile_data.firstName) {
+            user_passport = this.data.profile_data.firstName;
+        }
+    } else {
+        if (this.data.profile_data.firstName) {
+            user_passport = this.data.profile_data.lastName + ' ' + this.data.profile_data.firstName;
+        } else {
+            user_passport = this.data.profile_data.lastName;
+        }
+    }
+
     return [
         {
             block: 'profile',
             content: [
                 {
-                    block: "profile-header"
+                    block: "profile-header",
+                    mods: { mode: 'other' },
+                    data: { avatar: this.data.profile_data.avatar }
                 },
                 {
                     block: "account-info",
@@ -12,8 +28,8 @@ block('page').mod('view', 'profile').content()(function() {
                     content: [
                         {
                             block: 'text',
-                            mods: {username: true},
-                            content: JSON.stringify(this.data.profile_data)
+                            mods: { username: true },
+                            content: user_passport
                         },
                         {
                             block: 'text',
@@ -27,7 +43,7 @@ block('page').mod('view', 'profile').content()(function() {
                     stats: [
                         {
                             title: 'Читает',
-                            value: this.data.profile_data.friends
+                            value: this.data.profile_data.follows
                         },
                         {
                             title: 'Читатели',
@@ -39,19 +55,6 @@ block('page').mod('view', 'profile').content()(function() {
                     elem: "controls"
                 }
             ]
-        },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' },
-        { block: 'tweet' }
+        }
     ]
 });

@@ -1,6 +1,7 @@
 ({
     mustDeps: [
         { elem: 'left'},
-        { elem: 'right'}
+        { elem: 'right'},
+        { elem: 'left-other'}
     ]
 })
