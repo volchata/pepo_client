@@ -11,7 +11,7 @@ block('compose-menu')(
                         content: ['photo', 'geo', 'link'].map(function (v, i, content) {
                             var button = {
                                 block: 'button',
-                                mods: {},
+                                mods: {attach: v},
                                 mix: { block: 'compose-btn', elem: 'button' },
                                 icon: {
                                     block: 'icon',

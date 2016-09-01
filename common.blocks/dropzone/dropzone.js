@@ -10,8 +10,21 @@ modules.define('dropzone', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, 
             js: {
                 inited: function () {
                     // в момент инициализации блока будет включен dropzone
-                    console.log('Dropzone');
-                    //this.domElem.dropzone({ url: '/api/user/feed/image' });
+                    var that = this;
+
+                    if (this.params.url) {
+                        this.domElem.dropzone({
+                            url: this.params.url,
+                            success: function (file, response) {
+                                var data = JSON.parse(response);
+                                //data = {image: 'test'};
+                                console.log('upload success emit!');
+                                that.findBlockOutside('page').emit('upload_success', data);
+                            }
+
+                        });
+                    }
+                    //
                 }
             }
         }

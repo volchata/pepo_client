@@ -17,6 +17,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
                 break;
             case 'reply':
                 break;
+
             }
         }
     },
@@ -44,3 +45,4 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
             }
         }));
 });
+
