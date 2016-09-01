@@ -170,7 +170,6 @@ app.get('/signup/', function (req, res) {
             else {
                 res.redirect('/feed/');
             }
-
         }
     });
 

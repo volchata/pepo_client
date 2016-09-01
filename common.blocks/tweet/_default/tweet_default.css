@@ -3,12 +3,10 @@
 }
 
 .tweet_default .tweet__right{
-    float: right;
-    max-width: 82%;
-    padding: 10px 5px;
+    width: 82%;
 }
 
 .tweet_default .tweet__left {
-    max-width: 18%;
+    width: 18%;
     padding: 5px;
 }

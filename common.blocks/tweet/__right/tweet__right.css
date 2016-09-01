@@ -1,8 +1,8 @@
 .tweet__right {
-    width: 100%;
-    font-size: 12px;
+    float: right;
     box-sizing: border-box;
-    padding: 0 5px;
+    font-size: 14px;
+    padding: 10px;
 }
 
 .tweet__right .text_time {
@@ -29,15 +29,11 @@
     margin-right: 10px;
 }
 
-.tweet__right .tweet__like.button_type_error {
+.tweet__right .button_type_good {
     color: red;
 }
 
-.tweet__right .button_type_good {
-    color: #00bfff;
-}
-
-.tweet__right .button .icon_reply {
+.tweet__right .tweet__action .icon_reply {
     background-image: url('../img/arrow.svg');
 }
 
@@ -50,9 +46,9 @@
 }
 
 .tweet__right .button_type_good .icon_like {
-    background-image: url('../img/like-good.svg');
+    background-image: url('../img/like-red.svg');
 }
 
 .tweet__right .button_type_error .icon_like {
-    background-image: url('../img/like-red.svg');
+    background-image: url('../img/like-good.svg');
 }
