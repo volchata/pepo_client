@@ -10,17 +10,18 @@
     color: #d6d6d6;
 }
 
+.tweet__right .text_main {
+    display: block;
+    word-wrap: break-word;
+    margin: 5px 0;
+}
+
 .tweet__right .icon {
     width: 15px;
     height: 15px;
     background-size: cover;
     opacity: 0.5;
     margin-right: 5px;
-}
-
-.tweet__right .button.button_enabled,
-.tweet__right .button.button_enabled .icon {
-    opacity: 1;
 }
 
 .tweet__right .button{
@@ -46,4 +47,8 @@
 
 .tweet__right .button_type_good .icon_like {
     background-image: url('../img/like-red.svg');
+}
+
+.tweet__right .button_type_error .icon_like {
+    background-image: url('../img/like-good.svg');
 }
