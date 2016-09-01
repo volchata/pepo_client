@@ -217,6 +217,43 @@ app.get('/comment/', function (req, res) {
     })
 });
 
+app.get('/profile-edit/', function (req, res) {
+
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                answer.self = true;
+                render(req, res, {
+                    view: 'profile-edit',
+                    title: 'Edit Profile  Page',
+                    profile_data: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
 app.get('/profile/', function (req, res) {
 
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
@@ -253,6 +290,8 @@ app.get('/profile/', function (req, res) {
         }
     });
 });
+
+
 
 app.get('/compose/', function (req, res) {
     render(req, res, {
