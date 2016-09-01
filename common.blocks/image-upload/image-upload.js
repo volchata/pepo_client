@@ -6,7 +6,7 @@ modules.define('image-upload', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onSetMod: {
                 js: {
                     inited: function () {
-                        this.findBlockInside('dropzone').domElem.dropzone({ url: window.config.api_server + "/api/user/feed/image" });
+                        this.findBlockInside('dropzone').domElem.dropzone({ url: window.config.api_server + "/api/user/image" });
                     }
                 }
             }

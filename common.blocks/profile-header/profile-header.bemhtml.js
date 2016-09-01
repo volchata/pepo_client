@@ -1,5 +1,5 @@
 block('profile-header')(
-
+    js()(true),
     mod('mode', 'self').replace()(
         function () {
             var avatar;
