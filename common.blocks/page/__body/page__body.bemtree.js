@@ -1,4 +1,4 @@
-block('page').elem('body').elemMod('wall', true)(
+block('page').elem('body').elemMod(['wall', 'tweet'])(
     content()(
         function () {
             var tweet_data = this.ctx.data,
@@ -14,6 +14,7 @@ block('page').elem('body').elemMod('wall', true)(
                     min = sec * 60,
                     hour = min * 60,
                     day = hour * 24;
+
 
                 //выводим время с момента добавления твита
                 if (diff_date < sec * 60) {
@@ -34,10 +35,11 @@ block('page').elem('body').elemMod('wall', true)(
                     block: 'tweet',
                     mods: { default: true },
                     content: {
-                        url: users[v.author].avatar,
+                        avatar: users[v.author].avatar,
                         login: '@' + users[v.author].displayName,
                         time: diff_time,
-                        tweet_text: v.content
+                        tweet_text: v.content,
+                        url: '/tweet/' + v._id
                     },
                     js: {
                         data: v

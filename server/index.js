@@ -57,8 +57,8 @@ app.get('/ping/', function (req, res) {
 });
 
 app.get('/users/:login', function (req, res) {
-    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = config.servers.api_server + '/api/users/' + req.params.login;
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
+        url = config.servers.api_server + '/api/users/' + req.params.login;
 
     request({
         url: url,
@@ -78,6 +78,41 @@ app.get('/users/:login', function (req, res) {
                     view: 'profile',
                     title: 'Profile  Page',
                     profile_data: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
+app.get('/tweet/:id', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
+        url = config.servers.api_server + '/api/tweet/' + req.params.id;
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                render(req, res, {
+                    view: 'tweet',
+                    title: 'Tweet  Page',
+                    tweet_data: answer
                 })
             }
             else {
