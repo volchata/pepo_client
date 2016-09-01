@@ -17,6 +17,16 @@ block('top-menu')(
             ]
         }
     ),
+    mod('layout', 'users-search').replace()(
+        {
+            block: 'top-menu',
+            mods: { "users-search": true },
+            buttons: [
+                { name: 'back-button' },
+                { name: 'search-button' }
+            ]
+        }
+    ),
     content()(function () {
         return [
             this.ctx.buttons.map(function (button) {
