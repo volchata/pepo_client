@@ -17,8 +17,19 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         }
 
                         var that = this,
+                            tweet_image = null,
                             text_input = this.findBlockInside('textarea'),
                             send_tweet_btn = this.findBlockInside('send-tweet-btn');
+
+                        // события редактора
+
+                        this.findBlockOutside('page').on(
+                            'upload_success', // имя БЭМ-события
+                            function (event, data) {
+                                tweet_image = data.image;
+                            },
+                            that
+                        );
 
                         update_btn(send_tweet_btn, text_input);
 
@@ -43,7 +54,14 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 {
                                     url: window.config.api_server + '/api/user/feed',
                                     type: "POST",
-                                    data: JSON.stringify({content: text_input.domElem.val()}),
+                                    data: JSON.stringify(
+                                        {
+                                            content: text_input.domElem.val(),
+                                            extras: {
+                                                image: tweet_image
+                                            }
+                                        }
+                                    ),
                                     dataType: "json",
                                     contentType: "application/json; charset=utf-8",
                                     context: this
