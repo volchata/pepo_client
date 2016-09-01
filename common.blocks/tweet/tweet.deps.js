@@ -1,7 +1,12 @@
 ([
     {
         block: 'tweet',
-        mustDeps: { elem: ['like', 'repost', 'reply', 'right', 'actions'] }
+        mustDeps: [
+            { elem: ['like', 'repost', 'reply', 'right', 'left', 'actions'] },
+            { block: 'button', mods: ['enabled'] },
+            { block: 'link', mods: { plaintext: true } },
+            { mods: ['default', 'comment'] }
+        ]
     },
     {
         elem: 'left',
@@ -19,7 +24,7 @@
         ]
     },
     {
-        mod: 'default',
+        mods: 'comments',
         mustDeps: { block: 'comments' }
     }
 ])
