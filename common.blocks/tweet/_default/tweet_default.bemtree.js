@@ -11,8 +11,14 @@ block('tweet').mod('default', true)(
 
                 if (value === 'like') {
                     text = tweet.extras.likes.length;
-                    console.log(tweet.like);
                     if (tweet.like) {
+                        mods = { type: 'good' };
+                    }
+                }
+
+                if (value === 'repost') {
+                    text = tweet.extras.retweets.length;
+                    if (tweet.retweet) {
                         mods = { type: 'good' };
                     }
                 }
