@@ -1,15 +1,29 @@
 block('tweet').mod('default', true)(
     content()(
         function () {
-            var data = this.ctx.content;
+            var data = this.ctx.content,
+                tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
+
+                var text = '',
+                    mods = {};
+
+                if (value === 'like') {
+                    text = tweet.extras.likes.length;
+                    console.log(tweet.like);
+                    if (tweet.like) {
+                        mods = { type: 'good' };
+                    }
+                }
+
                 var add_btns = {
                     block: 'button',
+                    mods: mods,
                     mix: {
                         block: 'tweet', elem: 'action'
                     },
-                    text: '',
+                    text: text,
                     icon: {
                         block: 'icon',
                         mods: {}
