@@ -44,7 +44,7 @@ block('tweet').mod('default', true)(
                     content: {
                         block: 'image',
                         mix: { block: 'avatar', mods: { type: 'tweet' } },
-                        url: data.url
+                        url: data.avatar
                     }
                 },
                 {
@@ -71,16 +71,14 @@ block('tweet').mod('default', true)(
                             content: data.time
                         },
                         {
-                            block: 'text',
-                            mods: { main: true },
+                            block: 'link',
+                            mods: { plaintext: true },
+                            url: data.url,
                             content: data.tweet_text
                         },
                         {
                             block: 'control-group',
                             content: ['reply', 'repost', 'like'].map(addCtlGrp)
-                        },
-                        {
-                            block: 'comments'
                         }
                     ]
                 }
