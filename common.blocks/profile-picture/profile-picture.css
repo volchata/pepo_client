@@ -9,3 +9,8 @@
     margin-top: -25px;
     display: inline-block;
 }
+
+.profile-picture .image
+{
+    width: 100%;
+}

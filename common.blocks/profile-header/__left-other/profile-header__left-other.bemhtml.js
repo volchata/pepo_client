@@ -1,4 +1,4 @@
-block('profile-header').elem('left')(
+block('profile-header').elem('left-other')(
     content()(
         function () {
             var avatar;
@@ -17,9 +17,6 @@ block('profile-header').elem('left')(
                             url: avatar
                         }
                     ]
-                },
-                {
-                    elem: 'gear'
                 }
             ];
         }
