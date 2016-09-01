@@ -1,35 +1,14 @@
-block('tweet').mod('default', true)(
+block('tweet').mod('comment', true)(
     content()(
         function () {
-            var data = this.ctx.content,
-                tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
-
             function addCtlGrp(value) {
-
-                var text = '',
-                    mods = {};
-
-                if (value === 'like') {
-                    text = tweet.extras.likes.length;
-                    console.log(tweet.like);
-                    if (tweet.like) {
-                        mods = { type: 'good' };
-                    }
-                }
-
                 var add_btns = {
                     block: 'button',
-                    mods: mods,
-                    mix: {
-                        block: 'tweet', elem: 'action'
-                    },
-                    text: text,
+                    mix: { block: 'tweet', elem: value },
+                    text: '',
                     icon: {
                         block: 'icon',
                         mods: {}
-                    },
-                    js: {
-                        action: value
                     }
                 };
 
@@ -44,7 +23,7 @@ block('tweet').mod('default', true)(
                     content: {
                         block: 'image',
                         mix: { block: 'avatar', mods: { type: 'tweet' } },
-                        url: data.url
+                        url: 'https://media0.giphy.com/media/LxSFsOTa3ytEY/200_s.gif'
                     }
                 },
                 {
@@ -60,27 +39,21 @@ block('tweet').mod('default', true)(
                                 },
                                 {
                                     block: 'text',
-                                    mods: { id: true },
-                                    content: data.login
+                                    mods: { id: true }
                                 }
                             ]
                         },
                         {
                             block: 'text',
-                            mods: { time: true },
-                            content: data.time
+                            mods: { time: true }
                         },
                         {
                             block: 'text',
-                            mods: { main: true },
-                            content: data.tweet_text
+                            mods: { main: true }
                         },
                         {
                             block: 'control-group',
                             content: ['reply', 'repost', 'like'].map(addCtlGrp)
-                        },
-                        {
-                            block: 'comments'
                         }
                     ]
                 }
