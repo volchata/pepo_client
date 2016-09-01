@@ -2,15 +2,10 @@
     {
         shouldDeps: [
             {
-                mods: { view: ['404', '500', 'wall', 'index', 'login', 'auth', 'signup', 'compose', 'profile', 'image-upload', 'users-search', 'profile-edit'] }
+                mods: { view: ['404', '500', 'wall', 'index', 'login', 'auth', 'signup', 'compose', 'profile',
+                    'image-upload', 'users-search', 'profile-edit', 'tweet'] }
             },
-            { elem: 'body', elemMods: { wall: true } }
-        ]
-    },
-    {
-        mod: { view: 'wall' },
-        mustDeps: [
-            { block: 'comments' }
+            { elem: 'body', elemMods: ['wall', 'comment'] }
         ]
     }
 ])
