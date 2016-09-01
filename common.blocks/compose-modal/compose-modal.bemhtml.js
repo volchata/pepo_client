@@ -3,7 +3,7 @@ block('compose-modal')(
         function () {
             return {
                 block: 'compose-modal',
-                inner_blocks: [{ name: 'dropzone', js: {url: window.config.api_server + '/api/attach/image'} }]
+                inner_blocks: [{ name: 'dropzone', js: {url: window.config.api_server + '/api/user/image'} }]
             };
         }
     ),

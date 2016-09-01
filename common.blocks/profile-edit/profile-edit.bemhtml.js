@@ -2,10 +2,18 @@ block('profile-edit')(
     js()(true),
     content()(
         function () {
-            return [
+            var ret = [
                 {
                     block: 'page-header',
                     content: 'Редактирование профиля'
+                },
+                {
+                    elem: 'label',
+                    content: 'Аватар'
+                },
+                {
+                    block: 'dropzone',
+                    js: {url: '/api/user/image', current : this.ctx.data.avatar, size: 400 }
                 },
                 {
                     elem: 'label',
@@ -47,6 +55,8 @@ block('profile-edit')(
                     text: 'Сохранить'
                 }
             ];
+            
+            return ret;
         }
     )
 );
