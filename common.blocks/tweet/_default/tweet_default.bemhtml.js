@@ -1,9 +1,7 @@
 block('tweet').mod('default', true)(
     content()(
         function () {
-            var tweet_content = [],
-                data = this.ctx.content,
-                extras = this.ctx.content.extras,
+            var data = this.ctx.content,
                 tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
@@ -76,7 +74,7 @@ block('tweet').mod('default', true)(
                     target: extras.attachment.url,
                     url: extras.attachment.image,
                     title: extras.attachment.title
-                })
+                });
             }
 
             tweet_content[tweet_content.length] = {
@@ -100,7 +98,7 @@ block('tweet').mod('default', true)(
                     elem: 'left',
                     content: {
                         block: 'image',
-                        mix: { block: 'avatar', mods: { type: 'tweet' } },
+                        mods: { type: 'tweet' },
                         url: data.avatar
                     }
                 },
@@ -108,19 +106,14 @@ block('tweet').mod('default', true)(
                     elem: 'right',
                     content: [
                         {
-                            block: 'account-info',
-                            content: [
-                                {
-                                    block: 'text',
-                                    mods: { username: true }
-                                    // content: data.lastName + ' ' + data.firstName
-                                },
-                                {
-                                    block: 'text',
-                                    mods: { id: true },
-                                    content: data.login
-                                }
-                            ]
+                            block: 'text',
+                            mods: { username: true },
+                            content: 'Pavel Smolnikov'
+                        },
+                        {
+                            block: 'text',
+                            mods: { id: true },
+                            content: data.login
                         },
                         {
                             block: 'text',
@@ -128,8 +121,10 @@ block('tweet').mod('default', true)(
                             content: data.time
                         },
                         {
-                            block: 'text',
-                            content: tweet_content
+                            block: 'link',
+                            mods: { plaintext: true },
+                            url: data.url,
+                            content: data.tweet_text
                         },
                         {
                             block: 'control-group',

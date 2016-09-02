@@ -35,8 +35,11 @@ module.exports = function (grunt) {
                     unparam: true,
                     nomen: true,
                     plusplus: true,
+                    vars: true,
+                    white: true,
                     predef: [
                         'block',
+                        'attrs',
                         'content',
                         'mod',
                         'tag',
@@ -49,7 +52,10 @@ module.exports = function (grunt) {
                         'document',
                         'alert',
                         'error',
-                        'Dropzone'
+                        'Dropzone',
+                        'domElem',
+                        'extras',
+                        'tweet_content'
                     ]
                 },
                 options: {
