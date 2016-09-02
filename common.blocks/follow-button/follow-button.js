@@ -6,19 +6,27 @@ modules.define('follow-button', ['i-bem__dom', 'jquery'],
             onSetMod: {
                 js: {
                     inited: function () {
-                        var button = this.findBlockInside('button');
-
+                        var button = this.findBlockInside('button'),
+                            method;
+                        if (this.params.followed === undefined) {
+                            method = "DELETE";
+                            button.domElem.text("Отписаться");
+                        } else {
+                            method = "POST";
+                            button.domElem.text("Читать");
+                        }
+                        console.log(this.params.displayName);
                         this.bindTo('pointerclick', function () {
                             $.ajax(
                                 {
-                                    url: "/api/user/" + this.params.displayName + "/friends",
-                                    type: "POST",
+                                    url: "/api/users/" + this.params.displayName + "/follower",
+                                    type: method,
                                     data: {},
                                     dataType: "json"
                                 }
                             ).done(
                                 function (msg) {
-                                    if (msg.friend) {
+                                    if (method === "POST") {
                                         button.setMod("follow", "no");
                                         button.domElem.text("Отписаться");
                                     } else {
