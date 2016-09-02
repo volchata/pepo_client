@@ -36,7 +36,7 @@ block('profile-header')(
                 block: 'profile-header',
                 elems: [
                     { name: 'left-other', data: { avatar: avatar } },
-                    { name: 'right-other', data: { displayName: displayName } }
+                    { name: 'right-other', data: { displayName: displayName, followed: this.ctx.data.followed } }
                 ]
             };
         }

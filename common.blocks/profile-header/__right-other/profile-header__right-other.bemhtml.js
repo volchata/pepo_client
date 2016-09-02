@@ -4,7 +4,10 @@ block('profile-header').elem('right-other')(
             return [
                 {
                     block: 'follow-button',
-                    js: {displayName: this.ctx.data.displayName}
+                    js: {
+                        displayName: this.ctx.data.displayName,
+                        followed: this.ctx.data.followed
+                    }
                 }
             ];
         }
