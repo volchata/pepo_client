@@ -19,8 +19,7 @@ block('page').mod('view', 'tweet').content()(function () {
             ]
         },
         {
-            block: 'comments',
-            data: this.data.tweet_data
+            block: 'comments'
         }
     ];
 });

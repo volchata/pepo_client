@@ -2,11 +2,3 @@
     border-bottom: 1px solid #d6d6d6;
 }
 
-.tweet_default .tweet__right{
-    width: 82%;
-}
-
-.tweet_default .tweet__left {
-    width: 18%;
-    padding: 5px;
-}

@@ -24,7 +24,9 @@
         ]
     },
     {
-        mods: 'comments',
-        mustDeps: { block: 'comments' }
+        mods: 'comment',
+        mustDeps: [
+            { elem: ['right', 'left'] }
+        ]
     }
 ])
