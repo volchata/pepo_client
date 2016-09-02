@@ -19,6 +19,10 @@
     border-radius: 4px;
 }
 
+.top-menu .top-menu__back-button_disabled{
+    display: none;
+}
+
 .top-menu .input_theme_islands.input_disabled {
     display: none;
     transition: display 1s;
