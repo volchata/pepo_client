@@ -58,8 +58,7 @@ app.get('/ping/', function (req, res) {
 
 app.get('/users/:login', function (req, res) {
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
-        url = config.servers.api_server + '/api/users/' + req.params.login;
-
+        url = config.servers.api_server + '/api/users/' + encodeURIComponent(req.params.login);
     request({
         url: url,
         headers: {
@@ -73,12 +72,19 @@ app.get('/users/:login', function (req, res) {
             res.redirect('/auth/');
         }
         else {
+
             if (answer) {
-                render(req, res, {
-                    view: 'profile',
-                    title: 'Profile  Page',
-                    profile_data: answer
-                })
+                if(response.statusCode != 404){
+                    render(req, res, {
+                        view: 'profile',
+                        title: 'Profile  Page',
+                        profile_data: answer
+                    })
+                }else{
+                    res.status(404);
+                    return render(req, res, { view: '404' });
+                }
+
             }
             else {
                 render(req, res, {

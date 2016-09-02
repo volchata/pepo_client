@@ -9,13 +9,12 @@ modules.define('follow-button', ['i-bem__dom', 'jquery'],
                         var button = this.findBlockInside('button'),
                             method;
                         if (this.params.followed === undefined) {
-                            method = "DELETE";
-                            button.domElem.text("Отписаться");
-                        } else {
                             method = "POST";
                             button.domElem.text("Читать");
+                        } else {
+                            method = "DELETE";
+                            button.domElem.text("Отписаться");
                         }
-                        console.log(this.params.displayName);
                         this.bindTo('pointerclick', function () {
                             $.ajax(
                                 {
