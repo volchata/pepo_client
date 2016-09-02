@@ -19,7 +19,8 @@ block('compose-modal')(
         return [
             this.ctx.inner_blocks.map(function (block) {
                 return {
-                    elem: "modal-body",
+                    block: "modal-body",
+                    js: true,
                     content: [
                         {
                             block: block.name,

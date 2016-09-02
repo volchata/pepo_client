@@ -18,6 +18,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                         var that = this,
                             tweet_image = null,
+                            tweet_url = null,
                             text_input = this.findBlockInside('textarea'),
                             send_tweet_btn = this.findBlockInside('send-tweet-btn');
 
@@ -27,6 +28,14 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             'upload_success', // имя БЭМ-события
                             function (event, data) {
                                 tweet_image = data.image;
+                            },
+                            that
+                        );
+
+                        this.findBlockOutside('page').on(
+                            'url_snapshot_success', // имя БЭМ-события
+                            function (event, data) {
+                                tweet_url = data.url; // TODO - надо ли тут раскидать данные?
                             },
                             that
                         );
@@ -58,7 +67,8 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                         {
                                             content: text_input.domElem.val(),
                                             extras: {
-                                                image: tweet_image
+                                                image: tweet_image,
+                                                url: tweet_url
                                             }
                                         }
                                     ),
