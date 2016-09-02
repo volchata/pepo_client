@@ -12,11 +12,11 @@ modules.define('top-menu', ['i-bem__dom'], function (provide, BEMDOM) {
                             input.toggleMod('disabled');
                         });
 
-                        if(!sessionStorage.url){
+                        if (!sessionStorage.url) {
                             sessionStorage.url = window.location.href;
                         }
-                        
-                        if(sessionStorage.url === window.location.href){
+
+                        if (sessionStorage.url === window.location.href) {
                             back.setMod('disabled');
                         }
 

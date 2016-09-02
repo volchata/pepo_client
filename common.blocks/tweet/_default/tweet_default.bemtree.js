@@ -1,7 +1,9 @@
 block('tweet').mod('default', true)(
     content()(
         function () {
-            var data = this.ctx.content,
+            var tweet_content = [],
+                data = this.ctx.content,
+                extras = this.ctx.content.extras,
                 tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
@@ -44,6 +46,47 @@ block('tweet').mod('default', true)(
                 return add_btns;
             }
 
+            if (extras.url) {
+                tweet_content[tweet_content.length] = {
+                    block: 'tweet-url',
+                    content: [
+                        {
+                            block: 'link',
+                            url: extras.url,
+                            content: extras.url
+                        }
+                    ]
+                }
+            }
+
+            if (extras.image) {
+                tweet_content[tweet_content.length] = {
+                    block: 'tweet-image',
+                    content: [
+                        {
+                            block: 'image',
+                            url: extras.image
+                        }
+                    ]
+                }
+            }
+
+            tweet_content[tweet_content.length] = {
+                block: 'link',
+                mods: { plaintext: true },
+                url: data.url,
+                content: data.tweet_text
+            };
+
+            if (extras.geo) {
+                tweet_content[tweet_content.length] = {
+                    block: 'tweet-geo',
+                    content: extras.geo
+                }
+            }
+
+            //console.log(tweet_content);
+
             return [
                 {
                     elem: 'left',
@@ -77,10 +120,8 @@ block('tweet').mod('default', true)(
                             content: data.time
                         },
                         {
-                            block: 'link',
-                            mods: { plaintext: true },
-                            url: data.url,
-                            content: data.tweet_text
+                            block: 'text',
+                            content: tweet_content
                         },
                         {
                             block: 'control-group',
