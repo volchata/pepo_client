@@ -19,8 +19,16 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         var that = this,
                             tweet_image = null,
                             tweet_url = null,
+                            tweet_to_reply = null,
                             text_input = this.findBlockInside('textarea'),
                             send_tweet_btn = this.findBlockInside('send-tweet-btn');
+
+                        console.log(this.params);
+
+                        if (this.params.tweets) {
+                            tweet_to_reply = this.params.tweets[0]._id;
+                            text_input.domElem.val('@' + this.params.users[this.params.tweets[0].author].displayName + ' ');
+                        }
 
                         // события редактора
 
@@ -51,7 +59,8 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 return;
                             }
 
-                            var old_error = that.findBlockInside('error-message');
+                            var old_error = that.findBlockInside('error-message'),
+                                uri;
 
                             if (old_error) {
                                 BEMDOM.destruct(old_error.domElem);
@@ -59,9 +68,15 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                             that.dropElemCache('error-message');
 
+                            if (tweet_to_reply) {
+                                uri = '/api/tweet/' + tweet_to_reply;
+                            } else {
+                                uri =  '/api/user/feed';
+                            }
+
                             $.ajax(
                                 {
-                                    url: window.config.api_server + '/api/user/feed',
+                                    url: window.config.api_server + uri,
                                     type: "POST",
                                     data: JSON.stringify(
                                         {
