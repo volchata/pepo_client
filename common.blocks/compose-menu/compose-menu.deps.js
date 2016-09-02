@@ -8,6 +8,10 @@
             mods: { attach: 'photo' }
         },
         {
+            block: 'button',
+            mods: { attach: 'link' }
+        },
+        {
             elem: 'left'
         },
         {
