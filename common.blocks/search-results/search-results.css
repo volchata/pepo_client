@@ -1,0 +1,10 @@
+.search-results
+{
+    position: absolute;
+    top: 38px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1em 2em;
+    box-sizing: border-box;
+}
