@@ -18,6 +18,10 @@
         },
         {
             block: 'button'
+        },
+        {
+            block: 'dropzone',
+            tech: 'bemhtml'
         }
     ]
 })

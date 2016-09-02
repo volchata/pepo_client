@@ -8,10 +8,19 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
                     inited: function () {
                         var button = this.findBlockInside('button'),
                             that = this,
+                            avatar,
                             firstName = this.findBlockInside('input_field_firstName').findBlockInside('input__control'),
                             lastName = this.findBlockInside('input_field_lastName').findBlockInside('input__control'),
                             description = this.findBlockInside('textarea_field_description');
 
+
+                        this.findBlockOutside('page').on(
+                            'upload_success', // имя БЭМ-события
+                            function (event, data) {
+                                avatar = data.image;
+                            },
+                            that
+                        );
 
 
                         button.bindTo('pointerclick', function () {
@@ -31,7 +40,8 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
                                     data: {
                                         firstName: firstName.domElem.val(),
                                         lastName: lastName.domElem.val(),
-                                        description: description.domElem.val()
+                                        description: description.domElem.val(),
+                                        avatar
                                     },
                                     dataType: "json"
                                 }
