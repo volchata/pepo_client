@@ -12,6 +12,8 @@ modules.define('top-menu', ['i-bem__dom'], function (provide, BEMDOM) {
                             input.toggleMod('disabled');
                         });
 
+                        /*jslint browser: true*/
+
                         if (!sessionStorage.url) {
                             sessionStorage.url = window.location.href;
                         }
