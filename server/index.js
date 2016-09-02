@@ -332,13 +332,46 @@ app.get('/profile/', function (req, res) {
     });
 });
 
-
-
 app.get('/compose/', function (req, res) {
     render(req, res, {
         view: 'compose',
         title: 'Compose new tweet message'
     })
+});
+
+app.get('/comment/:id', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
+        url = config.servers.api_server + '/api/tweet/' + req.params.id;
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                render(req, res, {
+                    view: 'compose',
+                    title: 'Reply to tweet message',
+                    tweet_data: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
 });
 
 app.get('/users-search/', function(req, res) {
