@@ -5,7 +5,7 @@ block('follow-button')(
             return [
                 {
                     block: "button",
-                    mods: {follow: "yes"},
+                    mods: { follow: "yes" },
                     text: "Читать"
                 }
             ];
