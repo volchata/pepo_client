@@ -31,6 +31,8 @@ block('page').elem('body').elemMod(['wall', 'tweet'])(
             tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
+                //console.log(v.extras);
+
                 return {
                     block: 'tweet',
                     mods: { default: true },
@@ -39,6 +41,7 @@ block('page').elem('body').elemMod(['wall', 'tweet'])(
                         login: '@' + users[v.author].displayName,
                         time: diff_time,
                         tweet_text: v.content,
+                        extras: v.extras,
                         url: '/tweet/' + v._id
                     },
                     js: {
