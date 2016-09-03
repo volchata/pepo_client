@@ -31,6 +31,11 @@ block('page').elem('body').elemMod('wall', true)(
             tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
+                if (!v.extras)
+                {
+                    v.extras = {};
+                }
+
                 //console.log(v.extras);
 
                 return {
@@ -49,6 +54,8 @@ block('page').elem('body').elemMod('wall', true)(
                     }
                 };
             });
+
+
 
             return tweets_in;
         }
@@ -98,6 +105,10 @@ block('page').elem('body').elemMod('tweet', true)(
                 setDiffTime(i);
 
                 //console.log(v.extras);
+                if (!v.extras)
+                {
+                    v.extras = {};
+                }
 
                 return {
                     block: 'tweet',

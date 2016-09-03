@@ -2,12 +2,30 @@ block('tweet').mod('comment', true)(
     content()(
         function () {
             var data = this.ctx.content,
-                tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
+                tweet = this.ctx.js.data,
+                extras = this.ctx.content.extras,
+                tweet_content = []; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
 
                 var text = '',
-                    mods = {};
+                    mods = {},
+                    add_btns = {
+                        block: 'button',
+                        mods: mods,
+                        mix: {
+                            block: 'tweet',
+                            elem: 'action'
+                        },
+                        text: text,
+                        icon: {
+                            block: 'icon',
+                            mods: {}
+                        },
+                        js: {
+                            action: value
+                        }
+                    };
 
                 if (value === 'like') {
                     text = tweet.extras.likes.length;
@@ -23,26 +41,59 @@ block('tweet').mod('comment', true)(
                     }
                 }
 
-                var add_btns = {
-                    block: 'button',
-                    mods: mods,
-                    mix: {
-                        block: 'tweet', elem: 'action'
-                    },
-                    text: text,
-                    icon: {
-                        block: 'icon',
-                        mods: {}
-                    },
-                    js: {
-                        action: value
-                    }
-                };
-
                 add_btns.icon.mods[value] = true;
 
                 return add_btns;
             }
+
+            if ((extras.url) && (!extras.attachment)) {
+                tweet_content[tweet_content.length] = {
+                    block: 'tweet-url',
+                    content: [
+                        {
+                            block: 'link',
+                            url: extras.url,
+                            content: extras.url
+                        }
+                    ]
+                };
+            }
+
+            if (extras.image) {
+                tweet_content[tweet_content.length] = {
+                    block: 'tweet-image',
+                    content: [
+                        {
+                            block: 'image',
+                            url: extras.image
+                        }
+                    ]
+                };
+            }
+            if (extras.attachment) {
+                tweet_content.push({
+                    block: 'tweet-attachment',
+                    target: extras.attachment.url,
+                    url: extras.attachment.image,
+                    title: extras.attachment.title
+                });
+            }
+
+            tweet_content[tweet_content.length] = {
+                block: 'link',
+                mods: { plaintext: true },
+                url: data.url,
+                content: data.tweet_text
+            };
+
+            if (extras.geo) {
+                tweet_content[tweet_content.length] = {
+                    block: 'tweet-geo',
+                    content: extras.geo
+                };
+            }
+
+            //console.log(tweet_content);
 
             return [
                 {
