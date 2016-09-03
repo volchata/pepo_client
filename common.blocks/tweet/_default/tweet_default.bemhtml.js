@@ -4,7 +4,8 @@ block('tweet').mod('default', true)(
             var data = this.ctx.content,
                 tweet = this.ctx.js.data,
                 extras = this.ctx.content.extras,
-                tweet_content = []; // TODO вместо этого читкода лучше в контент передать то, что надо
+                tweet_content = [],
+                username = ''; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
 
@@ -95,6 +96,18 @@ block('tweet').mod('default', true)(
             }
 
             //console.log(tweet_content);
+            if (data.firstName)
+            {
+                username = data.firstName;
+                if (data.lastName)
+                {
+                    username = ' ' + data.lastName;
+                }
+            } else {
+                if (data.lastName) {
+                    username = data.lastName;
+                }
+            }
 
             return [
                 {
@@ -111,7 +124,7 @@ block('tweet').mod('default', true)(
                         {
                             block: 'text',
                             mods: { username: true },
-                            content: 'Pavel Smolnikov'
+                            content: username
                         },
                         {
                             block: 'text',
