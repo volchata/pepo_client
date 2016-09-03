@@ -9,13 +9,6 @@
     box-sizing: border-box;
 }
 
-.image {
-	width: 100%;
-    border-radius: 5%;
-}
-
-
-
 .profile-edit .dropzone {
 	padding: 5px;
 	height: auto;

@@ -1,4 +1,4 @@
-block('page').mod('view', 'profile').content()(function() {
+block('page').mod('view', 'profile').content()(function () {
     var user_passport = '';
 
     if (!this.data.profile_data.lastName) {
@@ -16,13 +16,6 @@ block('page').mod('view', 'profile').content()(function() {
     var mode = this.data.profile_data.self ? 'self' : 'other';
 
     return [
-        {
-            elem: 'header',
-            content: {
-                block: 'top-menu',
-                mods: { layout: 'main' }
-            }
-        },
         {
             block: 'profile',
             content: [
@@ -42,7 +35,7 @@ block('page').mod('view', 'profile').content()(function() {
                         },
                         {
                             block: 'text',
-                            mods: {id: true},
+                            mods: { id: true },
                             content: '@' + this.data.profile_data.displayName
                         }
                     ]
@@ -59,11 +52,23 @@ block('page').mod('view', 'profile').content()(function() {
                             value: this.data.profile_data.followers
                         }
                     ]
-                },
-                {
-                    elem: "controls"
                 }
             ]
+        },
+        {
+            elem: 'body',
+            content: {
+                block: 'comments',
+                mods: { profile: true },
+                data: this.data
+            }
+        },
+        {
+            elem: 'footer',
+            content: {
+                block: 'bottom-menu',
+                mods: { homescreen: true }
+            }
         }
     ]
 });

@@ -14,8 +14,7 @@ block('page').mod('view', 'wall').content()(function () {
             elem: 'footer',
             content: {
                 block: 'bottom-menu',
-                mods: { homescreen: true },
-
+                mods: { homescreen: true }
             }
         }
     ];
