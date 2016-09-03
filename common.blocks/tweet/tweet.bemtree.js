@@ -1,7 +1,3 @@
-block('tweet')(
-    js()(true)
-);
-
 block('tweet').mod('default', true)(
     content()(
         function () {
@@ -46,6 +42,7 @@ block('tweet').mod('default', true)(
                     }
                 }
 
+                add_btns.text = text;
                 add_btns.icon.mods[value] = true;
 
                 return add_btns;
@@ -125,14 +122,19 @@ block('tweet').mod('default', true)(
                     elem: 'right',
                     content: [
                         {
-                            elem: 'header',
-                            time: data.time,
-                            username: username
+                            block: 'text',
+                            mods: { username: true },
+                            content: username
                         },
                         {
                             block: 'text',
                             mods: { id: true },
                             content: data.login
+                        },
+                        {
+                            block: 'text',
+                            mods: { time: true },
+                            content: data.time
                         },
                         {
                             block: 'link',
