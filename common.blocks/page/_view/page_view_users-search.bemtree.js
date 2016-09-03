@@ -8,7 +8,7 @@ block('page').mod('view', 'users-search').content()(function () {
             }
         },
         {
-            elem: 'body',
+            elem: 'search',
             content: {
                 block: 'search-results'
             }
