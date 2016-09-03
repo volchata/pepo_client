@@ -1,6 +1,8 @@
 @import "../../node_modules/dropzone/dist/dropzone.css";
 
 .dropzone {
+    width: 80%;
+    margin: 0 auto;
     background: white none repeat scroll 0 0;
     border: 2px dashed #0087f7;
     border-radius: 5px;
@@ -11,4 +13,9 @@
     font-weight: 400;
     margin: 2em 0;
     text-align: center;
+}
+
+.dropzone .dz-image {
+    width: 100%;
+    height: 100%;
 }
