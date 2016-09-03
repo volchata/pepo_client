@@ -2,7 +2,9 @@ block('tweet').mod('default', true)(
     content()(
         function () {
             var data = this.ctx.content,
-                tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
+                tweet = this.ctx.js.data,
+                extras = this.ctx.content.extras,
+                tweet_content = []; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
 
@@ -39,6 +41,7 @@ block('tweet').mod('default', true)(
                     }
                 }
 
+                add_btns.text = text;
                 add_btns.icon.mods[value] = true;
 
                 return add_btns;

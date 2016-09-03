@@ -95,7 +95,7 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                                     loading = false;
                                                     timestamp = msg.tweets[msg.tweets.length - 1].timestamp;
 
-                                                    console.log(timestamp);
+                                                    //console.log(timestamp);
                                                 } else {
                                                     BEMDOM.update(this.domElem, 'Больше ничего нет, зайдите попозже');
                                                     this.unbindFromWin('scroll');
