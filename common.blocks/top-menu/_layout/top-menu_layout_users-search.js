@@ -9,7 +9,7 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                         var query = this.findBlockInside("input__control"),
                             page = this.findBlockOutside("page_view_users-search"),
                             search_results = page.findBlockInside("search-results"),
-                            search = this.findBlockInside("top-menu__search"),
+                            search = this.findBlockInside("top-menu__search-button"),
                             input = this.findBlockInside('input'),
                             search_timer;
 
@@ -66,14 +66,19 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                                                             }]
                                                         },
                                                         {
-                                                            block: 'text',
-                                                            mods: { username: true },
-                                                            content: user_passport
-                                                        },
-                                                        {
-                                                            block: 'text',
-                                                            mods: { id: true },
-                                                            content: '@' + item.displayName
+                                                            block: 'account-info',
+                                                            content: [
+                                                                {
+                                                                    block: 'text',
+                                                                    mods: { username: true },
+                                                                    content: user_passport
+                                                                },
+                                                                {
+                                                                    block: 'text',
+                                                                    mods: { id: true },
+                                                                    content: '@' + item.displayName
+                                                                }
+                                                            ]
                                                         }]
                                                 }
                                             }));

@@ -1,0 +1,12 @@
+.account-info {
+    display: inline;
+}
+
+.account-info .text_username {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tweet__right .text_id {
+    color: #d6d6d6;
+}

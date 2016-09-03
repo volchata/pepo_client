@@ -1,6 +1,6 @@
 ({
     shouldDeps: [
         { block: 'image' },
-        { block: 'text', mods: ['username', 'id'] }
+        { block: 'account-info' }
     ]
 })
