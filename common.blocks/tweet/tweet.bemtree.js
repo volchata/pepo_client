@@ -1,10 +1,15 @@
-block('tweet').mod('comment', true)(
+block('tweet')(
+    js()(true)
+);
+
+block('tweet').mod('default', true)(
     content()(
         function () {
             var data = this.ctx.content,
                 tweet = this.ctx.js.data,
                 extras = this.ctx.content.extras,
-                tweet_content = []; // TODO вместо этого читкода лучше в контент передать то, что надо
+                tweet_content = [],
+                username = ''; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
 
@@ -94,6 +99,18 @@ block('tweet').mod('comment', true)(
             }
 
             //console.log(tweet_content);
+            if (data.firstName)
+            {
+                username = data.firstName;
+                if (data.lastName)
+                {
+                    username = ' ' + data.lastName;
+                }
+            } else {
+                if (data.lastName) {
+                    username = data.lastName;
+                }
+            }
 
             return [
                 {
@@ -108,19 +125,14 @@ block('tweet').mod('comment', true)(
                     elem: 'right',
                     content: [
                         {
-                            block: 'text',
-                            mods: { username: true },
-                            content: 'Pavel Smolnikov'
+                            elem: 'header',
+                            time: data.time,
+                            username: username
                         },
                         {
                             block: 'text',
                             mods: { id: true },
                             content: data.login
-                        },
-                        {
-                            block: 'text',
-                            mods: { time: true },
-                            content: data.time
                         },
                         {
                             block: 'link',

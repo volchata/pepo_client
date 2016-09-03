@@ -1,3 +1,0 @@
-block('tweet')(
-    js()(true)
-);

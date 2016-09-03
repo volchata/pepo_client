@@ -2,3 +2,7 @@
 .page_view_wall .bottom-menu {
     min-width: 200px;
 }
+
+.page_view_wall {
+    margin: 10px 10px 40px 10px;
+}

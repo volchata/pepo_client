@@ -2,7 +2,7 @@
     {
         block: 'tweet',
         mustDeps: [
-            { elem: ['like', 'repost', 'reply', 'right', 'left', 'url', 'image', 'geo'] },
+            { elem: ['like', 'repost', 'reply', 'right', 'left', 'url', 'image', 'geo', 'header'] },
             { block: 'button', mods: ['enabled'] },
             { block: 'tweet-attachment'},
             { block: 'link', mods: { plaintext: true } },
