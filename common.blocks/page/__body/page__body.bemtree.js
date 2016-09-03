@@ -87,7 +87,12 @@ block('page').elem('body').elemMod('tweet', true)(
                 }
             }
 
-            last_timestamp = tweets_in[tweets_in.length - 1].timestamp;
+            if (tweets_in.length) {
+                last_timestamp = tweets_in[tweets_in.length - 1].timestamp;
+            }
+            else {
+                last_timestamp = null;
+            }
 
             tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
