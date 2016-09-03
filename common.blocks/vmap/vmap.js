@@ -5,6 +5,10 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                 inited: function () {
                     console.log('map block');
                     this.loadMapsApi();
+                    console.log(['BTN',this.elem('btn')]);
+
+
+                    this.on('mapInited',this.onMapInited);
                 }
             }
         },
@@ -48,19 +52,57 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                 behaviors: ['drag', 'dblClickZoom', 'scrollZoom']
             });
 
+            this._myPlacemark = new ymaps.Placemark(center);
+
+            this._map.geoObjects.add(this._myPlacemark);
 
             // Блок поделится информацией о том, что он инициализировал карту.
             // В данных передаём ссылку на экземпляр карты.
-            this.emit('map-inited', {
+            this.emit('mapInited', {
                 map: this._map
             });
+
         },
-        onssAPILoaded: function () {
-            console.log('on api loaded');
-            var map =  new ymaps.Map("vmap__view", {
-                center: [55.76, 37.64],
-                zoom: 7
+        onMapInited: function(){
+          console.log('map inited');
+            this.bindTo(this.elem('btn'),'pointerclick',this.onBtnSearch)
+            var lat=this.findBlockInside('lat','input').elem('control');
+            var lon=this.findBlockInside('lon','input').elem('control');
+            //var map=this._map;
+            this._map.events.add('click', function(e){
+                var coords = e.get('coords');
+                var map=e.get('target');
+
+                map.geoObjects.removeAll();
+                map.setCenter(coords);
+                map.geoObjects.add(new ymaps.Placemark(coords));
+                lat.val(coords[0]);
+                lon.val(coords[1]);
+
             });
+        },
+
+        onMapClick:function(e){
+
+            //this.geoObjects.remove();
+            //this.setCenter(coords);
+             ;
+            //this.geoObjects.add(new ymaps.Placemark(coords));
+        },
+
+        onBtnSearch: function () {
+            var lat=this.findBlockInside('lat','input').elem('control').val()|0;
+            var lon=this.findBlockInside('lon','input').elem('control').val()|0
+            //this._myPlacemark.geomery=;
+            var coords=[lat,lon];
+            this._map.geoObjects.removeAll();
+            this._map.setCenter([lat,lon]);
+            this._myPlacemark = new ymaps.Placemark([lat,lon]);
+            this._map.geoObjects.add(this._myPlacemark);
+            console.log(this._map);
+            //this._map.redraw();
+            console.log('btn clicked');
+
         }
     }));
 

@@ -3,11 +3,23 @@ block('vmap')(
     content()(function () {
         return [
             {
-                block: 'vmap',
                 elem: 'view',
                 content: '',
                 js: true
+            },
+            {
+                elem: 'lat',
+                js: true
+            },
+            {
+                elem: 'lon',
+                js: true
+            },
+            {
+                elem: 'btn',
+                js: true
             }
+
         ];
     })
 );
