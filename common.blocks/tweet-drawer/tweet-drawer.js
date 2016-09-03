@@ -19,6 +19,7 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             if (this.domElem.position().top < _scroll + h) {
                                 if (!loading) {
                                     loading = true;
+                                    self.setMod("active", true);
                                     setTimeout(function () {
                                         $.ajax(
                                             {
@@ -94,7 +95,7 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                                     });
                                                     loading = false;
                                                     timestamp = msg.tweets[msg.tweets.length - 1].timestamp;
-
+                                                    self.delMod("active");
                                                     //console.log(timestamp);
                                                 } else {
                                                     BEMDOM.update(this.domElem, 'Больше ничего нет, зайдите попозже');
