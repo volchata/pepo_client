@@ -37,15 +37,16 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             'upload_success', // имя БЭМ-события
                             function (event, data) {
                                 tweet_image = data.image;
+                                send_tweet_btn.setMod('disabled', false);
                             },
                             that
                         );
 
                         this.findBlockOutside('page').on(
                             'url_snapshot_success', // имя БЭМ-события
-                            // function (event, data) {
-                            //     // tweet_attachment = data.attachment;
-                            // },
+                            function (event, data) {
+                                tweet_attachment = data.attachment;
+                            },
                             that
                         );
 
@@ -61,13 +62,14 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             'url_attachment_set', // имя БЭМ-события
                             function (event, data) {
                                 tweet_attachment = data.attachment;
+                                send_tweet_btn.setMod('disabled', false);
                             },
                             that
                         );
 
                         update_btn(send_tweet_btn, text_input);
 
-                        text_input.bindTo('keyup', function () {
+                        text_input.bindTo('change', function () {
                             update_btn(send_tweet_btn, text_input);
                         });
 
