@@ -2,27 +2,16 @@ modules.define('bottom-menu', ['i-bem__dom', 'jquery'], function (provide, BEMDO
     provide(BEMDOM.decl({ block: this.name, modName: 'homescreen', modVal: true }, {
         onSetMod: {
             js: function () {
-                $.ajax({
-                    url: window.config.api_server + '/api/user/',
-                    type: 'GET',
-                    dataType: 'json',
-                    contentType: "application/json; charset=utf-8",
-                    context: this
-                }).done(this.getUrls);
-            }
-        },
+                var radios = this.findBlocksInside('radio'),
+                    urls = [ window.config.frontend_server + '/compose', window.config.frontend_server + '/feed',
+                        window.config.frontend_server + '/users-search', window.config.frontend_server + '/profile'];
 
-        getUrls: function (msg) {
-            var radios = this.findBlocksInside('radio'),
-                urls = [ window.config.frontend_server + '/compose', window.config.frontend_server + '/feed', window.config.frontend_server + '/users-search'];
-
-            urls.push(window.config.frontend_server + '/users/' + msg.displayName);
-
-            urls.map(function (v, i) {
-                radios[i].bindTo('pointerclick', function () {
-                    document.location.href = v;
+                urls.map(function (v, i) {
+                    radios[i].bindTo('pointerclick', function () {
+                        document.location.href = v;
+                    });
                 });
-            });
+            }
         }
     }, {}));
 });
