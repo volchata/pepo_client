@@ -6,14 +6,21 @@ block('comments')(
             comments = tweet_in[0].extras.comments;
 
         comments = comments.map(function (v) {
+
+            if (!v.extras)
+            {
+                v.extras = {};
+            }
+
             return {
                 block: 'tweet',
-                mods: { comment: true },
+                mods: { default: true },
                 content: {
                     avatar: users[v.author].avatar,
                     login: '@' + users[v.author].displayName,
                     tweet_text: v.content,
-                    url: '/tweet/' + v._id
+                    url: '/tweet/' + v._id,
+                    extras: v.extras,
                 },
                 js: {
                     data: v

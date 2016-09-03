@@ -1,4 +1,5 @@
 .tweet-drawer {
     height: 50px;
     width: 100%;
+    display: none;
 }

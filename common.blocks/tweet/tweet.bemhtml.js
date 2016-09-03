@@ -3,9 +3,11 @@ block('tweet').mod('default', true)(
         function () {
             var data = this.ctx.content,
                 tweet = this.ctx.js.data,
-                extras = this.ctx.content.extras,
+                extras = tweet.extras,
                 tweet_content = [],
                 username = ''; // TODO вместо этого читкода лучше в контент передать то, что надо
+
+            console.log(extras);
 
             function addCtlGrp(value) {
 
@@ -29,20 +31,21 @@ block('tweet').mod('default', true)(
                     };
 
                 if (value === 'like') {
-                    text = tweet.extras.likes.length;
+                    text = extras.likes.length;
                     if (tweet.like) {
                         mods = { type: 'good' };
                     }
                 }
 
                 if (value === 'repost') {
-                    text = tweet.extras.retweets.length;
+                    text = extras.retweets.length;
                     if (tweet.retweet) {
                         mods = { type: 'good' };
                     }
                 }
 
                 add_btns.text = text;
+                add_btns.icon.mods = mods;
                 add_btns.icon.mods[value] = true;
 
                 return add_btns;
@@ -72,6 +75,7 @@ block('tweet').mod('default', true)(
                     ]
                 };
             }
+
             if (extras.attachment) {
                 tweet_content.push({
                     block: 'tweet-attachment',
@@ -140,7 +144,7 @@ block('tweet').mod('default', true)(
                             block: 'link',
                             mods: { plaintext: true },
                             url: data.url,
-                            content: data.tweet_text
+                            content: tweet_content
                         },
                         {
                             block: 'control-group',
