@@ -7,7 +7,7 @@ block('tweet').mod('default', true)(
                 tweet_content = [],
                 username = ''; // TODO вместо этого читкода лучше в контент передать то, что надо
 
-            console.log(extras);
+            console.log(tweet);
 
             function addCtlGrp(value) {
 
