@@ -1,7 +1,9 @@
 block('tweet').mod('default', true)(
     content()(
         function () {
-            var data = this.ctx.content,
+            var tweet_content = [],
+                data = this.ctx.content,
+                extras = this.ctx.content.extras,
                 tweet = this.ctx.js.data; // TODO вместо этого читкода лучше в контент передать то, что надо
 
             function addCtlGrp(value) {
@@ -44,7 +46,6 @@ block('tweet').mod('default', true)(
                 return add_btns;
             }
 
-<<<<<<< 662e40a0254a4d90d66bbe23f5203ffba5cec5dc:common.blocks/tweet/_default/tweet_default.bemhtml.js
             if ((extras.url) && (!extras.attachment)) {
                 tweet_content[tweet_content.length] = {
                     block: 'tweet-url',
@@ -94,14 +95,12 @@ block('tweet').mod('default', true)(
 
             //console.log(tweet_content);
 
-=======
->>>>>>> фиксы по оформлению:common.blocks/tweet/_default/tweet_default.bemtree.js
             return [
                 {
                     elem: 'left',
                     content: {
                         block: 'image',
-                        mods: { type: 'tweet' },
+                        mix: { block: 'avatar', mods: { type: 'tweet' } },
                         url: data.avatar
                     }
                 },
@@ -109,14 +108,19 @@ block('tweet').mod('default', true)(
                     elem: 'right',
                     content: [
                         {
-                            block: 'text',
-                            mods: { username: true },
-                            content: 'Pavel Smolnikov'
-                        },
-                        {
-                            block: 'text',
-                            mods: { id: true },
-                            content: data.login
+                            block: 'account-info',
+                            content: [
+                                {
+                                    block: 'text',
+                                    mods: { username: true }
+                                    // content: data.lastName + ' ' + data.firstName
+                                },
+                                {
+                                    block: 'text',
+                                    mods: { id: true },
+                                    content: data.login
+                                }
+                            ]
                         },
                         {
                             block: 'text',
@@ -124,10 +128,8 @@ block('tweet').mod('default', true)(
                             content: data.time
                         },
                         {
-                            block: 'link',
-                            mods: { plaintext: true },
-                            url: data.url,
-                            content: data.tweet_text
+                            block: 'text',
+                            content: tweet_content
                         },
                         {
                             block: 'control-group',

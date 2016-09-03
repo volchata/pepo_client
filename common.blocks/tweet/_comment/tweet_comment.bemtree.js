@@ -49,7 +49,7 @@ block('tweet').mod('comment', true)(
                     elem: 'left',
                     content: {
                         block: 'image',
-                        mods: { type: 'tweet' },
+                        mix: { block: 'avatar', mods: { type: 'tweet' } },
                         url: data.avatar
                     }
                 },
@@ -57,14 +57,19 @@ block('tweet').mod('comment', true)(
                     elem: 'right',
                     content: [
                         {
-                            block: 'text',
-                            mods: { username: true },
-                            content: 'Pavel Smolnikov'
-                        },
-                        {
-                            block: 'text',
-                            mods: { id: true },
-                            content: data.login
+                            block: 'account-info',
+                            content: [
+                                {
+                                    block: 'text',
+                                    mods: { username: true }
+                                    // content: data.lastName + ' ' + data.firstName
+                                },
+                                {
+                                    block: 'text',
+                                    mods: { id: true },
+                                    content: data.login
+                                }
+                            ]
                         },
                         {
                             block: 'text',

@@ -9,6 +9,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
 
                 switch (action) {
                 case 'like':
+
                     if (!that.hasMod('type')) {
                         $.ajax(
                             {
@@ -21,7 +22,6 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                         ).done(
                             function (msg) {
                                 that.setMod('type', 'good');
-                                that.setMod('enabled');
                                 that.setText(msg.tweets[0].extras.likes.length);
                             }
                         );
@@ -34,8 +34,15 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                                 dataType: "json",
                                 context: that
                             }
-                        ).done(this.__self.onDelete);
+                        ).done(
+                            function (msg) {
+                                that.delMod('type');
+                                that.setText(String(msg.tweets[0].extras.likes.length));
+                            }
+                        );
                     }
+
+
                     break;
                 case 'repost':
                     if (!that.hasMod('type')) {
@@ -50,7 +57,6 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                         ).done(
                             function (msg) {
                                 that.setMod('type', 'good');
-                                that.setMod('enabled');
                                 that.setText(msg.tweets[0].extras.retweets.length);
                             }
                         );
@@ -63,8 +69,14 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                                 dataType: "json",
                                 context: that
                             }
-                        ).done(this.__self.onDelete);
+                        ).done(
+                            function (msg) {
+                                that.delMod('type');
+                                that.setText(String(msg.tweets[0].extras.retweets.length));
+                            }
+                        );
                     }
+
                     break;
                 case 'reply':
                     document.location.href = window.config.api_server + '/comment/' + tweet_id;
@@ -79,11 +91,18 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                 });
             },
 
-            onDelete: function (msg) {
-                this.delMod('type');
-                this.delMod('enabled');
-                this.delMod('focused');
-                this.setText(String(msg.tweets[0].extras.likes.length));
+            failHandle: function (msg) {
+                var response = msg.responseText;
+                if (!response) {
+                    response = 'Неизвестная ошибка сервера';
+                }
+
+                setTimeout(function () {
+                    alert(response);
+                }, 0);
+                this.setMod('type', 'error');
+
+                this.unbindFrom('click');
             }
         }));
 });

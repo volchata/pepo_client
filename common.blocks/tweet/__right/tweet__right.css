@@ -6,10 +6,45 @@
     width: 82%;
 }
 
+.tweet__right .text_time {
+    float: right;
+    color: #d6d6d6;
+}
+
 .tweet__right .icon {
     width: 15px;
     height: 15px;
     background-size: cover;
     opacity: 0.5;
     margin-right: 5px;
+}
+
+.tweet__right .button.button_enabled,
+.tweet__right .button.button_enabled .icon {
+    opacity: 1;
+}
+
+.tweet__right .button{
+    padding: 0;
+    margin-right: 10px;
+}
+
+.tweet__right .button_type_good {
+    color: red;
+}
+
+.tweet__right .tweet__action .icon_reply {
+    background-image: url('../img/arrow.svg');
+}
+
+.tweet__right .button .icon_like {
+    background-image: url('../img/like.svg');
+}
+
+.tweet__right .button .icon_repost {
+    background-image: url('../img/repost.svg');
+}
+
+.tweet__right .button_type_good .icon_like {
+    background-image: url('../img/like-red.svg');
 }
