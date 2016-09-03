@@ -5,7 +5,9 @@ block('page').elem('body').elemMod(['wall', 'tweet'])(
                 users = tweet_data.users,
                 tweets_in = tweet_data.tweets,
                 curr_date = new Date(),
-                diff_time;
+                diff_time,
+                tweet_end,
+                last_timestamp;
 
             function setDiffTime (i) {
                 var old_date = new Date(tweets_in[i].timestamp),
@@ -28,6 +30,8 @@ block('page').elem('body').elemMod(['wall', 'tweet'])(
                 }
             }
 
+            last_timestamp = tweets_in[tweets_in.length - 1].timestamp;
+
             tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
@@ -49,6 +53,14 @@ block('page').elem('body').elemMod(['wall', 'tweet'])(
                     }
                 };
             });
+
+            tweet_end = {
+                block: 'tweet-drawer',
+                content: "Загрузка...",
+                js: {timestamp: last_timestamp}
+            };
+
+            tweets_in[tweets_in.length] = tweet_end;
 
             return tweets_in;
         }

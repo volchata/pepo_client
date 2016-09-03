@@ -55,7 +55,6 @@ block('profile-edit')(
                     text: 'Сохранить'
                 }
             ];
-            
             return ret;
         }
     )

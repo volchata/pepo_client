@@ -22,6 +22,7 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
                             that
                         );
 
+                        console.log(avatar);
 
                         button.bindTo('pointerclick', function () {
 
@@ -40,8 +41,7 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
                                     data: {
                                         firstName: firstName.domElem.val(),
                                         lastName: lastName.domElem.val(),
-                                        description: description.domElem.val(),
-                                        avatar
+                                        description: description.domElem.val()
                                     },
                                     dataType: "json"
                                 }
