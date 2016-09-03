@@ -45,7 +45,28 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         this.findBlockOutside('page').on(
                             'url_snapshot_success', // имя БЭМ-события
                             function (event, data) {
-                                tweet_attachment = data.attachment;
+                                var pre = that.findBlockInside('tweet-attachment');
+                                if (pre) {
+                                    BEMDOM.destruct(pre.domElem);
+                                    that.dropElemCache();
+                                }
+                                    
+                                if (data.status != "OK") {
+                                    tweet_url = null;
+                                    tweet_attachment = null;
+                                    return;
+                                }
+                                data = data.attachment;
+                                BEMDOM.append(
+                                    that.findBlockInside('modal-body').domElem,
+                                    BEMHTML.apply({
+                                        block : 'tweet-attachment',
+                                        target: data.url,
+                                        title:  data.title,
+                                        url:    data.image
+                                    })
+                                );
+                                
                             },
                             that
                         );
@@ -54,6 +75,11 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             'url_snapshot_set', // имя БЭМ-события
                             function (event, data) {
                                 tweet_url = data.url;
+                                BEMDOM.append(
+                                    that.findBlockInside('modal-body').domElem,
+                                    BEMHTML.apply({
+                                        block : 'tweet-attachment'
+                                    }));
                             },
                             that
                         );
@@ -61,8 +87,18 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         this.findBlockOutside('page').on(
                             'url_attachment_set', // имя БЭМ-события
                             function (event, data) {
+                                if (data.status != "OK") {
+                                    tweet_url = null;
+                                    var pre = that.findBlockInside('tweet-attachment');
+                                    if (pre) {
+                                        BEMDOM.destruct(pre.domElem);
+                                        that.dropElemCache();
+                                    }
+                                    return;
+                                }
                                 tweet_attachment = data.attachment;
                                 send_tweet_btn.setMod('disabled', false);
+
                             },
                             that
                         );
