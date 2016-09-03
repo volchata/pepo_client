@@ -5,10 +5,23 @@ modules.define('top-menu', ['i-bem__dom'], function (provide, BEMDOM) {
                 'js': {
                     'inited': function () {
                         var input = this.findBlockInside('input'),
-                            search = this.findBlockInside("top-menu__search-button");
+                            search = this.findBlockInside("top-menu__search-button"),
+                            back = this.findBlockInside("top-menu__back-button");
 
                         search.bindTo('click', function () {
                             input.toggleMod('disabled');
+                        });
+
+                        if(!sessionStorage.url){
+                            sessionStorage.url = window.location.href;
+                        }
+                        
+                        if(sessionStorage.url === window.location.href){
+                            back.setMod('disabled');
+                        }
+
+                        back.bindTo('click', function () {
+                            window.history.back();
                         });
                     }
                 }
