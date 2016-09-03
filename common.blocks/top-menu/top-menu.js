@@ -13,7 +13,6 @@ modules.define('top-menu', ['i-bem__dom'], function (provide, BEMDOM) {
                         });
 
                         /*jslint browser: true*/
-
                         if (!sessionStorage.url) {
                             sessionStorage.url = window.location.href;
                         }
