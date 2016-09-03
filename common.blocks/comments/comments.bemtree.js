@@ -19,8 +19,7 @@ block('comments')(
                     avatar: users[v.author].avatar,
                     login: '@' + users[v.author].displayName,
                     tweet_text: v.content,
-                    url: '/tweet/' + v._id,
-                    extras: v.extras,
+                    extras: v.extras
                 },
                 js: {
                     data: v

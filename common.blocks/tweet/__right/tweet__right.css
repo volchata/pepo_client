@@ -13,3 +13,7 @@
     opacity: 0.5;
     margin-right: 5px;
 }
+
+.tweet__right .link.link_focused {
+    outline: none;
+}
