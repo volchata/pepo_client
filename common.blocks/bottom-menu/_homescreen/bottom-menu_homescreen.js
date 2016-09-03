@@ -14,7 +14,7 @@ modules.define('bottom-menu', ['i-bem__dom', 'jquery'], function (provide, BEMDO
 
         getUrls: function (msg) {
             var radios = this.findBlocksInside('radio'),
-                urls = [ window.config.frontend_server + '/feed', window.config.frontend_server + '/news', window.config.frontend_server + '/im'];
+                urls = [ window.config.frontend_server + '/compose', window.config.frontend_server + '/feed', window.config.frontend_server + '/users-search'];
 
             urls.push(window.config.frontend_server + '/users/' + msg.displayName);
 

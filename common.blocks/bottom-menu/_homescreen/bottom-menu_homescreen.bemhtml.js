@@ -8,6 +8,15 @@ block('bottom-menu')(
             options : [
                 {
                     val : 1,
+                    text : 'Add tweet',
+                    mods: { type: 'homescreen' },
+                    icon: {
+                        block: 'icon',
+                        mods: { 'tweet': true }
+                    }
+                },
+                {
+                    val : 2,
                     text : 'Home',
                     mods: { type: 'homescreen' },
                     icon: {
@@ -16,21 +25,12 @@ block('bottom-menu')(
                     }
                 },
                 {
-                    val : 2,
-                    text : 'Notifications',
-                    mods: { type: 'homescreen' },
-                    icon: {
-                        block: 'icon',
-                        mods: { bell: true }
-                    }
-                },
-                {
                     val : 3,
-                    text : 'Messages',
+                    text : 'Search',
                     mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
-                        mods: { message: true }
+                        mods: { search: true }
                     }
                 },
                 {
