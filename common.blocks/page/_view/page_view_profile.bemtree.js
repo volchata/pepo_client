@@ -17,6 +17,13 @@ block('page').mod('view', 'profile').content()(function() {
 
     return [
         {
+            elem: 'header',
+            content: {
+                block: 'top-menu',
+                mods: { layout: 'main' }
+            }
+        },
+        {
             block: 'profile',
             content: [
                 {
