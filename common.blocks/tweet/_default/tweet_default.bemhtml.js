@@ -9,7 +9,23 @@ block('tweet').mod('default', true)(
             function addCtlGrp(value) {
 
                 var text = '',
-                    mods = {};
+                    mods = {},
+                    add_btns = {
+                        block: 'button',
+                        mods: mods,
+                        mix: {
+                            block: 'tweet',
+                            elem: 'action'
+                        },
+                        text: text,
+                        icon: {
+                            block: 'icon',
+                            mods: {}
+                        },
+                        js: {
+                            action: value
+                        }
+                    };
 
                 if (value === 'like') {
                     text = tweet.extras.likes.length;
@@ -24,22 +40,6 @@ block('tweet').mod('default', true)(
                         mods = { type: 'good' };
                     }
                 }
-
-                var add_btns = {
-                    block: 'button',
-                    mods: mods,
-                    mix: {
-                        block: 'tweet', elem: 'action'
-                    },
-                    text: text,
-                    icon: {
-                        block: 'icon',
-                        mods: {}
-                    },
-                    js: {
-                        action: value
-                    }
-                };
 
                 add_btns.icon.mods[value] = true;
 
@@ -56,7 +56,7 @@ block('tweet').mod('default', true)(
                             content: extras.url
                         }
                     ]
-                }
+                };
             }
 
             if (extras.image) {
@@ -68,7 +68,7 @@ block('tweet').mod('default', true)(
                             url: extras.image
                         }
                     ]
-                }
+                };
             }
             if (extras.attachment) {
                 tweet_content.push({
@@ -90,7 +90,7 @@ block('tweet').mod('default', true)(
                 tweet_content[tweet_content.length] = {
                     block: 'tweet-geo',
                     content: extras.geo
-                }
+                };
             }
 
             //console.log(tweet_content);
