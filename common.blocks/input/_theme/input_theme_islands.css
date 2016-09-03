@@ -3,6 +3,12 @@
     box-shadow: 0 0 0 1px #00bfff, inset 0 0 0 1px #00bfff;
 }
 
-.input_theme_islands.input{
+.input_theme_islands.input,
+.input_theme_islands:before {
     border-radius: 5px;
+}
+
+.input_theme_islands.input_disabled {
+    display: none;
+    transition: display 1s;
 }
