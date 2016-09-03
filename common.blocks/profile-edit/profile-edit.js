@@ -41,7 +41,8 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
                                     data: {
                                         firstName: firstName.domElem.val(),
                                         lastName: lastName.domElem.val(),
-                                        description: description.domElem.val()
+                                        description: description.domElem.val(),
+                                        avatar: avatar
                                     },
                                     dataType: "json"
                                 }

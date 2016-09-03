@@ -2,24 +2,38 @@
     height: auto;
     display: inline-block;
     min-width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d6d6d6;
 }
 
 .tweet .button{
     opacity: 0.5;
     background-color: #fff;
+    padding: 0;
+    margin-right: 10px;
 }
 
-.tweet .button.button_focused,
-.tweet .button.button_focused-hard,
-.tweet .button.button_focused .icon{
+.tweet .button.button_enabled,
+.tweet .button.button_enabled .icon {
     opacity: 1;
 }
 
-.tweet .link_plaintext {
-    color: #000;
-    text-decoration: none;
-    width: 100%;
-    display: block;
-    word-wrap: break-word;
-    margin: 5px 0;
+.tweet .button .icon_reply {
+    background-image: url('img/arrow.svg');
+}
+
+.tweet .button .icon_like {
+    background-image: url('img/like.svg');
+}
+
+.tweet .button .icon_repost {
+    background-image: url('img/repost.svg');
+}
+
+.tweet .button_type_good .icon_like {
+    background-image: url('img/like-red.svg');
+}
+
+.tweet .button_type_good .icon_repost {
+    background-image: url('img/repost-good.svg');
 }

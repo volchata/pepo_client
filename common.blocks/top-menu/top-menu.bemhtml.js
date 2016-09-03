@@ -4,8 +4,8 @@ block('top-menu')(
         {
             block: 'top-menu',
             buttons: [
-                { name: 'back-button' },
-                { name: 'search-button' }
+                { name: 'back' },
+                { name: 'search' }
             ]
         }
     ),
@@ -13,7 +13,7 @@ block('top-menu')(
         {
             block: 'top-menu',
             buttons: [
-                { name: 'back-button' }
+                { name: 'back' }
             ]
         }
     ),
@@ -22,8 +22,8 @@ block('top-menu')(
             block: 'top-menu',
             mods: { "users-search": true },
             buttons: [
-                { name: 'back-button' },
-                { name: 'search-button' }
+                { name: 'back' },
+                { name: 'search' }
             ]
         }
     ),
@@ -42,6 +42,7 @@ block('top-menu')(
             {
                 block: 'input',
                 mods: { theme: 'islands', size: 'l', 'has-clear': true, disabled: true },
+                mix: { block: 'top-menu', elem: 'input' },
                 placeholder: 'Поиск'
             }
         ];

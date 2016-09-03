@@ -43,9 +43,9 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                         this.findBlockOutside('page').on(
                             'url_snapshot_success', // имя БЭМ-события
-                            function (event, data) {
-                                // tweet_attachment = data.attachment;
-                            },
+                            // function (event, data) {
+                            //     // tweet_attachment = data.attachment;
+                            // },
                             that
                         );
 

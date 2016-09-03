@@ -2,25 +2,26 @@
     {
         block: 'tweet',
         mustDeps: [
-            { elem: ['like', 'repost', 'reply', 'right', 'left', 'actions'] },
+            { elem: ['like', 'repost', 'reply', 'right', 'left', 'url', 'image', 'geo'] },
             { block: 'button', mods: ['enabled'] },
             { block: 'tweet-attachment'},
             { block: 'link', mods: { plaintext: true } },
-            { mods: ['default', 'comment'] }
+            { mods: ['default', 'comment'] },
+            { block: 'text', mods: ['id', 'username'] }
         ]
     },
     {
         elem: 'left',
         mustDeps: [
             { block: 'image' },
-            { block: 'avatar', mods: { type: 'tweet' } }
+            { block: 'image', mods: { type: 'tweet' } }
         ]
     },
     {
         elem: 'right',
         shouldDeps: [
-            { block: 'account-info' },
             { block: 'control-group' },
+            { block: 'link', mods: { plaintext: true } },
             { block: 'icon', mods: ['like', 'repost', 'reply'] }
         ]
     },
