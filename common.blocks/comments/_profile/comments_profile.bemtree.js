@@ -1,9 +1,10 @@
-block('comments')(
+block('comments').mod('default', true)(
     content()(function () {
-        var tweet_data = this.data.tweet_data;
+        var tweet_data = this.data.tweet_data,
             // users = tweet_data.users,
             // tweet_in = tweet_data.tweets,
-            // comments = tweet_in[0].extras.comments;
+            comments = tweet_in[0].extras.comments;
+
         comments = comments.map(function (v) {
 
             if (!v.extras)

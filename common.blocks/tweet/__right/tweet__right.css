@@ -17,3 +17,7 @@
 .tweet__right .link.link_focused {
     outline: none;
 }
+
+.tweet__right .tweet-image {
+    max-width: 240px;
+}

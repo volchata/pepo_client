@@ -1,8 +1,8 @@
 ({
     shouldDeps: [
         {
-            block: 'top-menu',
-            mods: { layout: 'main' }
+            block: 'bottom-menu',
+            mods: { homescreen: true }
         },
         { block: 'profile' },
         {
@@ -13,13 +13,8 @@
             elem: "stats"
         },
         {
-            block: "profile",
-            elem: 'controls'
-        },
-        {
             block: "account-info",
             mix: {elem: 'multiline'}
-        },
-        { block: 'tweet' }
+        }
     ]
 })
