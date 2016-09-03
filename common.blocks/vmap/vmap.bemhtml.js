@@ -1,14 +1,13 @@
 block('vmap')(
     js()(true),
-    content() (function(){
+    content()(function () {
         return [
-        {
-            block: 'vmap',
-            elem: 'view',
-            content: 'карта',
-            js:true
-        }
-
-
-    ]})
+            {
+                block: 'vmap',
+                elem: 'view',
+                content: '',
+                js: true
+            }
+        ];
+    })
 );
