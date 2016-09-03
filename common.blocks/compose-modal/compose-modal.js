@@ -6,8 +6,7 @@ modules.define('compose-modal', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onSetMod: {
                 js: {
                     inited: function () {
-                        console.log('hi');
-                        //this.findBlockInside('dropzone').domElem.dropzone({ url: window.config.api_server + "/api/user/feed/image" });
+                        
                     }
                 }
             }

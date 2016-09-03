@@ -4,6 +4,7 @@
         mustDeps: [
             { elem: ['like', 'repost', 'reply', 'right', 'left', 'actions'] },
             { block: 'button', mods: ['enabled'] },
+            { block: 'tweet-attachment'},
             { block: 'link', mods: { plaintext: true } },
             { mods: ['default', 'comment'] }
         ]

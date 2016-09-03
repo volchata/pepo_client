@@ -17,6 +17,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         }
 
                         var that = this,
+                            tweet_attachment = null,
                             tweet_image = null,
                             tweet_url = null,
                             tweet_to_reply = null,
@@ -43,7 +44,23 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         this.findBlockOutside('page').on(
                             'url_snapshot_success', // имя БЭМ-события
                             function (event, data) {
-                                tweet_url = data.url; // TODO - надо ли тут раскидать данные?
+                                // tweet_attachment = data.attachment;
+                            },
+                            that
+                        );
+
+                        this.findBlockOutside('page').on(
+                            'url_snapshot_set', // имя БЭМ-события
+                            function (event, data) {
+                                tweet_url = data.url;
+                            },
+                            that
+                        );
+
+                        this.findBlockOutside('page').on(
+                            'url_attachment_set', // имя БЭМ-события
+                            function (event, data) {
+                                tweet_attachment = data.attachment;
                             },
                             that
                         );
@@ -83,7 +100,8 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                             content: text_input.domElem.val(),
                                             extras: {
                                                 image: tweet_image,
-                                                url: tweet_url
+                                                url: tweet_url,
+                                                attachment: tweet_attachment
                                             }
                                         }
                                     ),

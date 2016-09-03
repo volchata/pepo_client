@@ -1,0 +1,17 @@
+
+.tweet-attachment {
+	
+}
+
+.tweet-attachment .image
+{
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	max-width: 500px;
+	max-height: 500px;
+}
+
+.tweet-attachment .link.header {
+	display: block;
+	margin-left: 1em;
+}
