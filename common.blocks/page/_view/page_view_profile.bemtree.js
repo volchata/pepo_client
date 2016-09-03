@@ -56,14 +56,6 @@ block('page').mod('view', 'profile').content()(function () {
             ]
         },
         {
-            elem: 'body',
-            content: {
-                block: 'comments',
-                mods: { profile: true },
-                data: this.data
-            }
-        },
-        {
             elem: 'footer',
             content: {
                 block: 'bottom-menu',
