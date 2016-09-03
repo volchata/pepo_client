@@ -6,5 +6,6 @@ block('compose-block').content()(function() {
         {
             block: 'compose-menu'
         }
+            
     ];
 });

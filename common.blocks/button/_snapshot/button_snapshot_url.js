@@ -6,12 +6,30 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onSetMod: {
                 js: {
                     inited: function () {
+
+                        function prefixOuterURL(url){
+                            var re = /^https?:\/\//;
+                            if (!(re.test(url))) {
+                                url = 'http://' + url;
+                            }
+                            return url;
+                        }
+
                         var that = this.findBlockOutside('compose-modal'),
                             button = this,
                             url_input = that.findBlockInside('input');
 
+                        // url_input.findBlockInside('input__control').bindTo('pointerclick',
+                        // function () {
+                        //     this.domElem.val( prefixOuterURL(this.domElem.val()) );
+                        // })
+                        
+
                         button.bindTo('pointerclick', function () {
-                            var url = url_input.findBlockInside('input__control').domElem.val();
+                            var url = prefixOuterURL(url_input.
+                                findBlockInside('input__control').domElem.val());
+                            url_input.findBlockInside('input__control').domElem.val(url);
+                            that.findBlockOutside('page').emit('url_snapshot_set', {url});
                             $.ajax(
                                 {
                                     url: window.config.api_server + "/api/user/snapshot/",
@@ -21,7 +39,8 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 }
                             ).done(
                                 function (msg) {
-                                    console.log(msg);
+                                    that.findBlockOutside('page').emit('url_attachment_set', {attachment: msg.attachment});
+                                    
                                     var snapshot_src = window.config.api_server + "/api/user/snapshot" + msg.attachment;
 
                                     $.ajax(
@@ -31,9 +50,9 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                             dataType: "json"
                                         }
                                     ).done(
-                                        function (msg) {
-                                            console.log(msg);
-                                            that.findBlockOutside('page').emit('url_snapshot_success', msg);
+                                        function (snap) {
+                                            console.log(snap);
+                                            that.findBlockOutside('page').emit('url_snapshot_success', snap);
 
                                         }
                                     );
@@ -43,6 +62,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                     }
                 }
             }
+            
 
         }));
 

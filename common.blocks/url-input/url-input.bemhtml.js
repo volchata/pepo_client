@@ -9,7 +9,7 @@ block('url-input')(
                 },
                 {
                     block: "input",
-                    label: "https://www.yandex.ru/",
+                    placeholder: "https://www.yandex.ru/",
                     mods : { theme : 'islands', size : 'm' }
                 },
                 {
