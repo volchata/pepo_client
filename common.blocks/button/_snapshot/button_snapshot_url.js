@@ -7,7 +7,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                 js: {
                     inited: function () {
 
-                        function prefixOuterURL(url) {
+                        function prefixOuterURL(url){
                             var re = /^https?:\/\//;
                             if (!(re.test(url))) {
                                 url = 'http://' + url;
@@ -28,6 +28,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             var url = prefixOuterURL(url_input.findBlockInside('input__control').domElem.val());
                             url_input.findBlockInside('input__control').domElem.val(url);
                             that.findBlockOutside('page').emit('url_snapshot_set', { url: url });
+
                             $.ajax(
                                 {
                                     url: window.config.api_server + "/api/user/snapshot/",
@@ -37,15 +38,19 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 }
                             ).done(
                                 function (msg) {
-                                    that.findBlockOutside('page').emit('url_attachment_set', { attachment: msg.attachment });
 
+                                    that.findBlockOutside('page').emit('url_attachment_set', msg);
+                                    if (msg.status != "OK") return ;
+                                    
                                     var snapshot_src = window.config.api_server + "/api/user/snapshot" + msg.attachment;
 
-                                    $.ajax({
-                                        url: snapshot_src,
-                                        type: "GET",
-                                        dataType: "json"
-                                    }).done(
+                                    $.ajax(
+                                        {
+                                            url: snapshot_src,
+                                            type: "GET",
+                                            dataType: "json"
+                                        }
+                                    ).done(
                                         function (snap) {
                                             console.log(snap);
                                             that.findBlockOutside('page').emit('url_snapshot_success', snap);
@@ -58,6 +63,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                     }
                 }
             }
+            
 
 
         }));

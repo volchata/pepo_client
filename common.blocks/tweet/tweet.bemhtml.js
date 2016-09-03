@@ -84,6 +84,14 @@ block('tweet').mod('default', true)(
                     title: extras.attachment.title
                 });
             }
+            if (extras.attachment) {
+                tweet_content.push({
+                    block: 'tweet-attachment',
+                    target: extras.attachment.url,
+                    url: extras.attachment.image,
+                    title: extras.attachment.title
+                })
+            }
 
             tweet_content[tweet_content.length] = {
                 block: 'link',

@@ -18,7 +18,7 @@ module.exports = function (grunt) {
         jslint: {
             client: {
                 src: [
-                    '*/*.js',
+                    '*/*.js$',
                     '*.blocks/**/*.js'
                 ],
                 exclude: [
