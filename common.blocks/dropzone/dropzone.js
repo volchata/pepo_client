@@ -20,7 +20,7 @@ modules.define('dropzone', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, 
                                     url: url,
                                     paramName: this.params.paramName || 'file',
                                     maxFiles: 1,
-                                    acceptedFiles: '.jpg,.png,.gif',
+                                    acceptedFiles: '.jpg,.png,.gif,.jpeg',
                                     thumbnailWidth: size,
                                     thumbnailHeight: size,
                                     success: function (file, response) {
