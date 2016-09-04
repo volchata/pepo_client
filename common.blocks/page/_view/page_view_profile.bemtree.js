@@ -13,6 +13,6 @@ block('page').mod('view', 'profile')(
             {
                 block: 'footer'
             }
-        ]
+        ];
     })
 );

@@ -40,6 +40,7 @@
     "eslint": "^3.4.0",
     "eslint-config-loris": "^5.1.0",
     "eslint-plugin-bem-xjst": "^2.0.0",
+    "git-hooks": "^1.1.1",
     "nodemon": "^1.9.2",
     "precommit-hook-eslint": "^3.0.0",
     "ym": "^0.1.2"
@@ -49,11 +50,11 @@
     "postinstall": "npm run deps",
     "deps": "bower i",
     "make": "enb make",
-    "lint": "eslint ./common.blocks/ --color",
+    "eslint": "eslint ./common.blocks/ --color",
     "watch": "chokidar '*.blocks/**' -c 'npm run make'"
   },
   "private": true,
   "pre-commit": [
-    "lint"
+    "eslint"
   ]
 }
