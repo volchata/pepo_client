@@ -1,4 +1,4 @@
-modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
+modules.define('vmap', ['i-bem__dom', 'jquery','vmap-loader'], function (provide, BEMDOM, $,loader) {
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
             js: {
@@ -6,7 +6,6 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                     var self=this;
                     this.mapInitedDeferr=$.Deferred();
                     if ( window.navigator.geolocation !== undefined ) {
-                        var self=this;
                         window.navigator.geolocation.getCurrentPosition(function(position) {
                             self.emit('navigatorPosition', {
                                 lat: position.coords.latitude,
@@ -14,12 +13,7 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                             });
                         });
                     }
-
-                    this.loadMapsApi();
-                    //console.log(loader);
-
-                    //loader.on(this,'loaded',this.onAPILoaded);
-                    //this.on('loaded',this.onAPILoaded);
+                    this.checkMapsApi();
                     this.on('mapInited',this.onMapInited);
                     this.on('navigatorPosition',this.onNavigatorPosition);
                     console.log(this);
@@ -29,22 +23,13 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
 
         centerDefault: [55.76, 37.64],
         zoomDefault: 7,
-        loadMapsApi: function () {
-
+        checkMapsApi: function(){
             if (!window.ymaps) {
-
-                var apiScript = document.createElement('script'),
-                    apiCallback = 'ymapsloaded';
-                window[apiCallback] = $.proxy(function () {
-                    this.onAPILoaded();
-                }, this);
-                apiScript.src = [
-                    'http://api-maps.yandex.ru/2.1/?',
-                    '&lang=ru_RU',
-                    '&onload=' + apiCallback
-                ].join('');
-                document.getElementsByTagName('head')[0].appendChild(apiScript);
-            } else {
+                var self=this;
+                $.when(this.findBlockOutside('vmap-loader').ymapsDeferred).then(function(){
+                   self.onAPILoaded();
+                });
+            }else{
                 this.onAPILoaded();
             }
         },
@@ -109,10 +94,6 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
             var lon = parseFloat(this.findBlockInside('lon','input').elem('control').val());
             return { "type": "Point", "coordinates": [lon, lat] };
         }
-
-
-
-
 
     }));
 

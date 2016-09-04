@@ -1,0 +1,3 @@
+block('vmap')(
+    js()(true)
+);
