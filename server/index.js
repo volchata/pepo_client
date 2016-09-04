@@ -145,6 +145,12 @@ app.get('/', function (req, res) {
         }
     })
 });
+app.get('/map/',function(req,res){
+    render(req, res, {
+        view: 'vmap',
+        title: 'My map'
+    })
+});
 
 // Новая страница - новый роут
 app.get('/feed/', function (req, res) {
