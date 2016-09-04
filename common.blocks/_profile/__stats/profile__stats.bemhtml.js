@@ -1,16 +1,16 @@
 block('profile').elem('stats')(
-    content()(function () {
-        return this.ctx.stats.map(function (item) {
+    content()(function() {
+        return this.ctx.stats.map(function(item) {
             return [
                 {
-                    block: "mini-stat",
+                    block: 'mini-stat',
                     content: [
                         {
-                            elem: "stat",
+                            elem: 'stat',
                             content: item.value
                         },
                         {
-                            elem: "title",
+                            elem: 'title',
                             content: item.title
 
                         }
@@ -22,5 +22,4 @@ block('profile').elem('stats')(
         });
 
     })
-
 );

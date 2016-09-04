@@ -17,7 +17,7 @@ block('profile').elem('about')(
                     mods: { about: true },
                     content: this.ctx.description
                 }
-            ]
+            ];
         }
     )
 );
