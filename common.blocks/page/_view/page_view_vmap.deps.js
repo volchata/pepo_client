@@ -5,6 +5,9 @@
             mods: { layout: 'main' }
         },
         {
+            block: 'vmap-loader',
+        },
+        {
             block: 'vmap',
         }
     ]
