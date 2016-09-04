@@ -3,23 +3,27 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
         onSetMod: {
             js: {
                 inited: function () {
-                    console.log('map block');
+                    this.mapInitedDeferr=$.Deferred();
+                    if ("geolocation" in navigator) {
+                        var self=this;
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            self.emit('navigatorPosition', {
+                                lat: position.coords.latitude,
+                                lon: position.coords.longitude
+                            });
+                        });
+                    }
+
                     this.loadMapsApi();
-                    console.log(['BTN',this.elem('btn')]);
-
-
                     this.on('mapInited',this.onMapInited);
+                    this.on('navigatorPosition',this.onNavigatorPosition);
+                    console.log(this);
                 }
             }
         },
 
-        mapsPackages: [
-            [
-                'package.full'
-            ]
-        ],
-
-
+        centerDefault: [55.76, 37.64],
+        zoomDefault: 7,
         loadMapsApi: function () {
             if (!window.ymaps) {
                 var apiScript = document.createElement('script'),
@@ -29,11 +33,9 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                 }, this);
                 apiScript.src = [
                     'http://api-maps.yandex.ru/2.1/?',
-                    //'&load=' + this.mapsPackages[0].join(','),
                     '&lang=ru_RU',
                     '&onload=' + apiCallback
                 ].join('');
-
                 document.getElementsByTagName('head')[0].appendChild(apiScript);
             } else {
                 this.onAPILoaded();
@@ -42,11 +44,17 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
         onAPILoaded: function () {
             this.initMap();
         },
-        initMap: function () {
-            var center = this.params.center || [55.76, 37.64],
-                zoom = this.params.zoom || 7;
+        onNavigatorPosition: function(e,data){
+            var self=this;
+            $.when(this.mapInitedDeferr).then(function(){
+                    self.setPosition([data.lat,data.lon]);
+            })
 
-            this._map = new ymaps.Map($('.vmap__view')[0], {
+        },
+        initMap: function () {
+            var center = this.params.center || this.centerDefault,
+                zoom = this.params.zoom || this.zoomDefault;
+            this._map = new ymaps.Map(this.elem('view')[0], {
                 center: center,
                 zoom: zoom,
                 behaviors: ['drag', 'dblClickZoom', 'scrollZoom']
@@ -56,54 +64,49 @@ modules.define('vmap', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
 
             this._map.geoObjects.add(this._myPlacemark);
 
-            // Блок поделится информацией о том, что он инициализировал карту.
-            // В данных передаём ссылку на экземпляр карты.
+            this.mapInitedDeferr.resolve();
+            this.findBlockInside('lat','input').elem('control').val(center[0]);
+            this.findBlockInside('lon','input').elem('control').val(center[1])
             this.emit('mapInited', {
                 map: this._map
             });
-
         },
         onMapInited: function(){
-          console.log('map inited');
             this.bindTo(this.elem('btn'),'pointerclick',this.onBtnSearch)
-            var lat=this.findBlockInside('lat','input').elem('control');
-            var lon=this.findBlockInside('lon','input').elem('control');
-            //var map=this._map;
+            var self=this;
             this._map.events.add('click', function(e){
                 var coords = e.get('coords');
                 var map=e.get('target');
-
-                map.geoObjects.removeAll();
-                map.setCenter(coords);
-                map.geoObjects.add(new ymaps.Placemark(coords));
-                lat.val(coords[0]);
-                lon.val(coords[1]);
-
+                self.setPosition(coords);
             });
         },
-
-        onMapClick:function(e){
-
-            //this.geoObjects.remove();
-            //this.setCenter(coords);
-             ;
-            //this.geoObjects.add(new ymaps.Placemark(coords));
-        },
-
         onBtnSearch: function () {
-            var lat=this.findBlockInside('lat','input').elem('control').val()|0;
-            var lon=this.findBlockInside('lon','input').elem('control').val()|0
-            //this._myPlacemark.geomery=;
+            var lat=parseFloat(this.findBlockInside('lat','input').elem('control').val());
+            var lon=parseFloat(this.findBlockInside('lon','input').elem('control').val())
             var coords=[lat,lon];
             this._map.geoObjects.removeAll();
             this._map.setCenter([lat,lon]);
             this._myPlacemark = new ymaps.Placemark([lat,lon]);
             this._map.geoObjects.add(this._myPlacemark);
-            console.log(this._map);
-            //this._map.redraw();
-            console.log('btn clicked');
 
+        },
+        setPosition(arr){
+            this._map.geoObjects.removeAll();
+            this._map.setCenter(arr);
+            this._map.geoObjects.add(new ymaps.Placemark(arr));
+            this.findBlockInside('lat','input').elem('control').val(arr[0]);
+            this.findBlockInside('lon','input').elem('control').val(arr[1]);
+        },
+        getPoint(){
+            var lat = parseFloat(this.findBlockInside('lat','input').elem('control').val());
+            var lon = parseFloat(this.findBlockInside('lon','input').elem('control').val());
+            return { "type": "Point", "coordinates": [lon, lat] };
         }
+
+
+
+
+
     }));
 
 });
