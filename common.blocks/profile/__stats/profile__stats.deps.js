@@ -1,7 +1,6 @@
 ({
     shouldDeps: [
-        {
-            block: 'mini-stat'
-        }
+        { block: 'text', mods: ['count'] },
+        { block: 'counters' }
     ]
-});
+})

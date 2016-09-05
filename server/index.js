@@ -340,8 +340,8 @@ app.get('/profile-edit/', function (req, res) {
 
 app.get('/profile/', function (req, res) {
 
-    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = config.servers.api_server + '/api/user/';
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
+        url = config.servers.api_server + '/api/user/';
 
     request({
         url: url,
@@ -421,6 +421,24 @@ app.get('/users-search/', function(req, res) {
     render(req, res, {
         view: 'users-search',
         title: 'Users Search'
+    })
+});
+
+app.get('/single/', function(req, res) {
+    render(req, res, {
+        view: 'single',
+        title: 'Single block',
+        single: req.query.single,
+        profile_data: {
+            displayName: 'smolnikovp',
+            firstName: 'Pavel',
+            lastName: 'Smolnikov',
+            description: 'Try to learn JS',
+            avatar: '/file/7d/f98/4759179.gif',
+            followers: 1,
+            follows: 5,
+            self: true
+        }
     })
 });
 

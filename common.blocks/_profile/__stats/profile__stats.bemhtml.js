@@ -3,14 +3,14 @@ block('profile').elem('stats')(
         return this.ctx.stats.map(function (item) {
             return [
                 {
-                    block: 'mini-stat',
+                    block: "mini-stat",
                     content: [
                         {
-                            elem: 'stat',
+                            elem: "stat",
                             content: item.value
                         },
                         {
-                            elem: 'title',
+                            elem: "title",
                             content: item.title
 
                         }

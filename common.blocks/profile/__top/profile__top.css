@@ -1,0 +1,4 @@
+.profile__top {
+    min-height: 75px;
+    background-image: linear-gradient(top, blue, #00bfff);
+}

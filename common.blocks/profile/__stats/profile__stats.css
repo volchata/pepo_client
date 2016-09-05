@@ -1,0 +1,11 @@
+.profile__stats .counters{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.profile__stats .counters .text_count {
+    padding-right: 10px;
+    font-size: larger;
+    color: #019dff;
+}
