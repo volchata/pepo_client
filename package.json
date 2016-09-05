@@ -50,11 +50,11 @@
     "postinstall": "npm run deps",
     "deps": "bower i",
     "make": "enb make",
-    "eslint": "eslint ./common.blocks/ --color",
+    "lint": "eslint ./common.blocks/ --color",
     "watch": "chokidar '*.blocks/**' -c 'npm run make'"
   },
   "private": true,
   "pre-commit": [
-    "eslint"
+    "lint"
   ]
 }
