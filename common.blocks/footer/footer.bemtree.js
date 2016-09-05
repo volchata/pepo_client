@@ -1,5 +1,3 @@
 block('footer').content()(function () {
-    return [
-        'footer content'
-    ];
+    return this.ctx.content;
 });

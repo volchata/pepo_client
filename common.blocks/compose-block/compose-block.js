@@ -24,8 +24,6 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             text_input = this.findBlockInside('textarea'),
                             send_tweet_btn = this.findBlockInside('send-tweet-btn');
 
-                        console.log(this.params);
-
                         if (this.params.tweets) {
                             tweet_to_reply = this.params.tweets[0]._id;
                             text_input.domElem.val('@' + this.params.users[this.params.tweets[0].author].displayName + ' ');

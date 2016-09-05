@@ -18,7 +18,8 @@ var techs = {
         { path: 'libs/bem-components/design/common.blocks', check: false },
         { path: 'libs/bem-components/design/desktop.blocks', check: false },
         { path: 'libs/bem-history/common.blocks', check: false },
-        'common.blocks'
+        'common.blocks',
+        'single.blocks'
     ];
 
 var isProd = process.env.YENV === 'production';
