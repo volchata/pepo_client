@@ -33,14 +33,14 @@ block('tweet').mod('default', true)(
                 if (value === 'like') {
                     text = extras.likes.length;
                     if (tweet.like) {
-                        mods = { type: 'good' };
+                        mods = {type: 'good'};
                     }
                 }
 
                 if (value === 'repost') {
                     text = extras.retweets.length;
                     if (tweet.retweet) {
-                        mods = { type: 'good' };
+                        mods = {type: 'good'};
                     }
                 }
 
@@ -90,12 +90,12 @@ block('tweet').mod('default', true)(
                     target: extras.attachment.url,
                     url: extras.attachment.image,
                     title: extras.attachment.title
-                })
+                });
             }
 
             tweet_content[tweet_content.length] = {
                 block: 'link',
-                mods: { plaintext: true },
+                mods: {plaintext: true},
                 url: data.url,
                 content: data.tweet_text
             };
@@ -126,7 +126,7 @@ block('tweet').mod('default', true)(
                     elem: 'left',
                     content: {
                         block: 'image',
-                        mods: { type: 'tweet' },
+                        mods: {type: 'tweet'},
                         url: data.avatar
                     }
                 },
@@ -135,22 +135,22 @@ block('tweet').mod('default', true)(
                     content: [
                         {
                             block: 'text',
-                            mods: { username: true },
+                            mods: {username: true},
                             content: username
                         },
                         {
                             block: 'text',
-                            mods: { id: true },
+                            mods: {id: true},
                             content: data.login
                         },
                         {
                             block: 'text',
-                            mods: { time: true },
+                            mods: {time: true},
                             content: data.time
                         },
                         {
                             block: 'link',
-                            mods: { plaintext: true },
+                            mods: {plaintext: true},
                             url: data.url,
                             content: tweet_content
                         },

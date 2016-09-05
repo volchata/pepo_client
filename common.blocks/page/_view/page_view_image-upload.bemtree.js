@@ -1,10 +1,10 @@
-block('page').mod('view', 'image-upload').content()(function() {
+block('page').mod('view', 'image-upload').content()(function () {
     return [
         {
             elem: 'header',
             content: {
                 block: 'top-menu',
-                mods: { layout: 'main' }
+                mods: {layout: 'main'}
             }
         },
         {

@@ -1,7 +1,7 @@
 ({
     shouldDeps: [
-        { block: 'profile-picture' },
-        { block: 'image' },
-        { block: 'link' }
+        {block: 'profile-picture'},
+        {block: 'image'},
+        {block: 'link'}
     ]
-})
+});

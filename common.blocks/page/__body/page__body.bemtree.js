@@ -9,14 +9,13 @@ block('page').elem('body').elemMod('wall', true)(
                 tweet_end,
                 last_timestamp = null;
 
-            function setDiffTime (i) {
+            function setDiffTime(i) {
                 var old_date = new Date(tweets_in[i].timestamp),
                     diff_date = curr_date - old_date,
                     sec = 1000,
                     min = sec * 60,
                     hour = min * 60,
                     day = hour * 24;
-
 
                 //выводим время с момента добавления твита
                 if (diff_date < sec * 60) {
@@ -49,7 +48,7 @@ block('page').elem('body').elemMod('wall', true)(
 
                 return {
                     block: 'tweet',
-                    mods: { default: true },
+                    mods: {default: true},
                     content: {
                         avatar: users[v.author].avatar,
                         login: '@' + users[v.author].displayName,
@@ -64,10 +63,9 @@ block('page').elem('body').elemMod('wall', true)(
                 };
             });
 
-
             tweet_end = {
                 block: 'tweet-drawer',
-                content: "Загрузка...",
+                content: 'Загрузка...',
                 js: {timestamp: last_timestamp}
             };
 
@@ -87,14 +85,13 @@ block('page').elem('body').elemMod('tweet', true)(
                 curr_date = new Date(),
                 diff_time;
 
-            function setDiffTime (i) {
+            function setDiffTime(i) {
                 var old_date = new Date(tweets_in[i].timestamp),
                     diff_date = curr_date - old_date,
                     sec = 1000,
                     min = sec * 60,
                     hour = min * 60,
                     day = hour * 24;
-
 
                 //выводим время с момента добавления твита
                 if (diff_date < sec * 60) {
@@ -108,8 +105,6 @@ block('page').elem('body').elemMod('tweet', true)(
                 }
             }
 
-
-
             tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
@@ -121,7 +116,7 @@ block('page').elem('body').elemMod('tweet', true)(
 
                 return {
                     block: 'tweet',
-                    mods: { default: true },
+                    mods: {default: true},
                     content: {
                         avatar: users[v.author].avatar,
                         login: '@' + users[v.author].displayName,
@@ -135,7 +130,6 @@ block('page').elem('body').elemMod('tweet', true)(
                     }
                 };
             });
-
 
             return tweets_in;
         }

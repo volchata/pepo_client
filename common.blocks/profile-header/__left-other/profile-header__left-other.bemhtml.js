@@ -10,10 +10,10 @@ block('profile-header').elem('left-other')(
 
             return [
                 {
-                    block: "profile-picture",
+                    block: 'profile-picture',
                     content: [
                         {
-                            block: "image",
+                            block: 'image',
                             url: avatar
                         }
                     ]

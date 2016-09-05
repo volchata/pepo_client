@@ -8,14 +8,14 @@ block('url-input')(
                     content: 'URL'
                 },
                 {
-                    block: "input",
-                    placeholder: "https://www.yandex.ru/",
-                    mods : { theme : 'islands', size : 'm' }
+                    block: 'input',
+                    placeholder: 'https://www.yandex.ru/',
+                    mods: {theme: 'islands', size: 'm'}
                 },
                 {
                     block: 'button',
                     mods: {snapshot: 'url'},
-                    text: "Прикрепить",
+                    text: 'Прикрепить',
                     js: true
                 }
             ];

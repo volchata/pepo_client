@@ -20,28 +20,28 @@ block('page').mod('view', 'profile').content()(function () {
             block: 'profile',
             content: [
                 {
-                    block: "profile-header",
-                    mods: { mode: mode },
+                    block: 'profile-header',
+                    mods: {mode: mode},
                     data: this.data.profile_data
                 },
                 {
-                    block: "account-info",
-                    mix: { elem: 'multiline' },
+                    block: 'account-info',
+                    mix: {elem: 'multiline'},
                     content: [
                         {
                             block: 'text',
-                            mods: { username: true },
+                            mods: {username: true},
                             content: user_passport
                         },
                         {
                             block: 'text',
-                            mods: { id: true },
+                            mods: {id: true},
                             content: '@' + this.data.profile_data.displayName
                         }
                     ]
                 },
                 {
-                    elem: "stats",
+                    elem: 'stats',
                     stats: [
                         {
                             title: 'Читает',
@@ -59,8 +59,8 @@ block('page').mod('view', 'profile').content()(function () {
             elem: 'footer',
             content: {
                 block: 'bottom-menu',
-                mods: { homescreen: true }
+                mods: {homescreen: true}
             }
         }
-    ]
+    ];
 });

@@ -1,4 +1,4 @@
-block('page').mod('view', 'compose').content()(function() {
+block('page').mod('view', 'compose').content()(function () {
     var data = {};
     var js = true;
 

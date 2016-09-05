@@ -2,7 +2,7 @@ block('page').mod('view', 'wall').content()(function () {
     return [
         {
             elem: 'body',
-            elemMods: { wall: true },
+            elemMods: {wall: true},
             data: this.data.tweet_data,
             content: [
                 {
@@ -14,7 +14,7 @@ block('page').mod('view', 'wall').content()(function () {
             elem: 'footer',
             content: {
                 block: 'bottom-menu',
-                mods: { homescreen: true }
+                mods: {homescreen: true}
             }
         }
     ];

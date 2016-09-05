@@ -1,4 +1,4 @@
-block('image-upload').content()(function() {
+block('image-upload').content()(function () {
     return [
         {
             block: 'dropzone'

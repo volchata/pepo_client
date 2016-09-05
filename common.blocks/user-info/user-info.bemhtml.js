@@ -5,7 +5,7 @@ block('user-info')(
                 elem: 'header',
                 content: {
                     block: 'top-menu',
-                    mods: { layout: 'main' }
+                    mods: {layout: 'main'}
                 }
             },
             {
@@ -13,13 +13,13 @@ block('user-info')(
                 content: [
                     {
                         block: 'text',
-                        mix: { block: 'user-info', elem: 'text'},
+                        mix: {block: 'user-info', elem: 'text'},
                         content: 'Расскажите о себе'
                     },
                     {
                         block: 'text',
-                        mix: { block: 'user-info', elem: 'text'},
-                        mods: { main: true },
+                        mix: {block: 'user-info', elem: 'text'},
+                        mods: {main: true},
                         content: 'Чем вы отличаетесь от других?'
                     }
                 ]
@@ -33,7 +33,7 @@ block('user-info')(
                     },
                     {
                         block: 'textarea',
-                        mods: { theme: 'islands', size: 'm', 'has-clear': true },
+                        mods: {theme: 'islands', size: 'm', 'has-clear': true},
                         placeholder: 'Перечислите интересы'
                     }
                 ]
@@ -42,7 +42,7 @@ block('user-info')(
                 elem: 'footer',
                 content: {
                     block: 'bottom-menu',
-                    mods: { accept: true }
+                    mods: {accept: true}
                 }
             }
         ]

@@ -1,6 +1,5 @@
 ({
     shouldDeps: [
-        { block: 'dropzone' }
+        {block: 'dropzone'}
     ]
-})
-
+});

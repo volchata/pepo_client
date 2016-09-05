@@ -12,7 +12,7 @@ block('root').replace()(function () {
 
     return {
         block: 'page',
-        mods: { view: data.view, js: true },
+        mods: {view: data.view, js: true},
         title: data.title,
         favicon: '/favicon.ico',
         styles: [
@@ -28,15 +28,13 @@ block('root').replace()(function () {
             }
         ],
         head: [
-            { elem: 'meta', attrs: { name: 'description', content: meta.description } },
-            { elem: 'meta', attrs: { property: 'og:title', content: og.title || data.title } },
-            { elem: 'meta', attrs: { property: 'og:url', content: og.url } },
-            { elem: 'meta', attrs: { property: 'og:site_name', content: og.siteName } },
-            { elem: 'meta', attrs: { property: 'og:locale', content: og.locale || 'en_US' } },
-            { elem: 'meta', attrs: { property: 'og:type', content: 'website' } },
-            { elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } }
+            {elem: 'meta', attrs: {name: 'description', content: meta.description}},
+            {elem: 'meta', attrs: {property: 'og:title', content: og.title || data.title}},
+            {elem: 'meta', attrs: {property: 'og:url', content: og.url}},
+            {elem: 'meta', attrs: {property: 'og:site_name', content: og.siteName}},
+            {elem: 'meta', attrs: {property: 'og:locale', content: og.locale || 'en_US'}},
+            {elem: 'meta', attrs: {property: 'og:type', content: 'website'}},
+            {elem: 'meta', attrs: {name: 'viewport', content: 'width=device-width, initial-scale=1'}}
         ]
     };
 });
-
-

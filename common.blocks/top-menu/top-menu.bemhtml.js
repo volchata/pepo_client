@@ -4,8 +4,8 @@ block('top-menu')(
         {
             block: 'top-menu',
             buttons: [
-                { name: 'back' },
-                { name: 'search' }
+                {name: 'back'},
+                {name: 'search'}
             ]
         }
     ),
@@ -13,17 +13,17 @@ block('top-menu')(
         {
             block: 'top-menu',
             buttons: [
-                { name: 'back' }
+                {name: 'back'}
             ]
         }
     ),
     mod('layout', 'users-search').replace()(
         {
             block: 'top-menu',
-            mods: { "users-search": true },
+            mods: {'users-search': true},
             buttons: [
-                { name: 'back' },
-                { name: 'search' }
+                {name: 'back'},
+                {name: 'search'}
             ]
         }
     ),
@@ -32,8 +32,8 @@ block('top-menu')(
             this.ctx.buttons.map(function (button) {
                 return {
                     block: 'button',
-                    mods: { theme: 'islands', size: 'm', view: 'plain', type: 'air' },
-                    mix: { block: 'top-menu', elem: button.name },
+                    mods: {theme: 'islands', size: 'm', view: 'plain', type: 'air'},
+                    mix: {block: 'top-menu', elem: button.name},
                     icon: {
                         block: 'icon'
                     }
@@ -41,8 +41,8 @@ block('top-menu')(
             }),
             {
                 block: 'input',
-                mods: { theme: 'islands', size: 'l', 'has-clear': true, disabled: true },
-                mix: { block: 'top-menu', elem: 'input' },
+                mods: {theme: 'islands', size: 'l', 'has-clear': true, disabled: true},
+                mix: {block: 'top-menu', elem: 'input'},
                 placeholder: 'Поиск'
             }
         ];

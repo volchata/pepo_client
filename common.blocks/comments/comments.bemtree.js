@@ -1,5 +1,6 @@
 block('comments')(
     content()(function () {
+        //eslint-disable-next-line no-undef, no-unused-vars
         var tweet_data = this.data.tweet_data,
             users = tweet_data.users,
             tweet_in = tweet_data.tweets,
@@ -7,14 +8,13 @@ block('comments')(
 
         comments = comments.map(function (v) {
 
-            if (!v.extras)
-            {
+            if (!v.extras) {
                 v.extras = {};
             }
 
             return {
                 block: 'tweet',
-                mods: { default: true },
+                mods: {default: true},
                 content: {
                     avatar: users[v.author].avatar,
                     login: '@' + users[v.author].displayName,

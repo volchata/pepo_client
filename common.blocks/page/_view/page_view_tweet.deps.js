@@ -2,14 +2,14 @@
     shouldDeps: [
         {
             block: 'top-menu',
-            mods: { layout: 'main' }
+            mods: {layout: 'main'}
         },
         {
             block: 'tweet',
-            mods: { default: true }
+            mods: {default: true}
         },
         {
             block: 'comments'
         }
     ]
-})
+});

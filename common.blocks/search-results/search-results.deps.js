@@ -3,9 +3,9 @@
         {
             elem: 'search-row',
             shouldDeps: [
-                { block: 'profile-picture' },
-                { block: 'search-picture' }
+                {block: 'profile-picture'},
+                {block: 'search-picture'}
             ]
-        },
-    ],
-})
+        }
+    ]
+});

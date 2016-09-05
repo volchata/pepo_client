@@ -10,9 +10,9 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             var val = textelem.domElem.val();
 
                             if (val) {
-                                btnelem.delMod("disabled");
+                                btnelem.delMod('disabled');
                             } else {
-                                btnelem.setMod("disabled", true);
+                                btnelem.setMod('disabled', true);
                             }
                         }
 
@@ -50,8 +50,8 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                     BEMDOM.destruct(pre.domElem);
                                     that.dropElemCache();
                                 }
-                                    
-                                if (data.status != "OK") {
+
+                                if (data.status != 'OK') {
                                     tweet_url = null;
                                     tweet_attachment = null;
                                     return;
@@ -60,13 +60,13 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 BEMDOM.append(
                                     that.findBlockInside('modal-body').domElem,
                                     BEMHTML.apply({
-                                        block : 'tweet-attachment',
+                                        block: 'tweet-attachment',
                                         target: data.url,
-                                        title:  data.title,
-                                        url:    data.image
+                                        title: data.title,
+                                        url: data.image
                                     })
                                 );
-                                
+
                             },
                             that
                         );
@@ -78,7 +78,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 BEMDOM.append(
                                     that.findBlockInside('modal-body').domElem,
                                     BEMHTML.apply({
-                                        block : 'tweet-attachment'
+                                        block: 'tweet-attachment'
                                     }));
                             },
                             that
@@ -87,7 +87,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         this.findBlockOutside('page').on(
                             'url_attachment_set', // имя БЭМ-события
                             function (event, data) {
-                                if (data.status != "OK") {
+                                if (data.status != 'OK') {
                                     tweet_url = null;
                                     var pre = that.findBlockInside('tweet-attachment');
                                     if (pre) {
@@ -110,7 +110,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         });
 
                         send_tweet_btn.bindTo('click', function () {
-                            if (this.hasMod("disabled")) {
+                            if (this.hasMod('disabled')) {
                                 return;
                             }
 
@@ -126,13 +126,13 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             if (tweet_to_reply) {
                                 uri = '/api/tweet/' + tweet_to_reply;
                             } else {
-                                uri =  '/api/user/feed';
+                                uri = '/api/user/feed';
                             }
 
                             $.ajax(
                                 {
                                     url: window.config.api_server + uri,
-                                    type: "POST",
+                                    type: 'POST',
                                     data: JSON.stringify(
                                         {
                                             content: text_input.domElem.val(),
@@ -143,13 +143,13 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                             }
                                         }
                                     ),
-                                    dataType: "json",
-                                    contentType: "application/json; charset=utf-8",
+                                    dataType: 'json',
+                                    contentType: 'application/json; charset=utf-8',
                                     context: this
                                 }
                             ).done(
                                 function () {
-                                    document.location.href = "/";
+                                    document.location.href = '/';
                                 }
                             ).fail(
                                 function (msg) {
@@ -162,7 +162,6 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                         block: 'error-message',
                                         content: response
                                     }));
-
 
                                     that.dropElemCache('error-message');
                                 }

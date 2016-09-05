@@ -11,15 +11,16 @@ block('profile-header')(
             return {
                 block: 'profile-header',
                 elems: [
-                    { name: 'left', data: { avatar: avatar }  },
-                    { name: 'right' }
+                    {name: 'left', data: {avatar: avatar}},
+                    {name: 'right'}
                 ]
             };
         }
     ),
     mod('mode', 'other').replace()(
         function () {
-            var avatar, displayName;
+            var avatar,
+                displayName;
             if (this.ctx.data) {
                 avatar = this.ctx.data.avatar || null;
             } else {
@@ -35,8 +36,8 @@ block('profile-header')(
             return {
                 block: 'profile-header',
                 elems: [
-                    { name: 'left-other', data: { avatar: avatar } },
-                    { name: 'right-other', data: { displayName: displayName, followed: this.ctx.data.followed } }
+                    {name: 'left-other', data: {avatar: avatar}},
+                    {name: 'right-other', data: {displayName: displayName, followed: this.ctx.data.followed}}
                 ]
             };
         }
