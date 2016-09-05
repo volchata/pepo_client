@@ -13,16 +13,16 @@ block('profile-edit')(
                 },
                 {
                     block: 'dropzone',
-                    js: {url: '/api/user/image', current : this.ctx.data.avatar, size: 400 }
+                    js: {url: '/api/user/image', current: this.ctx.data.avatar, size: 400}
                 },
                 {
                     elem: 'label',
                     content: 'Имя'
                 },
                 {
-                    block: "input",
-                    label: "Имя",
-                    mods : { theme : 'islands', size : 'm', width : 'available', field: 'firstName' },
+                    block: 'input',
+                    label: 'Имя',
+                    mods: {theme: 'islands', size: 'm', width: 'available', field: 'firstName'},
                     val: this.ctx.data.firstName || ''
                 },
                 {
@@ -30,9 +30,9 @@ block('profile-edit')(
                     content: 'Фамилия'
                 },
                 {
-                    block: "input",
-                    label: "Фамилия",
-                    mods : { theme : 'islands', size : 'm', width : 'available', field: 'lastName' },
+                    block: 'input',
+                    label: 'Фамилия',
+                    mods: {theme: 'islands', size: 'm', width: 'available', field: 'lastName'},
                     val: this.ctx.data.lastName || ''
                 },
                 {
@@ -44,7 +44,7 @@ block('profile-edit')(
                     mods: {
                         theme: 'islands',
                         size: 'm',
-                        width : 'available',
+                        width: 'available',
                         field: 'description'
                     },
                     placeholder: 'Расскажите о себе',

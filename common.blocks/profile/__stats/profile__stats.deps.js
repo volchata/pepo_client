@@ -4,4 +4,4 @@
             block: 'mini-stat'
         }
     ]
-})
+});

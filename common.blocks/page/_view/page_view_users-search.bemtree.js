@@ -4,7 +4,7 @@ block('page').mod('view', 'users-search').content()(function () {
             elem: 'header',
             content: {
                 block: 'top-menu',
-                mods: { layout: 'users-search' }
+                mods: {layout: 'users-search'}
             }
         },
         {

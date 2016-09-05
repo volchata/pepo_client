@@ -1,4 +1,3 @@
-block('button').mod("snapshot", "url")(
+block('button').mod('snapshot', 'url')(
     js()(true)
 );
-

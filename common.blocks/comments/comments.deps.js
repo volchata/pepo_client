@@ -1,3 +1,3 @@
 ({
-    mustDeps: { block: 'tweet', mods: { comment: true } }
-})
+    mustDeps: {block: 'tweet', mods: {comment: true}}
+});

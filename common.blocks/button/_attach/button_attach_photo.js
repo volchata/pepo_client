@@ -2,7 +2,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
     function (provide, BEMDOM, $, BEMHTML) {
 
-        provide(BEMDOM.decl({ block: this.name, modName: 'attach', modVal: 'photo' }, {
+        provide(BEMDOM.decl({block: this.name, modName: 'attach', modVal: 'photo'}, {
             onSetMod: {
                 js: {
                     inited: function () {
@@ -20,7 +20,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                             BEMDOM.append(editor.domElem, BEMHTML.apply({
                                 block: 'compose-modal',
-                                mods: { mode: 'photo' },
+                                mods: {mode: 'photo'},
                                 js: true
                             }));
 

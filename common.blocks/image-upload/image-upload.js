@@ -9,7 +9,7 @@ modules.define('image-upload', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         inited: function () {
                             var t = this.findBlockInside('dropzone');
                             if (t !== null) {
-                                this.domElem.dropzone({ url: window.config.api_server + "/api/user/image" });
+                                this.domElem.dropzone({url: window.config.api_server + '/api/user/image'});
                             }
                         }
                     }

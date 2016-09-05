@@ -5,11 +5,11 @@
         },
         {
             block: 'button',
-            mods: { attach: 'photo' }
+            mods: {attach: 'photo'}
         },
         {
             block: 'button',
-            mods: { attach: 'link' }
+            mods: {attach: 'link'}
         },
         {
             elem: 'left'
@@ -18,4 +18,4 @@
             elem: 'right'
         }
     ]
-})
+});

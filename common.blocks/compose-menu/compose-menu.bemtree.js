@@ -2,7 +2,6 @@ block('compose-menu')(
     content()(
         function () {
 
-
             return [
                 {
                     elem: 'left',
@@ -12,7 +11,7 @@ block('compose-menu')(
                             var button = {
                                 block: 'button',
                                 mods: {attach: v},
-                                mix: { block: 'compose-btn', elem: 'button' },
+                                mix: {block: 'compose-btn', elem: 'button'},
                                 icon: {
                                     block: 'icon',
                                     mods: {}
@@ -31,12 +30,11 @@ block('compose-menu')(
                     elem: 'right',
                     content: {
                         block: 'button',
-                        mix: { block: "send-tweet-btn" },
-                        text: "Твитнуть"
+                        mix: {block: 'send-tweet-btn'},
+                        text: 'Твитнуть'
                     }
                 }
             ];
         }
     )
 );
-

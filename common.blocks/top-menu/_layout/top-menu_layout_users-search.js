@@ -1,15 +1,15 @@
 modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, BEMDOM, $, BEMHTML) {
 
-    provide(BEMDOM.decl({ block: this.name, modName: 'users-search', modVal: true },
+    provide(BEMDOM.decl({block: this.name, modName: 'users-search', modVal: true},
         {
-            onSetMod : {
-                'js' : {
+            onSetMod: {
+                'js': {
                     'inited': function () {
 
-                        var query = this.findBlockInside("input__control"),
-                            page = this.findBlockOutside("page_view_users-search"),
-                            search_results = page.findBlockInside("search-results"),
-                            search = this.findBlockInside("top-menu__search"),
+                        var query = this.findBlockInside('input__control'),
+                            page = this.findBlockOutside('page_view_users-search'),
+                            search_results = page.findBlockInside('search-results'),
+                            search = this.findBlockInside('top-menu__search'),
                             input = this.findBlockInside('input'),
                             search_timer;
 
@@ -26,10 +26,10 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                             if (search_string) {
                                 $.ajax(
                                     {
-                                        url: window.config.api_server + "/api/users/" + search_string + "/search",
-                                        type: "GET",
-                                        dataType: "json",
-                                        contentType: "application/json; charset=utf-8",
+                                        url: window.config.api_server + '/api/users/' + search_string + '/search',
+                                        type: 'GET',
+                                        dataType: 'json',
+                                        contentType: 'application/json; charset=utf-8',
                                         context: search_results
                                     }
                                 ).done(
@@ -52,14 +52,14 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                                             }
 
                                             BEMDOM.append(search_results.domElem, BEMHTML.apply({
-                                                elem: "search-row",
+                                                elem: 'search-row',
                                                 content: {
                                                     block: 'link',
-                                                    url: "/users/" + item.displayName,
+                                                    url: '/users/' + item.displayName,
                                                     content: [
                                                         {
                                                             block: 'profile-picture',
-                                                            mods: { search: "users" },
+                                                            mods: {search: 'users'},
                                                             content: [{
                                                                 block: 'image',
                                                                 url: item.avatar
@@ -67,12 +67,12 @@ modules.define('top-menu', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provid
                                                         },
                                                         {
                                                             block: 'text',
-                                                            mods: { username: true },
+                                                            mods: {username: true},
                                                             content: user_passport
                                                         },
                                                         {
                                                             block: 'text',
-                                                            mods: { id: true },
+                                                            mods: {id: true},
                                                             content: '@' + item.displayName
                                                         }]
                                                 }

@@ -2,22 +2,22 @@ block('bottom-menu')(
     mod('homescreen', true),
     content()(
         {
-            block : 'radio-group',
-            mods : { theme : 'islands', size : 'm', type : 'button' },
-            name : 'radio-button',
-            options : [
+            block: 'radio-group',
+            mods: { theme: 'islands', size: 'm', type: 'button' },
+            name: 'radio-button',
+            options: [
                 {
-                    val : 1,
-                    text : 'Add tweet',
+                    val: 1,
+                    text: 'Add tweet',
                     mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
-                        mods: { 'tweet': true }
+                        mods: { tweet: true }
                     }
                 },
                 {
-                    val : 2,
-                    text : 'Home',
+                    val: 2,
+                    text: 'Home',
                     mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
@@ -25,8 +25,8 @@ block('bottom-menu')(
                     }
                 },
                 {
-                    val : 3,
-                    text : 'Search',
+                    val: 3,
+                    text: 'Search',
                     mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',
@@ -34,8 +34,8 @@ block('bottom-menu')(
                     }
                 },
                 {
-                    val : 4,
-                    text : 'Account',
+                    val: 4,
+                    text: 'Account',
                     mods: { type: 'homescreen' },
                     icon: {
                         block: 'icon',

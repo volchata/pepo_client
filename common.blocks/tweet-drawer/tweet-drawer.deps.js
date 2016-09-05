@@ -2,14 +2,14 @@
     {
         shouldDeps: [
             {
-                mods: { active: true }
-            },
+                mods: {active: true}
+            }
         ]
     },
     {
         tech: 'js',
         shouldDeps: [
-            { block: 'tweet', mods: { default: true }, tech: 'bemhtml' }
+            {block: 'tweet', mods: {default: true}, tech: 'bemhtml'}
         ]
     }
-])
+]);

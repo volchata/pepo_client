@@ -1,4 +1,3 @@
-block('button').mod("attach", "photo")(
+block('button').mod('attach', 'photo')(
     js()(true)
 );
-

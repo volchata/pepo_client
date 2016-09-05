@@ -3,7 +3,7 @@ block('social-buttons')(
     content()(
         [
             {
-                elem: "wrap"
+                elem: 'wrap'
             }
         ]
     )

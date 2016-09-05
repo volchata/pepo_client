@@ -4,7 +4,7 @@ block('profile-header').elem('right')(
             {
                 block: 'button',
                 mods: {theme: 'islands', size: 'm', view: 'plain'},
-                content: "Редактировать"
+                content: 'Редактировать'
             }
         ]
     )

@@ -2,11 +2,10 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
     function (provide, BEMDOM, $, BEMHTML) {
 
-        provide(BEMDOM.decl({ block: this.name, modName: 'attach', modVal: 'link' }, {
+        provide(BEMDOM.decl({block: this.name, modName: 'attach', modVal: 'link'}, {
             onSetMod: {
                 js: {
                     inited: function () {
-
 
                         var that = this;
 
@@ -22,7 +21,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                             BEMDOM.append(editor.domElem, BEMHTML.apply({
                                 block: 'compose-modal',
-                                mods: { mode: 'url' },
+                                mods: {mode: 'url'},
                                 js: true
                             }));
 

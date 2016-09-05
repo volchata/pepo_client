@@ -13,7 +13,6 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
                             lastName = this.findBlockInside('input_field_lastName').findBlockInside('input__control'),
                             description = this.findBlockInside('textarea_field_description');
 
-
                         this.findBlockOutside('page').on(
                             'upload_success', // имя БЭМ-события
                             function (event, data) {
@@ -36,15 +35,15 @@ modules.define('profile-edit', ['i-bem__dom', 'jquery'],
 
                             $.ajax(
                                 {
-                                    url: "/api/user/",
-                                    type: "POST",
+                                    url: '/api/user/',
+                                    type: 'POST',
                                     data: {
                                         firstName: firstName.domElem.val(),
                                         lastName: lastName.domElem.val(),
                                         description: description.domElem.val(),
                                         avatar: avatar
                                     },
-                                    dataType: "json"
+                                    dataType: 'json'
                                 }
                             ).done(
                                 function () {

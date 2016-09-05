@@ -4,12 +4,12 @@ block('tweet').elem('header')(
             return [
                 {
                     block: 'text',
-                    mods: { username: true },
+                    mods: {username: true},
                     content: this.ctx.username
                 },
                 {
                     block: 'text',
-                    mods: { time: true },
+                    mods: {time: true},
                     content: this.ctx.time
                 }
             ];

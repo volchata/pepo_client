@@ -2,19 +2,19 @@
     shouldDeps: [
         {
             block: 'bottom-menu',
-            mods: { homescreen: true }
+            mods: {homescreen: true}
         },
-        { block: 'profile' },
+        {block: 'profile'},
         {
-            block: "profile-header"
-        },
-        {
-            block: "profile",
-            elem: "stats"
+            block: 'profile-header'
         },
         {
-            block: "account-info",
+            block: 'profile',
+            elem: 'stats'
+        },
+        {
+            block: 'account-info',
             mix: {elem: 'multiline'}
         }
     ]
-})
+});

@@ -4,4 +4,4 @@
             block: 'follow-button'
         }
     ]
-})
+});

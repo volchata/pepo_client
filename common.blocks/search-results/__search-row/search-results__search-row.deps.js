@@ -1,6 +1,6 @@
 ({
     tech: 'js',
     shouldDeps: [
-        { block: 'link', tech: 'bemhtml' }
+        {block: 'link', tech: 'bemhtml'}
     ]
-})
+});

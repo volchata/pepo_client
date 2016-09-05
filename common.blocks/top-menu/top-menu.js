@@ -5,8 +5,8 @@ modules.define('top-menu', ['i-bem__dom'], function (provide, BEMDOM) {
                 'js': {
                     'inited': function () {
                         var input = this.findBlockInside('input'),
-                            search = this.findBlockInside("top-menu__search"),
-                            back = this.findBlockInside("top-menu__back");
+                            search = this.findBlockInside('top-menu__search'),
+                            back = this.findBlockInside('top-menu__back');
 
                         search.bindTo('click', function () {
                             input.toggleMod('disabled');
