@@ -8,7 +8,7 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                     inited: function () {
                         var loading = false,
                             timestamp = this.params.timestamp;
-                        this.bindToWin('scroll', function (e) {
+                        this.bindToWin('scroll', function () {
 
                             var _scroll = $(window).scrollTop(),
                                 h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),

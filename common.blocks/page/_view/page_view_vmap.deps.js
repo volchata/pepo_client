@@ -5,10 +5,10 @@
             mods: { layout: 'main' }
         },
         {
-            block: 'vmap-loader',
+            block: 'vmap-loader'
         },
         {
-            block: 'vmap',
+            block: 'vmap'
         }
     ]
-})
+});

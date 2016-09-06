@@ -31,16 +31,14 @@ block('page').elem('body').elemMod('wall', true)(
 
             if (tweets_in.length) {
                 last_timestamp = tweets_in[tweets_in.length - 1].timestamp;
-            }
-            else {
+            } else {
                 last_timestamp = null;
             }
 
             tweets_in = tweets_in.map(function (v, i) {
                 setDiffTime(i);
 
-                if (!v.extras)
-                {
+                if (!v.extras) {
                     v.extras = {};
                 }
 
@@ -48,7 +46,7 @@ block('page').elem('body').elemMod('wall', true)(
 
                 return {
                     block: 'tweet',
-                    mods: {default: true},
+                    mods: { default: true },
                     content: {
                         avatar: users[v.author].avatar,
                         login: '@' + users[v.author].displayName,
@@ -66,7 +64,7 @@ block('page').elem('body').elemMod('wall', true)(
             tweet_end = {
                 block: 'tweet-drawer',
                 content: 'Загрузка...',
-                js: {timestamp: last_timestamp}
+                js: { timestamp: last_timestamp }
             };
 
             tweets_in[tweets_in.length] = tweet_end;
@@ -109,14 +107,13 @@ block('page').elem('body').elemMod('tweet', true)(
                 setDiffTime(i);
 
                 //console.log(v.extras);
-                if (!v.extras)
-                {
+                if (!v.extras) {
                     v.extras = {};
                 }
 
                 return {
                     block: 'tweet',
-                    mods: {default: true},
+                    mods: { default: true },
                     content: {
                         avatar: users[v.author].avatar,
                         login: '@' + users[v.author].displayName,

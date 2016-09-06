@@ -1,6 +1,6 @@
 modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
-    function (provide, BEMDOM, $, BEMHTML) {
+    function (provide, BEMDOM, $) {
 
         provide(BEMDOM.decl({block: this.name, modName: 'snapshot', modVal: 'url'}, {
             onSetMod: {
@@ -40,7 +40,7 @@ modules.define('button', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 function (msg) {
 
                                     that.findBlockOutside('page').emit('url_attachment_set', msg);
-                                    if (msg.status != 'OK') return ;
+                                    if (msg.status !== 'OK') return ;
 
                                     var snapshot_src = window.config.api_server + '/api/user/snapshot' + msg.attachment;
 

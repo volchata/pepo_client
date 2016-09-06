@@ -49,7 +49,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                     that.dropElemCache();
                                 }
 
-                                if (data.status != 'OK') {
+                                if (data.status !== 'OK') {
                                     tweet_url = null;
                                     tweet_attachment = null;
                                     return;
@@ -85,7 +85,7 @@ modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         this.findBlockOutside('page').on(
                             'url_attachment_set', // имя БЭМ-события
                             function (event, data) {
-                                if (data.status != 'OK') {
+                                if (data.status !== 'OK') {
                                     tweet_url = null;
                                     var pre = that.findBlockInside('tweet-attachment');
                                     if (pre) {

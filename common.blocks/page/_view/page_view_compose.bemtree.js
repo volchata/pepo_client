@@ -2,8 +2,7 @@ block('page').mod('view', 'compose').content()(function () {
     var data = {};
     var js = true;
 
-    if (this.data)
-    {
+    if (this.data) {
         data = this.data.tweet_data;
         js = data;
     }
