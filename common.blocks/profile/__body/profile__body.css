@@ -1,11 +1,7 @@
-.profile__body {
-    padding: 10px 0;
-    text-align: center;
+.profile__body .button_theme_simple.button_hovered {
+    border: none;
 }
 
-.profile__body .button_theme_islands.button_checked,
-.profile__body .button_theme_islands.button_checked:before,
-.profile__body .button_theme_islands.button_checked.button_hovered {
-    background: #019dff;
-    color: #fff;
+.profile__body .button_theme_simple.button_focused-hard {
+    box-shadow: none;
 }

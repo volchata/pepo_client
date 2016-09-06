@@ -1,6 +1,7 @@
 ({
     shouldDeps: [
         { block: ['header', 'body', 'footer'] },
-        { block: 'profile' }
+        { block: 'profile' },
+        { block: 'tweets', mods: { display: 'default' } }
     ]
 });

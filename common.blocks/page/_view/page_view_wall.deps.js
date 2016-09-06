@@ -3,18 +3,18 @@
         shouldDeps: [
             {
                 block: 'top-menu',
-                mods: {layout: 'main'}
+                mods: { layout: 'main' }
             },
             {
                 block: 'tweet',
-                mods: {default: true}
+                mods: { default: true }
             },
             {
                 block: 'tweet-drawer'
             },
             {
                 block: 'bottom-menu',
-                mods: {homescreen: true}
+                mods: { homescreen: true }
             }
         ]
     },
@@ -23,7 +23,7 @@
         shouldDeps: [
             {
                 block: 'tweet',
-                mods: {default: true},
+                mods: { default: true },
                 tech: 'bemhtml'
             }
         ]

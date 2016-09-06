@@ -1,5 +1,5 @@
 ({
     mustDeps: [
-        { elem: ['header', 'body', 'image', 'stats', 'top', 'info', 'about'] }
+        { elem: ['header', 'body', 'button', 'to-edit'] }
     ]
 });

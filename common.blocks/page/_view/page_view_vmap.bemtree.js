@@ -10,8 +10,7 @@ block('page').mod('view', 'vmap').content()(function() {
             data: this.data.tweet_data,
             content: [
                 {
-                    block: 'tweet',
-
+                    block: 'tweet'
                 }
 
             ]

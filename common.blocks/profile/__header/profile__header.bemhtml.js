@@ -4,9 +4,24 @@ block('profile').elem('header')(
             return [
                 {
                     block: 'button',
-                    mods: { theme: 'simple', type: 'link', edit: true },
+                    mix: { block: 'profile', elem: 'to-edit' },
+                    mods: { theme: 'simple', size: 'm', type: 'link' },
                     url: '/profile-edit/',
-                    content: 'Редактировать'
+                    icon: {
+                        block: 'icon',
+                        mods: { profile: 'back' }
+                    }
+                },
+                {
+                    block: 'image',
+                    mods: { type: 'avatar' },
+                    url: this.ctx.url
+                },
+                {
+                    block: 'about-user',
+                    username: this.ctx.username,
+                    login: '@' + this.ctx.login,
+                    description: this.ctx.description
                 }
             ];
         }

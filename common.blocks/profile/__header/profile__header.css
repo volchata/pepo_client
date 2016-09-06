@@ -1,4 +1,9 @@
 .profile__header {
+    background-color: #324065;
     text-align: right;
-    padding: 10px;
+}
+
+.profile__header .about-user {
+    text-align: center;
+    padding: 5px;
 }
