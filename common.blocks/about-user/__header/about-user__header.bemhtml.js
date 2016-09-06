@@ -1,7 +1,7 @@
-block('profile').elem('about')(
+block('about-user').elem('header')(
     content()(
         function () {
-            return [
+            var head = [
                 {
                     block: 'text',
                     mods: { username: true },
@@ -9,15 +9,12 @@ block('profile').elem('about')(
                 },
                 {
                     block: 'text',
-                    mods: { id: true },
-                    content: this.ctx.login
-                },
-                {
-                    block: 'text',
-                    mods: { about: true },
-                    content: this.ctx.description
+                    mods: { time: true },
+                    content: this.ctx.time
                 }
             ];
+
+            return head;
         }
     )
 );

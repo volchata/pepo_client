@@ -74,13 +74,13 @@ app.get('/users/:login', function (req, res) {
         else {
 
             if (answer) {
-                if(response.statusCode != 404){
+                if (response.statusCode != 404) {
                     render(req, res, {
                         view: 'profile',
                         title: 'Profile  Page',
                         profile_data: answer
                     })
-                }else{
+                } else {
                     res.status(404);
                     return render(req, res, { view: '404' });
                 }
@@ -145,7 +145,7 @@ app.get('/', function (req, res) {
         }
     })
 });
-app.get('/map/',function(req,res){
+app.get('/map/', function (req, res) {
     render(req, res, {
         view: 'vmap',
         title: 'My map'
@@ -380,14 +380,14 @@ app.get('/comment/:id', function (req, res) {
     });
 });
 
-app.get('/users-search/', function(req, res) {
+app.get('/users-search/', function (req, res) {
     render(req, res, {
         view: 'users-search',
         title: 'Users Search'
     })
 });
 
-app.get('/single/', function(req, res) {
+app.get('/single/', function (req, res) {
     render(req, res, {
         view: 'single',
         title: 'Single block',
@@ -396,23 +396,44 @@ app.get('/single/', function(req, res) {
             displayName: 'smolnikovp',
             firstName: 'Pavel',
             lastName: 'Smolnikov',
-            description: 'Try to learn JS',
-            avatar: '/file/7d/f98/4759179.gif',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet ornare diam, ' +
+            'sit amet pharetra ante iaculis at. Integer sit amet nibh eleifend nisl laoreet congue. Aenean laoreet ',
+            avatar: 'https://pbs.twimg.com/profile_images/652908696721297410/xpBsSCDu.jpg',
             followers: 1,
             follows: 5,
+            tweets: [
+                {
+                    _id: '57cc17d6270e510a02bba8cd',
+                    author: '57c19d3dbb873d7c3b8cfaa1',
+                    content: 'dont blink',
+                    __v: 0,
+                    timestamp: '2016-08-01T12:16:40.308Z',
+                    like: false,
+                    retweet: false
+                },
+                {
+                    _id: '57cc17bb270e510a02bba8cc',
+                    author: '57c19d3dbb873d7c3b8cfaa1',
+                    content: 'THIS IS SPARTA',
+                    __v: 2,
+                    timestamp: '2016-09-03T12:16:40.308Z',
+                    like: true,
+                    retweet: true
+                }
+            ],
             self: true
         }
     })
 });
 
-app.get('/image-upload/', function(req, res) {
+app.get('/image-upload/', function (req, res) {
     render(req, res, {
         view: 'image-upload',
         title: 'Image upload'
     })
 });
 
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
     res.status(404);
     return render(req, res, { view: '404' });
 });
