@@ -5,7 +5,7 @@ block('vmap').elem('btn')(
             return [
                 {
                     block: 'button',
-                    text: "Показать",
+                    text: 'Показать',
                     js: true
                 }
             ];

@@ -6,4 +6,4 @@
         { elem: 'btn'},
         { elem: 'label'}
     ]
-})
+});

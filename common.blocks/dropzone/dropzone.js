@@ -1,4 +1,4 @@
-modules.define('dropzone', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, jQuery) {
+modules.define('dropzone', ['i-bem__dom', 'jquery'], function (provide, BEMDOM) {
 
 // этот комментарий будет заменен `borschik`-ом на содержимое файла плагина
     /*borschik:include:../../node_modules/dropzone/dist/min/dropzone.min.js*/

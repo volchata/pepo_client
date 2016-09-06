@@ -8,8 +8,8 @@ block('vmap').elem('lon')(
                     content: 'Lon'
                 },
                 {
-                    block: "input",
-                    mods : { theme : 'islands', size : 'm' },
+                    block: 'input',
+                    mods: { theme: 'islands', size: 'm' },
                     text: 37.64
                 }
             ];

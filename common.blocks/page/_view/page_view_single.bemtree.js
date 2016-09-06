@@ -5,7 +5,7 @@ block('page').mod('view', 'single')(
                 {
                     block: this.data.single
                 }
-            ]
+            ];
         }
     )
 );
