@@ -8,7 +8,10 @@ block('page').mod('view', 'profile')(
                 }
             },
             {
-                block: 'body'
+                block: 'body',
+                content: {
+                    block: 'tweets'
+                }
             },
             {
                 block: 'footer'

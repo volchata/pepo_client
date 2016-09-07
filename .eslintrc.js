@@ -26,7 +26,9 @@ module.exports = {
         "array-callback-return": 0,
         "consistent-this": 0,
         "curly": 0,
-        "max-len": 0
+        "max-len": 0,
+        "block-scoped-var": 0,
+        "no-redeclare": 0
     },
     "plugins": [
         "bem-xjst"

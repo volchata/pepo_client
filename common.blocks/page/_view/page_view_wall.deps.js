@@ -6,8 +6,7 @@
                 mods: { layout: 'main' }
             },
             {
-                block: 'tweet',
-                mods: { default: true }
+                block: 'tweets'
             },
             {
                 block: 'tweet-drawer'

@@ -1,9 +1,0 @@
-.profile-header__gear
-{
-   display: inline-block;
-}
-.profile-header__gear .button .icon
-{
-   opacity: 0.5;
-    background-image: url("gear.png");
-}

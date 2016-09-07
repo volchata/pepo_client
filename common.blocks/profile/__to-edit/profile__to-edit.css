@@ -1,15 +1,16 @@
 .profile__to-edit {
     background-color: inherit;
+    margin: 5px 0;
     border: none;
-    font-size: 35px;
+    font-size: 25px;
 }
 
 .profile__to-edit .icon_profile_back {
-    background-image: url("img/right-arrow.svg");
+    background-image: url("img/edit.svg");
 }
 
 .profile__to-edit.button_theme_simple.button_pressed .icon_profile_back {
-    background-image: url("img/right-arrow-active.svg");
+    background-image: url("img/edit-active.svg");
 }
 
 .profile__to-edit.button_theme_simple.button_pressed {

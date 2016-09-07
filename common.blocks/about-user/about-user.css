@@ -19,6 +19,6 @@
 @media (orientation: landscape) {
     .about-user .text_username,
     .about-user .text_id {
-        font-size: 10px;
+        font-size: 8px;
     }
 }
