@@ -1,4 +1,14 @@
 .vmap__lon
 {
+    display: inline-block;
     color: #2a5885;
+    float: right;
+}
+
+.vmap__lon .input
+{
+
+    width: 160px;
+    margin-bottom: 7px;
+
 }

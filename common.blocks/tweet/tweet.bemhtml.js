@@ -157,6 +157,10 @@ block('tweet').mod('default', true)(
                         {
                             block: 'control-group',
                             content: ['reply', 'repost', 'like'].map(addCtlGrp)
+                        },
+                        {
+                            block: 'vmap'
+
                         }
                     ]
                 }

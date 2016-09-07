@@ -20,9 +20,13 @@
     {
         elem: 'right',
         shouldDeps: [
-            {block: 'control-group'},
-            {block: 'link', mods: {plaintext: true}},
-            {block: 'icon', mods: ['like', 'repost', 'reply']}
+            { block: 'control-group' },
+            { block: 'link', mods: { plaintext: true } },
+            { block: 'icon', mods: ['like', 'repost', 'reply'] },
+            {
+                block: 'vmap'
+
+            }
         ]
     },
     {
