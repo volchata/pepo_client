@@ -7,6 +7,14 @@
 }
 
 .tweet__left .image_type_avatar {
-    max-width: 100%;
+    width: 45px;
+    height: 45px;
     margin-top: 5px;
+}
+
+@media (min-width: 400px) {
+    .tweet__left .image_type_avatar {
+        width: 55px;
+        height: 55px;
+    }
 }
