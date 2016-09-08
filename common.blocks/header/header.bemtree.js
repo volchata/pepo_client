@@ -1,7 +1,3 @@
 block('header').content()(function () {
-    return [
-        {
-            block: 'logo'
-        }
-    ];
+    return this.ctx.content;
 });

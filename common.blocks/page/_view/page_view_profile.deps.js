@@ -1,20 +1,7 @@
 ({
     shouldDeps: [
-        {
-            block: 'bottom-menu',
-            mods: {homescreen: true}
-        },
-        {block: 'profile'},
-        {
-            block: 'profile-header'
-        },
-        {
-            block: 'profile',
-            elem: 'stats'
-        },
-        {
-            block: 'account-info',
-            mix: {elem: 'multiline'}
-        }
+        { block: ['header', 'body', 'footer'] },
+        { block: 'profile' },
+        { block: 'tweets' }
     ]
 });

@@ -4,7 +4,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
         {
             _onClick: function (e) {
                 var action = e.target.params.action,
-                    tweet_id = this.params.data._id,
+                    tweet_id = this.params.id,
                     that = e.target;
 
                 switch (action) {
@@ -12,7 +12,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                         if (!that.hasMod('type')) {
                             $.ajax(
                                 {
-                                    url: window.config.api_server + '/api/tweet/' + this.params.data._id + '/like',
+                                    url: window.config.api_server + '/api/tweet/' + this.params.id + '/like',
                                     type: 'POST',
                                     data: {},
                                     dataType: 'json',
@@ -28,7 +28,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                         } else {
                             $.ajax(
                                 {
-                                    url: window.config.api_server + '/api/tweet/' + this.params.data._id + '/like',
+                                    url: window.config.api_server + '/api/tweet/' + this.params.id + '/like',
                                     type: 'DELETE',
                                     data: {},
                                     dataType: 'json',
@@ -41,7 +41,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                         if (!that.hasMod('type')) {
                             $.ajax(
                                 {
-                                    url: window.config.api_server + '/api/tweet/' + this.params.data._id + '/retweet',
+                                    url: window.config.api_server + '/api/tweet/' + this.params.id + '/retweet',
                                     type: 'POST',
                                     data: {},
                                     dataType: 'json',
@@ -57,7 +57,7 @@ modules.define('tweet', ['i-bem__dom', 'BEMHTML', 'jquery'], function (provide, 
                         } else {
                             $.ajax(
                                 {
-                                    url: window.config.api_server + '/api/tweet/' + this.params.data._id + '/retweet',
+                                    url: window.config.api_server + '/api/tweet/' + this.params.id + '/retweet',
                                     type: 'DELETE',
                                     data: {},
                                     dataType: 'json',

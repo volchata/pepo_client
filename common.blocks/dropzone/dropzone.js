@@ -1,4 +1,5 @@
-modules.define('dropzone', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, jQuery) {
+//eslint отключен по той причине, что без передачи аргументом jquery dropzone не работает
+modules.define('dropzone', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, jQuery) { //eslint-disable-line no-unused-vars
 
 // этот комментарий будет заменен `borschik`-ом на содержимое файла плагина
     /*borschik:include:../../node_modules/dropzone/dist/min/dropzone.min.js*/

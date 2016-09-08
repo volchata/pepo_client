@@ -2,19 +2,17 @@
     {
         block: 'tweet',
         mustDeps: [
-            {elem: ['like', 'repost', 'reply', 'right', 'left', 'url', 'image', 'geo', 'header']},
-            {block: 'button', mods: ['enabled']},
-            {block: 'tweet-attachment'},
-            {block: 'link', mods: {plaintext: true}},
-            {mods: ['default', 'comment']},
-            {block: 'text', mods: ['id', 'username']}
+            { elem: ['like', 'repost', 'reply', 'right', 'left', 'url', 'image', 'geo', 'header'] },
+            { block: 'button', mods: ['enabled'] },
+            { block: 'tweet-attachment' },
+            { block: 'text', mods: ['id', 'username'] }
         ]
     },
     {
         elem: 'left',
         mustDeps: [
-            {block: 'image'},
-            {block: 'image', mods: {type: 'tweet'}}
+            { block: 'image', mods: { type: 'avatar' } },
+            { block: 'about-user' }
         ]
     },
     {
@@ -32,13 +30,13 @@
     {
         mods: 'comment',
         mustDeps: [
-            {elem: ['right', 'left']}
+            { elem: ['right', 'left'] }
         ]
     },
     {
         tech: 'js',
         shouldDeps: [
-            {block: 'tweet', mods: {default: true}, tech: 'bemhtml'}
+            { block: 'tweet', mods: { default: true }, tech: 'bemhtml' }
         ]
     }
 ]);
