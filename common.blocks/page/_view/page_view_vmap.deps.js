@@ -17,23 +17,19 @@
                 mods: { homescreen: true }
             },
             {
-                block: 'vmap-loader',
+                block: 'vmap-loader'
             },
             {
-                block: 'vmap',
+                block: 'vmap'
             }
-
-
         ]
     },
     {
-        tech: "js",
-        shouldDeps: [
-            {
-                block: 'tweet',
-                mods: { default: true },
-                tech: 'bemhtml'
-            }
-        ]
+        tech: 'js',
+        shouldDeps: {
+            block: 'tweet',
+            mods: { default: true },
+            tech: 'bemhtml'
+        }
     }
 ]);

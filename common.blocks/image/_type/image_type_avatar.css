@@ -4,7 +4,7 @@
     width: 100px;
     height: 100px;
     display: block;
-    box-shadow: 0 0 5px #00bfff;
+    box-shadow: 0 0 4px #000;
 }
 
 @media (orientation: landscape) {

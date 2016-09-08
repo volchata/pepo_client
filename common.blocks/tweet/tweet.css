@@ -1,17 +1,18 @@
 .tweet{
     display: inline-block;
     min-width: 100%;
-    background-color: #324065;
+    background-color: #2D2D36;
     vertical-align: top;
 }
 
 .tweet:nth-child(2n) {
-    background-color: #3d5886;
+    background-color: #3f3f4c;
 }
 
 .tweet .button{
     padding: 0;
     margin-right: 10px;
+    color: #fff;
 }
 
 .tweet .button.button_enabled,

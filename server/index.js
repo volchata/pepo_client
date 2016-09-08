@@ -145,6 +145,7 @@ app.get('/', function (req, res) {
         }
     })
 });
+
 app.get('/map/', function (req, res) {
     render(req, res, {
         view: 'vmap',
@@ -172,10 +173,9 @@ app.get('/feed/', function (req, res) {
             if (answer) {
                 answer.usemap=true;
                 render(req, res, {
-                    view: 'vmap',
+                    view: 'wall',
                     title: 'Wall Page',
-                    tweet_data: answer,
-
+                    tweet_data: answer
                 })
             }
             else {
