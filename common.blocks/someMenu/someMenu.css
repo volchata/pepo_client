@@ -1,0 +1,94 @@
+.someMenu .hidden-menu {
+    display: block;
+    position: fixed;
+    list-style:none;
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    width: 200px;
+    background-color: #eee;
+    height: 100%;
+    top: 0;
+    left: -200px;
+    transition: left .2s;
+    z-index: 2;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+}
+
+.someMenu .input_checker {
+    opacity: 0;
+}
+
+.someMenu .checkbox {
+    color: #fff;
+    padding: 5px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    transition: left .23s;
+    z-index: 3;
+    width: 25px;
+    height: 25px;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+}
+
+.someMenu .checkbox .icon_menu {
+    background-image: url('img/menu.svg');
+    margin: 0;
+    width: 100%;
+    line-height: 25px;
+}
+
+.someMenu .checkbox .button_theme_simple {
+    border: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+}
+
+.someMenu .checkbox .button_theme_simple.button_checked {
+    background: inherit;
+}
+
+.someMenu .checkbox .text {
+    display: block;
+    height: 5px;
+    background-color: #fff;
+    margin: 5px 0 0;
+    transition: all .1s linear .23s;
+    position: relative;
+}
+
+.someMenu .checkbox .text:first-child {
+    margin-top: 0;
+}
+
+.someMenu .checkbox {
+    left: 0;
+}
+
+.someMenu .checkbox.checkbox_checked {
+    left: 160px;
+}
+
+.someMenu .checkbox.checkbox_checked ~ .hidden-menu {
+    left: 0;
+}
+
+.someMenu .checkbox.checkbox_checked ~ .checkbox .text:first-child {
+    -webkit-transform: rotate(45deg);
+    top: 10px;
+}
+
+.someMenu .checkbox.checkbox_checked ~ .checkbox .text:nth-child(2) {
+    opacity: 0;
+}
+
+.someMenu .checkbox.checkbox_checked ~ .checkbox .text:nth-child(3){
+    -webkit-transform: rotate(-45deg);
+    top: -10px;
+}
