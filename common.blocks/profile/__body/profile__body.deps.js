@@ -1,6 +1,6 @@
 ({
     shouldDeps: [
-        { block: 'control-group' },
+        { block: 'radio-group', mods: { theme: 'simple', size: 'm', type: 'button' } },
         { block: 'button', mods: { theme: 'simple' } },
         { block: 'icon' }
     ]

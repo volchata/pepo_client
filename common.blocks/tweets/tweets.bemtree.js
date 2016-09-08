@@ -64,7 +64,8 @@ block('tweets')(
                         login: login,
                         time: setDiffTime(i),
                         tweet_text: tweets_text,
-                        url: url
+                        url: url,
+                        extras: tweets[i].extras
                     };
                 });
 
