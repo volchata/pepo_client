@@ -1,17 +1,19 @@
 block('tweet-attachment')(
-
-    attrs()({role: 'img'}),
+    attrs()({ role: 'img' }),
 
     tag()('div'),
     js()(true),
     content()(function () {
         var ctx = this.ctx;
+
+        // console.log(this.ctx)
+
         if (ctx.title) {
             ctx.title = ' - ' + ctx.title;
         } else {
             ctx.title = '';
         }
-        if (ctx.target && ctx.url ) {
+        if (ctx.target && ctx.url) {
             return [
                 {
                     block: 'link',
@@ -22,10 +24,9 @@ block('tweet-attachment')(
                 {
                     block: 'link',
                     url: ctx.target,
-                    content:
-                    {
+                    content: {
                         block: 'image',
-                        url: ctx.url,
+                        url: ctx.image,
                         width: ctx.width,
                         height: ctx.height,
                         alt: ctx.target,
@@ -33,25 +34,26 @@ block('tweet-attachment')(
                     }
                 }
             ];
-        } else {
-            return [
-                {
-                    block: 'progress',
-                    content: [
-                        {
-                            block: 'loading',
-                            content: [
-                                {
-                                    block: 'title',
-                                    content: 'Loading...'
-                                }
-                            ]
-                        }
-
-                    ]
-                }
-            ];
         }
+        // else {
+        //     return [
+        //         {
+        //             block: 'progress',
+        //             content: [
+        //                 {
+        //                     block: 'loading',
+        //                     content: [
+        //                         {
+        //                             block: 'title',
+        //                             content: 'Loading...'
+        //                         }
+        //                     ]
+        //                 }
+        //
+        //             ]
+        //         }
+        //     ];
+        // }
 
     })
 );

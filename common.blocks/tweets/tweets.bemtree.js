@@ -46,11 +46,13 @@ block('tweets')(
                     if (!that.data.tweet_data) {
                         var login = '@' + data.displayName,
                             username = data.lastName + ' ' + data.firstName,
-                            avatar = data.avatar;
+                            avatar = data.avatar,
+                            extras = data.tweets[i].extras;
                     } else {
                         var login = '@' + users[v.author].displayName,
                             username = users[v.author].firstName + ' ' + users[v.author].lastName,
-                            avatar = users[v.author].avatar;
+                            avatar = users[v.author].avatar,
+                            extras = tweets[i].extras;
                     }
 
                     var tweets_text = tweets[i].content,
@@ -64,7 +66,8 @@ block('tweets')(
                         login: login,
                         time: setDiffTime(i),
                         tweet_text: tweets_text,
-                        url: url
+                        url: url,
+                        extras: extras
                     };
                 });
 

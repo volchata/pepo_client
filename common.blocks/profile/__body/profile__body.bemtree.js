@@ -2,23 +2,22 @@ block('profile').elem('body')(
     content()(
         function () {
             return {
-                block: 'control-group',
-
-                content: ['pep', 'picture', 'like'].map(function (v) {
-                    var add_btns = {
-                        block: 'button',
-                        mix: { block: 'profile', elem: 'button' },
-                        mods: { theme: 'simple', size: 'm' },
+                block: 'radio-group',
+                mods: { theme: 'simple', size: 'm', type: 'button' },
+                mix: { block: 'profile', elem: 'radio' },
+                val: 0,
+                options: ['pep', 'picture', 'like'].map(function (v, i) {
+                    var radios = {
+                        val: i,
                         icon: {
                             block: 'icon',
                             mods: {}
                         }
                     };
 
-                    add_btns.mods[v] = true;
-                    add_btns.icon.mods[v] = true;
+                    radios.icon.mods[v] = true;
 
-                    return add_btns;
+                    return radios;
                 })
             };
         }

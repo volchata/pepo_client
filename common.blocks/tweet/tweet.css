@@ -15,11 +15,6 @@
     color: #fff;
 }
 
-.tweet .button.button_enabled,
-.tweet .button.button_enabled .icon {
-    opacity: 1;
-}
-
 .tweet .button .icon_reply {
     background-image: url('img/arrow.svg');
 }
