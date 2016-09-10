@@ -51,7 +51,12 @@
     "deps": "bower i",
     "make": "enb make",
     "lint": "eslint ./common.blocks/ --color",
-    "watch": "chokidar '*.blocks/**' -c 'npm run make'"
+    "fix": "eslint --fix .",
+    "fix1": "eslint --fix ",
+    "lint1": "eslint ",
+
+    "watch": "chokidar '*.blocks/**' -c 'npm run make'",
+    "validate": "npm ls"
   },
   "private": true,
   "pre-commit": [
