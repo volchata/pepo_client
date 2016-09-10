@@ -1,20 +1,17 @@
 block('page').mod('view', 'wall').content()(function () {
     return [
         {
-            elem: 'body',
-            elemMods: {wall: true},
-            data: this.data.tweet_data,
-            content: [
-                {
-                    block: 'tweet'
-                }
-            ]
+            block: 'body',
+            content: {
+                block: 'tweets',
+                data: this.data.tweet_data
+            }
         },
         {
-            elem: 'footer',
+            block: 'footer',
             content: {
                 block: 'bottom-menu',
-                mods: {homescreen: true}
+                mods: { homescreen: true }
             }
         }
     ];

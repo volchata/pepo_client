@@ -24,7 +24,7 @@ modules.define('follow-button', ['i-bem__dom', 'jquery'],
                                     dataType: 'json'
                                 }
                             ).done(
-                                function (msg) {
+                                function () {
                                     if (method === 'POST') {
                                         button.setMod('follow', 'no');
                                         button.setText('Отписаться');

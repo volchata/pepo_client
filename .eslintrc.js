@@ -11,7 +11,8 @@ module.exports = {
     },
     "globals": {
         "modules": true,
-        "BEMHTML": true
+        "BEMHTML": true,
+        "Dropzone": true
     },
     "rules": {
         "no-console": 0,
@@ -24,7 +25,10 @@ module.exports = {
         "object-curly-spacing": 0,
         "array-callback-return": 0,
         "consistent-this": 0,
-        "curly": 0
+        "curly": 0,
+        "max-len": 0,
+        "block-scoped-var": 0,
+        "no-redeclare": 0
     },
     "plugins": [
         "bem-xjst"

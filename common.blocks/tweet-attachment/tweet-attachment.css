@@ -55,12 +55,15 @@
   border-radius: 50%;
   background-color: transparent;
 }
+
 .tweet-attachment .progress .loading:hover {
   border-color: rgba(210, 210, 210, 0.5);
 }
+
 .tweet-attachment .progress .loading:hover:before {
   background-color: rgba(210, 210, 210, 0.4);
 }
+
 .tweet-attachment .progress .loading:before {
   position: absolute;
   display: block;
@@ -76,11 +79,10 @@
 .tweet-attachment .progress .loading:after {
   position: absolute;
   display: block;
-  top: 0;
   content: '';
   z-index: 11;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 45px;
   height: 45px;
   border-radius: 200px 0 0 0;

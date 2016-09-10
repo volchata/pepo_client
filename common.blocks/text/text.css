@@ -1,11 +1,11 @@
 .text_username {
     font-weight: bold;
-    margin-right: 5px;
 }
 
 .text_id,
 .text_time {
     color: #898989;
+    display: block;
 }
 
 .text_time {

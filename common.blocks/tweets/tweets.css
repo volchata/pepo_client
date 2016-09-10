@@ -1,0 +1,12 @@
+.tweets {
+    background-color: #3a4e79;
+    height: 100vh;
+}
+
+.tweets .text_about {
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    color: #63739b;
+    text-align: center;
+}

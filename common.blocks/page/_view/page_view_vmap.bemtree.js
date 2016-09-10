@@ -1,4 +1,4 @@
-block('page').mod('view', 'vmap').content()(function() {
+block('page').mod('view', 'vmap').content()(function () {
     return [
         {
             elem: 'body',
@@ -10,8 +10,7 @@ block('page').mod('view', 'vmap').content()(function() {
             data: this.data.tweet_data,
             content: [
                 {
-                    block: 'tweet',
-
+                    block: 'tweet'
                 }
 
             ]
@@ -25,26 +24,3 @@ block('page').mod('view', 'vmap').content()(function() {
         }
     ];
 });
-/*
-block('page').mod('view', 'vmap').content()(function() {
-    //this.data.profile_data
-
-    return [
-                {
-                    block: 'vmap-loader',
-                    js: true,
-                    content:[
-                        {
-                            block: 'vmap'
-
-                        },
-                        {
-                            block: 'vmap'
-
-                        }
-
-                    ]
-                }
-    ]
-});
-*/

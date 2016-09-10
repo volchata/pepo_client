@@ -17,39 +17,19 @@
                 mods: { homescreen: true }
             },
             {
-                block: 'vmap-loader',
+                block: 'vmap-loader'
             },
             {
-                block: 'vmap',
+                block: 'vmap'
             }
-
-
         ]
     },
     {
-        tech: "js",
-        shouldDeps: [
-            {
-                block: 'tweet',
-                mods: { default: true },
-                tech: 'bemhtml'
-            }
-        ]
-    }])
-
-/*
-({
-    shouldDeps: [
-        {
-            block: 'top-menu',
-            mods: { layout: 'main' }
-        },
-        {
-            block: 'vmap-loader',
-        },
-        {
-            block: 'vmap',
+        tech: 'js',
+        shouldDeps: {
+            block: 'tweet',
+            mods: { default: true },
+            tech: 'bemhtml'
         }
-    ]
-})
-*/
+    }
+]);

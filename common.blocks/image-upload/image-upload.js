@@ -1,6 +1,6 @@
 modules.define('image-upload', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
-    function (provide, BEMDOM, $, BEMHTML) {
+    function (provide, BEMDOM) {
 
         provide(BEMDOM.decl(this.name,
             {

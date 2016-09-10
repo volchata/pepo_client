@@ -1,8 +1,8 @@
 .tweet__right {
     float: right;
     box-sizing: border-box;
-    font-size: 14px;
-    padding: 10px;
+    font-size: 12px;
+    padding: 5px 10px;
     width: 82%;
 }
 
@@ -18,6 +18,8 @@
     outline: none;
 }
 
-.tweet__right .tweet-image {
-    max-width: 240px;
+@media (orientation: landscape) {
+    .tweet__right .link_plaintext {
+        font-size: 10px;
+    }
 }
