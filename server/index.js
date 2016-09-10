@@ -188,43 +188,7 @@ app.get('/feed/', function (req, res) {
         }
     });
 });
-/*
-// Новая страница - новый роут
-app.get('/feed/', function (req, res) {
-    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = config.servers.api_server + '/api/user/feed';
 
-    request({
-        url: url,
-        headers: {
-            Cookie: cookie,
-            json: true
-        }
-    }, function (error, response, answer) {
-        answer = JSON.parse(answer);
-
-        if (response.statusCode == 403) {
-            res.redirect('/auth/');
-        }
-        else {
-            if (answer) {
-                render(req, res, {
-                    view: 'wall',
-                    title: 'Wall Page',
-                    tweet_data: answer
-                })
-            }
-            else {
-                render(req, res, {
-                    view: '500',
-                    title: ''
-                })
-            }
-
-        }
-    });
-});
-*/
 app.get('/login/', function (req, res) {
     render(req, res, {
         view: 'login',
@@ -446,7 +410,14 @@ app.get('/single/', function (req, res) {
                     __v: 0,
                     timestamp: '2016-08-01T12:16:40.308Z',
                     like: false,
-                    retweet: false
+                    retweet: false,
+                    extras: {
+                        url: 'http://yandex.ru',
+                        attachment: { url: 'http://yandex.ru' },
+                        likes: [ '57c19d3dbb873d7c3b8cfaa1' ],
+                        comments: [],
+                        retweets: [ '57c19d3dbb873d7c3b8cfaa1' ]
+                    }
                 },
                 {
                     _id: '57cc17bb270e510a02bba8cc',
@@ -455,7 +426,14 @@ app.get('/single/', function (req, res) {
                     __v: 2,
                     timestamp: '2016-09-03T12:16:40.308Z',
                     like: true,
-                    retweet: true
+                    retweet: true,
+                    extras: {
+                        url: 'http://yandex.ru',
+                        attachment: { url: 'http://yandex.ru', target: 'http://yandex.ru' },
+                        likes: [ '57c19d3dbb873d7c3b8cfaa1', '57c19d3dbb873d7c3b8cfaa2' ],
+                        comments: [],
+                        retweets: [ '57c19d3dbb873d7c3b8cfaa1' ]
+                    }
                 }
             ],
             self: true

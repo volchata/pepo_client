@@ -1,0 +1,33 @@
+.profile__radio .radio{
+    background-color: #fe427c;
+    display: inline-block;
+    width: 33.32%;
+    height: 50px;
+    font-size: 23px;
+    border-radius: 0;
+}
+
+.profile__radio .radio .button_theme_simple {
+    background-color: inherit;
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+.profile__radio .radio .button_checked {
+    background-color: #2D2D36;
+}
+
+.profile__radio .icon_like {
+    background-image: url("img/like.svg");
+}
+
+.profile__radio .icon_pep {
+    background-image: url("img/pep.svg");
+}
+
+.profile__radio .icon_picture {
+    background-image: url("img/picture.svg");
+}
