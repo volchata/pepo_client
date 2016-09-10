@@ -8,7 +8,7 @@ block('tweets')(
                     users = data.users;
             }
 
-            var that = this,
+            var //that = this,
                 tweets = data.tweets;
 
             function setDiffTime(i) {
@@ -42,21 +42,24 @@ block('tweets')(
                     content: 'Вы еще ничего не добавляли'
                 };
             } else {
+
+                console.log(data);
                 tweets = tweets.map(function (v, i) {
-                    if (!that.data.tweet_data) {
+                    console.log(users[v.author]);
+                    /*if (!that.data.tweet_data) {
                         var login = '@' + data.displayName,
                             username = data.lastName + ' ' + data.firstName,
                             avatar = data.avatar;
-                    } else {
-                        var login = '@' + users[v.author].displayName,
-                            username = users[v.author].firstName + ' ' + users[v.author].lastName,
-                            avatar = users[v.author].avatar;
-                    }
+                    } else {*/
+                    var login = '@' + users[v.author].displayName,
+                        username = users[v.author].firstName + ' ' + users[v.author].lastName,
+                        avatar = users[v.author].avatar;
+                    //}
 
                     var tweets_text = tweets[i].content,
                         url = '/tweet/' + tweets[i]._id;
 
-                    return {
+                    var result = {
                         block: 'tweet',
                         id: tweets[i]._id,
                         avatar: avatar,
@@ -66,6 +69,13 @@ block('tweets')(
                         tweet_text: tweets_text,
                         url: url
                     };
+                    if (data.usemap) {
+                        result.usemap = true;
+                    }
+                    if (data.geoIp) {
+                        result.geoIp = data.geoIp;
+                    }
+                    return result;
                 });
 
                 return tweets;

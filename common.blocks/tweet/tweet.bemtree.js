@@ -2,6 +2,29 @@ block('tweet')(
     content()(
         function () {
             var data = this.ctx; //{ block: 'tweet' и поля переданные из tweets_display_default.bemtree.js }
+            var $content = [
+                {
+                    block: 'about-user',
+                    username: data.username,
+                    login: data.login,
+                    time: data.time
+                },
+                {
+                    block: 'link',
+                    mods: { theme: 'islands', size: 'm', plaintext: true },
+                    content: data.tweet_text,
+                    url: data.url
+                }
+            ];
+            if (data.usemap) {
+                $content.push({
+                    block: 'vmap',
+                    js: {geoIp: data.geoIp}
+                }) ;
+            }
+            $content.push({
+                elem: 'controls'
+            });
             return [
                 {
                     elem: 'left',
@@ -13,23 +36,7 @@ block('tweet')(
                 },
                 {
                     elem: 'right',
-                    content: [
-                        {
-                            block: 'about-user',
-                            username: data.username,
-                            login: data.login,
-                            time: data.time
-                        },
-                        {
-                            block: 'link',
-                            mods: { theme: 'islands', size: 'm', plaintext: true },
-                            content: data.tweet_text,
-                            url: data.url
-                        },
-                        {
-                            elem: 'controls'
-                        }
-                    ]
+                    content: $content
                 }
             ];
 
