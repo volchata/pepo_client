@@ -54,7 +54,6 @@
     "fix": "eslint --fix .",
     "fix1": "eslint --fix ",
     "lint1": "eslint ",
-
     "watch": "chokidar '*.blocks/**' -c 'npm run make'",
     "validate": "npm ls"
   },
