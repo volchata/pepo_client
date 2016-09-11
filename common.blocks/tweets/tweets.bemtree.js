@@ -45,7 +45,7 @@ block('tweets')(
             } else {
 
                 console.log(data);
-                console.log('HR');
+                console.log('HR 1');
                 tweets = tweets.map(function (v, i) {
                     console.log(users[v.author]);
                     /*if (!that.data.tweet_data) {
@@ -53,6 +53,7 @@ block('tweets')(
                             username = data.lastName + ' ' + data.firstName,
                             avatar = data.avatar;
                     } else {*/
+                    var user=users[v.author];
                     var login = '@' + users[v.author].displayName,
                         username = users[v.author].firstName + ' ' + users[v.author].lastName,
                         avatar = users[v.author].avatar;
@@ -69,7 +70,8 @@ block('tweets')(
                         login: login,
                         time: setDiffTime(i),
                         tweet_text: tweets_text,
-                        url: url
+                        url: url,
+                        data: {user: user}//new format
                     };
                     if (data.usemap) {
                         result.usemap = true;
