@@ -173,10 +173,10 @@ app.get('/feedmap/', function (req, res) {
             if (answer) {
                 answer.usemap=true;
          //       answer.geoIp={"ll":[44.9572,34.1108]};
-                res.set("x-custom-header",JSON.stringify(answer.geoIp));
+
                 render(req, res, {
                     view: 'vmap',
-                    title: 'Wall Page',
+                    title: 'Wall Page'+JSON.stringify(answer),
                     tweet_data: answer
                 })
             }
