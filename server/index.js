@@ -160,7 +160,8 @@ app.get('/feedmap/', function (req, res) {
         url: url,
         headers: {
             Cookie: cookie,
-            json: true
+            json: true,
+            "x-custom-header": JSON.stringify(answer.geoIp)
         }
     }, function (error, response, answer) {
         answer = JSON.parse(answer);
@@ -171,6 +172,7 @@ app.get('/feedmap/', function (req, res) {
         else {
             if (answer) {
                 answer.usemap=true;
+         //       answer.geoIp={"ll":[44.9572,34.1108]};
                 render(req, res, {
                     view: 'vmap',
                     title: 'Wall Page',
