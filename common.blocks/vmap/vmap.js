@@ -13,10 +13,13 @@ modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provid
                             });
                         });
                     }
+                    if (this.params.geoIp !== undefined && this.params.geoIp.hasOwnProperty('ll')) {
+                        this.centerDefault = this.params.geoIp.ll;
+                    }
                     this.checkMapsApi();
+
                     this.on('mapInited', this.onMapInited);
                     this.on('navigatorPosition', this.onNavigatorPosition);
-                    console.log(this);
                 }
             }
         },
