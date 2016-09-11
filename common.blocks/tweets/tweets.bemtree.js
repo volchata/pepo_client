@@ -4,11 +4,12 @@ block('tweets')(
             if (!this.data.tweet_data) {
                 var data = this.data.profile_data;
             } else {
-                var data = this.data.tweet_data,
-                    users = data.users;
+                var data = this.data.tweet_data;
+           //         users = data.users;
             }
 
             var //that = this,
+                users = data.users,
                 tweets = data.tweets;
 
             function setDiffTime(i) {
@@ -44,6 +45,7 @@ block('tweets')(
             } else {
 
                 console.log(data);
+                console.log('HR');
                 tweets = tweets.map(function (v, i) {
                     console.log(users[v.author]);
                     /*if (!that.data.tweet_data) {
