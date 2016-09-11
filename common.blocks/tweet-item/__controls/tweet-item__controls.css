@@ -1,0 +1,29 @@
+.tweet-item__controls .icon_reply {
+    background-image: url('img/arrow.svg');
+}
+
+.tweet-item__controls .icon_like {
+    background-image: url('img/like.svg');
+}
+
+.tweet-item__controls .button_pinned .icon_like {
+    background-image: url('img/like-pinned.svg');
+}
+
+.tweet-item__controls .icon_retweet {
+    background-image: url('img/retweet.svg');
+}
+
+.tweet-item__controls .button_pinned .icon_retweet {
+    background-image: url('img/retweet-pinned.svg');
+}
+
+.tweet-item__controls .button{
+    padding: 0;
+    margin-right: 10px;
+    background: transparent;
+}
+
+.tweet-item__controls .icon {
+    width: 15px;
+}

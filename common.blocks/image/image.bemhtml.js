@@ -1,3 +1,0 @@
-block('image')(
-    js()(true)
-);

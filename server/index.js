@@ -221,6 +221,45 @@ app.get('/feed/', function (req, res) {
         }
     });
 });
+
+app.get('/feed2/', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/feed';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                answer.usemap=true;
+                render(req, res, {
+                    view: 'feed',
+                    title: 'Feed Page',
+                    tweets: answer.tweets,
+                    users: answer.users
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
+
 /*
 // Новая страница - новый роут
 app.get('/feed/', function (req, res) {
