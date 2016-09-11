@@ -155,14 +155,20 @@ app.get('/map/', function (req, res) {
 app.get('/feedmap/', function (req, res) {
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
     var url = config.servers.api_server + '/api/user/feed';
-
+    var $headers= {
+        Cookie: cookie,
+        json: true,
+    };
+    if (req.connection.remoteAddress !== undefined){
+        $headers['x-jfh3fh36gt4re3rybfh-remote']= req.connection.remoteAddress;
+    }
+    if (req.headers && req.headers['x-forwarded-for'] !== undefined) {
+        $headers['x-forwarded-for']= req.headers['x-forwarded-for'];
+    }
+    
     request({
         url: url,
-        headers: {
-            Cookie: cookie,
-            json: true
-
-        }
+        headers: $headers
     }, function (error, response, answer) {
         answer = JSON.parse(answer);
 
