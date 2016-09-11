@@ -7,7 +7,8 @@ block('tweet')(
                     block: 'about-user',
                     username: data.username,
                     login: data.login,
-                    time: data.time
+                    time: data.time,
+                    data: {user: data.data.user}
                 },
                 {
                     block: 'link',
