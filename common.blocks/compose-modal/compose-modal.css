@@ -1,0 +1,28 @@
+.compose-modal
+{
+	display: none;
+}
+
+.compose-block_mode_photo .compose-modal_state_photo,
+.compose-block_mode_url .compose-modal_state_url,
+.compose-block_mode_geo .compose-modal_state_geo 
+{
+	display: block;
+}
+
+
+.compose-modal .dropzone {
+	padding: 5px;
+	min-width: 207px;
+	min-height: 207px;
+	display: inline-block;
+}
+
+.compose-modal .dropzone .dz-preview {
+	margin: 2px;
+}
+
+.compose-modal .dropzone .dz-preview .dz-image {
+	width: auto;
+	height: auto;
+}

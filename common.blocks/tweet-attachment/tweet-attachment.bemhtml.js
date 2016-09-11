@@ -5,39 +5,29 @@ block('tweet-attachment')(
     tag()('div'),
     js()(true),
     content()(function () {
-        var ctx = this.ctx;
-        if (ctx.title) {
-            ctx.title = ' - ' + ctx.title;
-        } else {
-            ctx.title = '';
-        }
-        if (ctx.target && ctx.url ) {
-            return [
+        var data = this.ctx;
+        var t = data.title;
+        t = (t != null) ? (' - ' + t) : '';
+        return [
+            {
+                block: 'link',
+                url: data.target,
+                mix: 'header',
+                content: data.target + t
+            },
+            {
+                block: 'link',
+                url: data.target,
+                content:
                 {
-                    block: 'link',
-                    url: ctx.target,
-                    mix: 'header',
-                    content: ctx.target + ctx.title
-                },
-                {
-                    block: 'link',
-                    url: ctx.target,
-                    content:
-                    {
-                        block: 'image',
-                        url: ctx.url,
-                        width: ctx.width,
-                        height: ctx.height,
-                        alt: ctx.target,
-                        title: ctx.target + ctx.title
-                    }
+                    block: 'image',
+                    url: data.url,
+                    // width: data.width,
+                    // height: data.height,
+                    alt: data.target,
+                    title: data.target + t
                 }
-            ];
-        } else {
-            return [
-                {block: 'spinner'}
-            ]
-        }
-
+            }
+        ];
     })
 );

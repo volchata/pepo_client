@@ -1,4 +1,4 @@
-modules.define('image-upload', ['i-bem__dom', 'jquery', 'BEMHTML'],
+modules.define('image-upload', ['i-bem__dom'],
 
     function (provide, BEMDOM) {
 

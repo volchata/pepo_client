@@ -1,11 +1,11 @@
-modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provide, BEMDOM, $) {
+modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provide, BEMDOM, $, loader) {
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
             js: {
                 inited: function () {
                     var self = this;
                     this.mapInitedDeferr = $.Deferred();
-                    if (window.navigator.geolocation !== undefined) {
+                    if ( window.navigator.geolocation !== undefined ) {
                         window.navigator.geolocation.getCurrentPosition(function (position) {
                             self.emit('navigatorPosition', {
                                 lat: position.coords.latitude,

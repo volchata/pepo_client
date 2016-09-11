@@ -1,36 +1,28 @@
 block('compose-modal')(
+    js()(true),
     mod('mode', 'photo').replace()(
         function () {
             return {
                 block: 'compose-modal',
-                inner_blocks: [{name: 'dropzone', js: {url: window.config.api_server + '/api/user/image'}}]
+                mods: { state: 'photo'}, // избаляемся от рекурсии, по другому не знаю как
+                js: true,
+                inner_blocks: [{block: 'dropzone',
+                    js: {url: window.config.api_server + '/api/user/image', channel: this.ctx.js.channel }}]
             };
         }),
     mod('mode', 'url').replace()(
         function () {
             return [{
                 block: 'compose-modal',
+                mods: { state: 'url'},      // аналогично
+                js: true,
                 inner_blocks: [
-                    {name: 'url-input', js: true}
+                    {block: 'url-input', js: { channel: this.ctx.js.channel }}
                 ]
-            }
-            ];
+            }];
         }
     ),
     content()(function () {
-        var t = {
-            block: 'modal-body',
-            js: true,
-            content:
-                this.ctx.inner_blocks.map(function (block) {
-                    return {
-                        block: block.name,
-                        js: block.js
-                    };
-                })
-        };
-        return t;
-
-    }),
-    js()(true)
+        return this.ctx.inner_blocks;
+    })
 );

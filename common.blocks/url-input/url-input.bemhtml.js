@@ -2,6 +2,7 @@ block('url-input')(
     js()(true),
     content()(
         function () {
+
             return [
                 {
                     elem: 'label',
@@ -14,9 +15,11 @@ block('url-input')(
                 },
                 {
                     block: 'button',
-                    mods: {snapshot: 'url'},
-                    text: 'Прикрепить',
-                    js: true
+                    mods: {theme: 'islands', size: 'm'},
+                    text: ''
+                },
+                {
+                    elem: 'container'
                 }
             ];
         }

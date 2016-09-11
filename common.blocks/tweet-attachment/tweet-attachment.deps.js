@@ -1,4 +1,4 @@
 
 ({
-    shouldDeps: [ {block: 'spinner'} ]
-})
+    shouldDeps: [{block: 'spinner'}]
+});

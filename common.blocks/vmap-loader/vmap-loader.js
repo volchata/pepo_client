@@ -12,7 +12,6 @@ modules.define('vmap-loader', ['i-bem__dom', 'jquery'], function (provide, BEMDO
             loadMapsApi: function () {
                 this.ymapsDeferred = $.Deferred();
                 if (!window.ymaps) {
-
                     var apiScript = document.createElement('script'),
                         apiCallback = 'ymapsloaded';
                     window[apiCallback] = $.proxy(function () {
