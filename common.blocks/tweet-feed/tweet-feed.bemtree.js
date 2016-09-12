@@ -15,6 +15,16 @@ block('tweet-feed')(
                     };
                 });
             //console.log(tweet_feed);
+
+            if (tweets.length) {
+                tweet_feed[tweet_feed.length] = {
+                    block: 'tweet-drawer',
+                    data: {
+                        timestamp: tweets[tweets.length - 1].timestamp
+                    }
+                };
+            }
+
             return tweet_feed;
 
         })

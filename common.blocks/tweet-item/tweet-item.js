@@ -11,7 +11,9 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                             retweet_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'retweet'}),
                             reply_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'reply'});
 
-                        like_button.bindTo('pointerclick', function () {
+                        console.log('tweet js');
+
+                        if (like_button) like_button.bindTo('pointerclick', function () {
                             if (!like_button.hasMod('pinned')) {
                                 $.ajax(
                                     {
@@ -44,7 +46,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         });
 
-                        retweet_button.bindTo('pointerclick', function () {
+                        if (retweet_button) retweet_button.bindTo('pointerclick', function () {
                             if (!retweet_button.hasMod('pinned')) {
                                 $.ajax(
                                     {
@@ -77,7 +79,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         });
 
-                        reply_button.bindTo('pointerclick', function () {
+                        if (reply_button) reply_button.bindTo('pointerclick', function () {
                             document.location.href = window.config.api_server + '/comment/' + tweet._id;
                         });
                     }

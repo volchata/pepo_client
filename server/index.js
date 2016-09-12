@@ -14,6 +14,9 @@ var fs = require('fs'),
 //    passport = require('passport'),
 //    LocalStrategy = require('passport-local').Strategy,
     request = require('request'),
+    bemxjst = require('bem-xjst'),
+    bemhtml = bemxjst.bemhtml,
+    bemtree = bemxjst.bemtree,
 
     config = require('./config'),
     staticFolder = config.staticFolder,
@@ -51,6 +54,91 @@ app
 //passport.deserializeUser(function(user, done) {
 //    done(null, JSON.parse(user));
 //});
+
+
+app.get('/bemtree/user/feed/history/:timestamp', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/feed/history/?offset='  + encodeURIComponent(req.params.timestamp);
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                /*
+                var tmpl = bemtree.compile(
+                    fs.readFileSync("./common.blocks/tweet-feed/tweet-feed.bemtree.js")
+                );
+
+                data = {
+                    tweets: answer.tweets,
+                    users: answer.users
+                };
+
+
+                result = tmpl.apply(        {
+                    block: 'tweet-feed',
+                    data: data,
+                    js: data
+                });
+
+                res.send(JSON.stringify(result));
+                */
+                var tmpl = bemtree.compile(
+                    fs.readFileSync("./common.blocks/tweet-item/tweet-item.bemtree.js") +
+                    fs.readFileSync("./common.blocks/avatar/avatar.bemtree.js") +
+                    fs.readFileSync("./common.blocks/tweet-item/__controls/tweet-item__controls.bemtree.js") +
+                    fs.readFileSync("./common.blocks/tweet-item/__time/tweet-item__time.bemtree.js") +
+                    fs.readFileSync("./common.blocks/tweet-item/__tweet-body/tweet-item__tweet-body.bemtree.js") +
+                    fs.readFileSync("./common.blocks/about-user/about-user.bemtree.js")
+                );
+
+                var result = [];
+
+                var feed = {
+                    tweets: answer.tweets,
+                    users: answer.users
+                };
+
+                if (feed.tweets)
+                {
+                    for (var i = 0; i<feed.tweets.length; i++)
+                    {
+                        var data = {
+                            tweet: feed.tweets[i],
+                            user: feed.users[feed.tweets[i].author]
+                        };
+                        result[result.length] = tmpl.apply(        {
+                            block: 'tweet-item',
+                            data: data,
+                            js: data
+                        });
+                    }
+                }
+
+                res.set('Content-Type', 'application/json; charset=utf-8');
+
+                res.send(JSON.stringify(result));
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
 
 app.get('/ping/', function (req, res) {
     res.send('ok');
