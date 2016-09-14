@@ -19,6 +19,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/like',
                                         type: 'POST',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -33,6 +34,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/like',
                                         type: 'DELETE',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -52,6 +54,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/retweet',
                                         type: 'POST',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -66,6 +69,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/retweet',
                                         type: 'DELETE',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
