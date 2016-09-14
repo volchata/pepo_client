@@ -21,77 +21,22 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                     setTimeout(function () {
                                         $.ajax(
                                             {
-                                                url: window.config.api_server + '/api/user/feed/history',
+                                                url: window.config.frontend_server + '/bemtree/user/feed/history/' + timestamp + '/',
                                                 type: 'GET',
-                                                data: { offset: timestamp },
                                                 dataType: 'json',
                                                 context: self
                                             }
                                         ).done(
                                             function (msg) {
 
-                                                function getDiffTime(t) {
-                                                    var old_date = new Date(t),
-                                                        curr_date = new Date(),
-                                                        diff_date = curr_date - old_date,
-                                                        diff_time,
-                                                        sec = 1000,
-                                                        min = sec * 60,
-                                                        hour = min * 60,
-                                                        day = hour * 24;
+                                                if (msg.length) {
 
-                                                    //выводим время с момента добавления твита
-                                                    if (diff_date < sec * 60) {
-                                                        diff_time = Math.floor(diff_date / sec) + ' c. назад'; //время в секундах
-                                                    } else if (diff_date >= sec * 60 && diff_date < min * 60) {
-                                                        diff_time = Math.floor(diff_date / min) + ' мин. назад'; //время в минутах
-                                                    } else if (diff_date < hour * 24) {
-                                                        diff_time = Math.floor(diff_date / hour) + ' ч. назад'; //время в часах
-                                                    } else {
-                                                        diff_time = Math.floor(diff_date / day) + ' д. назад'; //время в днях
-                                                    }
+                                                    $.each(msg, function (i, v) {
 
-                                                    return diff_time;
-                                                }
-
-                                                if (msg.tweets.length) {
-
-                                                    var users = msg.users,
-                                                        that = this;
-                                                    $.each(msg.tweets, function (i, v) {
-                                                        /*console.log(BEMHTML.apply({
-                                                         block: 'tweet',
-                                                         mods: {default: true},
-                                                         content: {
-                                                         avatar: users[v.author].avatar,
-                                                         login: '@' + users[v.author].displayName,
-                                                         time: getDiffTime(v.timestamp),
-                                                         tweet_text: v.content,
-                                                         extras: v.extras,
-                                                         url: window.config.frontend_server + '/tweet/' + v._id
-                                                         },
-                                                         js: {
-                                                         data: v
-                                                         }
-                                                         }));*/
-                                                        BEMDOM.before(that.domElem, BEMHTML.apply({
-                                                            block: 'tweet',
-                                                            mods: { default: true },
-                                                            content: {
-                                                                avatar: users[v.author].avatar,
-                                                                login: '@' + users[v.author].displayName,
-                                                                time: getDiffTime(v.timestamp),
-                                                                tweet_text: v.content,
-                                                                extras: v.extras,
-                                                                url: window.config.frontend_server + '/tweet/' + v._id
-                                                            },
-                                                            js: {
-                                                                data: v
-                                                            }
-                                                        }));
+                                                        BEMDOM.before(self.domElem, BEMHTML.apply(v));
                                                     });
                                                     loading = false;
-                                                    timestamp = msg.tweets[msg.tweets.length - 1].timestamp;
+                                                    timestamp = msg[msg.length - 1].data.tweet.timestamp;
                                                     self.delMod('active');
                                                     //console.log(timestamp);
                                                 } else {
@@ -108,12 +53,6 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 }
                             }
 
-                            // тоже должно работать, если подключить jquery в modules.define
-                            // у тебя подключено в первом примере
-
-                            // а значит и это
-                            //this.toggleMod('switched', 'on', 'off', _scroll >= 640);
-                            // тоже, потому что this здесь все еще экземпляр блока
                         });
                     }
                 }

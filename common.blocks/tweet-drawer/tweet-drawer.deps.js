@@ -7,9 +7,13 @@
         ]
     },
     {
+
         tech: 'js',
-        shouldDeps: [
-            {block: 'tweet', mods: {default: true}, tech: 'bemhtml'}
+        mustDeps: [
+            {
+                block: 'tweet-item',
+                tech: 'bemhtml'
+            }
         ]
     }
 ]);

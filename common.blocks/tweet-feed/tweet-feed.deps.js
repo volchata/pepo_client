@@ -3,13 +3,10 @@
         shouldDeps: [
             {
                 block: 'tweet-item'
+            },
+            {
+                block: 'tweet-drawer'
             }
-        ]
-    },
-    {
-        tech: 'js',
-        shouldDeps: [
-            { block: 'tweet-item', tech: 'bemhtml' }
         ]
     }
 ]);
