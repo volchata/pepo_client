@@ -2,3 +2,12 @@
 {
     height: 100%;
 }
+
+.compose-block__error-zone:empty{
+	display: none;
+}
+
+.compose-block__error-zone li
+{
+	color: #bf0000;
+}

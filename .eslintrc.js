@@ -15,6 +15,8 @@ module.exports = {
         "Dropzone": true
     },
     "rules": {
+        "eqeqeq": 'warn',
+        "no-eq-null": "warn",
         "no-console": 0,
         "space-in-parens": 0,
         "camelcase": 0,

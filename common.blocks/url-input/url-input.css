@@ -3,3 +3,16 @@
     color: #2a5885;
 }
 
+
+.url-input .button {
+	width: 10em;
+}
+
+.url-input .button:before {
+	content: 'Прикрепить';
+}
+
+.url-input.url-input_mode_wait .button:before {
+	content: 'Отменить';
+}
+

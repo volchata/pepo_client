@@ -3,12 +3,12 @@
     float: left;
 }
 
-.compose-menu__left .icon {
-    width: 15px;
-    height: 15px;
+.compose-menu__left .button span.icon {
+    width: 17px;
+    height: 17px;
     background-size: cover;
     opacity: 0.5;
-    margin: 5px;
+    margin: 7px;
 }
 
 .compose-menu__left .icon_photo {
@@ -19,6 +19,6 @@
     background-image: url('../img/location-pointer.svg');
 }
 
-.compose-menu__left .icon_link {
+.compose-menu__left .icon_url {
     background-image: url('../img/world.svg');
 }

@@ -1,173 +1,137 @@
-modules.define('compose-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
+modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTML'],
 
-    function (provide, BEMDOM, $, BEMHTML) {
+    function (provide, BEMDOM, channels, $, BEMHTML) {
 
         provide(BEMDOM.decl(this.name, {
             onSetMod: {
                 js: {
                     inited: function () {
-                        function update_btn(btnelem, textelem) {
-                            var val = textelem.domElem.val();
 
-                            if (val) {
-                                btnelem.delMod('disabled');
-                            } else {
-                                btnelem.setMod('disabled', true);
+                        this.channel = 'attach_events';
+                        window.tweet = this.tweet = { extras: {} };
+                        var self = this,
+                            send_tweet_btn = this.findBlockInside('send-tweet-btn'),
+                            attach_events = channels(this.channel);
+
+                        this.text_input = this.findBlockInside('textarea').domElem;
+                        this.extraFields = ['image', 'url', 'attachment'];
+
+                        attach_events.on('fail', this._onFail, this);
+                        attach_events.on('success', this._onSuccess, this);
+                        attach_events.on('progress', this._onProgress, this);
+
+                        this.findBlocksInside('compose-btn').forEach(function (bl) {
+                            var v = bl.findBlockOn('button').getMod('attach');
+                            if (v) {
+                                self.buttonHandler(bl, v);
                             }
-                        }
-
-                        var that = this,
-                            tweet_attachment = null,
-                            tweet_image = null,
-                            tweet_url = null,
-                            tweet_to_reply = null,
-                            text_input = this.findBlockInside('textarea'),
-                            send_tweet_btn = this.findBlockInside('send-tweet-btn');
+                        });
 
                         if (this.params.tweets) {
-                            tweet_to_reply = this.params.tweets[0]._id;
-                            text_input.domElem.val('@' + this.params.users[this.params.tweets[0].author].displayName + ' ');
+                            this.tweet_to_reply = this.params.tweets[0]._id;
+                            this.text_input.val('@' +
+                                this.params.users[this.params.tweets[0].author].displayName + ' ');
                         }
 
-                        // события редактора
-
-                        this.findBlockOutside('page').on(
-                            'upload_success', // имя БЭМ-события
-                            function (event, data) {
-                                tweet_image = data.image;
-                                send_tweet_btn.setMod('disabled', false);
-                            },
-                            that
-                        );
-
-                        this.findBlockOutside('page').on(
-                            'url_snapshot_success', // имя БЭМ-события
-                            function (event, data) {
-                                var pre = that.findBlockInside('tweet-attachment');
-                                if (pre) {
-                                    BEMDOM.destruct(pre.domElem);
-                                    that.dropElemCache();
-                                }
-
-                                if (data.status !== 'OK') {
-                                    tweet_url = null;
-                                    tweet_attachment = null;
-                                    return;
-                                }
-                                data = data.attachment;
-                                BEMDOM.append(
-                                    that.findBlockInside('modal-body').domElem,
-                                    BEMHTML.apply({
-                                        block: 'tweet-attachment',
-                                        target: data.url,
-                                        title: data.title,
-                                        url: data.image
-                                    })
-                                );
-
-                            },
-                            that
-                        );
-
-                        this.findBlockOutside('page').on(
-                            'url_snapshot_set', // имя БЭМ-события
-                            function (event, data) {
-                                tweet_url = data.url;
-                                BEMDOM.append(
-                                    that.findBlockInside('modal-body').domElem,
-                                    BEMHTML.apply({
-                                        block: 'tweet-attachment'
-                                    }));
-                            },
-                            that
-                        );
-
-                        this.findBlockOutside('page').on(
-                            'url_attachment_set', // имя БЭМ-события
-                            function (event, data) {
-                                if (data.status !== 'OK') {
-                                    tweet_url = null;
-                                    var pre = that.findBlockInside('tweet-attachment');
-                                    if (pre) {
-                                        BEMDOM.destruct(pre.domElem);
-                                        that.dropElemCache();
-                                    }
-                                    return;
-                                }
-                                tweet_attachment = data.attachment;
-                                send_tweet_btn.setMod('disabled', false);
-
-                            },
-                            that
-                        );
-
-                        update_btn(send_tweet_btn, text_input);
-
-                        text_input.bindTo('change', function () {
-                            update_btn(send_tweet_btn, text_input);
-                        });
-
-                        send_tweet_btn.bindTo('click', function () {
-                            if (this.hasMod('disabled')) {
-                                return;
-                            }
-
-                            var old_error = that.findBlockInside('error-message'),
-                                uri;
-
-                            if (old_error) {
-                                BEMDOM.destruct(old_error.domElem);
-                            }
-
-                            that.dropElemCache('error-message');
-
-                            if (tweet_to_reply) {
-                                uri = '/api/tweet/' + tweet_to_reply;
-                            } else {
-                                uri = '/api/user/feed';
-                            }
-
-                            $.ajax(
-                                {
-                                    url: window.config.api_server + uri,
-                                    type: 'POST',
-                                    data: JSON.stringify(
-                                        {
-                                            content: text_input.domElem.val(),
-                                            extras: {
-                                                image: tweet_image,
-                                                url: tweet_url,
-                                                attachment: tweet_attachment
-                                            }
-                                        }
-                                    ),
-                                    dataType: 'json',
-                                    contentType: 'application/json; charset=utf-8',
-                                    context: this
-                                }
-                            ).done(
-                                function () {
-                                    document.location.href = '/';
-                                }
-                            ).fail(
-                                function (msg) {
-                                    var response = msg.responseText;
-                                    if (!response) {
-                                        response = 'Неизвестная ошибка сервера';
-                                    }
-
-                                    BEMDOM.append(that.domElem, BEMHTML.apply({
-                                        block: 'error-message',
-                                        content: response
-                                    }));
-
-                                    that.dropElemCache('error-message');
-                                }
-                            );
-
-                        });
+                        send_tweet_btn.bindTo('click', this.sender.bind(this) );
+                    }
+                },
+                mode: function (modname, now) {
+                    if ( (now) && ( (this.findBlockInside(
+                            {blockName: 'compose-modal', modName: 'state', modVal: now})) == null) ) {
+                        var t = this.elem('compose-modal-container');
+                        BEMDOM.append(t, BEMHTML.apply({
+                            block: 'compose-modal',
+                            mods: {mode: now},
+                            js: {channel: this.channel}
+                        }));
                     }
                 }
+            },
+            buttonHandler: function (btn, mode) {
+                var self = this;
+
+                btn.bindTo('pointerclick', function () {
+                    self.setMod('mode', mode);
+                });
+            },
+            _onFail: function (event, data) {
+                this.showError(data ? data.msg : null);
+                this.composeTweet(data);
+            },
+            _onSuccess: function (event, data) {
+                // console.log('Success:', data);
+                this.composeTweet(data);
+            },
+            _onProgress: function (event, data) {
+                // console.log('Progress:', data);
+                this.composeTweet(data);
+            },
+            composeTweet: function (data) {
+                if (!data) return;
+                var extras = this.tweet.extras;
+                this.extraFields.forEach( function (item) {
+                    var val = data[item];
+                    if ((val !== undefined) && (typeof val !== 'object')) {
+                        extras[item] = val;
+                    }
+                });
+                if ((data.attachment) && (typeof data.attachment === 'object')) {
+                    extras.attachment = data.attachment.image;
+                }
+
+            },
+            showError: function ( msg ) {
+                var self = this;
+                if (!this.errMsgs) this.errMsgs = [];
+                if (!msg) msg = 'Неизвестная ошибка сервера';
+                this.errMsgs.push('<li>' + msg + '</li>');
+                this.elem('error-zone').html( this.errMsgs.join('\n') );
+                setTimeout(function () {
+                    self.errMsgs.shift();
+                    self.elem('error-zone').html( self.errMsgs.join('\n') );
+                }, 5000);
+            },
+            sender: function () {
+                var xtra = this.tweet.extras;
+                if ( (this.text_input.val().length > 0) || // eslint-disable-line brace-style
+                    ( this.extraFields.some( function (field) {
+                        return (xtra[field]);
+                    }) ))
+                {
+                    return this.sendTweet();
+                }
+                return this.showError('Напишите что-нибудь или загрузите картинку');
+            },
+            sendTweet: function () {
+                var self = this,
+                    uri;
+                if (this.tweet_to_reply) {
+                    uri = '/api/tweet/' + this.tweet_to_reply;
+                } else {
+                    uri = '/api/user/feed';
+                }
+                this.tweet.content = this.text_input.val();
+
+                $.ajax(
+                    {
+                        url: window.config.api_server + uri,
+                        type: 'POST',
+                        data: JSON.stringify( this.tweet ),
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        context: this
+                    }
+                ).done(
+                function () {
+                    document.location.href = '/feed';
+                }
+                ).fail(
+                    function (msg) {
+                        var response = msg.responseText || 'Неизвестная ошибка сервера';
+                        self.showError(response);
+                    }
+                );
             }
 
         }));

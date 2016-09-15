@@ -4,12 +4,7 @@
             block: 'control-group'
         },
         {
-            block: 'button',
-            mods: {attach: 'photo'}
-        },
-        {
-            block: 'button',
-            mods: {attach: 'link'}
+            block: 'button'
         },
         {
             elem: 'left'
