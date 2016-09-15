@@ -1,0 +1,4 @@
+
+({
+    shouldDeps: [ {block: 'spinner'} ]
+})

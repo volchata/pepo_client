@@ -35,22 +35,8 @@ block('tweet-attachment')(
             ];
         } else {
             return [
-                {
-                    block: 'progress',
-                    content: [
-                        {
-                            block: 'loading',
-                            content: [
-                                {
-                                    block: 'title',
-                                    content: 'Loading...'
-                                }
-                            ]
-                        }
-
-                    ]
-                }
-            ];
+                {block: 'spinner'}
+            ]
         }
 
     })

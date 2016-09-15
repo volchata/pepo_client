@@ -1,0 +1,130 @@
+
+
+.spinner__container{
+  display: inline-block;
+}
+
+.spinner {
+  animation: grow 1.0s ease-in;
+  position: relative;
+  display: inline-block;
+  border: 5px solid transparent;
+  border-radius: 50%;
+  margin:7%;
+  border-color: transparent;
+  transition: border-color 0.35s ease-in;
+}
+.spinner:hover {
+    border-color: rgba(210, 210, 210, 0.5);
+}
+
+.spinner_radar {
+    border-color: rgba(210, 210, 210, 0.5);
+}
+.spinner_radar:hover {
+    border-color: transparent;
+}
+
+.spinner:before {
+  position: absolute;
+  display: block;
+  content: '';
+  z-index: 3;
+  top: 12%;
+  left: 12%;
+  width: 76%;
+  height: 76%;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: background-color 0.4s ease-in;
+}
+
+.spinner:hover:before { 
+  background-color: rgba(210, 210, 210, 0.4);
+}
+
+.spinner_radar:before { 
+  background-color: rgba(210, 210, 210, 0.4);
+}
+.spinner_radar:hover:before { 
+  background-color: #fff;
+}
+
+.spinner:after {
+  position: absolute;
+  display: block;
+  content: '';
+  z-index: 2;
+  top: 5%;
+  left: 5%;
+  width: 45%;
+  height: 45%;
+  border-radius: 200% 0 0 0;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, #459ad7 50%, #459ad7 100%);
+  animation: loading .9s linear infinite;
+}
+
+.spinner__loading {
+  width: 100px;
+}
+
+.spinner__loading:before
+{
+  content: "";
+  padding-top: 100%;
+  float: left;
+}
+
+.spinner__title {
+  text-align: center;
+  position: relative;
+  z-index: 4;
+  padding-top: calc(50% - 0.7em);
+}
+
+
+
+
+@keyframes loading {
+  0% {
+    transform-origin: 100% 100%;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform-origin: 100% 100%;
+    transform: rotate(360deg);
+  }
+}
+
+
+
+@keyframes grow {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+    border-color: rgba(210, 210, 210, 0.5);
+  }
+  60% {
+    transform: scale(1);
+    border-color: rgba(210, 210, 210, 0.5);
+  }
+  65% {
+    transform: scale(1.2);
+    border-color: rgba(210, 210, 210, 0.5);
+  }
+  70% {
+    transform: scale(0.84);
+  }
+  79% {
+    transform: scale(1.08);
+    border-color: rgba(210, 210, 210, 0.5);
+  }
+  90% {
+    transform: scale(0.93);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
