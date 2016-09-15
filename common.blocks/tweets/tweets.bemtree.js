@@ -53,7 +53,7 @@ block('tweets')(
                             username = data.lastName + ' ' + data.firstName,
                             avatar = data.avatar;
                     } else {*/
-                    var user=users[v.author];
+                    var user = users[v.author];
                     var login = '@' + users[v.author].displayName,
                         username = users[v.author].firstName + ' ' + users[v.author].lastName,
                         avatar = users[v.author].avatar;

@@ -28,3 +28,11 @@ describe('auth', function() {
             );
     })
 });
+
+
+describe('feed', function() {
+    it('увидеть ленту твитов', function() {
+        return this.browser.url(config.servers.frontend_server + '/feed/')
+            .waitForVisible(".tweet-feed")
+    });
+});
