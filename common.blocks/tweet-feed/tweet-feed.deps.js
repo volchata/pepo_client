@@ -6,6 +6,9 @@
             },
             {
                 block: 'tweet-drawer'
+            },
+            {
+                block: 'link'
             }
         ]
     }

@@ -287,8 +287,12 @@ app.get('/feedmap/', function (req, res) {
 
 
 app.get('/feed/', function (req, res) {
+
+    var d = new Date();
+    var seed = d.getTime();
+
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
-    var url = config.servers.api_server + '/api/user/feed';
+    var url = config.servers.api_server + '/api/user/feed?_=' + seed;
 
     request({
         url: url,
