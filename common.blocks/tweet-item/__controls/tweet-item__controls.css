@@ -31,3 +31,7 @@
 .tweet-item__controls .icon {
     width: 15px;
 }
+
+.tweet-item__controls button:nth-child(n+4):last-child {
+   float: right;
+}

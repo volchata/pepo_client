@@ -10,7 +10,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                             that = this,
                             like_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'like'}),
                             retweet_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'retweet'}),
-                            reply_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'reply'});
+                            reply_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'reply'}),
                             delete_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'delete'});
 
                         console.log('tweet js');
@@ -21,6 +21,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/like',
                                         type: 'POST',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -35,6 +36,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/like',
                                         type: 'DELETE',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -54,6 +56,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/retweet',
                                         type: 'POST',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -68,6 +71,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                     {
                                         url: window.config.api_server + '/api/tweet/' + tweet._id + '/retweet',
                                         type: 'DELETE',
+                                        contentType: 'application/json',
                                         data: {},
                                         dataType: 'json'
                                     }
@@ -91,6 +95,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                                 {
                                     url: window.config.api_server + '/api/tweet/' + tweet._id,
                                     type: 'DELETE',
+                                    contentType: 'application/json',
                                     data: {},
                                     dataType: 'json'
                                 })
