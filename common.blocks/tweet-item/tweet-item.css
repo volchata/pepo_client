@@ -1,3 +1,7 @@
 .tweet-item {
     overflow: hidden;
 }
+
+.tweet-item_deleted {
+    display: none;
+}

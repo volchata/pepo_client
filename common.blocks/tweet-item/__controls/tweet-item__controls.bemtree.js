@@ -2,8 +2,10 @@ block('tweet-item').elem('controls')(
     content()(
         function () {
             var tweet = this.ctx.data.tweet,
+                controls = ['reply', 'retweet', 'like'],
                 data = {
                     reply_count: '',
+                    delete_count: '',
                     like_count: tweet.extras.likes.length,
                     retweet_count: tweet.extras.retweets.length,
                     user_reply: false,
@@ -11,9 +13,12 @@ block('tweet-item').elem('controls')(
                     user_retweet: tweet.retweet
                 };
 
+            if (tweet.owner) {
+                controls.push('delete');
+            }
             return {
                 block: 'control-group',
-                content: ['reply', 'retweet', 'like'].map(function (value) {
+                content: controls.map(function (value) {
                     var mod_pin = data['user_' + value],
                         btn_mods = { action: value };
                     if (mod_pin) {
