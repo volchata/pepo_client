@@ -87,15 +87,20 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'vmap-loader'], funct
                 map: this._map
             });
         },
+
         onMapInited: function () {
             console.log('Bind events');
             this.bindTo(this.elem('search'), 'pointerclick', this.onBtnSearch);
             this.bindTo(this.elem('add'), 'pointerclick', this.onBtnAdd);
             var self = this;
-            this._map.events.add('click', function (e) {
-                var coords = e.get('coords');
-                self.setPosition(coords);
+            var rrr = this._map.events.add('click', function (e) {
+                if (self.hasMod('status', 'edit')) {
+                    var coords = e.get('coords');
+                    self.setPosition(coords);
+                }
+
             });
+            console.log(rrr);
             console.log('Bind events done');
         },
         onBtnSearch: function () {
