@@ -17,7 +17,7 @@ modules.define('url-input', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTM
                             self.serve();
                         });
                         this.inputter.bindTo('keypress', function (e) {
-                            if (e.keyCode == 13) {
+                            if (e.keyCode === 13) {
                                 self.serve();
                             }
                         });
@@ -55,7 +55,7 @@ modules.define('url-input', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTM
                 this.emitter.emit('progress', {url: this.url, attachment: null});
             },
             onSnapshotSet: function (data) {
-                if (data.status != 'OK') {
+                if (data.status !== 'OK') {
                     this.delMod('mode');
                     this.emitter.emit('fail');
                     return;
@@ -64,7 +64,7 @@ modules.define('url-input', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTM
                 this.emitter.emit('progress', {url: this.url, attachment: this.attachment});
             },
             onUploadReady: function (data) {
-                if (data.status != 'OK') {
+                if (data.status !== 'OK') {
                     this.attachment = null;
                     this.delMod('mode');
                     this.emitter.emit('fail');
@@ -107,7 +107,7 @@ modules.define('url-input', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTM
                         if (self.getMod('mode') !== 'wait') return ;
 
                         self.onSnapshotSet(msg);
-                        if (msg.status != 'OK') return ;
+                        if (msg.status !== 'OK') return ;
 
                         var snapshot_src = window.config.api_server + '/api/user/snapshot' + msg.attachment;
 

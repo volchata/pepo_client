@@ -3,6 +3,7 @@ modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provid
         onSetMod: {
             js: {
                 inited: function () {
+                    console.log(loader);
                     var self = this;
                     this.mapInitedDeferr = $.Deferred();
                     if ( window.navigator.geolocation !== undefined ) {
