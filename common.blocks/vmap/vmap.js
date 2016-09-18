@@ -15,6 +15,8 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'vmap-loader'], funct
                         console.log('EDIT');
 
                         var self = this;
+                        this.on('mapInited', this.onMapInited);
+                        this.on('navigatorPosition', this.onNavigatorPosition);
                         this.mapInitedDeferr = $.Deferred();
                         if (window.navigator.geolocation !== undefined) {
                             window.navigator.geolocation.getCurrentPosition(function (position) {
@@ -28,18 +30,13 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'vmap-loader'], funct
                             this.centerDefault = this.params.geoIp.ll;
                         }
                         this.checkMapsApi();
-
-                        this.on('mapInited', this.onMapInited);
-                        this.on('navigatorPosition', this.onNavigatorPosition);
-
                         break;
                     case 'view':
                         this.findBlockInside('lat', 'coord').toggleMod('status', 'view');
                         this.findBlockInside('lon', 'coord').toggleMod('status', 'view');
-                        BEMDOM(this.elem('ctrls'));
+                        this.elem('ctrls').length && BEMDOM.destruct(this.elem('ctrls'));
                         this.toggleMod(this.elem('lat'), 'status', 'view');
-                        //this.elem('ctrls').length && BEMDOM.destruct(this.elem('ctrls'));
-
+                        break;
                 }
             }
 
@@ -91,6 +88,7 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'vmap-loader'], funct
             });
         },
         onMapInited: function () {
+            console.log('Bind events');
             this.bindTo(this.elem('search'), 'pointerclick', this.onBtnSearch);
             this.bindTo(this.elem('add'), 'pointerclick', this.onBtnAdd);
             var self = this;
@@ -98,6 +96,7 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'vmap-loader'], funct
                 var coords = e.get('coords');
                 self.setPosition(coords);
             });
+            console.log('Bind events done');
         },
         onBtnSearch: function () {
             var lat = parseFloat(this.findBlockInside('lat', 'coord').getVal());
