@@ -22,6 +22,21 @@ block('compose-modal')(
             }];
         }
     ),
+    mod('mode', 'geo').replace()(
+        function () {
+            return [{
+                block: 'compose-modal',
+                mods: { state: 'geo'},      // аналогично
+                js: true,
+                inner_blocks: [
+                    { block: 'vmap',
+                        /*js: { channel: this.ctx.js.channel }*/
+                        mod: {state: 'edit'}
+                    }
+                ]
+            }];
+        }
+    ),
     content()(function () {
         return this.ctx.inner_blocks;
     })

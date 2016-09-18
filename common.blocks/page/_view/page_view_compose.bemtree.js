@@ -10,6 +10,10 @@ block('page').mod('view', 'compose').content()(function () {
     return [
         {
             block: 'compose-block',
+            mix: {
+                block: 'vmap-loader',
+                js: true
+            },
             data: data,
             js: js
         }
