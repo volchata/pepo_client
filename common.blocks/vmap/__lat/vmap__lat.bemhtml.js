@@ -8,7 +8,8 @@ block('vmap').elem('lat')(
                     content: 'Lat'
                 },
                 {
-                    block: 'coord'
+                    block: 'coord',
+                    mods: {status: ['edit']}
                 }
             ];
         }

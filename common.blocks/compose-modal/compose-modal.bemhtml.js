@@ -30,7 +30,7 @@ block('compose-modal')(
                 js: true,
                 inner_blocks: [
                     { block: 'vmap',
-                        /*js: { channel: this.ctx.js.channel }*/
+                        js: { channel: this.ctx.js.channel },
                         mod: {state: 'edit'}
                     }
                 ]
