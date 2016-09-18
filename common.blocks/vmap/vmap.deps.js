@@ -1,9 +1,17 @@
 ({
     mustDeps: [
         { elem: 'view'},
-        { elem: 'lat'},
+        { elem: 'lat', mods: {status: ['view']}},
         { elem: 'lon'},
-        { elem: 'btn'},
-        { elem: 'label'}
+        { elem: 'search'},
+        { elem: 'add'},
+        { elem: 'ctrls'},
+        { elem: 'coord'},
+        { elem: 'label'},
+        {
+            mods: {
+                status: ['view', 'edit']
+            }
+        }
     ]
 });

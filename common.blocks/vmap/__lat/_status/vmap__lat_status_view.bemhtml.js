@@ -1,14 +1,14 @@
-block('vmap').elem('lon')(
+block('vmap').elem('lat').mod('status', 'view')(
     js()(true),
     content()(
         function () {
             return [
                 {
                     elem: 'label',
-                    content: 'Lon'
+                    content: 'Lat'
                 },
                 {
-                    block: 'coord'
+                    block: 'text'
 
                 }
             ];

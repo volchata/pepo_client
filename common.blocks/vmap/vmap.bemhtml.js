@@ -16,10 +16,9 @@ block('vmap')(
                 js: true
             },
             {
-                elem: 'btn',
-                js: true
-            }
+                elem: 'ctrls'
 
+            }
         ];
     })
 );

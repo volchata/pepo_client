@@ -8,9 +8,7 @@ block('vmap').elem('lat')(
                     content: 'Lat'
                 },
                 {
-                    block: 'input',
-                    mods: { theme: 'islands', size: 'm' },
-                    text: 55.76
+                    block: 'coord'
                 }
             ];
         }

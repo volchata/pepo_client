@@ -1,15 +1,15 @@
-block('vmap').elem('lon')(
+block('vmap').elem('ctrls')(
     js()(true),
     content()(
         function () {
             return [
                 {
-                    elem: 'label',
-                    content: 'Lon'
+                    elem: 'search',
+                    js: true
                 },
                 {
-                    block: 'coord'
-
+                    elem: 'add',
+                    js: true
                 }
             ];
         }

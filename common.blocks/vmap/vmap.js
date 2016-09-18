@@ -1,28 +1,48 @@
-modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provide, BEMDOM, $, loader) {
+modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'vmap-loader'], function (provide, BEMDOM, BEMHTML, $) {
+
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
             js: {
                 inited: function () {
-                    console.log(loader);
-                    var self = this;
-                    this.mapInitedDeferr = $.Deferred();
-                    if ( window.navigator.geolocation !== undefined ) {
-                        window.navigator.geolocation.getCurrentPosition(function (position) {
-                            self.emit('navigatorPosition', {
-                                lat: position.coords.latitude,
-                                lon: position.coords.longitude
-                            });
-                        });
-                    }
-                    if (this.params.geoIp !== undefined && this.params.geoIp.hasOwnProperty('ll')) {
-                        this.centerDefault = this.params.geoIp.ll;
-                    }
-                    this.checkMapsApi();
 
-                    this.on('mapInited', this.onMapInited);
-                    this.on('navigatorPosition', this.onNavigatorPosition);
+                    this.toggleMod('status', 'edit');
+                }
+            },
+            status: function (modName, modVal/*, oldModVal*/) {
+                switch (modVal) {
+                    case 'edit':
+
+                        console.log('EDIT');
+
+                        var self = this;
+                        this.mapInitedDeferr = $.Deferred();
+                        if (window.navigator.geolocation !== undefined) {
+                            window.navigator.geolocation.getCurrentPosition(function (position) {
+                                self.emit('navigatorPosition', {
+                                    lat: position.coords.latitude,
+                                    lon: position.coords.longitude
+                                });
+                            });
+                        }
+                        if (this.params.geoIp !== undefined && this.params.geoIp.hasOwnProperty('ll')) {
+                            this.centerDefault = this.params.geoIp.ll;
+                        }
+                        this.checkMapsApi();
+
+                        this.on('mapInited', this.onMapInited);
+                        this.on('navigatorPosition', this.onNavigatorPosition);
+
+                        break;
+                    case 'view':
+                        this.findBlockInside('lat', 'coord').toggleMod('status', 'view');
+                        this.findBlockInside('lon', 'coord').toggleMod('status', 'view');
+                        BEMDOM(this.elem('ctrls'));
+                        this.toggleMod(this.elem('lat'), 'status', 'view');
+                        //this.elem('ctrls').length && BEMDOM.destruct(this.elem('ctrls'));
+
                 }
             }
+
         },
 
         centerDefault: [55.76, 37.64],
@@ -49,6 +69,7 @@ modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provid
 
         },
         initMap: function () {
+            console.log('INIT MAP');
             var center = this.params.center || this.centerDefault,
                 zoom = this.params.zoom || this.zoomDefault;
             this._map = new window.ymaps.Map(this.elem('view')[0], {
@@ -61,15 +82,17 @@ modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provid
 
             this._map.geoObjects.add(this._myPlacemark);
 
+            this.findBlockInside('lat', 'coord').setVal(center[0]);
+            this.findBlockInside('lon', 'coord').setVal(center[1]);
             this.mapInitedDeferr.resolve();
-            this.findBlockInside('lat', 'input').elem('control').val(center[0]);
-            this.findBlockInside('lon', 'input').elem('control').val(center[1]);
+            console.log(this);
             this.emit('mapInited', {
                 map: this._map
             });
         },
         onMapInited: function () {
-            this.bindTo(this.elem('btn'), 'pointerclick', this.onBtnSearch);
+            this.bindTo(this.elem('search'), 'pointerclick', this.onBtnSearch);
+            this.bindTo(this.elem('add'), 'pointerclick', this.onBtnAdd);
             var self = this;
             this._map.events.add('click', function (e) {
                 var coords = e.get('coords');
@@ -77,25 +100,30 @@ modules.define('vmap', ['i-bem__dom', 'jquery', 'vmap-loader'], function (provid
             });
         },
         onBtnSearch: function () {
-            var lat = parseFloat(this.findBlockInside('lat', 'input').elem('control').val());
-            var lon = parseFloat(this.findBlockInside('lon', 'input').elem('control').val());
+            var lat = parseFloat(this.findBlockInside('lat', 'coord').getVal());
+            var lon = parseFloat(this.findBlockInside('lon', 'coord').getVal());
             var coords = [lat, lon];
             this._map.geoObjects.removeAll();
             this._map.setCenter(coords);
             this._myPlacemark = new window.ymaps.Placemark(coords);
             this._map.geoObjects.add(this._myPlacemark);
-
+        },
+        onBtnAdd: function () {
+            this.toggleMod('status', 'view', 'edit');
         },
         setPosition: function (arr) {
+            console.log('SET POSITION');
+            console.log(arr);
             this._map.geoObjects.removeAll();
             this._map.setCenter(arr);
             this._map.geoObjects.add(new window.ymaps.Placemark(arr));
-            this.findBlockInside('lat', 'input').elem('control').val(arr[0]);
-            this.findBlockInside('lon', 'input').elem('control').val(arr[1]);
+            this.findBlockInside('lat', 'coord').setVal(arr[0]);
+            this.findBlockInside('lon', 'coord').setVal(arr[1]);
+            console.log(arr);
         },
         getPoint: function () {
-            var lat = parseFloat(this.findBlockInside('lat', 'input').elem('control').val());
-            var lon = parseFloat(this.findBlockInside('lon', 'input').elem('control').val());
+            var lat = parseFloat(this.findBlockInside('lat', 'coord').setVal());
+            var lon = parseFloat(this.findBlockInside('lon', 'coord').setVal());
             return { 'type': 'Point', 'coordinates': [lon, lat] };
         }
 
