@@ -3,7 +3,8 @@ modules.define('coord', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
         onSetMod: {
             js: {
                 inited: function () {
-                    this.params._val = 102;
+                    //this.params._val = 102;
+
                 }
             },
             status: function (modName, modVal/*, oldModVal*/) {
@@ -22,6 +23,7 @@ modules.define('coord', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
                                 content: self.getVal()
                             }));
                         this.toggleMod('status', 'edit');
+
                         break;
                     case 'view':
                         var latInp = this.findBlockInside('input');
@@ -38,6 +40,10 @@ modules.define('coord', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
 
         },
         getVal: function () {
+            var input = this.findBlockInside('input');
+            if (input) {
+                this.params._val = input.getVal();
+            }
             return this.params._val;
         },
         setVal: function ($val) {
