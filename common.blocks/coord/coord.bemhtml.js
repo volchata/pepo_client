@@ -1,12 +1,12 @@
-block('vmap').elem('btn')(
+block('coord')(
     js()(true),
     content()(
         function () {
             return [
                 {
-                    block: 'button',
-                    text: 'Показать',
-                    js: true
+                    block: 'input',
+                    mods: { theme: 'islands', size: 'm' }
+
                 }
             ];
         }

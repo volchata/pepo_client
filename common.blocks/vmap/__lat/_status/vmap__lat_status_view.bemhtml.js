@@ -1,4 +1,4 @@
-block('vmap').elem('lat')(
+block('vmap').elem('lat').mod('status', 'view')(
     js()(true),
     content()(
         function () {
@@ -8,8 +8,8 @@ block('vmap').elem('lat')(
                     content: 'Lat'
                 },
                 {
-                    block: 'coord',
-                    mods: {status: ['edit']}
+                    block: 'text'
+
                 }
             ];
         }

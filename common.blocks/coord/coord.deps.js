@@ -1,9 +1,15 @@
 ({
     mustDeps: [
+
         {
-            block: 'coord',
-            mods: {status: ['view', 'edit']}
+            block: 'input',
+            mods: {
+                theme: 'islands',
+                size: 'm'
+            }
+
         },
+
         {
             mods: {
                 status: ['view', 'edit']

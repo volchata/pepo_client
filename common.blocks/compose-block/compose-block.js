@@ -14,7 +14,7 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                             attach_events = channels(this.channel);
 
                         this.text_input = this.findBlockInside('textarea').domElem;
-                        this.extraFields = ['image', 'url', 'attachment'];
+                        this.extraFields = ['image', 'geo', 'url', 'attachment'];
 
                         attach_events.on('fail', this._onFail, this);
                         attach_events.on('success', this._onSuccess, this);
@@ -60,7 +60,7 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                 this.composeTweet(data);
             },
             _onSuccess: function (event, data) {
-                // console.log('Success:', data);
+                console.log('Success:', data);
                 this.composeTweet(data);
             },
             _onProgress: function (event, data) {
@@ -72,7 +72,8 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                 var extras = this.tweet.extras;
                 this.extraFields.forEach( function (item) {
                     var val = data[item];
-                    if ((val !== undefined) && (typeof val !== 'object')) {
+                    console.log(['extra', item, val]);
+                    if ((val !== undefined) /*&& (typeof val !== 'object')*/) {
                         extras[item] = val;
                     }
                 });
