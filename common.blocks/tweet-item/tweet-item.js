@@ -7,9 +7,11 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                 js: {
                     inited: function () {
                         var tweet = this.params.tweet,
+                            that = this,
                             like_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'like'}),
                             retweet_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'retweet'}),
-                            reply_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'reply'});
+                            reply_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'reply'}),
+                            delete_button = this.findBlockInside({ blockName: 'button', modName: 'action', modVal: 'delete'});
 
                         console.log('tweet js');
 
@@ -85,6 +87,24 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         if (reply_button) reply_button.bindTo('pointerclick', function () {
                             document.location.href = window.config.api_server + '/comment/' + tweet._id;
+                        });
+
+                        if (delete_button) delete_button.bindTo('pointerclick', function () {
+                            if (confirm('Are you sure?')) {
+                                $.ajax(
+                                {
+                                    url: window.config.api_server + '/api/tweet/' + tweet._id,
+                                    type: 'DELETE',
+                                    contentType: 'application/json',
+                                    data: {},
+                                    dataType: 'json'
+                                })
+                                .done(
+                                    function (msg) {
+                                        that.setMod('deleted');
+                                    }
+                                );
+                            }
                         });
                     }
                 }

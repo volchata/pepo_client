@@ -6,6 +6,10 @@
     background-image: url('img/like.svg');
 }
 
+.tweet-item__controls .icon_delete {
+    background-image: url('img/delete.svg');
+}
+
 .tweet-item__controls .button_pinned .icon_like {
     background-image: url('img/like-pinned.svg');
 }
@@ -26,4 +30,8 @@
 
 .tweet-item__controls .icon {
     width: 15px;
+}
+
+.tweet-item__controls button:nth-child(n+4):last-child {
+   float: right;
 }
