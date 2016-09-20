@@ -1,18 +1,40 @@
 block('page').mod('view', 'tweet').content()(function () {
 
+    var item_data = {},
+        item_js = true,
+        comment_data = { tweets: [], users: {}},
+        comment_js = true;
+
+    console.log(this.data);
+
+    if (this.data) {
+        item_data = {
+            tweet: this.data.tweet,
+            user: this.data.user
+        };
+        item_js = item_data;
+    }
+
+    if (this.data.tweet.extras.comments) {
+        var comments = this.data.tweet.extras.comments;
+        if (comments.tweets) {
+            comment_data = this.data.tweet.extras.comments;
+            comment_js = comment_data;
+        }
+    }
+
     return [
         {
-            elem: 'body',
-            elemMods: {tweet: true},
-            data: this.data.tweet_data,
-            content: [
-                {
-                    block: 'tweet'
-                }
-            ]
+            block: 'tweet-item',
+            data: item_data,
+            js: item_js
         },
         {
-            block: 'comments'
+            block: 'tweet-feed',
+            mod: { 'comments': true },
+            data: comment_data,
+            js: comment_js
         }
+
     ];
 });

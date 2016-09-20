@@ -1,15 +1,10 @@
 ({
     shouldDeps: [
         {
-            block: 'top-menu',
-            mods: {layout: 'main'}
+            block: 'tweet-item'
         },
         {
-            block: 'tweet',
-            mods: {default: true}
-        },
-        {
-            block: 'comments'
+            block: 'tweet-feed'
         }
     ]
 });

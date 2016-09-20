@@ -50,3 +50,11 @@ block('tweet-feed')(
 
         })
 );
+
+block('tweet-feed').mod('comments').block('tweet-drawer')(
+    replace()(
+        function () {
+            return ''; // уничтожаем блок перемотки для комментариев TODO сделать бесконечный скроллинг каментов
+        }
+    )
+);

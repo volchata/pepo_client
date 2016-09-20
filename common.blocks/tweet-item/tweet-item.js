@@ -15,7 +15,8 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         console.log('tweet js');
 
-                        if (like_button) like_button.bindTo('pointerclick', function () {
+                        if (like_button) like_button.bindTo('pointerclick', function (e) {
+                            e.stopPropagation();
                             if (!like_button.hasMod('pinned')) {
                                 $.ajax(
                                     {
@@ -50,7 +51,8 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         });
 
-                        if (retweet_button) retweet_button.bindTo('pointerclick', function () {
+                        if (retweet_button) retweet_button.bindTo('pointerclick', function (e) {
+                            e.stopPropagation();
                             if (!retweet_button.hasMod('pinned')) {
                                 $.ajax(
                                     {
@@ -85,8 +87,13 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         });
 
-                        if (reply_button) reply_button.bindTo('pointerclick', function () {
-                            document.location.href = window.config.api_server + '/comment/' + tweet._id;
+                        if (reply_button) reply_button.bindTo('pointerclick', function (e) {
+                            e.stopPropagation();
+                            document.location.href = window.config.frontend_server + '/comment/' + tweet._id;
+                        });
+
+                        this.bindTo('pointerclick', function () {
+                            document.location.href = window.config.frontend_server + '/tweet/' + tweet._id;
                         });
 
                         if (delete_button) delete_button.bindTo('pointerclick', function () {

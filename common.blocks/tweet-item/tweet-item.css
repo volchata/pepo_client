@@ -1,7 +1,12 @@
 .tweet-item {
     overflow: hidden;
+    cursor: pointer;
 }
 
 .tweet-item_deleted {
     display: none;
+}
+
+.tweet-item:hover {
+    background-color: #eeeeee;
 }
