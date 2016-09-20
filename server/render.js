@@ -6,7 +6,7 @@ var path = require('path'),
     BEMHTML = require(path.join(pathToBundle, bundleName + '.bemhtml.js')).BEMHTML,
 
     isDev = process.env.NODE_ENV === 'development',
-    useCache = !isDev,
+    useCache = false,
     cacheTTL = config.cacheTTL,
     cache = {};
 

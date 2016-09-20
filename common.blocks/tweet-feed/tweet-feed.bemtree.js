@@ -25,7 +25,28 @@ block('tweet-feed')(
                 };
             }
 
-            return tweet_feed;
+            if (tweet_feed.length) {
+                return tweet_feed;
+            } else {
+                return {
+                    block: 'text',
+                    content: [
+                        'В ленте пока ничего нет. Вы можете ',
+                        {
+                            block: 'link',
+                            url: '/compose',
+                            content: 'сделать запись'
+                        },
+                        ' чтобы порадовать мир, или ',
+                        {
+                            block: 'link',
+                            url: '/users-search',
+                            content: 'завести себе друзей'
+                        },
+                        ' хотя бы тут'
+                    ]
+                };
+            }
 
         })
 );

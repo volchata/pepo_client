@@ -38,7 +38,7 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                 },
                 mode: function (modname, now) {
                     if ( (now) && ( (this.findBlockInside(
-                            {blockName: 'compose-modal', modName: 'state', modVal: now})) == null) ) {
+                            {blockName: 'compose-modal', modName: 'state', modVal: now})) === null) ) {
                         var t = this.elem('compose-modal-container');
                         BEMDOM.append(t, BEMHTML.apply({
                             block: 'compose-modal',

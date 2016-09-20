@@ -31,6 +31,7 @@ var fs = require('fs'),
 
 app
     .disable('x-powered-by')
+    .disable('etag')
     .enable('trust proxy')
     .use(favicon(path.join(staticFolder, 'favicon.ico')))
     .use(serveStatic(staticFolder))
@@ -46,6 +47,11 @@ app
     //    .use(passport.session())
     .use(slashes());
 // TODO: csrf, gzip
+
+app.use(function(req, res, next) {
+    req.headers['if-none-match'] = 'no-match-for-this';
+    next();
+});
 
 //passport.serializeUser(function(user, done) {
 //    done(null, JSON.stringify(user));
@@ -151,6 +157,7 @@ app.get('/users/:login', function (req, res) {
         url: url,
         headers: {
             Cookie: cookie,
+            'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0',
             json: true
         }
     }, function (error, response, answer) {
@@ -287,8 +294,11 @@ app.get('/feedmap/', function (req, res) {
 
 
 app.get('/feed/', function (req, res) {
+
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
     var url = config.servers.api_server + '/api/user/feed';
+
+    //return res.send(url);
 
     request({
         url: url,

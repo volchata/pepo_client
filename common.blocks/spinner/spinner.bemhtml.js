@@ -1,4 +1,3 @@
-
 block('spinner')(
     js()(true),
     content()(function () {
@@ -12,9 +11,9 @@ block('spinner')(
             }
         };
         c.attrs = {style: ''};
-        if (width != null)
+        if (width !== null)
             c.attrs.style += 'width:' + width + 'px;';
-        if (text != null) {
+        if (text !== null) {
             c.content.content = text;
             c.attrs.style += 'font-size:' + width + '%;';
         }
