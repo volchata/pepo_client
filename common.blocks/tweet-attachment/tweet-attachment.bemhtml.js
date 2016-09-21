@@ -7,7 +7,7 @@ block('tweet-attachment')(
     content()(function () {
         var data = this.ctx;
         var t = data.title;
-        t = (t != null) ? (' - ' + t) : '';
+        t = (t !== null) ? (' - ' + t) : '';
         return [
             {
                 block: 'link',

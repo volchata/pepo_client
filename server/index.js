@@ -210,11 +210,29 @@ app.get('/tweet/:id', function (req, res) {
         }
         else {
             if (answer) {
-                render(req, res, {
-                    view: 'tweet',
-                    title: 'Tweet  Page',
-                    tweet_data: answer
-                })
+                if (answer.status === 'Tweet not found')
+                {
+                    render(req, res, {
+                        view: '404',
+                        title: ''
+                    })
+                }
+                else
+                {
+                    data = {
+                        tweet: answer.tweets[0],
+                        user: answer.users[answer.tweets[0].author]
+                    };
+
+                    render(req, res, {
+                        view: 'tweet',
+                        title: 'Tweet  Page',
+                        tweet: data.tweet,
+                        user: data.user
+                    })
+
+                }
+
             }
             else {
                 render(req, res, {
