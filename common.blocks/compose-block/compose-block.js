@@ -6,7 +6,7 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
             onSetMod: {
                 js: {
                     inited: function () {
-
+                        console.log(['COMPOSE BLOCK', this.params]);
                         this.channel = 'attach_events';
                         window.tweet = this.tweet = { extras: {} };
                         var self = this,
@@ -43,7 +43,10 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                         BEMDOM.append(t, BEMHTML.apply({
                             block: 'compose-modal',
                             mods: {mode: now},
-                            js: {channel: this.channel}
+                            js: {
+                                channel: this.channel,
+                                geoIp: this.params.geoIp
+                            }
                         }));
                     }
                 }
