@@ -98,6 +98,7 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
 
                         if (delete_button) delete_button.bindTo('pointerclick', function () {
                             // var answer = confirm('Are you sure?'); TODO убрал из-за линтеров
+
                             var answer = true;
                             if (answer) {
                                 $.ajax(

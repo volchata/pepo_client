@@ -1,6 +1,6 @@
 ({
     shouldDeps: [
         { block: 'image' },
-        { mods: ['tweet-item'] }
+        { mods: ['tweet-item', 'user-item'] }
     ]
 });

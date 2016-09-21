@@ -27,7 +27,7 @@ describe('auth', function() {
                     });
                 }
             );
-    },10000)
+    },10000);
 });
 
 describe('feed', function() {

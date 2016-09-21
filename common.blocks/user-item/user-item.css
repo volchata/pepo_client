@@ -1,0 +1,9 @@
+.user-item {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.user-item:hover {
+    background-color: #eeeeee;
+}
