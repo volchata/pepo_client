@@ -24,19 +24,19 @@ block('compose-modal')(
     ),
     mod('mode', 'geo').replace()(
         function () {
-            console.log(['COMPOSE', this.ctx]);
+
             return [{
                 block: 'compose-modal',
                 mods: { state: 'geo'},      // аналогично
                 js: true,
                 inner_blocks: [
-                    { block: 'vmap',
+                    {
+                        block: 'vmap',
+                        mod: {state: 'edit'},
                         js: {
                             channel: this.ctx.js.channel,
                             geoIp: this.ctx.js.geoIp
-                        },
-
-                        mod: {state: 'edit'}
+                        }
                     }
                 ]
             }];

@@ -15,6 +15,10 @@ modules.define('coord', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
                         BEMDOM.replace(latInp.domElem,
                             BEMHTML.apply({
                                 block: 'input',
+                                mods: {
+                                    theme: 'islands',
+                                    size: 'm'
+                                },
                                 val: self.getVal()
                             }));
                         BEMDOM.replace(latInp.domElem,

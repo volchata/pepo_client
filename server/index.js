@@ -613,7 +613,7 @@ app.get('/compose/', function (req, res) {
 
         $headers['x-jfh3fh36gt4re3rybfh-remote']= req.connection.remoteAddress;
     }
-    req.headers['x-forwarded-for']='209.185.108.134';
+    //req.headers['x-forwarded-for']='209.185.108.134';
     if (req.headers && req.headers['x-forwarded-for'] !== undefined) {
         $headers['x-forwarded-for']= req.headers['x-forwarded-for'];
     }
@@ -622,7 +622,6 @@ app.get('/compose/', function (req, res) {
         headers: $headers
     }, function (error, response, answer) {
         answer = JSON.parse(answer);
-        console.log(['GEOIP',answer.geoIp.ll]);
 
         if (response.statusCode == 403) {
             res.redirect('/auth/');

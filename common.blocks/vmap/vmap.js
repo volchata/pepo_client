@@ -5,15 +5,19 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
             js: {
                 inited: function () {
                     this.toggleMod('status', 'edit');
-                    this.emitter = channels( this.params.channel );
+                    if (this.params.channel !== undefined) {
+                        this.emitter = channels( this.params.channel );
+                    }
+
                 }
             },
             status: function (modName, modVal, oldModVal) {
                 switch (modVal) {
                     case 'edit':
 
-                        console.log('EDIT');
+                        console.log(['EDIT', oldModVal]);
                         if (oldModVal === 'view') {
+
                             BEMDOM.append(this.domElem, BEMHTML.apply(
                                 {
                                     block: 'vmap',
@@ -25,9 +29,10 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
 
                         }
                         var self = this;
+                        this.mapInitedDeferr = $.Deferred();
                         this.on('mapInited', this.onMapInited);
                         this.on('navigatorPosition', this.onNavigatorPosition);
-                        this.mapInitedDeferr = $.Deferred();
+
                         if (window.navigator.geolocation !== undefined) {
                             window.navigator.geolocation.getCurrentPosition(function (position) {
                                 self.emit('navigatorPosition', {
@@ -36,6 +41,7 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                                 });
                             });
                         }
+
                         if (this.params.geoIp !== undefined && this.params.geoIp.hasOwnProperty('ll')) {
                             this.centerDefault = this.params.geoIp.ll;
                         }
@@ -49,7 +55,7 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                         this.elem('ctrls').length && BEMDOM.destruct(this.elem('ctrls'));
                         this.dropElemCache('search');
                         this.dropElemCache('add');
-                        this.dropElemCache('ctrls');
+                        //this.dropElemCache('ctrls');
                         break;
                 }
             }
@@ -132,7 +138,9 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
         },
         onBtnAdd: function () {
             this.toggleMod('status', 'view', 'edit');
-            this.emitter.emit('success', {geo: this.getFeature()});
+            if (this.emiter !== undefined) {
+                this.emitter.emit('success', {geo: this.getFeature()});
+            }
             this.emit('mapedited', this.getFeature());
         },
         setPosition: function (arr) {

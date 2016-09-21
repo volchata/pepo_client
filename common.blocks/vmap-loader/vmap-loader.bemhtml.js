@@ -1,3 +1,3 @@
-block('vmap')(
+block('vmap-loader')(
     js()(true)
 );
