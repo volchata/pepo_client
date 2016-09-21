@@ -24,7 +24,7 @@ block('compose-modal')(
     ),
     mod('mode', 'geo').replace()(
         function () {
-            console.log(['COMPOSE',this.ctx])
+            console.log(['COMPOSE', this.ctx]);
             return [{
                 block: 'compose-modal',
                 mods: { state: 'geo'},      // аналогично
