@@ -4,8 +4,6 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
         onSetMod: {
             js: {
                 inited: function () {
-<<<<<<< e5ee43a36a222f038a2246bd25004ad7c3957899
-
                     this.toggleMod('status', 'edit');
                     this.emitter = channels( this.params.channel );
                 }
@@ -36,17 +34,6 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                                     lat: position.coords.latitude,
                                     lon: position.coords.longitude
                                 });
-=======
-                    console.log(loader);
-
-                    var self = this;
-                    this.mapInitedDeferr = $.Deferred();
-                    if ( window.navigator.geolocation !== undefined ) {
-                        window.navigator.geolocation.getCurrentPosition(function (position) {
-                            self.emit('navigatorPosition', {
-                                lat: position.coords.latitude,
-                                lon: position.coords.longitude
->>>>>>> one tweet page
                             });
                         }
                         if (this.params.geoIp !== undefined && this.params.geoIp.hasOwnProperty('ll')) {

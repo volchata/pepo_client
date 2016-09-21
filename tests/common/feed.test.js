@@ -398,7 +398,7 @@ describe('feed', function() {
     it('прикрепить url в редакторе и дописать текст', function ()
     {
         var that = this;
-        var check_array = ["webdriver.io", "yandex.ru", "volchata.ml"];
+        var check_array = ["design.ru", "yandex.ru", "volchata.ml"];
         var check_num = Math.floor(Math.random()*3);
         var check_url = check_array[check_num];
 
