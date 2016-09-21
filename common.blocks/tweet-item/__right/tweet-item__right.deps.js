@@ -1,5 +1,6 @@
 ([{
     shouldDeps: [
+        { elem: 'reply-info' },
         { elem: 'controls' },
         { elem: 'time' },
         { elem: 'tweet-body' },

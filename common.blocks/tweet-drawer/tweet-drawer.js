@@ -7,7 +7,8 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                 js: {
                     inited: function () {
                         var loading = false,
-                            timestamp = this.params.timestamp;
+                            timestamp = this.params.timestamp,
+                            parent = this.params.parent;
                         this.bindToWin('scroll', function () {
 
                             var _scroll = $(window).scrollTop(),
@@ -19,9 +20,15 @@ modules.define('tweet-drawer', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                     loading = true;
                                     self.setMod('active', true);
                                     setTimeout(function () {
+                                        var ajax_url;
+                                        if (!parent) {
+                                            ajax_url = window.config.frontend_server + '/bemtree/user/feed/history/' + timestamp + '/';
+                                        } else {
+                                            ajax_url = window.config.frontend_server + '/bemtree/user/comments/history/' + parent + '/' + timestamp + '/';
+                                        }
                                         $.ajax(
                                             {
-                                                url: window.config.frontend_server + '/bemtree/user/feed/history/' + timestamp + '/',
+                                                url: ajax_url,
                                                 type: 'GET',
                                                 dataType: 'json',
                                                 context: self

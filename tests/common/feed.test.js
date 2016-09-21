@@ -311,7 +311,7 @@ describe('feed', function() {
     it('прикрепить url в редакторе', function ()
     {
         var that = this;
-        var check_array = ["youtube.com", "yandex.ru", "volchata.ml"];
+        var check_array = ["design.ru", "yandex.ru", "volchata.ml"];
         var check_num = Math.floor(Math.random()*3);
         var check_url = check_array[check_num];
         return this.browser.url(config.servers.frontend_server + '/compose/')
