@@ -1,0 +1,16 @@
+
+.profile__header {
+	display: table;
+}
+
+.profile__info-left, .profile__info-right {
+	width: 49%;
+	display: table-cell;
+	padding: 5px;
+    box-sizing: border-box;
+}
+
+.profile__info-right {
+    text-align: center;
+    vertical-align: middle;
+}

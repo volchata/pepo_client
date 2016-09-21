@@ -1,6 +1,7 @@
 .mini-stat
 {
-    display: inline;
+	margin-top: 3px;
+	margin-bottom: 3px;
 }
 
 .mini-stat + .mini-stat
@@ -8,7 +9,7 @@
     margin-left: 10px;
 }
 
-.mini-stat__inner
+.mini-stat__count
 {
-    display: inline;
+    font-weight: bolder;
 }

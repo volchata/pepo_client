@@ -1,5 +1,11 @@
 ({
+	
+	shouldDeps: [
+		{block: 'mini-stat'},
+		{block: 'about-user'},
+		{block: 'subscriber'}
+	],
     mustDeps: [
-        { elem: ['header', 'body', 'button', 'to-edit'] }
+    	{ elem: ['tweetSample', 'controls'] }
     ]
 });

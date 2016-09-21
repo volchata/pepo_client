@@ -2,7 +2,7 @@ block('avatar')(
     content()(
         function () {
 
-            var user = this.ctx.data.user;
+            var user = (this.data && this.data.user) ? this.data.user : this.ctx.data.user;
 
             if (user.avatar) {
                 return [
@@ -12,7 +12,6 @@ block('avatar')(
                     }
                 ];
             }
-
             return '';
         })
 );

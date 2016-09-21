@@ -3,8 +3,7 @@ block('about-user')(
     content()(
         function () {
             var user_passport = '',
-                user = this.ctx.data.user;
-
+                user = (this.data && this.data.user) ? this.data.user : this.ctx.data.user;
             if (user.firstName) {
                 user_passport = user.firstName;
                 if (user.lastName) {

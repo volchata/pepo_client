@@ -1,0 +1,23 @@
+
+
+.radio-group_role_tweets-variants-control {
+	text-align: center;
+}
+
+.profile__tweetSample .radio-group_role_tweets-variants-control .button {
+    width: 33%;
+}
+
+.profile__tabsContainer {
+    padding: 1em;
+}
+
+.profile__tabsContainer .tweet-feed {
+	display: none;
+}
+
+.profile__tabsContainer_type_last .tweet-feed_role_tweet-feed-last, 
+.profile__tabsContainer_type_pics .tweet-feed_role_tweet-feed-pics,
+.profile__tabsContainer_type_liked .tweet-feed_role_tweet-feed-liked {
+	display: block;
+}
