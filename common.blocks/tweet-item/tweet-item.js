@@ -97,17 +97,19 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                         });
 
                         if (delete_button) delete_button.bindTo('pointerclick', function () {
-                            if (confirm('Are you sure?')) {
+                            // var answer = confirm('Are you sure?'); TODO убрал из-за линтеров
+                            var answer = true;
+                            if (answer) {
                                 $.ajax(
-                                {
-                                    url: window.config.api_server + '/api/tweet/' + tweet._id,
-                                    type: 'DELETE',
-                                    contentType: 'application/json',
-                                    data: {},
-                                    dataType: 'json'
-                                })
+                                    {
+                                        url: window.config.api_server + '/api/tweet/' + tweet._id,
+                                        type: 'DELETE',
+                                        contentType: 'application/json',
+                                        data: {},
+                                        dataType: 'json'
+                                    })
                                 .done(
-                                    function (msg) {
+                                    function () {
                                         that.setMod('deleted');
                                     }
                                 );
