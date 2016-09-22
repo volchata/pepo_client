@@ -1,6 +1,6 @@
 ({
     shouldDeps: [
-        { block: 'tweet-feed' },
+        { block: 'tweet-feed', mods: ['drawer'] },
         {
             block: 'vmap-loader'
         }

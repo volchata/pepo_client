@@ -17,17 +17,17 @@ block('page').mod('view', 'tweet').content()(function () {
 
     if (this.data.tweet.extras.comments) {
         var comments = this.data.tweet.extras.comments;
+
         if (comments.tweets) {
             comment_data = this.data.tweet.extras.comments;
 
-            comment_data.tweet = {
-                _id: this.data.tweet._id
-            };
-
-            comment_js = comment_data;
-            console.log(comment_js);
             //comment_js.tweet = this.data.tweet;
         }
+        comment_data.tweet = {
+            _id: this.data.tweet._id
+        };
+        comment_js = comment_data;
+
     }
 
     return [
@@ -45,7 +45,7 @@ block('page').mod('view', 'tweet').content()(function () {
                 },
                 {
                     block: 'tweet-feed',
-                    mods: [{ 'comments': true }],
+                    mods: [{ 'drawer': true, 'comments': true }],
                     data: comment_data,
                     js: comment_js
                 }
