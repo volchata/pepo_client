@@ -5,6 +5,7 @@ block('tweet-item')(
             var tweet = this.ctx.data.tweet;
             var user = this.ctx.data.user;
 
+
             var tweet_tree = [];
 
             console.log(tweet.extras);
@@ -35,18 +36,26 @@ block('tweet-item')(
                 }
             );
 
+
+            var avatar_mods = { 'tweet-item': true };
+            if (!user.avatar) {
+                avatar_mods['no-avatar'] = true;
+            }
+
+
             return [
                 {
                     elem: 'left',
                     content: {
                         block: 'avatar',
-                        mods: { 'tweet-item': true },
+                        mods: avatar_mods,
                         data: { user: user }
                     }
                 },
                 {
                     elem: 'right',
                     content: tweet_tree
+
                 }
             ];
         })

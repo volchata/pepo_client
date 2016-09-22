@@ -1,24 +1,12 @@
+.about-user {
+    overflow: hidden;
+}
 .about-user .text {
     display: block;
 }
 
-.about-user .text_username {
-    color: #fff;
+.about-user .text + .text {
+    margin-left: 1em;
+    color: #8899a6;
 }
 
-.about-user .text_id {
-    color: #c0c0c0;
-}
-
-.about-user .text_about {
-    color: #fff;
-    padding: 10px 5px;
-    font-size: smaller;
-}
-
-@media (orientation: landscape) {
-    .about-user .text_username,
-    .about-user .text_id {
-        font-size: 8px;
-    }
-}

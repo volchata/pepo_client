@@ -1,17 +1,17 @@
 .tweet-item__controls .icon_reply {
-    background-image: url('img/arrow.svg');
+    background-image: url('img/comment.svg');
 }
 
 .tweet-item__controls .icon_like {
-    background-image: url('img/like.svg');
+    background-image: url('img/like-outline.svg');
 }
 
 .tweet-item__controls .icon_delete {
-    background-image: url('img/delete.svg');
+    background-image: url('img/times.svg');
 }
 
 .tweet-item__controls .button_pinned .icon_like {
-    background-image: url('img/like-pinned.svg');
+    background-image: url('img/like-outline-red.svg');
 }
 
 .tweet-item__controls .icon_retweet {
@@ -19,19 +19,10 @@
 }
 
 .tweet-item__controls .button_pinned .icon_retweet {
-    background-image: url('img/retweet-pinned.svg');
-}
-
-.tweet-item__controls .button{
-    padding: 0;
-    margin-right: 10px;
-    background: transparent;
+    background-image: url('img/retweet-green.svg');
 }
 
 .tweet-item__controls .icon {
-    width: 15px;
-}
-
-.tweet-item__controls button:nth-child(n+4):last-child {
-   float: right;
+    background-size: cover;
+    margin: 3px;
 }

@@ -1,6 +1,5 @@
 ({
-    tech: 'js',
-    shouldDeps: [
-        { block: 'button', tech: 'bemhtml' }
+    mustDeps: [
+        { block: 'button', mods: { action: ['like', 'reply', 'retweet', 'delete']} }
     ]
 });

@@ -1,6 +1,6 @@
 ({
     shouldDeps: [
         { elem: 'header' },
-        { block: 'text', mods: ['id', 'about', 'username', 'time'] }
+        { block: 'text', mods: ['bold'] }
     ]
 });
