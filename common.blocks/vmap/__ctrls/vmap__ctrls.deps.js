@@ -1,10 +1,13 @@
 ({
-    shouldDeps: [
+    tech: 'js',
+    mustDeps: [
         {
-            block: 'add'
+            tech: 'bemhtml',
+            elem: 'add'
         },
         {
-            block: 'search'
+            tech: 'bemhtml',
+            elem: 'search'
         }
     ]
 });

@@ -6,8 +6,8 @@
             mods: {
                 theme: 'islands',
                 size: 'm'
-            }
-
+            },
+            tech: 'bemhtml'
         },
 
         {
