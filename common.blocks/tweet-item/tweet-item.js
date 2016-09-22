@@ -96,7 +96,8 @@ modules.define('tweet-item', ['i-bem__dom', 'jquery'],
                             document.location.href = window.config.frontend_server + '/tweet/' + tweet._id;
                         });
 
-                        if (delete_button) delete_button.bindTo('pointerclick', function () {
+                        if (delete_button) delete_button.bindTo('pointerclick', function (e) {
+                            e.stopPropagation();
                             // var answer = confirm('Are you sure?'); TODO убрал из-за линтеров
 
                             var answer = true;

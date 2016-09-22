@@ -4,12 +4,15 @@ block('avatar')(
 
             var user = this.ctx.data.user;
 
-            return [
+            if (user.avatar) {
+                return [
+                    {
+                        block: 'image',
+                        url: user.avatar
+                    }
+                ];
+            }
 
-                {
-                    block: 'image',
-                    url: user.avatar
-                }
-            ];
+            return '';
         })
 );

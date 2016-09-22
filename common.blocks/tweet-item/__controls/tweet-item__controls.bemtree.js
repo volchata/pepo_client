@@ -4,8 +4,8 @@ block('tweet-item').elem('controls')(
             var tweet = this.ctx.data.tweet,
                 controls = ['reply', 'retweet', 'like'],
                 data = {
-                    reply_count: '',
-                    delete_count: '',
+                    reply_count: false,
+                    delete_count: false,
                     like_count: tweet.extras.likes.length,
                     retweet_count: tweet.extras.retweets.length,
                     user_reply: false,
@@ -32,9 +32,12 @@ block('tweet-item').elem('controls')(
                             block: 'icon',
                             mods: {}
                         },
-                        js: true,
-                        text: data[value + '_count']
+                        js: true
                     };
+
+                    if (data[value + '_count'] !== false) {
+                        btn.text = data[value + '_count'];
+                    }
 
                     btn.icon.mods[value] = true;
 

@@ -2,3 +2,8 @@
     height: 100%;
     width: 100%;
 }
+
+.avatar_no-avatar {
+    background-image: url("img/wolf.svg");
+    background-size: cover;
+}
