@@ -6,12 +6,12 @@ block('mini-stat')(
             return [
                 {
                     elem: 'count',
-                    tag:'span',
+                    tag: 'span',
                     content: stat.value
                 },
                 {
                     elem: 'title',
-                    tag:'span',
+                    tag: 'span',
                     content: stat.title
                 }
             ];

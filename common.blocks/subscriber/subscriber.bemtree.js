@@ -3,12 +3,12 @@ block('subscriber')(
         function () {
 
             var user = (this.data && this.data.user) ? this.data.user : this.ctx.data.user;
-            var skel = 
+            var skel =
                 {
                     block: 'button',
-                    mods: { theme:'islands', size:'m', type:'follow'},
+                    mods: { theme: 'islands', size: 'm', type: 'follow'},
                     js: true,
-                    text:'Подписаться'
+                    text: 'Подписаться'
                 };
             if (user.followed) {
                 skel.text = 'Отписаться';

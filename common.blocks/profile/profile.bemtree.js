@@ -7,19 +7,19 @@ block('profile')(
             return [
                 {
                     elem: 'header',
-                    content: 
+                    content:
                     [
                         {
                             elem: 'info-left',
                             content: [
-                                { block: 'avatar'}, 
+                                { block: 'avatar'},
                                 { block: 'about-user'},
-                                { block: 'mini-stat', data:{stat:{
-                                    title:'Читает',
+                                { block: 'mini-stat', data: {stat: {
+                                    title: 'Читает',
                                     value: user.followers
                                 }}},
-                                { block: 'mini-stat', data:{stat:{
-                                    title:'Читатели',
+                                { block: 'mini-stat', data: {stat: {
+                                    title: 'Читатели',
                                     value: user.follows
                                 }}}
                             ]
