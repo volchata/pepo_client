@@ -617,6 +617,7 @@ app.get('/compose/', function (req, res) {
     if (req.headers && req.headers['x-forwarded-for'] !== undefined) {
         $headers['x-forwarded-for']= req.headers['x-forwarded-for'];
     }
+
     request({
         url: url,
         headers: $headers
@@ -635,21 +636,25 @@ app.get('/compose/', function (req, res) {
 
         }
     });
-
-
-
 });
 
 app.get('/comment/:id', function (req, res) {
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
         url = config.servers.api_server + '/api/tweet/' + req.params.id;
-
+    var $headers= {
+        Cookie: cookie,
+        json: true,
+    };
+    if (req.connection.remoteAddress !== undefined){
+        $headers['x-jfh3fh36gt4re3rybfh-remote']= req.connection.remoteAddress;
+    }
+    //req.headers['x-forwarded-for']='209.185.108.134';
+    if (req.headers && req.headers['x-forwarded-for'] !== undefined) {
+        $headers['x-forwarded-for']= req.headers['x-forwarded-for'];
+    }
     request({
         url: url,
-        headers: {
-            Cookie: cookie,
-            json: true
-        }
+        headers: $headers
     }, function (error, response, answer) {
         answer = JSON.parse(answer);
 
