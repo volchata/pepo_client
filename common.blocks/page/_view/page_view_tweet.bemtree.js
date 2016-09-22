@@ -32,15 +32,24 @@ block('page').mod('view', 'tweet').content()(function () {
 
     return [
         {
-            block: 'tweet-item',
-            data: item_data,
-            js: item_js
-        },
-        {
-            block: 'tweet-feed',
-            mods: [{ 'comments': true }],
-            data: comment_data,
-            js: comment_js
+            block: 'body',
+            mix: {
+                block: 'vmap-loader',
+                js: true
+            },
+            content: [
+                {
+                    block: 'tweet-item',
+                    data: item_data,
+                    js: item_js
+                },
+                {
+                    block: 'tweet-feed',
+                    mods: [{ 'comments': true }],
+                    data: comment_data,
+                    js: comment_js
+                }
+            ]
         }
 
     ];
