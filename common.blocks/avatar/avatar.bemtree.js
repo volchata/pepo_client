@@ -4,8 +4,6 @@ block('avatar')(
 
             var user = this.ctx.data.user;
 
-            console.log(user);
-
             return [
 
                 {

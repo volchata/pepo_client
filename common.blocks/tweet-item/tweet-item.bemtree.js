@@ -5,6 +5,36 @@ block('tweet-item')(
             var tweet = this.ctx.data.tweet;
             var user = this.ctx.data.user;
 
+            var tweet_tree = [];
+
+            console.log(tweet.extras);
+
+            if (tweet.extras.commentedTweetId) {
+                tweet_tree.push({
+                    elem: 'reply-info',
+                    data: { tweet: { _id: tweet.extras.commentedTweetId }}
+                });
+            }
+
+            tweet_tree.push(
+                {
+                    elem: 'time',
+                    data: { tweet: tweet }
+                },
+                {
+                    block: 'about-user',
+                    data: { user: user }
+                },
+                {
+                    elem: 'tweet-body',
+                    data: { tweet: tweet }
+                },
+                {
+                    elem: 'controls',
+                    data: { tweet: tweet }
+                }
+            );
+
             return [
                 {
                     elem: 'left',
@@ -16,24 +46,7 @@ block('tweet-item')(
                 },
                 {
                     elem: 'right',
-                    content: [
-                        {
-                            elem: 'time',
-                            data: { tweet: tweet }
-                        },
-                        {
-                            block: 'about-user',
-                            data: { user: user }
-                        },
-                        {
-                            elem: 'tweet-body',
-                            data: { tweet: tweet }
-                        },
-                        {
-                            elem: 'controls',
-                            data: { tweet: tweet }
-                        }
-                    ]
+                    content: tweet_tree
                 }
             ];
         })

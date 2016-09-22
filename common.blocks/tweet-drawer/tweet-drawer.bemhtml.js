@@ -1,6 +1,10 @@
 block('tweet-drawer')(
     js()( function () {
-        return {timestamp: this.ctx.data.timestamp};
+        console.log(this.ctx.data);
+        return {
+            timestamp: this.ctx.data.timestamp,
+            parent: this.ctx.data.parent
+        };
     }),
     content()(
         function () {

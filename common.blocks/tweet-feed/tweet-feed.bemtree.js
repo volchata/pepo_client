@@ -2,7 +2,8 @@ block('tweet-feed')(
     content()(
         function () {
 
-            var tweets = this.ctx.data.tweets,
+            var parent_tweet = this.ctx.data.tweet,
+                tweets = this.ctx.data.tweets,
                 users = this.ctx.data.users,
 
                 tweet_feed = tweets.map(function (v) {
@@ -17,10 +18,18 @@ block('tweet-feed')(
             //console.log(tweet_feed);
 
             if (tweets.length) {
+                var parent_tweet_id;
+                if (parent_tweet) {
+                    parent_tweet_id = parent_tweet._id;
+                } else {
+                    parent_tweet_id = undefined;
+                }
+
                 tweet_feed[tweet_feed.length] = {
                     block: 'tweet-drawer',
                     data: {
-                        timestamp: tweets[tweets.length - 1].timestamp
+                        timestamp: tweets[tweets.length - 1].timestamp,
+                        parent: parent_tweet_id
                     }
                 };
             }
@@ -49,12 +58,4 @@ block('tweet-feed')(
             }
 
         })
-);
-
-block('tweet-feed').mod('comments').block('tweet-drawer')(
-    replace()(
-        function () {
-            return ''; // уничтожаем блок перемотки для комментариев TODO сделать бесконечный скроллинг каментов
-        }
-    )
 );
