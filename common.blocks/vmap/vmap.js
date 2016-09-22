@@ -4,9 +4,17 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
         onSetMod: {
             js: {
                 inited: function () {
-                    this.toggleMod('status', 'edit');
+                    console.log(['PARAMS', this.params]);
+                    if (this.params.mod !== undefined) {
+                        this.toggleMod('status', this.params.mod);
+
+                    } else {
+                        this.toggleMod('status', 'edit');
+                    }
+
                     if (this.params.channel !== undefined) {
                         this.emitter = channels( this.params.channel );
+                        console.log(['CHANNELS']);
                     }
 
                 }
@@ -48,6 +56,12 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                         this.checkMapsApi();
                         break;
                     case 'view':
+                        console.log(['VIEW', oldModVal]);
+                        if (oldModVal === '') {
+
+                            this.mapInitedDeferr = $.Deferred();
+                            this.on('mapInited', this.onMapInited);
+                        }
                         this.findBlockInside('lat', 'coord').toggleMod('status', 'edit', 'view');
                         this.findBlockInside('lon', 'coord').toggleMod('status', 'edit', 'view');
                         this.elem('add').length && BEMDOM.destruct(this.elem('add'));
@@ -56,6 +70,10 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                         this.dropElemCache('search');
                         this.dropElemCache('add');
                         //this.dropElemCache('ctrls');
+                        if (oldModVal === '') {
+                            this.checkMapsApi();
+                        }
+
                         break;
                 }
             }
@@ -95,7 +113,11 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                     zoom: zoom,
                     behaviors: ['drag', 'dblClickZoom', 'scrollZoom']
                 });
-                this._map.controls.get('searchControl').options.set('noPlacemark', true).set('noCentering', true);
+                if (this.params.mod !== 'view') {
+                    this._map.controls.get('searchControl').options.set('noPlacemark', true).set('noCentering', true);
+                } else {
+                    this._map.controls.remove('searchControl').remove('geolocationControl');
+                }
                 this._myPlacemark = new window.ymaps.Placemark(center);
 
                 this._map.geoObjects.add(this._myPlacemark);
@@ -111,34 +133,36 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
         },
 
         onMapInited: function () {
-            console.log('Bind events');
-            window.map = this._map;
-            this.bindTo(this.elem('search'), 'pointerclick', this.onBtnSearch);
-            this.bindTo(this.elem('add'), 'pointerclick', this.onBtnAdd);
-            var self = this;
-            var rrr = this._map.events.add('click', function (e) {
-                if (self.hasMod('status', 'edit')) {
-                    var coords = e.get('coords');
-                    self.setPosition(coords);
-                    //console.log(['RESULT',e]);
-                } else {
-                    self.toggleMod('status', 'edit', 'view');
-                }
+            if (this.params.mod !== 'view') {
+                console.log('Bind events');
+                //window.map = this._map;
+                var self = this;
+                this.bindTo(this.elem('search'), 'pointerclick', this.onBtnSearch);
+                this.bindTo(this.elem('add'), 'pointerclick', this.onBtnAdd);
+                this._map.events.add('click', function (e) {
+                    if (self.hasMod('status', 'edit')) {
+                        var coords = e.get('coords');
+                        self.setPosition(coords);
+                        //console.log(['RESULT',e]);
+                    } else {
+                        self.toggleMod('status', 'edit', 'view');
+                    }
 
-            });
-            var sc = this._map.controls.get('searchControl');
-            sc.events.add('resultselect', function (e) {
-                if (self.hasMod('status', 'edit')) {
-                    sc.getResult(e.originalEvent.index).then(function (res) {
-                        self.setPosition(res.geometry.getCoordinates());
-                        //this._map.setBounds(res.geometry.getBounds(),{ checkZoomRange: true });
-                        //res.getAddressLine()
-                        //res.getCountryCode()
-                    });
-                }
-            });
-            console.log(rrr);
-            console.log('Bind events done');
+                });
+                var sc = this._map.controls.get('searchControl');
+                sc.events.add('resultselect', function (e) {
+                    if (self.hasMod('status', 'edit')) {
+                        sc.getResult(e.originalEvent.index).then(function (res) {
+                            self.setPosition(res.geometry.getCoordinates());
+                            //this._map.setBounds(res.geometry.getBounds(),{ checkZoomRange: true });
+                            //res.getAddressLine()
+                            //res.getCountryCode()
+                        });
+                    }
+                });
+                console.log('Bind events done');
+            }
+
         },
         onBtnSearch: function () {
             var lat = parseFloat(this.findBlockInside('lat', 'coord').getVal());
@@ -151,8 +175,10 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
         },
         onBtnAdd: function () {
             this.toggleMod('status', 'view', 'edit');
-            if (this.emiter !== undefined) {
+            if (this.emitter !== undefined) {
+                console.log(['EMIT', this.getFeature()]);
                 this.emitter.emit('success', {geo: this.getFeature()});
+
             }
             this.emit('mapedited', this.getFeature());
         },

@@ -3,7 +3,11 @@ block('page').mod('view', 'profile')(
         return [
             {
                 block: 'profile',
-                js:true
+                mix: {
+                    block: 'vmap-loader',
+                    js: true
+                },
+                js: true
             }
         ];
     })

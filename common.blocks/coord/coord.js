@@ -56,6 +56,8 @@ modules.define('coord', ['i-bem__dom', 'BEMHTML'], function (provide, BEMDOM, BE
             var input = this.findBlockInside('input');
             if (input) {
                 input.setVal($val);
+            } else {
+                this.findBlockInside('text').domElem.text($val);
             }
         }
     }

@@ -1,6 +1,6 @@
 ({
-	
-	shouldDeps: [
+
+	                                        shouldDeps: [
 		{block: 'mini-stat'},
 		{block: 'about-user'},
 		{block: 'subscriber'}
