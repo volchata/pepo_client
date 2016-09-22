@@ -15,7 +15,7 @@ block('tweet-feed')(
                         }
                     };
                 });
-            //console.log(tweet_feed);
+            console.log(tweets.length);
 
             if (tweets.length) {
                 var parent_tweet_id;
@@ -25,13 +25,13 @@ block('tweet-feed')(
                     parent_tweet_id = undefined;
                 }
 
-                tweet_feed[tweet_feed.length] = {
+                tweet_feed.push({
                     block: 'tweet-drawer',
                     data: {
                         timestamp: tweets[tweets.length - 1].timestamp,
                         parent: parent_tweet_id
                     }
-                };
+                });
             }
 
             if (tweet_feed.length) {

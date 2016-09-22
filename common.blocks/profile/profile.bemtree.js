@@ -4,15 +4,20 @@ block('profile')(
         function () {
             var user = this.data.user;
             // console.log('this.data', this);
+            var avatar_mods = {
+                'profile': true
+            };
+
+            if (!user.avatar) avatar_mods['no-avatar'] = true;
+
             return [
                 {
                     elem: 'header',
-                    content:
-                    [
+                    content: [
                         {
                             elem: 'info-left',
                             content: [
-                                { block: 'avatar'},
+                                { block: 'avatar', mods: avatar_mods},
                                 { block: 'about-user'},
                                 { block: 'mini-stat', data: {stat: {
                                     title: 'Читает',

@@ -5,6 +5,7 @@ block('profile').elem('tweetSample')(
             var tabs = ['last', 'pics', 'liked'];
             var tabLabels = ['Недавние', 'Картинки', 'Лайки'];
             var user = this.data.user;
+
             return [
                 {
                     block: 'radio-group',
@@ -26,11 +27,11 @@ block('profile').elem('tweetSample')(
                 },
                 {
                     elem: 'tabsContainer',
-                    elemMods: {type: tabs[0]},
+                    elemMods: { type: tabs[0] },
                     content: tabs.map(function (v) {
                         return {
                             block: 'tweet-feed',
-                            mods: {role: 'tweet-feed-' + v },
+                            mods: { role: 'tweet-feed-' + v },
                             data: user['tweets_' + v]
                         };
                     })

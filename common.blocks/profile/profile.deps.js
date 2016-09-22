@@ -1,11 +1,11 @@
 ({
-
-	                                        shouldDeps: [
-		{block: 'mini-stat'},
-		{block: 'about-user'},
-		{block: 'subscriber'}
-	],
+    shouldDeps: [
+        { block: 'mini-stat' },
+        { block: 'about-user' },
+        { block: 'subscriber' }
+    ],
     mustDeps: [
-    	{ elem: ['tweetSample', 'controls'] }
+        { block: 'avatar', mods: ['no-avatar', 'profile'] },
+        { elem: ['tweetSample', 'controls'] }
     ]
 });

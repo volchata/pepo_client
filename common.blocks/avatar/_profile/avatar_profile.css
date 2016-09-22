@@ -1,0 +1,11 @@
+.avatar_profile{
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+}
+
+.avatar_profile:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}

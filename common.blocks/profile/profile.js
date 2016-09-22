@@ -15,7 +15,7 @@ modules.define('profile', ['i-bem__dom'],
                             tabs = this.elem('tabsContainer'),
                             self = this;
 
-                        buttons.bindTo('click', function (e) {
+                        buttons.bindTo('click', function () {
                             self.setMod(tabs, 'type', this.getVal());
                         });
                     }
