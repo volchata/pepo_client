@@ -114,7 +114,7 @@ app.get('/bemtree/user/feed/history/:timestamp', function (req, res) {
                     tweets: answer.tweets,
                     users: answer.users
                 };
-
+            
                 if (feed.tweets)
                 {
                     for (var i = 0; i<feed.tweets.length; i++)
@@ -321,7 +321,7 @@ app.get('/users/:login', function (req, res) {
                     render(req, res, {
                         view: 'profile',
                         title: 'Profile  Page',
-                        profile_data: answer
+                        user: answer
                     })
                 } else {
                     res.status(404);
@@ -673,7 +673,7 @@ app.get('/profile/', function (req, res) {
                 render(req, res, {
                     view: 'profile',
                     title: 'Profile  Page',
-                    profile_data: answer
+                    user: answer
                 })
             }
             else {
