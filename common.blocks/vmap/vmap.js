@@ -95,7 +95,7 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                     zoom: zoom,
                     behaviors: ['drag', 'dblClickZoom', 'scrollZoom']
                 });
-
+                this._map.controls.get('searchControl').options.set('noPlacemark', true).set('noCentering', true);
                 this._myPlacemark = new window.ymaps.Placemark(center);
 
                 this._map.geoObjects.add(this._myPlacemark);
@@ -112,6 +112,7 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
 
         onMapInited: function () {
             console.log('Bind events');
+            window.map = this._map;
             this.bindTo(this.elem('search'), 'pointerclick', this.onBtnSearch);
             this.bindTo(this.elem('add'), 'pointerclick', this.onBtnAdd);
             var self = this;
@@ -119,10 +120,22 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
                 if (self.hasMod('status', 'edit')) {
                     var coords = e.get('coords');
                     self.setPosition(coords);
+                    //console.log(['RESULT',e]);
                 } else {
                     self.toggleMod('status', 'edit', 'view');
                 }
 
+            });
+            var sc = this._map.controls.get('searchControl');
+            sc.events.add('resultselect', function (e) {
+                if (self.hasMod('status', 'edit')) {
+                    sc.getResult(e.originalEvent.index).then(function (res) {
+                        self.setPosition(res.geometry.getCoordinates());
+                        //this._map.setBounds(res.geometry.getBounds(),{ checkZoomRange: true });
+                        //res.getAddressLine()
+                        //res.getCountryCode()
+                    });
+                }
             });
             console.log(rrr);
             console.log('Bind events done');
