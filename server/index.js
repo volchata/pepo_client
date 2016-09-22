@@ -499,6 +499,43 @@ app.get('/feed/', function (req, res) {
     });
 });
 
+app.get('/interest/', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/interest';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                answer.usemap=true;
+                render(req, res, {
+                    view: 'interest',
+                    title: 'Interest Page',
+                    allInterests: answer.allInterests,
+                    userInterests: answer.userInterests
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
 
 /*
 // Новая страница - новый роут
