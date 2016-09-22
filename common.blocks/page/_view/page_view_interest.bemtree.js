@@ -1,6 +1,5 @@
 block('page').mod('view', 'interest').content()(function () {
     var data = {};
-    var js = true;
 
     if (this.data) {
         data = this.data;

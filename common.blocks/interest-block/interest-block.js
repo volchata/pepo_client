@@ -1,6 +1,6 @@
 //eslint отключен по той причине, что без передачи аргументом jquery tagEditor не работает
-modules.define('interest-block', ['i-bem__dom', 'jquery'],
-    function (provide, BEMDOM, jQuery) { //eslint-disable-line no-unused-vars
+modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
+    function (provide, BEMDOM, jQuery, BEMHTML) { //eslint-disable-line no-unused-vars
 
 // этот комментарий будет заменен `borschik`-ом на содержимое файла плагина
     /*borschik:include:../../libs/jquery-tag-editor/jquery.tag-editor.js*/
@@ -15,28 +15,28 @@ modules.define('interest-block', ['i-bem__dom', 'jquery'],
                                 tArea = jQuery('.interest-block textarea'),
                                 userInterests = this.params.userInterests,
                                 interestBtns = this.findBlocksInside({ blockName: 'button', modName: 'togglable', modVal: 'check'}),
-                                submitBtn = this.findBlocksInside({ blockName: 'button', modName: 'type', modVal: 'submit'});
+                                submitBtn = this.findBlockInside({ blockName: 'button', modName: 'type', modVal: 'submit'});
 
                             tArea.tagEditor({
                                 initialTags: userInterests,
-                                beforeTagSave: function(field, editor, tags, tag, val) {
+                                beforeTagSave: function (field, editor, tags, tag, val) {
                                     interestBtns.forEach(btn => {
                                         var btnVal = btn.domElem.context.textContent;
 
                                         if (btnVal === val && !btn.hasMod('checked')) {
-                                            setTimeout(function(){
+                                            setTimeout (function() {
                                                 btn.setMod('checked');
                                             }, 100);
                                         }
 
                                     });
                                 },
-                                beforeTagDelete: function(field, editor, tags, val) {
+                                beforeTagDelete: function (field, editor, tags, val) {
                                     interestBtns.forEach(btn => {
                                         var btnVal = btn.domElem.context.textContent;
 
                                         if (btnVal === val && btn.hasMod('checked')) {
-                                            setTimeout(function(){
+                                            setTimeout (function() {
                                                 btn.delMod('checked');
                                             }, 100);
                                         }
@@ -49,7 +49,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery'],
                             interestBtns.forEach(btn => {
                                 var val = btn.domElem.context.textContent;
 
-                                btn.bindTo('pointerclick', function() {
+                                btn.bindTo('pointerclick', function () {
                                     var tags = tArea.tagEditor('getTags')[0].tags;
 
                                     if (!tags.includes(val) && !btn.hasMod('checked')) {
@@ -59,7 +59,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery'],
                                     }
                                 });
 
-                                if (userInterests.includes(val)){
+                                if (userInterests.includes(val)) {
                                     btn.setMod('checked');
                                 }
                             });
@@ -69,9 +69,9 @@ modules.define('interest-block', ['i-bem__dom', 'jquery'],
 
                                 var tags = tArea.tagEditor('getTags')[0].tags;
 
-                                $.ajax(
+                                jQuery.ajax(
                                     {
-                                        url: window.config.api_server + '/api/user/interest',
+                                        url: window.config.api_server + '/api/interest',
                                         type: 'POST',
                                         data: JSON.stringify({
                                             interests: tags
@@ -81,13 +81,8 @@ modules.define('interest-block', ['i-bem__dom', 'jquery'],
                                         context: this
                                     }
                                 ).done(
-                                    function (msg) {
-                                        if (!msg.notRegistered) {
-                                            document.location.href = '/feed/';
-                                        } else {
-                                            // такое можно предположить только если что-то с БД, причем сам сервер ок
-                                            formError('Не удалось зарегистрироваться, попробуйте позднее');
-                                        }
+                                    function () {
+                                        document.location.href = '/users-search/';
                                     }
                                 ).fail(
                                     function (msg) {
@@ -102,7 +97,6 @@ modules.define('interest-block', ['i-bem__dom', 'jquery'],
                             });
 
                             function formError(text) {
-                                field_login.setMod('has-error', true);
 
                                 BEMDOM.append(that.domElem, BEMHTML.apply({
                                     block: 'error-message',

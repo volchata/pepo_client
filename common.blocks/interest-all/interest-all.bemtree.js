@@ -6,11 +6,11 @@ block('interest-all')(
 
             var interestsBtn = interests.map(intr => {
                 return {
-                    block : 'button',
-                    mods : { theme : 'islands', size : 'm', togglable : 'check' },
-                    text : intr
+                    block: 'button',
+                    mods: { theme: 'islands', size: 'm', togglable: 'check' },
+                    text: intr
                 };
-            })
+            });
 
             return interestsBtn;
         })

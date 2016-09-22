@@ -11,10 +11,9 @@ modules.define('interest-all', ['i-bem__dom'],
                 }
             },
             {
-                live: function() {
+                live: function () {
                     this.liveInitOnEvent('click');
                 }
             }
             ));
     });
-
