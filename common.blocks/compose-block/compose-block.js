@@ -8,7 +8,7 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                     inited: function () {
                         console.log(['COMPOSE BLOCK', this.params]);
                         this.channel = 'attach_events';
-                        window.tweet = this.tweet = { extras: {} };
+                        this.tweet = { extras: {} };
                         var self = this,
                             send_tweet_btn = this.findBlockInside('send-tweet-btn'),
                             attach_events = channels(this.channel);
