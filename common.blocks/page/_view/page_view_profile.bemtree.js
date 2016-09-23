@@ -1,6 +1,6 @@
 block('page').mod('view', 'profile')(
     content()(function () {
-        return [
+        var bem_object = [
             {
                 block: 'profile',
                 mix: {
@@ -10,5 +10,9 @@ block('page').mod('view', 'profile')(
                 js: true
             }
         ];
+
+        bem_object.push(applyNext());
+
+        return bem_object;
     })
 );

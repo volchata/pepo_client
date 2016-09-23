@@ -10,7 +10,7 @@ block('page').mod('view', 'feed').content()(function () {
         js = data;
     }
 
-    return [
+    var bem_object = [
         {
             block: 'tweet-feed',
             mods: [{ drawer: true }],
@@ -22,4 +22,8 @@ block('page').mod('view', 'feed').content()(function () {
             js: js
         }
     ];
+
+    bem_object.push(applyNext());
+
+    return bem_object;
 });

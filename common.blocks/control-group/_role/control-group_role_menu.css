@@ -1,0 +1,38 @@
+.control-group_role_menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 -7px 6px -6px rgba(204, 204, 204, 1);
+}
+
+.control-group_role_menu .button{
+    width: 25%;
+    min-width: 50px;
+}
+
+.control-group_role_menu .button__text{
+    margin: 0;
+}
+
+.control-group_role_menu .button .icon{
+    display:  block;
+    margin: 0 auto;
+}
+
+.control-group_role_menu .icon_home {
+    background-image: url('img/home.svg');
+}
+
+.control-group_role_menu .icon_account {
+    background-image: url('img/account.svg');
+}
+
+.control-group_role_menu .icon_search {
+    background-image: url('img/search-button.svg');
+}
+
+.control-group_role_menu .icon_tweet {
+    background-image: url('img/paw.svg');
+}

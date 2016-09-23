@@ -7,7 +7,9 @@
                         'image-upload', 'users-search', 'profile-edit', 'tweet', 'vmap', 'single', 'feed', 'interest']
                 }
             },
-            { elem: 'body', elemMods: ['wall', 'comment', 'profile'] }
+            { elem: 'body', elemMods: ['wall', 'comment', 'profile'] },
+            { block: 'control-group', mods: { role: ['menu'] } },
+            { block: 'button' }
         ]
     }
 ]);
