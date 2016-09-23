@@ -859,6 +859,42 @@ app.get('/users-search/', function (req, res) {
     });
 });
 
+
+app.get('/followers/', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']),
+        url = config.servers.api_server + '/api/user/interest';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                render(req, res, {
+                    view: 'users-search',
+                    title: 'Users Search',
+                    users: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
 app.get('/single/', function (req, res) {
     render(req, res, {
         view: 'single',
