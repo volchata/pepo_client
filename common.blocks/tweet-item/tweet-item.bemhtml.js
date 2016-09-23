@@ -3,5 +3,6 @@ block('tweet-item')(
         function () {
             var tweet = this.ctx.data.tweet;
             return { tweet: tweet };
-        })
+        }),
+    tag()('article')
 );

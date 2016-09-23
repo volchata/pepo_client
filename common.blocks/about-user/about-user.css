@@ -1,5 +1,6 @@
 .about-user {
     overflow: hidden;
+    font-style: normal;
 }
 .about-user .text {
     display: block;

@@ -7,8 +7,6 @@ block('tweet-item')(
 
             var tweet_tree = [];
 
-            console.log(tweet.extras);
-
             if (tweet.extras.commentedTweetId) {
                 tweet_tree.push({
                     elem: 'reply-info',
@@ -23,6 +21,7 @@ block('tweet-item')(
                 },
                 {
                     block: 'about-user',
+                    mods: { 'profile-link': true },
                     data: { user: user }
                 },
                 {
