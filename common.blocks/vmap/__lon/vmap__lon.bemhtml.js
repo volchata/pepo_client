@@ -5,7 +5,7 @@ block('vmap').elem('lon')(
             return [
                 {
                     elem: 'label',
-                    content: 'Lon'
+                    content: 'Д'
                 },
                 {
                     block: 'coord',
