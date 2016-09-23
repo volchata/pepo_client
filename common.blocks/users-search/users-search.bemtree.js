@@ -9,13 +9,10 @@ block('users-search')(
                     content: [
                         {
                             block: 'input',
+                            mods: { theme: 'islands', width: 'available', size: 'l' },
                             type: 'search',
                             placeholder: 'Искать пользователей...'
-                        },
-                        {
-                            block: 'button'
                         }
-
                     ]
                 },
                 {
