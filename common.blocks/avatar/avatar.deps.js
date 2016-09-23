@@ -1,6 +1,6 @@
 ({
     mustDeps: [
         { block: 'image' },
-        { mods: ['tweet-item', 'user-item'] }
+        { mods: ['tweet-item', 'user-item', 'no-avatar'] }
     ]
 });

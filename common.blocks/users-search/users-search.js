@@ -24,35 +24,42 @@ modules.define('users-search', ['i-bem__dom', 'jquery', 'BEMHTML'],
                 }
             },
             _search: function (query) {
-                console.log(query);
-
-                $.ajax(
-                    {
-                        url: window.config.frontend_server + '/bemtree/users/search/' + query + '/',
-                        type: 'GET',
-                        dataType: 'json',
-                        context: this
-                    }
-                ).done(
-                    function (msg) {
-                        var cont = this.findBlockInside('user-feed');
-
-                        if (msg.length) {
-
-                            $.each(msg, function (i, v) {
-                                BEMDOM.update(cont.domElem, BEMHTML.apply(v));
-                            });
-
-                        } else {
-                            BEMDOM.update(cont.domElem, 'Не найдено ни одного пользователя');
+                if (query.length > 0) {
+                    var cont = this.findBlockInside('user-feed');
+                    BEMDOM.update(cont.domElem, BEMHTML.apply(
+                        [{
+                            block: 'spin',
+                            mods: { size: 'l', theme: 'islands', visible: true }
+                        }, ' Поиск...']
+                    ));
+                    $.ajax(
+                        {
+                            url: window.config.frontend_server + '/bemtree/users/search/' + query + '/',
+                            type: 'GET',
+                            dataType: 'json',
+                            context: this
                         }
-                    }
-                ).fail(
-                    function () {
-                        BEMDOM.update(this.domElem, 'Сервис недоступен');
-                    }
-                );
+                    ).done(
+                        function (msg) {
+                            var cont = this.findBlockInside('user-feed');
 
+                            if (msg.length) {
+
+                                $.each(msg, function (i, v) {
+                                    BEMDOM.update(cont.domElem, BEMHTML.apply(v));
+                                });
+
+                            } else {
+                                BEMDOM.update(cont.domElem, 'Не найдено ни одного пользователя');
+                            }
+
+                        }
+                    ).fail(
+                        function () {
+                            BEMDOM.update(cont.domElem, 'Сервис недоступен');
+                        }
+                    );
+                }
             }
         }));
     });

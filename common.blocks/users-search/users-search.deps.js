@@ -4,7 +4,15 @@
         { block: 'user-item' },
         { block: 'input' },
         { block: 'button' },
-        { elem: 'search-input' }
+        { elem: 'search-input' },
+        {
+            block: 'spin',
+            mods: {
+                theme: 'islands',
+                size: 'l',
+                visible: true
+            }
+        }
     ]
 },
 {
@@ -13,6 +21,15 @@
     mustDeps: [
         {
             block: 'user-item',
+            tech: 'bemhtml'
+        },
+        {
+            block: 'spin',
+            mods: {
+                theme: 'islands',
+                size: 'l',
+                visible: true
+            },
             tech: 'bemhtml'
         }
     ]

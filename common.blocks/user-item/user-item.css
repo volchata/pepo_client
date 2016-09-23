@@ -2,8 +2,10 @@
     display: block;
     overflow: hidden;
     cursor: pointer;
+    padding: 4px 0;
+    border-top: 1px solid #efefef;
 }
 
 .user-item:hover {
-    background-color: #eeeeee;
+    background-color: #efefef;
 }

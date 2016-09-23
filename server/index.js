@@ -168,7 +168,8 @@ app.get('/bemtree/users/search/:query', function (req, res) {
                 var tmpl = bemtree.compile(
                     fs.readFileSync("./common.blocks/user-item/user-item.bemtree.js") +
                     fs.readFileSync("./common.blocks/avatar/avatar.bemtree.js") +
-                    fs.readFileSync("./common.blocks/about-user/about-user.bemtree.js")
+                    fs.readFileSync("./common.blocks/about-user/about-user.bemtree.js") +
+                    fs.readFileSync("./common.blocks/subscriber/subscriber.bemtree.js")
                 );
 
                 var result = [];
