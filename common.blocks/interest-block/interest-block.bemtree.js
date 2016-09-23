@@ -19,7 +19,7 @@ block('interest-block')(
                 {
                     block: 'button',
                     mods: { theme: 'islands', size: 'm', type: 'submit' },
-                    text: 'Продолжить'
+                    text: 'Сохранить'
                 },
                 {
                     block: 'interest-all',

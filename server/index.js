@@ -672,6 +672,82 @@ app.get('/comment/', function (req, res) {
     })
 });
 
+app.get('/account/edit/passport', function (req, res) {
+    res.redirect('/account/edit/');
+});
+
+app.get('/account/edit/', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                answer.self = true;
+                render(req, res, {
+                    view: 'account-edit',
+                    title: 'Edit Profile Page',
+                    user: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
+app.get('/account/edit/avatar', function (req, res) {
+    var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+    var url = config.servers.api_server + '/api/user/';
+
+    request({
+        url: url,
+        headers: {
+            Cookie: cookie,
+            json: true
+        }
+    }, function (error, response, answer) {
+        answer = JSON.parse(answer);
+
+        if (response.statusCode == 403) {
+            res.redirect('/auth/');
+        }
+        else {
+            if (answer) {
+                answer.self = true;
+                render(req, res, {
+                    view: 'avatar-edit',
+                    title: 'Edit Profile Page',
+                    user: answer
+                })
+            }
+            else {
+                render(req, res, {
+                    view: '500',
+                    title: ''
+                })
+            }
+
+        }
+    });
+});
+
 app.get('/profile-edit/', function (req, res) {
 
     var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);

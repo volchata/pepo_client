@@ -1,0 +1,13 @@
+.passport-edit {
+    width: 100%;
+    padding: 1em 2em;
+    box-sizing: border-box;
+}
+
+.passport-edit__label {
+    margin-top: 5px;
+}
+
+.passport-edit .button {
+    margin-top: 10px;
+}
