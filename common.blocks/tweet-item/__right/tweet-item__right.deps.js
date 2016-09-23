@@ -4,8 +4,8 @@
         { elem: 'controls' },
         { elem: 'time' },
         { elem: 'tweet-body' },
-        { elem: 'tweet-image'},
-        { elem: 'tweet-text'},
-        { block: 'about-user' }
+        { elem: 'tweet-image' },
+        { elem: 'tweet-text' },
+        { block: 'about-user', mods: ['profile-link', 'oneline'] }
     ]
 }]);
