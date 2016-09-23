@@ -9,8 +9,7 @@ modules.define('subscriber', ['i-bem__dom', 'jquery'],
 
                         var self = this;
 
-                        this.method = (this.getMod('type') == 'unfollow') ?     // eslint-disable-line no-eq-null, eqeqeq
-                             'DELETE' : 'POST';
+                        this.method = (this.getMod('type') === 'unfollow') ? 'DELETE' : 'POST';
                         this.emitter = this.findBlockOutside('page');
                         this.btn = this.findBlockInside('button');
                         this.btn.bindTo('pointerclick', function (e) {

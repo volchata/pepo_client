@@ -7,7 +7,7 @@ modules.define('mini-stat', ['i-bem__dom'],
                 'js': {
                     'inited': function () {
 
-                        if (this.params.event == null) // eslint-disable-line no-eq-null, eqeqeq
+                        if (this.params.event === null)
                             return;
 
                         var emitter = this.findBlockOutside('page');

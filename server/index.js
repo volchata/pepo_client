@@ -595,10 +595,31 @@ app.get('/auth/', function (req, res) {
     }, function (error, response, answer) {
         answer = JSON.parse(answer);
         if (response.statusCode == 403) {
-            render(req, res, {
-                view: 'auth',
-                title: 'Auth  Page'
-            })
+
+            var cookie = request.cookie('connect.sid=' + req.cookies['connect.sid']);
+            var url = config.servers.api_server + '/topimage/';
+
+            request({
+                url: url,
+                headers: {
+                    Cookie: cookie,
+                    json: true
+                }
+            }, function (error, response, answer) {
+                var image = null;
+
+                answer = JSON.parse(answer);
+
+                if (answer.extras) {
+                    image = answer.extras.image;
+                }
+
+                render(req, res, {
+                    view: 'auth',
+                    title: 'Auth  Page',
+                    image: image
+                })
+            });
         }
         else {
             if (answer.notRegistered) {
