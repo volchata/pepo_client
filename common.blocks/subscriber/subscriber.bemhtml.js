@@ -1,9 +1,8 @@
 
-
 block('subscriber')(
     js()(
-        function(){ 
-            return {userName: this.ctx.data.user.displayName}
+        function () {
+            return {userName: this.ctx.data.user.displayName};
         }
     ),
     content()(
@@ -12,13 +11,13 @@ block('subscriber')(
             this.mods.type = (isf ? 'unfollow' : 'follow');
             return {
                 block: 'button',
-                mods: { 
-                    theme:'islands', 
-                    size:'m'
+                mods: {
+                    theme: 'islands',
+                    size: 'm'
                 },
                 js: true,
                 text: (isf ? 'Отписаться' : 'Подписаться')
             };
         }
     )
-)
+);

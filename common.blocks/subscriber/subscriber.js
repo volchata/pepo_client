@@ -1,6 +1,6 @@
-modules.define('subscriber', ['i-bem__dom', 'jquery', 'BEMHTML'],
+modules.define('subscriber', ['i-bem__dom', 'jquery'],
 
-    function (provide, BEMDOM, $, BEMHTML) {
+    function (provide, BEMDOM, $) {
 
         provide(BEMDOM.decl(this.name, {
             onSetMod: {
@@ -8,8 +8,8 @@ modules.define('subscriber', ['i-bem__dom', 'jquery', 'BEMHTML'],
                     'inited': function () {
 
                         var self = this;
-                        
-                        this.method = (this.getMod('type') == 'unfollow') ?
+
+                        this.method = (this.getMod('type') == 'unfollow') ?     // eslint-disable-line no-eq-null, eqeqeq
                              'DELETE' : 'POST';
                         this.emitter = this.findBlockOutside('page');
                         this.btn = this.findBlockInside('button');
@@ -19,7 +19,7 @@ modules.define('subscriber', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         });
                     }
                 },
-                'type':{
+                'type': {
                     'follow': function () {
                         this.method = 'POST';
                         this.btn.setText('Подписаться');
@@ -34,18 +34,18 @@ modules.define('subscriber', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onFollowStateChange: function (user) {
                 if (!user) return;
                 this.setMod('type', user.followed ? 'unfollow' : 'follow');
-                
-                this.emitter.emit('follow_changed_'+this.params.userName, 
+
+                this.emitter.emit('follow_changed_' + this.params.userName,
                     { stat:
-                        {
-                            value: user.follows
-                        }
+                    {
+                        value: user.follows
+                    }
                     });
             },
-            
+
             serve: function () {
                 var self = this,
-                    url = '/api/users/'+this.params.userName+'/follower';
+                    url = '/api/users/' + this.params.userName + '/follower';
                 $.ajax(
                     {
                         url: window.config.api_server + url,
