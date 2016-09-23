@@ -19,15 +19,15 @@ block('profile')(
                             content: [
                                 { block: 'avatar', mods: avatar_mods},
                                 { block: 'about-user'},
-                                { block: 'mini-stat', data:{stat:{
-                                    title:'Читает',
+                                { block: 'mini-stat', data: {stat: {
+                                    title: 'Читает',
                                     value: user.follows
                                 }}},
-                                { block: 'mini-stat', 
-                                    js: {event: 'follow_changed_'+user.displayName},
-                                    data:{
-                                        stat:{
-                                            title:'Читатели',
+                                { block: 'mini-stat',
+                                    js: {event: 'follow_changed_' + user.displayName},
+                                    data: {
+                                        stat: {
+                                            title: 'Читатели',
                                             value: user.followers
                                         }
                                     }

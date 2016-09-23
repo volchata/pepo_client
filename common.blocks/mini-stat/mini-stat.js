@@ -7,7 +7,7 @@ modules.define('mini-stat', ['i-bem__dom'],
                 'js': {
                     'inited': function () {
 
-                        if (this.params.event == null)
+                        if (this.params.event == null) // eslint-disable-line no-eq-null, eqeqeq
                             return;
 
                         var emitter = this.findBlockOutside('page');
@@ -16,7 +16,7 @@ modules.define('mini-stat', ['i-bem__dom'],
                     }
                 }
             },
-            
+
             update: function ( e, data ) {
                 var s = data.stat;
                 this.elem('count').text(s.value);

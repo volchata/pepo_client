@@ -2,8 +2,12 @@
 
 .radio-group_role_tweets-variants-control {
 	text-align: center;
+	width: 100%;
 }
 
+.profile__tweetSample .radio-group_role_tweets-variants-control label {
+	display: inline;
+}
 .profile__tweetSample .radio-group_role_tweets-variants-control .button {
     width: 33%;
 }
