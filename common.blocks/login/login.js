@@ -46,7 +46,7 @@ modules.define('login', ['i-bem__dom', 'jquery', 'BEMHTML'], function (provide, 
                             ).done(
                                 function (msg) {
                                     if (!msg.notRegistered) {
-                                        document.location.href = '/feed/';
+                                        document.location.href = '/interest/';
                                     } else {
                                         // такое можно предположить только если что-то с БД, причем сам сервер ок
                                         formError('Не удалось зарегистрироваться, попробуйте позднее');

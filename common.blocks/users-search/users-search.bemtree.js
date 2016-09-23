@@ -1,6 +1,7 @@
 block('users-search')(
     content()(
         function () {
+            var users = this.ctx.data.users;
 
             return [
                 {
@@ -20,7 +21,7 @@ block('users-search')(
                 {
                     block: 'user-feed',
                     content: [],
-                    data: { users: [] }
+                    data: { users: users }
                 }
             ];
 
