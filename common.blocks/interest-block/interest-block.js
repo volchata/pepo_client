@@ -20,7 +20,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                             tArea.tagEditor({
                                 initialTags: userInterests,
                                 beforeTagSave: function (field, editor, tags, tag, val) {
-                                    interestBtns.forEach(btn => {
+                                    interestBtns.forEach(function(btn) {
                                         var btnVal = btn.domElem.context.textContent;
 
                                         if (btnVal === val && !btn.hasMod('checked')) {
@@ -32,7 +32,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                     });
                                 },
                                 beforeTagDelete: function (field, editor, tags, val) {
-                                    interestBtns.forEach(btn => {
+                                    interestBtns.forEach(function(btn) {
                                         var btnVal = btn.domElem.context.textContent;
 
                                         if (btnVal === val && btn.hasMod('checked')) {
@@ -46,7 +46,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 placeholder: 'Введите свои интересы ...'
                             });
 
-                            interestBtns.forEach(btn => {
+                            interestBtns.forEach(function(btn) {
                                 var val = btn.domElem.context.textContent;
 
                                 btn.bindTo('pointerclick', function () {
