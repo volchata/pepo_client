@@ -24,7 +24,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                         var btnVal = btn.domElem.context.textContent;
 
                                         if (btnVal === val && !btn.hasMod('checked')) {
-                                            setTimeout (function() {
+                                            setTimeout(function () {
                                                 btn.setMod('checked');
                                             }, 100);
                                         }
@@ -36,7 +36,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                         var btnVal = btn.domElem.context.textContent;
 
                                         if (btnVal === val && btn.hasMod('checked')) {
-                                            setTimeout (function() {
+                                            setTimeout(function () {
                                                 btn.delMod('checked');
                                             }, 100);
                                         }

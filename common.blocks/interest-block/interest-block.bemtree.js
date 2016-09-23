@@ -13,18 +13,18 @@ block('interest-block')(
                     }
                 },
                 {
-                    block : 'textarea',
-                    mods : { theme : 'islands', size : 'm', width : 'available' }
+                    block: 'textarea',
+                    mods: { theme: 'islands', size: 'm', width: 'available' }
                 },
                 {
-                    block : 'button',
-                    mods : { theme : 'islands', size : 'm', type : 'submit' },
-                    text : 'Продолжить'
+                    block: 'button',
+                    mods: { theme: 'islands', size: 'm', type: 'submit' },
+                    text: 'Продолжить'
                 },
                 {
                     block: 'interest-all',
                     data: allInterests
                 }
-            ]
+            ];
         })
 );
