@@ -50,7 +50,7 @@ block('tweet-item').elem('tweet-body')(
                         elem: 'tweet-text',
                         content: content
                     };
-                } if (geo) {
+                } else if (geo) {
 
                 } else {
                     tweet_content[0].elemMods = { 'alone': true }; // картинка одна, скруглить гамбургер
