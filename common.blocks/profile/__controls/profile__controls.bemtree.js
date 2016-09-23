@@ -13,8 +13,9 @@ block('profile').elem('controls')(
                 };
             return {
                 block: 'control-group',
-                content: {
-                    block: 'subscriber'
+                content: { 
+                    block:'subscriber',
+                    data: {user: this.data.user}
                 }
             };
         }
