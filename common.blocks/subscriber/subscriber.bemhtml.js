@@ -1,4 +1,3 @@
-
 block('subscriber')(
     js()(
         function () {
