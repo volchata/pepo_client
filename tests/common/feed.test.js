@@ -41,7 +41,7 @@ describe('feed', function() {
     var wait_for_like_text = '1';
 
     it('resize', function () {
-        return this.browser.windowHandleSize({width: 320, height: 240});
+        return this.browser.windowHandleSize({width: 320, height: 480});
     });
 
 
