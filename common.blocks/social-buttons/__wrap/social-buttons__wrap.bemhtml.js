@@ -4,7 +4,8 @@ block('social-buttons').elem('wrap')(
             {
                 block: 'button',
                 mix: {block: 'social-buttons'},
-                mods: {social: 'vk'},
+                mods: {social: 'vk', type: 'link'},
+                url: '/auth/vk',
                 text: 'Войти через VK',
                 icon: {
                     block: 'icon',
@@ -14,7 +15,8 @@ block('social-buttons').elem('wrap')(
             {
                 block: 'button',
                 mix: {block: 'social-buttons'},
-                mods: {social: 'facebook'},
+                mods: {social: 'facebook', type: 'link'},
+                url: '/auth/fb',
                 text: 'Войти через Facebook',
                 icon: {
                     block: 'icon',
