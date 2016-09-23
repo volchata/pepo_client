@@ -13,6 +13,7 @@ block('page').mod('view', 'feed').content()(function () {
     return [
         {
             block: 'tweet-feed',
+            mods: [{ drawer: true }],
             mix: {
                 block: 'vmap-loader',
                 js: true

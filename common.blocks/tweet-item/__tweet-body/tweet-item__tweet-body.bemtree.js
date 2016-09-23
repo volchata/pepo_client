@@ -4,7 +4,7 @@ block('tweet-item').elem('tweet-body')(
 
             var tweet = this.ctx.data.tweet,
                 image = null,
-                geo = null,
+            //    geo = null,
                 content = [],
                 tweet_content;
 
@@ -24,7 +24,7 @@ block('tweet-item').elem('tweet-body')(
                 image = tweet.extras.image; // если к твиту приложена еще и картинка, она перезапишет снапшот в гамбургере
             }
             if (tweet.extras.geo) {
-                geo = tweet.extras.geo;
+                //geo = tweet.extras.geo;
             }
 
             if (tweet.content) {
@@ -50,36 +50,40 @@ block('tweet-item').elem('tweet-body')(
                         elem: 'tweet-text',
                         content: content
                     };
-                } else if (geo) {
-
                 } else {
                     tweet_content[0].elemMods = { 'alone': true }; // картинка одна, скруглить гамбургер
                 }
 
-            } if (geo) {
-                console.log(['GEO', geo.geometry.coordinates]);
-                var coords = geo.geometry.coordinates;
-                tweet_content = [];
-                tweet_content[0] = {
-                    elem: 'tweet-geo',
-                    content: {
-                        block: 'vmap',
-                        js: { center: [coords[1], coords[0]], mod: 'view' }
-                    }
-                };
+                /*if (geo) {
 
-                if (content.length) {
-                    tweet_content[1] = {
-                        elem: 'tweet-text',
-                        content: content
-                    };
-                } else {
-                    tweet_content[0].elemMods = { 'alone': true }; // картинка одна, скруглить гамбургер
-                }
+                 }*/
 
             } else {
                 tweet_content = content; // если нет, то текстовые данные
             }
+
+            /*if (geo) {
+             console.log(['GEO', geo.geometry.coordinates]);
+             var coords = geo.geometry.coordinates;
+             tweet_content = [];
+             tweet_content[0] = {
+             elem: 'tweet-geo',
+             content: {
+             block: 'vmap',
+             js: { center: [coords[1], coords[0]], mod: 'view' }
+             }
+             };
+
+             if (content.length) {
+             tweet_content[1] = {
+             elem: 'tweet-text',
+             content: content
+             };
+             } else {
+             tweet_content[0].elemMods = { 'alone': true }; // картинка одна, скруглить гамбургер
+             }
+
+             }*/
 
             return tweet_content;
 
