@@ -8,8 +8,8 @@
 .profile-edit .dropzone {
 	padding: 5px;
 	height: auto;
-	min-width: 407px;
-	min-height: 407px;
+	/*min-width: 407px;
+	min-height: 407px;*/
 	display: inline-block;
 	transition: all 0.2s;
 }

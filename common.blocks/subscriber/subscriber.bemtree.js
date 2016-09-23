@@ -1,13 +1,10 @@
 block('subscriber')(
-    js()(
-        function () {
-            return {userName: this.ctx.data.user.displayName};
-        }
-    ),
     content()(
         function () {
             var isf = this.ctx.data.user.followed;
-            this.mods.type = (isf ? 'unfollow' : 'follow');
+            if (this.ctx.mods == null) this.ctx.mods = {};
+            this.ctx.mods.type = (isf ? 'unfollow' : 'follow');
+            this.ctx.js = {userName: this.ctx.data.user.displayName};
             return {
                 block: 'button',
                 mods: {
