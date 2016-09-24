@@ -1,16 +1,18 @@
 .avatar-edit__title {
-    margin: 1em 2em;
+    margin: 10px 20px;
 }
 
 .avatar-edit .button {
-    margin: 10px 10px;
+    display: block;
+    margin: 10px 20px;
 }
 
 .avatar-edit .dropzone {
     padding: 5px;
     height: auto;
-    min-width: 407px;
-    min-height: 407px;
+    margin-left: 20px; 
+    /*min-width: 407px;
+    min-height: 407px;*/
     display: inline-block;
     transition: all 0.2s;
 }

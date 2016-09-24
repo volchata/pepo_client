@@ -7,7 +7,7 @@ block('profile').elem('controls')(
                     content: {
                         block: 'button',
                         mods: {type: 'link', theme: 'islands', size: 'm'},
-                        url: '/profile-edit',
+                        url: '/account/edit/',
                         text: 'Редактировать'
                     }
                 };
