@@ -37,8 +37,10 @@ describe('reply', function() {
 
     var first_tweet = 'Мой первый твит ' + seed;
     var other_tweet = 'Другой твит ' + seed;
-
-    var wait_for_like_text = '1';
+    var first_comment = 'Мой первый ответ ' + seed;
+    var other_comment = 'Другой ответ ' + seed;
+    var first_2nd_comment = 'Мой первый ответ на ответ ' + seed;
+    var other_2nd_comment = 'Другой ответ на ответ ' + seed;
 
     it('resize', function () {
         return this.browser.windowHandleSize({width: 320, height: 480});
@@ -80,6 +82,100 @@ describe('reply', function() {
     it('тело твита кликабельно', function () {
         var that = this;
         return this.browser.click(".tweet-item:first-child")
+            .waitForVisible(".page_view_tweet");
+    });
+
+    it('комментариев пока нет', function () {
+        var that = this;
+        return this.browser.waitUntil(
+                function async() {
+                    return that.browser.getText(".tweet-feed .text").then(function (text) {
+                        return text === 'Нет комментариев';
+                    });
+                }
+            );
+    });
+
+    it('разместить ответ', function () {
+        var that = this;
+        return this.browser.click(".button_action_reply")
             .waitForVisible(".compose-block")
-    })
+            .setValue(".pepo-textarea textarea", first_comment)
+            .click(".send-tweet-btn")
+            .waitForVisible(".page_view_feed")
+            .click(".tweet-item:first-child")
+            .waitUntil(
+                function async() {
+                    return that.browser.getText(".tweet-feed .tweet-item .tweet-item__tweet-body").then(function (text) {
+                        return text === first_comment;
+                    });
+                }
+            );
+    });
+
+    it('разместить ответ 2го уровня', function () {
+        var that = this;
+        return this.browser.click(".tweet-feed .tweet-item .button_action_reply")
+            .waitForVisible(".compose-block")
+            .setValue(".pepo-textarea textarea", first_2nd_comment)
+            .click(".send-tweet-btn")
+            .waitForVisible(".page_view_feed")
+            .click(".tweet-item*=" + first_tweet)
+            .waitForVisible(".page_view_tweet")
+            .click(".tweet-feed .tweet-item:first-child")
+            .waitUntil(
+                function async() {
+                    return that.browser.getText(".tweet-feed .tweet-item .tweet-item__tweet-body").then(function (text) {
+                        return text === first_2nd_comment;
+                    });
+                }
+            );
+    });
+
+    it('сообщение ведет на родительский коммент', function () {
+        return this.browser.click(".body > .tweet-item .tweet-item__reply-info .link")
+            .waitForVisible(".tweet-item*=" + first_tweet)
+    });
+
+    for (var i = 1; i <= 9; i++) {
+        it ('внесение комментария ' + i, function () {
+            return this.browser.url(config.servers.frontend_server + '/feed/')
+                .waitForVisible(".tweet-feed")
+                .click(".tweet-item*=" + first_tweet)
+                .waitForVisible(".page_view_tweet")
+                .click(".body > .tweet-item .button_action_reply")
+                .waitForVisible(".compose-block")
+                .setValue(".pepo-textarea textarea", other_comment)
+                .click(".send-tweet-btn");
+        })
+    }
+
+    it ('внесение комментария ' + 10, function () {
+        return this.browser.url(config.servers.frontend_server + '/feed/')
+            .waitForVisible(".tweet-feed")
+            .click(".tweet-item*=" + first_tweet)
+            .waitForVisible(".page_view_tweet")
+            .click(".body > .tweet-item .button_action_reply")
+            .waitForVisible(".compose-block")
+            .setValue(".pepo-textarea textarea", seed)
+            .click(".send-tweet-btn")
+            .waitForVisible(".tweet-feed");
+    });
+
+    it('скроллинг комментариев работает', function () {
+        var that = this;
+        return this.browser.click(".tweet-item*=" + first_tweet)
+            .waitForVisible(".page_view_tweet")
+            .scroll(".tweet-feed .tweet-item:nth-child(10)")
+            .waitForVisible(".tweet-feed .tweet-item:nth-child(11)")
+            .waitUntil(
+                function async() {
+                    return that.browser.getText(".tweet-feed .tweet-item:nth-child(11) .tweet-item__tweet-body").then(function (text) {
+                        return text === String(seed);
+                    });
+                }
+            );
+
+    });
+
 });
