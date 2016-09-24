@@ -12,7 +12,14 @@ modules.define('dropzone', ['i-bem__dom', 'events__channels', 'jquery'],
                     js: {
                         inited: function () {
                         // в момент инициализации блока будет включен dropzone
-                            this.emitter = channels(this.params.channel);
+                            var eventName;
+                            if (this.params.channel == null) {
+                                eventName = 'upload_success';
+                                this.emitter = this.findBlockOutside('page');
+                            } else {
+                                eventName = 'success';
+                                this.emitter = channels(this.params.channel);
+                            }
 
                             var that = this;
                             if (this.params.url) {
@@ -29,7 +36,7 @@ modules.define('dropzone', ['i-bem__dom', 'events__channels', 'jquery'],
                                         thumbnailHeight: size,
                                         success: function (file, response) {
                                             var data = response;
-                                            that.emitter.emit('success', data);
+                                            that.emitter.emit(eventName, data);
                                         },
                                         dictDefaultMessage: 'Загрузите картинку'
                                     });

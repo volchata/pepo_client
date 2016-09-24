@@ -37,7 +37,7 @@ modules.define('subscriber', ['i-bem__dom', 'jquery'],
                 this.emitter.emit('follow_changed_' + this.params.userName,
                     { stat:
                     {
-                        value: user.follows
+                        value: user.followers
                     }
                     });
             },

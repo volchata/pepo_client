@@ -15,6 +15,12 @@
             mods: {
                 snapshot: true
             }
+        },
+        {
+            block:'spinner'
+        },
+        {
+            block: 'tweet-attachment'
         }
     ]
 }]);

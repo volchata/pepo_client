@@ -63,7 +63,6 @@ modules.define('compose-block', ['i-bem__dom', 'events__channels', 'jquery', 'BE
                 this.composeTweet(data);
             },
             _onSuccess: function (event, data) {
-                console.log('Success:', data);
                 this.composeTweet(data);
             },
             _onProgress: function (event, data) {
