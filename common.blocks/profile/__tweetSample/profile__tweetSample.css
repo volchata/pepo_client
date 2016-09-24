@@ -9,7 +9,7 @@
 	display: inline;
 }
 .profile__tweetSample .radio-group_role_tweets-variants-control .button {
-    width: 33%;
+    width: 25%;
 }
 
 .profile__tabsContainer {
@@ -22,6 +22,7 @@
 
 .profile__tabsContainer_type_last .tweet-feed_role_tweet-feed-last, 
 .profile__tabsContainer_type_pics .tweet-feed_role_tweet-feed-pics,
-.profile__tabsContainer_type_liked .tweet-feed_role_tweet-feed-liked {
+.profile__tabsContainer_type_liked .tweet-feed_role_tweet-feed-liked,
+.profile__tabsContainer_type_near .tweet-feed_role_tweet-feed-near {
 	display: block;
 }

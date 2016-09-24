@@ -152,3 +152,22 @@ block('tweet-feed').mod('role', 'tweet-feed-liked')(
         }
     )
 );
+
+block('tweet-feed').mod('role', 'tweet-feed-near')(
+    content()(
+        function () {
+            var tweets = this.ctx.data.tweets;
+            if (tweets.length) {
+                return applyNext();
+            } else {
+                return {
+                    block: 'text',
+                    content: [
+                        'Рядом с вами никто не постил'
+                    ]
+                };
+            }
+
+        }
+    )
+);
