@@ -3,7 +3,7 @@ block('profile').elem('tweetSample')(
     content()(
         function () {
             var tabs = ['last', 'pics', 'liked', 'near'];
-            var tabLabels = ['Недавние', 'Картинки', 'Лайки', 'Ближайшие'];
+            var tabLabels = ['Недавние', 'Картинки', 'Лайки', 'Рядом'];
             var user = this.data.user;
 
             return [
