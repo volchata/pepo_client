@@ -3,7 +3,7 @@ block('button').mod('action', 'delete')(
         function () {
 
             this.mods.theme = 'islands';
-            this.mods.size = 's';
+            this.mods.size = 'm';
 
             return applyNext();
         }
