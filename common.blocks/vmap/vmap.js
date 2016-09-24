@@ -133,6 +133,9 @@ modules.define('vmap', ['i-bem__dom', 'BEMHTML', 'jquery', 'events__channels', '
         },
 
         onMapInited: function () {
+            this.on('redraw', function () {
+                this._map.container.fitToViewport();
+            });
             if (this.params.mod !== 'view') {
                 console.log('Bind events');
                 //window.map = this._map;
