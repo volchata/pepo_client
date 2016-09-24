@@ -2,8 +2,8 @@ block('profile').elem('tweetSample')(
     js()(true),
     content()(
         function () {
-            var tabs = ['last', 'pics', 'liked'];
-            var tabLabels = ['Недавние', 'Картинки', 'Лайки'];
+            var tabs = ['last', 'pics', 'liked', 'near'];
+            var tabLabels = ['Недавние', 'Картинки', 'Лайки', 'Ближайшие'];
             var user = this.data.user;
 
             return [
