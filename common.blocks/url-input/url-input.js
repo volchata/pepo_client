@@ -57,7 +57,7 @@ modules.define('url-input', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTM
             onSnapshotSet: function (data) {
                 if (data.status !== 'OK') {
                     this.delMod('mode');
-                    this.emitter.emit('fail');
+                    this.emitter.emit('fail', {msg: 'Создать снапшот не удалось'});
                     return;
                 }
                 this.attachment = data.attachment;
@@ -67,7 +67,7 @@ modules.define('url-input', ['i-bem__dom', 'events__channels', 'jquery', 'BEMHTM
                 if (data.status !== 'OK') {
                     this.attachment = null;
                     this.delMod('mode');
-                    this.emitter.emit('fail');
+                    this.emitter.emit('fail', {msg: 'Создать снапшот не удалось'});
                     return;
                 }
                 this.attachment = data.attachment;

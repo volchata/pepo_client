@@ -13,6 +13,7 @@ modules.define('avatar-edit', ['i-bem__dom', 'jquery'],
                         this.findBlockOutside('page').on(
                             'upload_success', // имя БЭМ-события
                             function (event, data) {
+                                console.log('avatar', avatar);
                                 avatar = data.image;
                             },
                             that
