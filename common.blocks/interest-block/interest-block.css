@@ -1,17 +1,13 @@
 @import "../../libs/jquery-tag-editor/jquery.tag-editor.css";
 
 .interest-block .tag-editor {
-    margin: 3px;
+    margin: 5px 3px;
 }
 
-.interest-block .text {
-    display:block;
-    width: 140px;
-    height: 100%;
-    margin: 5px auto;
+.interest-block__title {
+    margin: 1em 2em;
 }
 
 .interest-block .button_type_submit {
-    display:block;
-    margin: 5px auto;
+    margin: 10px 10px;
 }

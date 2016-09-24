@@ -1,0 +1,25 @@
+.avatar-edit__title {
+    margin: 1em 2em;
+}
+
+.avatar-edit .button {
+    margin: 10px 10px;
+}
+
+.avatar-edit .dropzone {
+    padding: 5px;
+    height: auto;
+    min-width: 407px;
+    min-height: 407px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.avatar-edit .dropzone .dz-preview {
+    margin: 2px;
+}
+
+.avatar-edit .dropzone .dz-preview .dz-image {
+    width: auto;
+    height: auto;
+}
