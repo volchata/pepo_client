@@ -2,7 +2,7 @@
     display:block;
     max-width: 400px;
     width:90%;
-    width: calc(100vh - 52px);
+    width: calc(100vw - 52px);
     height:400px;
     background-color: #bfbfbf;
     margin-bottom: 7px;
