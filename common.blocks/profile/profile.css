@@ -4,7 +4,7 @@
 }
 
 .profile__info-left, .profile__info-right {
-	width: 49%;
+	width: 48%;
 	display: table-cell;
 	padding: 5px;
     box-sizing: border-box;
