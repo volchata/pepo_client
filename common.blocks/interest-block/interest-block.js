@@ -84,7 +84,7 @@ modules.define('interest-block', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                     function () {
                                         console.log('document.referrer', document.referrer);
                                         var url = window.config.frontend_server + '/account/edit/avatar/';
-                                        
+
                                         if (document.referrer === url) {
                                             document.location.href = /profile/;
                                         } else {
